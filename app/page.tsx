@@ -28,6 +28,7 @@ export type Epic = {
   description: string | null;
   priority: string;
   priorityId: string;
+  jiraRank: string;
 };
 
 export type Metrics = {

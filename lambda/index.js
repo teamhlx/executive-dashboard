@@ -688,7 +688,7 @@ IMPORTANT: End every response with a JSON action on its own line (no markdown, r
     const epicsBody = JSON.stringify({
       jql: `project=${project} AND issuetype=Epic AND status != Deferred ORDER BY created ASC`,
       maxResults: 100,
-      fields: ['summary', 'status', 'duedate', 'description', 'startdate', 'created', 'priority']
+      fields: ['summary', 'status', 'duedate', 'description', 'startdate', 'created', 'priority', 'customfield_10019']
     });
 
     const epicsData = await new Promise((resolve, reject) => {
@@ -785,12 +785,13 @@ IMPORTANT: End every response with a JSON action on its own line (no markdown, r
       startDate: i.fields.startdate || (i.fields.created ? i.fields.created.split('T')[0] : null),
       dueDate: i.fields.duedate || null,
       description: extractText(i.fields.description).slice(0, 300) || null,
+      jiraRank: i.fields.customfield_10019 || '',
       priority: i.fields.priority?.name || 'Medium',
       priorityId: i.fields.priority?.id || '3',
     }));
 
-    const PRIORITY_ORDER = { 'Highest': 1, 'High': 2, 'Medium': 3, 'Low': 4, 'Lowest': 5 };
-    epics.sort((a, b) => (PRIORITY_ORDER[a.priority] || 3) - (PRIORITY_ORDER[b.priority] || 3));
+    // Sort by Jira board rank (lexicographic — the native board order)
+    epics.sort((a, b) => a.jiraRank.localeCompare(b.jiraRank));
 
     return {
       statusCode: 200,
