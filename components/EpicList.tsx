@@ -28,11 +28,11 @@ type EpicCardProps = {
   isHovered: boolean;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
-  isTopPriority?: boolean;
+  rank?: number;
   epicPriority?: string;
 };
 
-function EpicCard({ epic, statusColor, statusBg, statusLabel, titleColor, descColor, dateColor, isHovered, onMouseEnter, onMouseLeave, isTopPriority = false, epicPriority = 'Medium' }: EpicCardProps) {
+function EpicCard({ epic, statusColor, statusBg, statusLabel, titleColor, descColor, dateColor, isHovered, onMouseEnter, onMouseLeave, rank, epicPriority = 'Medium' }: EpicCardProps) {
   const showPriorityBadge = epicPriority !== 'Medium';
   return (
     <div
@@ -42,8 +42,8 @@ function EpicCard({ epic, statusColor, statusBg, statusLabel, titleColor, descCo
     >
       <div className="flex items-start justify-between gap-2 mb-2">
         <div className="flex items-center gap-1.5 flex-1 min-w-0">
-          {isTopPriority && (
-            <span className="text-xs font-bold w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center shrink-0">1</span>
+          {rank !== undefined && (
+            <span className="text-xs font-bold w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center shrink-0 flex-none">{rank}</span>
           )}
           {showPriorityBadge && (
             <span className="text-xs font-medium px-1.5 py-0.5 rounded bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 shrink-0">{epicPriority}</span>
@@ -141,7 +141,7 @@ export default function EpicList({ inProgress, toDo, complete, showSection, hove
                   isHovered={epic.key === hoveredKey}
                   onMouseEnter={() => onHover?.(epic.key)}
                   onMouseLeave={() => onHover?.(null)}
-                  isTopPriority={index === 0}
+                  rank={index + 1}
                   epicPriority={epic.priority}
                 />
               ))}
