@@ -161,6 +161,7 @@ export default function EpicTimeline({ epics, hoveredKey, onHover, showUpcoming,
                 const startDate = parseDate(epic.startDate) ?? today;
                 const hasDueDate = !!epic.dueDate;
                 const endDate = hasDueDate ? parseDate(epic.dueDate)! : startDate;
+                const isOverdue = hasDueDate && group === "In Progress" && endDate < today;
 
                 const barLeft = Math.max(0, Math.min(getLeftPct(startDate), 100));
                 const barRight = Math.max(0, Math.min(getLeftPct(endDate), 100));
@@ -168,7 +169,12 @@ export default function EpicTimeline({ epics, hoveredKey, onHover, showUpcoming,
 
                 const isHovered = epic.key === hoveredKey;
                 const rowBg = isHovered ? "bg-gray-100 dark:bg-white/5" : "";
-                const barBg = isHovered ? (STATUS_BG_SOLID[group] ?? STATUS_BG[group]) : STATUS_BG[group];
+                const barBg = isOverdue
+                  ? (isHovered ? "bg-red-500/40" : "bg-red-500/20")
+                  : (isHovered ? (STATUS_BG_SOLID[group] ?? STATUS_BG[group]) : STATUS_BG[group]);
+                const barBorder = isOverdue
+                  ? "border-red-500/50"
+                  : `${STATUS_COLORS[group]?.replace("bg-", "border-")}/30`;
 
                 return (
                   <div
@@ -177,9 +183,9 @@ export default function EpicTimeline({ epics, hoveredKey, onHover, showUpcoming,
                     onMouseEnter={() => onHover(epic.key)}
                     onMouseLeave={() => onHover(null)}
                   >
-                    <div className="w-10 shrink-0 flex items-center justify-end pr-2">
+                    <div className="w-10 shrink-0 flex items-center justify-end pr-2 relative">
                       {rankMap[epic.key] !== undefined ? (
-                        <span className="text-xs font-bold w-6 h-6 rounded-full bg-indigo-600 text-white flex items-center justify-center">{rankMap[epic.key]}</span>
+                        <span className={`text-xs font-bold w-6 h-6 rounded-full text-white flex items-center justify-center ${isOverdue ? 'bg-red-500' : 'bg-indigo-600'}`}>{rankMap[epic.key]}</span>
                       ) : (
                         <span className="w-2 h-2 rounded-full bg-gray-400/40" />
                       )}
@@ -188,7 +194,7 @@ export default function EpicTimeline({ epics, hoveredKey, onHover, showUpcoming,
                       {hasDueDate ? (
                         // Full bar for epics with a due date
                         <div
-                          className={`absolute h-5 rounded-full top-0.5 ${barBg} border ${STATUS_COLORS[group]?.replace("bg-", "border-")}/30 flex items-center px-2 cursor-pointer transition-all`}
+                          className={`absolute h-5 rounded-full top-0.5 ${barBg} border ${barBorder} flex items-center px-2 cursor-pointer transition-all`}
                           style={{ left: `${barLeft}%`, width: `${barWidth}%`, minWidth: "60px" }}
                           title={epic.description || epic.summary}
                         >
