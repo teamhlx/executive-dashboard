@@ -1,9 +1,11 @@
 const https = require('https');
+const crypto = require('crypto');
 const { SSMClient, GetParameterCommand } = require('@aws-sdk/client-ssm');
 const { BedrockRuntimeClient, InvokeModelCommand } = require('@aws-sdk/client-bedrock-runtime');
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 const { getSignedUrl } = require('@aws-sdk/s3-request-presigner');
 const { Client } = require('pg');
+const bcrypt = require('bcryptjs');
 
 const ssm = new SSMClient({ region: 'us-west-2' });
 const bedrock = new BedrockRuntimeClient({ region: 'us-west-2' });
@@ -34,6 +36,69 @@ async function getDbClient() {
   const client = new Client({ connectionString: dbUrl, ssl: { rejectUnauthorized: false } });
   await client.connect();
   return client;
+}
+
+// Parse cookies from the Cookie header string
+function parseCookies(cookieHeader) {
+  if (!cookieHeader) return {};
+  return cookieHeader.split(';').reduce((acc, part) => {
+    const [key, ...val] = part.trim().split('=');
+    if (key) acc[key.trim()] = val.join('=').trim();
+    return acc;
+  }, {});
+}
+
+// Get the session cookie value from an event
+function getSessionId(event) {
+  // API Gateway REST API: event.headers.Cookie or event.headers.cookie
+  const cookieHeader = event.headers?.Cookie || event.headers?.cookie || '';
+  // API Gateway HTTP API may also have event.cookies array
+  if (!cookieHeader && event.cookies) {
+    const arr = Array.isArray(event.cookies) ? event.cookies : [];
+    for (const c of arr) {
+      const [key, val] = c.split('=');
+      if (key.trim() === 'session') return val?.trim() || null;
+    }
+    return null;
+  }
+  const cookies = parseCookies(cookieHeader);
+  return cookies['session'] || null;
+}
+
+// Helper: authenticate from session
+async function getAuthUser(event, client) {
+  const sessionId = getSessionId(event);
+  if (!sessionId) return null;
+  try {
+    const res = await client.query(
+      `SELECT u.id, u.email, u.first_name, u.last_name, u.role, u.project_ids
+       FROM users u
+       JOIN sessions s ON s.user_id = u.id
+       WHERE s.id = $1 AND s.expires_at > NOW()`,
+      [sessionId]
+    );
+    if (res.rows.length === 0) return null;
+    const row = res.rows[0];
+    return {
+      id: row.id,
+      email: row.email,
+      firstName: row.first_name || '',
+      lastName: row.last_name || '',
+      role: row.role,
+      projectIds: row.project_ids || []
+    };
+  } catch (e) {
+    console.error('getAuthUser error:', e);
+    return null;
+  }
+}
+
+function setCookieHeader(sessionId) {
+  return `session=${sessionId}; HttpOnly; Secure; SameSite=Strict; Max-Age=604800; Path=/`;
+}
+
+function clearCookieHeader() {
+  return `session=; HttpOnly; Secure; SameSite=Strict; Max-Age=0; Path=/`;
 }
 
 function jiraRequest(path, token) {
@@ -89,24 +154,290 @@ exports.handler = async (event) => {
   const corsHeaders = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,POST,PATCH,OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type,Authorization'
+    'Access-Control-Allow-Methods': 'GET,POST,PATCH,DELETE,OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type,Authorization',
+    'Access-Control-Allow-Credentials': 'true'
   };
 
+  // Use event.path (REST API) - determine the path field
+  const path = event.path || event.rawPath || '/';
+  const method = event.httpMethod || event.requestContext?.http?.method || 'GET';
+
   // OPTIONS preflight for all routes
-  if (event.httpMethod === 'OPTIONS') {
+  if (method === 'OPTIONS') {
     return { statusCode: 200, headers: corsHeaders, body: '' };
   }
 
-  // ─── POST /api/feedback/chat ───────────────────────────────────────────────
-  if (event.httpMethod === 'POST' && event.path === '/api/feedback/chat') {
+  // ─── POST /api/auth/login ─────────────────────────────────────────────────
+  if (method === 'POST' && path === '/api/auth/login') {
+    let db;
     try {
       const body = JSON.parse(event.body || '{}');
-      const { messages, submittedBy, feedbackId } = body;
+      const { email, password } = body;
+      if (!email || !password) {
+        return { statusCode: 400, headers: corsHeaders, body: JSON.stringify({ error: 'email and password required' }) };
+      }
+
+      db = await getDbClient();
+      const res = await db.query('SELECT * FROM users WHERE email = $1', [email]);
+      if (res.rows.length === 0) {
+        return { statusCode: 401, headers: corsHeaders, body: JSON.stringify({ error: 'Invalid credentials' }) };
+      }
+      const user = res.rows[0];
+
+      const match = await bcrypt.compare(password, user.password_hash);
+      if (!match) {
+        return { statusCode: 401, headers: corsHeaders, body: JSON.stringify({ error: 'Invalid credentials' }) };
+      }
+
+      const sessionId = crypto.randomUUID();
+      await db.query('INSERT INTO sessions (id, user_id) VALUES ($1, $2)', [sessionId, user.id]);
+
+      return {
+        statusCode: 200,
+        headers: {
+          ...corsHeaders,
+          'Set-Cookie': setCookieHeader(sessionId)
+        },
+        body: JSON.stringify({
+          user: {
+            id: user.id,
+            email: user.email,
+            firstName: user.first_name || '',
+            lastName: user.last_name || '',
+            role: user.role,
+            projectIds: user.project_ids || []
+          },
+          sessionId
+        })
+      };
+    } catch (err) {
+      console.error('login error:', err);
+      return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: err.message }) };
+    } finally {
+      if (db) await db.end().catch(() => {});
+    }
+  }
+
+  // ─── POST /api/auth/logout ────────────────────────────────────────────────
+  if (method === 'POST' && path === '/api/auth/logout') {
+    let db;
+    try {
+      const sessionId = getSessionId(event);
+      if (sessionId) {
+        db = await getDbClient();
+        await db.query('DELETE FROM sessions WHERE id = $1', [sessionId]);
+      }
+      return {
+        statusCode: 200,
+        headers: {
+          ...corsHeaders,
+          'Set-Cookie': clearCookieHeader()
+        },
+        body: JSON.stringify({ success: true })
+      };
+    } catch (err) {
+      console.error('logout error:', err);
+      return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: err.message }) };
+    } finally {
+      if (db) await db.end().catch(() => {});
+    }
+  }
+
+  // ─── GET /api/auth/me ─────────────────────────────────────────────────────
+  if (method === 'GET' && path === '/api/auth/me') {
+    let db;
+    try {
+      db = await getDbClient();
+      const user = await getAuthUser(event, db);
+      if (!user) {
+        return { statusCode: 401, headers: corsHeaders, body: JSON.stringify({ error: 'Unauthorized' }) };
+      }
+      return {
+        statusCode: 200,
+        headers: corsHeaders,
+        body: JSON.stringify({ user })
+      };
+    } catch (err) {
+      console.error('me error:', err);
+      return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: err.message }) };
+    } finally {
+      if (db) await db.end().catch(() => {});
+    }
+  }
+
+  // ─── Admin routes ─────────────────────────────────────────────────────────
+
+  // GET /api/admin/users
+  if (method === 'GET' && path === '/api/admin/users') {
+    let db;
+    try {
+      db = await getDbClient();
+      const user = await getAuthUser(event, db);
+      if (!user) return { statusCode: 401, headers: corsHeaders, body: JSON.stringify({ error: 'Unauthorized' }) };
+      if (user.role !== 'superadmin') return { statusCode: 403, headers: corsHeaders, body: JSON.stringify({ error: 'Forbidden' }) };
+
+      const res = await db.query('SELECT id, email, first_name, last_name, role, project_ids, created_at FROM users ORDER BY email');
+      return {
+        statusCode: 200,
+        headers: corsHeaders,
+        body: JSON.stringify({ users: res.rows.map(r => ({
+          id: r.id,
+          email: r.email,
+          firstName: r.first_name || '',
+          lastName: r.last_name || '',
+          role: r.role,
+          projectIds: r.project_ids || [],
+          createdAt: r.created_at
+        })) })
+      };
+    } catch (err) {
+      console.error('GET admin/users error:', err);
+      return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: err.message }) };
+    } finally {
+      if (db) await db.end().catch(() => {});
+    }
+  }
+
+  // POST /api/admin/users
+  if (method === 'POST' && path === '/api/admin/users') {
+    let db;
+    try {
+      db = await getDbClient();
+      const user = await getAuthUser(event, db);
+      if (!user) return { statusCode: 401, headers: corsHeaders, body: JSON.stringify({ error: 'Unauthorized' }) };
+      if (user.role !== 'superadmin') return { statusCode: 403, headers: corsHeaders, body: JSON.stringify({ error: 'Forbidden' }) };
+
+      const body = JSON.parse(event.body || '{}');
+      const { email, password, role, projectIds, firstName, lastName } = body;
+      if (!email || !password) {
+        return { statusCode: 400, headers: corsHeaders, body: JSON.stringify({ error: 'email and password required' }) };
+      }
+
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const res = await db.query(
+        'INSERT INTO users (email, password_hash, role, project_ids, first_name, last_name) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, email, first_name, last_name, role, project_ids, created_at',
+        [email, hashedPassword, role || 'user', projectIds || [], firstName || '', lastName || '']
+      );
+      const newUser = res.rows[0];
+      return {
+        statusCode: 201,
+        headers: corsHeaders,
+        body: JSON.stringify({ user: {
+          id: newUser.id,
+          email: newUser.email,
+          firstName: newUser.first_name || '',
+          lastName: newUser.last_name || '',
+          role: newUser.role,
+          projectIds: newUser.project_ids || [],
+          createdAt: newUser.created_at
+        } })
+      };
+    } catch (err) {
+      console.error('POST admin/users error:', err);
+      return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: err.message }) };
+    } finally {
+      if (db) await db.end().catch(() => {});
+    }
+  }
+
+  // PATCH /api/admin/users/:id
+  if (method === 'PATCH' && path && path.startsWith('/api/admin/users/')) {
+    let db;
+    try {
+      db = await getDbClient();
+      const user = await getAuthUser(event, db);
+      if (!user) return { statusCode: 401, headers: corsHeaders, body: JSON.stringify({ error: 'Unauthorized' }) };
+      if (user.role !== 'superadmin') return { statusCode: 403, headers: corsHeaders, body: JSON.stringify({ error: 'Forbidden' }) };
+
+      const id = path.split('/')[4];
+      if (!id) return { statusCode: 400, headers: corsHeaders, body: JSON.stringify({ error: 'id required' }) };
+
+      const body = JSON.parse(event.body || '{}');
+      const updates = [];
+      const values = [];
+      let idx = 1;
+
+      if (body.password !== undefined) {
+        const hash = await bcrypt.hash(body.password, 10);
+        updates.push(`password_hash = $${idx++}`);
+        values.push(hash);
+      }
+      if (body.role !== undefined) {
+        updates.push(`role = $${idx++}`);
+        values.push(body.role);
+      }
+      if (body.projectIds !== undefined) {
+        updates.push(`project_ids = $${idx++}`);
+        values.push(body.projectIds);
+      }
+      if (body.firstName !== undefined) {
+        updates.push(`first_name = $${idx++}`);
+        values.push(body.firstName);
+      }
+      if (body.lastName !== undefined) {
+        updates.push(`last_name = $${idx++}`);
+        values.push(body.lastName);
+      }
+
+      if (updates.length === 0) {
+        return { statusCode: 400, headers: corsHeaders, body: JSON.stringify({ error: 'No fields to update' }) };
+      }
+
+      values.push(id);
+      await db.query(`UPDATE users SET ${updates.join(', ')} WHERE id = $${idx}`, values);
+
+      return { statusCode: 200, headers: corsHeaders, body: JSON.stringify({ success: true }) };
+    } catch (err) {
+      console.error('PATCH admin/users/:id error:', err);
+      return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: err.message }) };
+    } finally {
+      if (db) await db.end().catch(() => {});
+    }
+  }
+
+  // DELETE /api/admin/users/:id
+  if (method === 'DELETE' && path && path.startsWith('/api/admin/users/')) {
+    let db;
+    try {
+      db = await getDbClient();
+      const user = await getAuthUser(event, db);
+      if (!user) return { statusCode: 401, headers: corsHeaders, body: JSON.stringify({ error: 'Unauthorized' }) };
+      if (user.role !== 'superadmin') return { statusCode: 403, headers: corsHeaders, body: JSON.stringify({ error: 'Forbidden' }) };
+
+      const id = path.split('/')[4];
+      if (!id) return { statusCode: 400, headers: corsHeaders, body: JSON.stringify({ error: 'id required' }) };
+
+      await db.query('DELETE FROM sessions WHERE user_id = $1', [id]);
+      await db.query('DELETE FROM users WHERE id = $1', [id]);
+
+      return { statusCode: 200, headers: corsHeaders, body: JSON.stringify({ success: true }) };
+    } catch (err) {
+      console.error('DELETE admin/users/:id error:', err);
+      return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: err.message }) };
+    } finally {
+      if (db) await db.end().catch(() => {});
+    }
+  }
+
+  // ─── POST /api/feedback/chat ───────────────────────────────────────────────
+  if (method === 'POST' && path === '/api/feedback/chat') {
+    let db;
+    try {
+      const body = JSON.parse(event.body || '{}');
+      const { messages, feedbackId } = body;
 
       if (!messages || !Array.isArray(messages) || messages.length === 0) {
         return { statusCode: 400, headers: corsHeaders, body: JSON.stringify({ error: 'messages array required' }) };
       }
+
+      // Require auth
+      db = await getDbClient();
+      const authUser = await getAuthUser(event, db);
+      if (!authUser) {
+        return { statusCode: 401, headers: corsHeaders, body: JSON.stringify({ error: 'Unauthorized' }) };
+      }
+      const submittedBy = authUser.email;
 
       // Fetch open Jira issues for context
       const token = await getJiraToken();
@@ -170,9 +501,8 @@ IMPORTANT: End every response with a JSON action on its own line (no markdown, r
 
       // Save to DB if action is link or create
       let savedFeedbackId = feedbackId || null;
-      if (action && (action.action === 'link' || action.action === 'create') && submittedBy) {
+      if (action && (action.action === 'link' || action.action === 'create')) {
         try {
-          const db = await getDbClient();
           const lastUserMessage = [...messages].reverse().find(m => m.role === 'user');
           const description = lastUserMessage ? lastUserMessage.content : '';
           const status = action.action === 'link' ? 'linked' : 'not_reviewed';
@@ -190,7 +520,6 @@ IMPORTANT: End every response with a JSON action on its own line (no markdown, r
               [description, status, jiraKey, JSON.stringify(messages), savedFeedbackId]
             );
           }
-          await db.end();
         } catch (dbErr) {
           console.error('DB error:', dbErr);
           // Don't fail the whole request on DB error
@@ -205,23 +534,25 @@ IMPORTANT: End every response with a JSON action on its own line (no markdown, r
     } catch (err) {
       console.error('feedback/chat error:', err);
       return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: err.message }) };
+    } finally {
+      if (db) await db.end().catch(() => {});
     }
   }
 
   // ─── GET /api/feedback ────────────────────────────────────────────────────
-  if (event.httpMethod === 'GET' && event.path === '/api/feedback') {
+  if (method === 'GET' && path === '/api/feedback') {
+    let db;
     try {
-      const submittedBy = event.queryStringParameters?.submittedBy;
-      if (!submittedBy) {
-        return { statusCode: 400, headers: corsHeaders, body: JSON.stringify({ error: 'submittedBy query param required' }) };
+      db = await getDbClient();
+      const authUser = await getAuthUser(event, db);
+      if (!authUser) {
+        return { statusCode: 401, headers: corsHeaders, body: JSON.stringify({ error: 'Unauthorized' }) };
       }
 
-      const db = await getDbClient();
       const result = await db.query(
         'SELECT id, submitted_by, description, status, jira_ticket_key, screenshot_url, created_at FROM feedback WHERE submitted_by = $1 ORDER BY created_at DESC',
-        [submittedBy]
+        [authUser.email]
       );
-      await db.end();
 
       const feedback = result.rows.map(row => ({
         id: row.id,
@@ -241,12 +572,21 @@ IMPORTANT: End every response with a JSON action on its own line (no markdown, r
     } catch (err) {
       console.error('GET /api/feedback error:', err);
       return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: err.message }) };
+    } finally {
+      if (db) await db.end().catch(() => {});
     }
   }
 
   // ─── POST /api/feedback/screenshot-url ───────────────────────────────────
-  if (event.httpMethod === 'POST' && event.path === '/api/feedback/screenshot-url') {
+  if (method === 'POST' && path === '/api/feedback/screenshot-url') {
+    let db;
     try {
+      db = await getDbClient();
+      const authUser = await getAuthUser(event, db);
+      if (!authUser) {
+        return { statusCode: 401, headers: corsHeaders, body: JSON.stringify({ error: 'Unauthorized' }) };
+      }
+
       const body = JSON.parse(event.body || '{}');
       const { feedbackId, filename, contentType } = body;
 
@@ -271,14 +611,22 @@ IMPORTANT: End every response with a JSON action on its own line (no markdown, r
     } catch (err) {
       console.error('screenshot-url error:', err);
       return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: err.message }) };
+    } finally {
+      if (db) await db.end().catch(() => {});
     }
   }
 
   // ─── PATCH /api/feedback/:id/screenshot ──────────────────────────────────
-  if (event.httpMethod === 'PATCH' && event.path && event.path.startsWith('/api/feedback/') && event.path.endsWith('/screenshot')) {
+  if (method === 'PATCH' && path && path.startsWith('/api/feedback/') && path.endsWith('/screenshot')) {
+    let db;
     try {
-      const parts = event.path.split('/');
-      // path: /api/feedback/:id/screenshot → parts: ['', 'api', 'feedback', ':id', 'screenshot']
+      db = await getDbClient();
+      const authUser = await getAuthUser(event, db);
+      if (!authUser) {
+        return { statusCode: 401, headers: corsHeaders, body: JSON.stringify({ error: 'Unauthorized' }) };
+      }
+
+      const parts = path.split('/');
       const id = parts[3];
       if (!id) {
         return { statusCode: 400, headers: corsHeaders, body: JSON.stringify({ error: 'id required in path' }) };
@@ -290,12 +638,10 @@ IMPORTANT: End every response with a JSON action on its own line (no markdown, r
         return { statusCode: 400, headers: corsHeaders, body: JSON.stringify({ error: 'screenshotUrl required' }) };
       }
 
-      const db = await getDbClient();
       await db.query(
         'UPDATE feedback SET screenshot_url = $1, updated_at = NOW() WHERE id = $2',
         [screenshotUrl, id]
       );
-      await db.end();
 
       return {
         statusCode: 200,
@@ -305,6 +651,8 @@ IMPORTANT: End every response with a JSON action on its own line (no markdown, r
     } catch (err) {
       console.error('PATCH screenshot error:', err);
       return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: err.message }) };
+    } finally {
+      if (db) await db.end().catch(() => {});
     }
   }
 
@@ -312,19 +660,35 @@ IMPORTANT: End every response with a JSON action on its own line (no markdown, r
   const headers = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,POST,PATCH,OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type,Authorization'
+    'Access-Control-Allow-Methods': 'GET,POST,PATCH,DELETE,OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type,Authorization',
+    'Access-Control-Allow-Credentials': 'true'
   };
 
+  let db;
   try {
+    db = await getDbClient();
+    const authUser = await getAuthUser(event, db);
+    if (!authUser) {
+      return { statusCode: 401, headers, body: JSON.stringify({ error: 'Unauthorized' }) };
+    }
+
     const token = await getJiraToken();
-    const project = event.queryStringParameters?.project || 'SM';
+    // If user has projectIds restrictions, use the first one; otherwise use default
+    let project = event.queryStringParameters?.project || 'SM';
+    // Filter: only allow project if user has access (superadmin bypasses)
+    if (authUser.role !== 'superadmin' && authUser.projectIds && authUser.projectIds.length > 0) {
+      const allowed = authUser.projectIds.map(p => p.toUpperCase());
+      if (!allowed.includes(project.toUpperCase())) {
+        project = authUser.projectIds[0]; // default to first allowed
+      }
+    }
 
     // Fetch epics
     const epicsBody = JSON.stringify({
       jql: `project=${project} AND issuetype=Epic AND status != Deferred ORDER BY created ASC`,
       maxResults: 100,
-      fields: ['summary', 'status', 'duedate', 'description', 'startdate', 'created']
+      fields: ['summary', 'status', 'duedate', 'description', 'startdate', 'created', 'priority']
     });
 
     const epicsData = await new Promise((resolve, reject) => {
@@ -420,8 +784,13 @@ IMPORTANT: End every response with a JSON action on its own line (no markdown, r
       status: i.fields.status.name,
       startDate: i.fields.startdate || (i.fields.created ? i.fields.created.split('T')[0] : null),
       dueDate: i.fields.duedate || null,
-      description: extractText(i.fields.description).slice(0, 300) || null
+      description: extractText(i.fields.description).slice(0, 300) || null,
+      priority: i.fields.priority?.name || 'Medium',
+      priorityId: i.fields.priority?.id || '3',
     }));
+
+    const PRIORITY_ORDER = { 'Highest': 1, 'High': 2, 'Medium': 3, 'Low': 4, 'Lowest': 5 };
+    epics.sort((a, b) => (PRIORITY_ORDER[a.priority] || 3) - (PRIORITY_ORDER[b.priority] || 3));
 
     return {
       statusCode: 200,
@@ -437,5 +806,7 @@ IMPORTANT: End every response with a JSON action on its own line (no markdown, r
   } catch (err) {
     console.error(err);
     return { statusCode: 500, headers, body: JSON.stringify({ error: err.message }) };
+  } finally {
+    if (db) await db.end().catch(() => {});
   }
 };

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { User } from "@/app/page";
 
 interface FeedbackItem {
   id: string;
@@ -14,6 +15,7 @@ interface FeedbackItem {
 
 interface FeedbackHistoryProps {
   apiUrl: string;
+  user: User;
   onClose: () => void;
 }
 
@@ -43,22 +45,13 @@ function SkeletonRow() {
   );
 }
 
-export default function FeedbackHistory({ apiUrl, onClose }: FeedbackHistoryProps) {
+export default function FeedbackHistory({ apiUrl, user, onClose }: FeedbackHistoryProps) {
   const [items, setItems] = useState<FeedbackItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const submittedBy = typeof window !== "undefined"
-    ? localStorage.getItem("exec-dashboard-name") || ""
-    : "";
-
   useEffect(() => {
-    if (!submittedBy) {
-      setLoading(false);
-      return;
-    }
-
-    fetch(`${apiUrl}/api/feedback?submittedBy=${encodeURIComponent(submittedBy)}`)
+    fetch(`${apiUrl}/api/feedback`, { credentials: "include" })
       .then(r => r.json())
       .then(data => {
         setItems(data.feedback || []);
@@ -68,7 +61,9 @@ export default function FeedbackHistory({ apiUrl, onClose }: FeedbackHistoryProp
         setError(err.message);
         setLoading(false);
       });
-  }, [apiUrl, submittedBy]);
+  }, [apiUrl]);
+
+  const displayName = [user.firstName, user.lastName].filter(Boolean).join(" ") || user.email;
 
   return (
     <>
@@ -82,7 +77,10 @@ export default function FeedbackHistory({ apiUrl, onClose }: FeedbackHistoryProp
       <div className="fixed right-0 top-0 bottom-0 z-50 w-full max-w-sm bg-white dark:bg-gray-900 shadow-2xl flex flex-col">
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-gray-700">
-          <h2 className="font-semibold text-gray-900 dark:text-white text-base">My Reports</h2>
+          <div>
+            <h2 className="font-semibold text-gray-900 dark:text-white text-base">My Reports</h2>
+            <p className="text-xs text-gray-400 mt-0.5">{displayName}</p>
+          </div>
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors text-xl leading-none"
@@ -108,13 +106,7 @@ export default function FeedbackHistory({ apiUrl, onClose }: FeedbackHistoryProp
             </div>
           )}
 
-          {!loading && !error && !submittedBy && (
-            <div className="p-5 text-sm text-gray-500 dark:text-gray-400 text-center mt-8">
-              No name set. Submit a report first to see your history.
-            </div>
-          )}
-
-          {!loading && !error && submittedBy && items.length === 0 && (
+          {!loading && !error && items.length === 0 && (
             <div className="p-5 text-sm text-gray-500 dark:text-gray-400 text-center mt-8">
               No reports yet.
             </div>

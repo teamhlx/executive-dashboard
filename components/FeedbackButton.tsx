@@ -1,14 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { User } from "@/app/page";
 import FeedbackModal from "./FeedbackModal";
 import FeedbackHistory from "./FeedbackHistory";
 
 interface FeedbackButtonProps {
   apiUrl: string;
+  user: User;
 }
 
-export default function FeedbackButton({ apiUrl }: FeedbackButtonProps) {
+export default function FeedbackButton({ apiUrl, user }: FeedbackButtonProps) {
   const [modalOpen, setModalOpen] = useState(false);
   const [historyOpen, setHistoryOpen] = useState(false);
 
@@ -32,6 +34,7 @@ export default function FeedbackButton({ apiUrl }: FeedbackButtonProps) {
       {modalOpen && (
         <FeedbackModal
           apiUrl={apiUrl}
+          user={user}
           onClose={() => setModalOpen(false)}
         />
       )}
@@ -39,6 +42,7 @@ export default function FeedbackButton({ apiUrl }: FeedbackButtonProps) {
       {historyOpen && (
         <FeedbackHistory
           apiUrl={apiUrl}
+          user={user}
           onClose={() => setHistoryOpen(false)}
         />
       )}

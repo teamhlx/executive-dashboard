@@ -6,7 +6,18 @@ import EpicTimeline from "@/components/EpicTimeline";
 import EpicList from "@/components/EpicList";
 import ThemeToggle from "@/components/ThemeToggle";
 import FeedbackButton from "@/components/FeedbackButton";
+import LoginPage from "@/components/LoginPage";
+import AdminPanel from "@/components/AdminPanel";
 import { projects } from "@/projects.config";
+
+export type User = {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  role: string;
+  projectIds: string[];
+};
 
 export type Epic = {
   key: string;
@@ -33,6 +44,10 @@ export function getStatusGroup(status: string): StatusGroup {
 
 export default function Home() {
   const project = projects[0];
+  const [user, setUser] = useState<User | null>(null);
+  const [authLoading, setAuthLoading] = useState(true);
+  const [showAdmin, setShowAdmin] = useState(false);
+
   const [epics, setEpics] = useState<Epic[]>([]);
   const [metrics, setMetrics] = useState<Metrics | null>(null);
   const [loading, setLoading] = useState(true);
@@ -42,10 +57,23 @@ export default function Home() {
   const [showUpcoming, setShowUpcoming] = useState(false);
   const [showHistorical, setShowHistorical] = useState(false);
 
+  // Check session on mount
+  useEffect(() => {
+    fetch(`${project.apiUrl}/api/auth/me`, { credentials: "include" })
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (data?.user) setUser(data.user);
+      })
+      .catch(() => {})
+      .finally(() => setAuthLoading(false));
+  }, [project.apiUrl]);
+
   async function fetchData() {
     try {
       setLoading(true);
-      const res = await fetch(`${project.apiUrl}?project=${project.jiraProject}`);
+      const res = await fetch(`${project.apiUrl}?project=${project.jiraProject}`, {
+        credentials: "include"
+      });
       if (!res.ok) throw new Error(`API error: ${res.status}`);
       const data = await res.json();
       setEpics(data.epics || []);
@@ -60,20 +88,46 @@ export default function Home() {
   }
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (user) fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
+
+  const handleLogout = async () => {
+    await fetch(`${project.apiUrl}/api/auth/logout`, {
+      method: "POST",
+      credentials: "include"
+    });
+    setUser(null);
+    setEpics([]);
+    setMetrics(null);
+  };
+
+  // Auth loading spinner
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <div className="text-gray-400 animate-pulse text-sm">Loading…</div>
+      </div>
+    );
+  }
+
+  // Login gate
+  if (!user) {
+    return <LoginPage apiUrl={project.apiUrl} onLogin={setUser} />;
+  }
 
   const visibleEpics = epics.filter(e => getStatusGroup(e.status) !== "Other");
   const inProgress = visibleEpics.filter(e => getStatusGroup(e.status) === "In Progress");
   const toDo = visibleEpics.filter(e => getStatusGroup(e.status) === "To Do");
   const complete = visibleEpics.filter(e => getStatusGroup(e.status) === "Complete");
 
-  // Build the epic set visible in the Gantt — dynamically matches what's shown in cards
   const timelineEpics = [
     ...inProgress,
     ...(showUpcoming ? toDo : []),
     ...(showHistorical ? complete : []),
   ];
+
+  const displayName = [user.firstName, user.lastName].filter(Boolean).join(" ") || user.email;
 
   return (
     <main className="max-w-7xl mx-auto px-6 py-10">
@@ -84,27 +138,44 @@ export default function Home() {
           <p className="text-gray-500 dark:text-gray-400 mt-1">{project.description}</p>
         </div>
         <div className="text-right flex items-center gap-3">
-          <FeedbackButton apiUrl={project.apiUrl} />
+          <FeedbackButton apiUrl={project.apiUrl} user={user} />
           <ThemeToggle />
-          <div>
-          <button
-            onClick={fetchData}
-            className="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors"
-          >
-            ↻ Refresh
-          </button>
-          {lastUpdated && (
-            <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-              Updated {lastUpdated.toLocaleTimeString()}
-            </p>
-          )}
+          <div className="flex flex-col items-end gap-1">
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-500 dark:text-gray-400">{displayName}</span>
+              {user.role === "superadmin" && (
+                <button
+                  onClick={() => setShowAdmin(true)}
+                  className="text-xs text-indigo-500 dark:text-indigo-400 hover:text-indigo-400 dark:hover:text-indigo-300 transition-colors"
+                >
+                  Admin
+                </button>
+              )}
+              <button
+                onClick={handleLogout}
+                className="text-xs text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
+              >
+                Sign out
+              </button>
+            </div>
+            <button
+              onClick={fetchData}
+              className="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors"
+            >
+              ↻ Refresh
+            </button>
+            {lastUpdated && (
+              <p className="text-xs text-gray-500 dark:text-gray-500">
+                Updated {lastUpdated.toLocaleTimeString()}
+              </p>
+            )}
           </div>
         </div>
       </div>
 
       {loading && (
         <div className="flex items-center justify-center h-64">
-          <div className="text-gray-500 dark:text-gray-400 animate-pulse">Loading dashboard...</div>
+          <div className="text-gray-500 dark:text-gray-400 animate-pulse">Loading dashboard…</div>
         </div>
       )}
 
@@ -151,6 +222,10 @@ export default function Home() {
             showHistorical={showHistorical}
           />
         </>
+      )}
+
+      {showAdmin && user.role === "superadmin" && (
+        <AdminPanel apiUrl={project.apiUrl} onClose={() => setShowAdmin(false)} />
       )}
     </main>
   );
