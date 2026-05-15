@@ -22,12 +22,18 @@ function parseDate(str: string | null): Date | null {
 }
 
 export default function EpicTimeline({ epics }: Props) {
+  // Only render epics that have at least a due date
   const epicsWithDates = epics.filter(e => e.dueDate);
   if (epicsWithDates.length === 0) return null;
 
-  const dates = epicsWithDates.map(e => parseDate(e.dueDate)!.getTime());
-  const minDate = new Date(Math.min(...dates));
-  const maxDate = new Date(Math.max(...dates));
+  const allDates: number[] = [];
+  for (const e of epicsWithDates) {
+    allDates.push(parseDate(e.dueDate)!.getTime());
+    if (e.startDate) allDates.push(parseDate(e.startDate)!.getTime());
+  }
+
+  const minDate = new Date(Math.min(...allDates));
+  const maxDate = new Date(Math.max(...allDates));
 
   // Extend range slightly
   minDate.setMonth(minDate.getMonth() - 1);
@@ -87,9 +93,13 @@ export default function EpicTimeline({ epics }: Props) {
 
           {epicsWithDates.map((epic) => {
             const group = getStatusGroup(epic.status);
-            const endPct = getLeftPct(parseDate(epic.dueDate)!);
-            const barWidth = Math.max(endPct - Math.max(0, endPct - 8), 1.5);
-            const barLeft = Math.max(0, endPct - 8);
+            const endDate = parseDate(epic.dueDate)!;
+            // Use real startDate if present; otherwise fall back to today
+            const startDate = parseDate(epic.startDate) ?? new Date();
+
+            const barLeft = Math.max(0, Math.min(getLeftPct(startDate), 100));
+            const barRight = Math.max(0, Math.min(getLeftPct(endDate), 100));
+            const barWidth = Math.max(barRight - barLeft, 1.5);
 
             return (
               <div key={epic.key} className="flex items-center mb-2 group relative" style={{ minWidth: "600px" }}>

@@ -23,9 +23,19 @@ function EpicCard({ epic, statusColor, statusBg, statusLabel }: EpicCardProps) {
       {epic.description && (
         <p className="text-xs text-gray-400 leading-relaxed">{epic.description}</p>
       )}
-      {epic.dueDate && (
+      {(epic.startDate || epic.dueDate) && (
         <p className="text-xs text-gray-500 mt-2">
-          Target: {new Date(epic.dueDate).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+          {epic.startDate && (
+            <>
+              Start: {new Date(epic.startDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+            </>
+          )}
+          {epic.startDate && epic.dueDate && <span className="mx-1">·</span>}
+          {epic.dueDate && (
+            <>
+              Target: {new Date(epic.dueDate).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+            </>
+          )}
         </p>
       )}
     </div>

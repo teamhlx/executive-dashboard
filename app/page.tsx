@@ -10,6 +10,7 @@ export type Epic = {
   key: string;
   summary: string;
   status: string;
+  startDate: string | null;
   dueDate: string | null;
   description: string | null;
 };
@@ -106,7 +107,7 @@ export default function Home() {
             totalStories={metrics?.totalStories || 0}
             openBugs={metrics?.openBugs || 0}
           />
-          <EpicTimeline epics={visibleEpics} />
+          <EpicTimeline epics={inProgress} />
           <EpicList inProgress={inProgress} toDo={toDo} complete={complete} />
         </>
       )}
