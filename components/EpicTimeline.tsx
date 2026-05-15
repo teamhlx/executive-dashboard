@@ -133,7 +133,7 @@ export default function EpicTimeline({ epics, hoveredKey, onHover }: Props) {
                 return (
                   <div
                     key={epic.key}
-                    className={`flex items-center mb-2 rounded transition-colors ${rowBg}`}
+                    className={`flex items-center mb-2 rounded transition-all duration-300 ease-in-out ${rowBg}`}
                     onMouseEnter={() => onHover(epic.key)}
                     onMouseLeave={() => onHover(null)}
                   >

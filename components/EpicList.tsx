@@ -10,6 +10,11 @@ type Props = {
   showSection: "active" | "historical";
   hoveredKey?: string | null;
   onHover?: (key: string | null) => void;
+  // lifted toggle state for dynamic Gantt
+  showUpcoming?: boolean;
+  showHistorical?: boolean;
+  onToggleUpcoming?: () => void;
+  onToggleHistorical?: () => void;
 };
 
 type EpicCardProps = {
@@ -25,21 +30,21 @@ type EpicCardProps = {
 function EpicCard({ epic, statusColor, statusBg, statusLabel, isHovered, onMouseEnter, onMouseLeave }: EpicCardProps) {
   return (
     <div
-      className={`rounded-lg border ${statusBg} p-4 transition-all ${isHovered ? "ring-2 ring-indigo-400/60" : ""}`}
+      className={`rounded-lg border ${statusBg} p-4 transition-all cursor-default ${isHovered ? "ring-2 ring-indigo-400/60 brightness-110" : ""}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
       <div className="flex items-start justify-between gap-2 mb-2">
-        <h3 className="text-sm font-medium text-gray-200 leading-snug">{epic.summary}</h3>
-        <span className={`shrink-0 text-xs font-medium px-2 py-0.5 rounded-full ${statusColor}`}>
+        <h3 className="text-sm font-semibold text-white leading-snug">{epic.summary}</h3>
+        <span className={`shrink-0 text-xs font-semibold px-2 py-0.5 rounded-full ${statusColor} opacity-90`}>
           {statusLabel}
         </span>
       </div>
       {epic.description && (
-        <p className="text-xs text-gray-400 leading-relaxed">{epic.description}</p>
+        <p className="text-xs text-gray-300 leading-relaxed">{epic.description}</p>
       )}
       {(epic.startDate || epic.dueDate) && (
-        <p className="text-xs text-gray-500 mt-2">
+        <p className="text-xs text-gray-400 mt-2">
           {epic.startDate && (
             <>
               Start: {new Date(epic.startDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
@@ -58,14 +63,19 @@ function EpicCard({ epic, statusColor, statusBg, statusLabel, isHovered, onMouse
 }
 
 const SECTION_CONFIG = {
-  inProgress: { label: "In Progress", statusLabel: "In Progress", color: "text-yellow-400 bg-yellow-400/10", bg: "bg-yellow-400/5 border-yellow-400/20" },
-  toDo: { label: "Upcoming", statusLabel: "Upcoming", color: "text-blue-400 bg-blue-400/10", bg: "bg-blue-400/5 border-blue-400/20" },
-  complete: { label: "Historical", statusLabel: "Complete", color: "text-green-400 bg-green-400/10", bg: "bg-green-400/5 border-green-400/20" },
+  inProgress: { label: "In Progress", statusLabel: "In Progress", color: "text-yellow-300 bg-yellow-400/20", bg: "bg-yellow-400/10 border-yellow-400/30" },
+  toDo: { label: "Upcoming", statusLabel: "Upcoming", color: "text-blue-300 bg-blue-400/20", bg: "bg-blue-400/10 border-blue-400/30" },
+  complete: { label: "Historical", statusLabel: "Complete", color: "text-green-300 bg-green-400/20", bg: "bg-green-400/10 border-green-400/30" },
 };
 
-export default function EpicList({ inProgress, toDo, complete, showSection, hoveredKey = null, onHover }: Props) {
-  const [showUpcoming, setShowUpcoming] = useState(false);
-  const [showHistorical, setShowHistorical] = useState(false);
+export default function EpicList({ inProgress, toDo, complete, showSection, hoveredKey = null, onHover, showUpcoming = false, showHistorical = false, onToggleUpcoming, onToggleHistorical }: Props) {
+  // toggle state is now lifted — use props if provided, else local fallback
+  const [localShowUpcoming, setLocalShowUpcoming] = useState(false);
+  const [localShowHistorical, setLocalShowHistorical] = useState(false);
+  const isUpcoming = onToggleUpcoming ? showUpcoming : localShowUpcoming;
+  const isHistorical = onToggleHistorical ? showHistorical : localShowHistorical;
+  const toggleUpcoming = onToggleUpcoming ?? (() => setLocalShowUpcoming(v => !v));
+  const toggleHistorical = onToggleHistorical ?? (() => setLocalShowHistorical(v => !v));
 
   if (showSection === "active") {
     return (
@@ -106,31 +116,31 @@ export default function EpicList({ inProgress, toDo, complete, showSection, hove
         <h2 className="text-lg font-semibold text-gray-200">Epics</h2>
         <div className="flex gap-2">
           <button
-            onClick={() => setShowUpcoming(!showUpcoming)}
+            onClick={() => toggleUpcoming()}
             className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
-              showUpcoming
+              isUpcoming
                 ? "bg-blue-400/20 border-blue-400/40 text-blue-300"
                 : "bg-gray-800 border-gray-700 text-gray-400 hover:text-gray-200"
             }`}
           >
-            {showUpcoming ? "Hide" : "Show"} Upcoming ({toDo.length})
+            {isUpcoming ? "Hide" : "Show"} Upcoming ({toDo.length})
           </button>
           <button
-            onClick={() => setShowHistorical(!showHistorical)}
+            onClick={() => toggleHistorical()}
             className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
-              showHistorical
+              isHistorical
                 ? "bg-green-400/20 border-green-400/40 text-green-300"
                 : "bg-gray-800 border-gray-700 text-gray-400 hover:text-gray-200"
             }`}
           >
-            {showHistorical ? "Hide" : "Show"} Historical ({complete.length})
+            {isHistorical ? "Hide" : "Show"} Historical ({complete.length})
           </button>
         </div>
       </div>
 
       <div className="space-y-8">
         {/* Upcoming — toggle */}
-        {showUpcoming && toDo.length > 0 && (
+        {isUpcoming && toDo.length > 0 && (
           <div>
             <div className="flex items-center gap-2 mb-3">
               <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${SECTION_CONFIG.toDo.color}`}>
@@ -156,7 +166,7 @@ export default function EpicList({ inProgress, toDo, complete, showSection, hove
         )}
 
         {/* Historical — toggle */}
-        {showHistorical && complete.length > 0 && (
+        {isHistorical && complete.length > 0 && (
           <div>
             <div className="flex items-center gap-2 mb-3">
               <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${SECTION_CONFIG.complete.color}`}>

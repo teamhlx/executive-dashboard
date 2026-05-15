@@ -37,6 +37,8 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
+  const [showUpcoming, setShowUpcoming] = useState(false);
+  const [showHistorical, setShowHistorical] = useState(false);
 
   async function fetchData() {
     try {
@@ -63,6 +65,13 @@ export default function Home() {
   const inProgress = visibleEpics.filter(e => getStatusGroup(e.status) === "In Progress");
   const toDo = visibleEpics.filter(e => getStatusGroup(e.status) === "To Do");
   const complete = visibleEpics.filter(e => getStatusGroup(e.status) === "Complete");
+
+  // Build the epic set visible in the Gantt — dynamically matches what's shown in cards
+  const timelineEpics = [
+    ...inProgress,
+    ...(showUpcoming ? toDo : []),
+    ...(showHistorical ? complete : []),
+  ];
 
   return (
     <main className="max-w-7xl mx-auto px-6 py-10">
@@ -116,12 +125,16 @@ export default function Home() {
             hoveredKey={hoveredKey}
             onHover={setHoveredKey}
           />
-          <EpicTimeline epics={inProgress} hoveredKey={hoveredKey} onHover={setHoveredKey} />
+          <EpicTimeline epics={timelineEpics} hoveredKey={hoveredKey} onHover={setHoveredKey} />
           <EpicList
             inProgress={inProgress}
             toDo={toDo}
             complete={complete}
             showSection="historical"
+            showUpcoming={showUpcoming}
+            showHistorical={showHistorical}
+            onToggleUpcoming={() => setShowUpcoming(v => !v)}
+            onToggleHistorical={() => setShowHistorical(v => !v)}
           />
         </>
       )}
