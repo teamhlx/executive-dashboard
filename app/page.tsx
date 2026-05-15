@@ -9,6 +9,7 @@ import FeedbackButton from "@/components/FeedbackButton";
 import LoginPage from "@/components/LoginPage";
 import AdminPanel from "@/components/AdminPanel";
 import { projects } from "@/projects.config";
+import ProjectSwitcher from "@/components/ProjectSwitcher";
 
 export type User = {
   id: string;
@@ -46,11 +47,11 @@ export function getStatusGroup(status: string): StatusGroup {
 }
 
 export default function Home() {
-  const project = projects[0];
-  const baseUrl = project.baseUrl;
+  const baseUrl = projects[0].baseUrl;
   const [user, setUser] = useState<User | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
   const [showAdmin, setShowAdmin] = useState(false);
+  const [currentProject, setCurrentProject] = useState(projects[0]);
 
   const [epics, setEpics] = useState<Epic[]>([]);
   const [metrics, setMetrics] = useState<Metrics | null>(null);
@@ -66,7 +67,14 @@ export default function Home() {
     fetch(`${baseUrl}/api/auth/me`, { credentials: "include" })
       .then(r => r.ok ? r.json() : null)
       .then(data => {
-        if (data?.user) setUser(data.user);
+        if (data?.user) {
+          setUser(data.user);
+          // Restore last project
+          const userProjs = projects.filter(p => data.user.projectIds.includes(p.id) || data.user.role === 'superadmin');
+          const saved = localStorage.getItem('lastProject');
+          const savedProj = saved ? userProjs.find(p => p.id === saved) : null;
+          setCurrentProject(savedProj || userProjs[0] || projects[0]);
+        }
       })
       .catch(() => {})
       .finally(() => setAuthLoading(false));
@@ -75,7 +83,7 @@ export default function Home() {
   async function fetchData() {
     try {
       setLoading(true);
-      const res = await fetch(`${project.apiUrl}?project=${project.jiraProject}`, {
+      const res = await fetch(`${currentProject.apiUrl}?project=${currentProject.jiraProject}`, {
         credentials: "include"
       });
       if (!res.ok) throw new Error(`API error: ${res.status}`);
@@ -94,7 +102,7 @@ export default function Home() {
   useEffect(() => {
     if (user) fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+  }, [user, currentProject]);
 
   const handleLogout = async () => {
     await fetch(`${baseUrl}/api/auth/logout`, {
@@ -117,7 +125,23 @@ export default function Home() {
 
   // Login gate
   if (!user) {
-    return <LoginPage apiUrl={baseUrl} onLogin={setUser} />;
+    return <LoginPage apiUrl={baseUrl} onLogin={(u) => {
+      setUser(u);
+      // Determine initial project after login
+      const userProjects = projects.filter(p => u.projectIds.includes(p.id) || u.role === 'superadmin');
+      const saved = typeof localStorage !== 'undefined' ? localStorage.getItem('lastProject') : null;
+      const savedProject = saved ? userProjects.find(p => p.id === saved) : null;
+      const initial = savedProject || userProjects[0] || projects[0];
+      setCurrentProject(initial);
+    }} />;
+  }
+
+  // Projects this user can access
+  const userProjects = projects.filter(p => user.projectIds.includes(p.id) || user.role === 'superadmin');
+
+  function handleProjectSwitch(p: typeof projects[0]) {
+    setCurrentProject(p);
+    localStorage.setItem('lastProject', p.id);
   }
 
   const visibleEpics = epics.filter(e => getStatusGroup(e.status) !== "Other");
@@ -139,10 +163,7 @@ export default function Home() {
     <main className="max-w-7xl mx-auto px-6 py-10">
       {/* Header */}
       <div className="flex items-start justify-between mb-10">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white tracking-tight">{project.name}</h1>
-          <p className="text-gray-500 dark:text-gray-400 mt-1">{project.description}</p>
-        </div>
+        <ProjectSwitcher projects={userProjects} currentProject={currentProject} onSwitch={handleProjectSwitch} />
         <div className="text-right flex items-center gap-3">
           <FeedbackButton apiUrl={baseUrl} user={user} />
           <ThemeToggle />

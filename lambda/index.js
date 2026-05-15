@@ -677,13 +677,16 @@ IMPORTANT: End every response with a JSON action on its own line (no markdown, r
     }
 
     const token = await getJiraToken();
-    // If user has projectIds restrictions, use the first one; otherwise use default
     let project = event.queryStringParameters?.project || 'SM';
+    // Map project IDs to Jira keys for access check
+    const PROJECT_ID_TO_KEY = { skematic: 'SM', outset: 'OUT' };
+    const PROJECT_KEY_TO_ID = { SM: 'skematic', OUT: 'outset' };
     // Filter: only allow project if user has access (superadmin bypasses)
     if (authUser.role !== 'superadmin' && authUser.projectIds && authUser.projectIds.length > 0) {
-      const allowed = authUser.projectIds.map(p => p.toUpperCase());
-      if (!allowed.includes(project.toUpperCase())) {
-        project = authUser.projectIds[0]; // default to first allowed
+      const allowedKeys = authUser.projectIds.map(id => PROJECT_ID_TO_KEY[id] || id.toUpperCase());
+      if (!allowedKeys.includes(project.toUpperCase())) {
+        // Default to first allowed project's Jira key
+        project = allowedKeys[0] || 'SM';
       }
     }
 
