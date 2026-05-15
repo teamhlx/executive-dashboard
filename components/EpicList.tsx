@@ -7,13 +7,28 @@ type Props = {
   inProgress: Epic[];
   toDo: Epic[];
   complete: Epic[];
+  showSection: "active" | "historical";
+  hoveredKey?: string | null;
+  onHover?: (key: string | null) => void;
 };
 
-type EpicCardProps = { epic: Epic; statusColor: string; statusBg: string; statusLabel: string };
+type EpicCardProps = {
+  epic: Epic;
+  statusColor: string;
+  statusBg: string;
+  statusLabel: string;
+  isHovered: boolean;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+};
 
-function EpicCard({ epic, statusColor, statusBg, statusLabel }: EpicCardProps) {
+function EpicCard({ epic, statusColor, statusBg, statusLabel, isHovered, onMouseEnter, onMouseLeave }: EpicCardProps) {
   return (
-    <div className={`rounded-lg border ${statusBg} p-4`}>
+    <div
+      className={`rounded-lg border ${statusBg} p-4 transition-all ${isHovered ? "ring-2 ring-indigo-400/60" : ""}`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <div className="flex items-start justify-between gap-2 mb-2">
         <h3 className="text-sm font-medium text-gray-200 leading-snug">{epic.summary}</h3>
         <span className={`shrink-0 text-xs font-medium px-2 py-0.5 rounded-full ${statusColor}`}>
@@ -48,10 +63,43 @@ const SECTION_CONFIG = {
   complete: { label: "Historical", statusLabel: "Complete", color: "text-green-400 bg-green-400/10", bg: "bg-green-400/5 border-green-400/20" },
 };
 
-export default function EpicList({ inProgress, toDo, complete }: Props) {
+export default function EpicList({ inProgress, toDo, complete, showSection, hoveredKey = null, onHover }: Props) {
   const [showUpcoming, setShowUpcoming] = useState(false);
   const [showHistorical, setShowHistorical] = useState(false);
 
+  if (showSection === "active") {
+    return (
+      <div className="mb-10">
+        <h2 className="text-lg font-semibold text-gray-200 mb-4">In Progress</h2>
+        {inProgress.length > 0 && (
+          <div>
+            <div className="flex items-center gap-2 mb-3">
+              <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${SECTION_CONFIG.inProgress.color}`}>
+                {SECTION_CONFIG.inProgress.label}
+              </span>
+              <span className="text-xs text-gray-500">{inProgress.length} epic{inProgress.length !== 1 ? "s" : ""}</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {inProgress.map(epic => (
+                <EpicCard
+                  key={epic.key}
+                  epic={epic}
+                  statusColor={SECTION_CONFIG.inProgress.color}
+                  statusBg={SECTION_CONFIG.inProgress.bg}
+                  statusLabel={SECTION_CONFIG.inProgress.statusLabel}
+                  isHovered={epic.key === hoveredKey}
+                  onMouseEnter={() => onHover?.(epic.key)}
+                  onMouseLeave={() => onHover?.(null)}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // showSection === "historical"
   return (
     <div>
       <div className="flex items-center justify-between mb-4">
@@ -81,29 +129,6 @@ export default function EpicList({ inProgress, toDo, complete }: Props) {
       </div>
 
       <div className="space-y-8">
-        {/* In Progress — always shown */}
-        {inProgress.length > 0 && (
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${SECTION_CONFIG.inProgress.color}`}>
-                {SECTION_CONFIG.inProgress.label}
-              </span>
-              <span className="text-xs text-gray-500">{inProgress.length} epic{inProgress.length !== 1 ? "s" : ""}</span>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {inProgress.map(epic => (
-                <EpicCard
-                  key={epic.key}
-                  epic={epic}
-                  statusColor={SECTION_CONFIG.inProgress.color}
-                  statusBg={SECTION_CONFIG.inProgress.bg}
-                  statusLabel={SECTION_CONFIG.inProgress.statusLabel}
-                />
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* Upcoming — toggle */}
         {showUpcoming && toDo.length > 0 && (
           <div>
@@ -121,6 +146,9 @@ export default function EpicList({ inProgress, toDo, complete }: Props) {
                   statusColor={SECTION_CONFIG.toDo.color}
                   statusBg={SECTION_CONFIG.toDo.bg}
                   statusLabel={SECTION_CONFIG.toDo.statusLabel}
+                  isHovered={false}
+                  onMouseEnter={() => {}}
+                  onMouseLeave={() => {}}
                 />
               ))}
             </div>
@@ -144,6 +172,9 @@ export default function EpicList({ inProgress, toDo, complete }: Props) {
                   statusColor={SECTION_CONFIG.complete.color}
                   statusBg={SECTION_CONFIG.complete.bg}
                   statusLabel={SECTION_CONFIG.complete.statusLabel}
+                  isHovered={false}
+                  onMouseEnter={() => {}}
+                  onMouseLeave={() => {}}
                 />
               ))}
             </div>

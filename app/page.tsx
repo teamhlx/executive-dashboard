@@ -36,6 +36,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const [hoveredKey, setHoveredKey] = useState<string | null>(null);
 
   async function fetchData() {
     try {
@@ -107,8 +108,21 @@ export default function Home() {
             totalStories={metrics?.totalStories || 0}
             openBugs={metrics?.openBugs || 0}
           />
-          <EpicTimeline epics={inProgress} />
-          <EpicList inProgress={inProgress} toDo={toDo} complete={complete} />
+          <EpicList
+            inProgress={inProgress}
+            toDo={toDo}
+            complete={complete}
+            showSection="active"
+            hoveredKey={hoveredKey}
+            onHover={setHoveredKey}
+          />
+          <EpicTimeline epics={inProgress} hoveredKey={hoveredKey} onHover={setHoveredKey} />
+          <EpicList
+            inProgress={inProgress}
+            toDo={toDo}
+            complete={complete}
+            showSection="historical"
+          />
         </>
       )}
     </main>

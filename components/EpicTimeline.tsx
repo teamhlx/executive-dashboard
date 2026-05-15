@@ -2,7 +2,11 @@
 
 import { Epic, getStatusGroup } from "@/app/page";
 
-type Props = { epics: Epic[] };
+type Props = {
+  epics: Epic[];
+  hoveredKey: string | null;
+  onHover: (key: string | null) => void;
+};
 
 const STATUS_COLORS: Record<string, string> = {
   "In Progress": "bg-yellow-400",
@@ -16,12 +20,18 @@ const STATUS_BG: Record<string, string> = {
   "Complete": "bg-green-500/20",
 };
 
+const STATUS_BG_SOLID: Record<string, string> = {
+  "In Progress": "bg-yellow-400/40",
+  "To Do": "bg-blue-500/40",
+  "Complete": "bg-green-500/40",
+};
+
 function parseDate(str: string | null): Date | null {
   if (!str) return null;
   return new Date(str);
 }
 
-export default function EpicTimeline({ epics }: Props) {
+export default function EpicTimeline({ epics, hoveredKey, onHover }: Props) {
   // Only render epics that have at least a due date
   const epicsWithDates = epics.filter(e => e.dueDate);
   if (epicsWithDates.length === 0) return null;
@@ -106,12 +116,22 @@ export default function EpicTimeline({ epics }: Props) {
             const barRight = Math.max(0, Math.min(getLeftPct(endDate), 100));
             const barWidth = Math.max(barRight - barLeft, 1.5);
 
+            const isHovered = epic.key === hoveredKey;
+            const rowBg = isHovered ? "bg-white/5" : "";
+            const barBg = isHovered ? (STATUS_BG_SOLID[group] ?? STATUS_BG[group]) : STATUS_BG[group];
+
             return (
-              <div key={epic.key} className="flex items-center mb-2 group relative" style={{ minWidth: "600px" }}>
+              <div
+                key={epic.key}
+                className={`flex items-center mb-2 group relative rounded transition-colors ${rowBg}`}
+                style={{ minWidth: "600px" }}
+                onMouseEnter={() => onHover(epic.key)}
+                onMouseLeave={() => onHover(null)}
+              >
                 <div className="w-32 shrink-0 pr-3 text-xs text-gray-400 truncate text-right">{epic.summary}</div>
                 <div className="flex-1 relative h-6">
                   <div
-                    className={`absolute h-5 rounded-full top-0.5 ${STATUS_BG[group]} border ${STATUS_COLORS[group]?.replace("bg-", "border-")}/30 flex items-center px-2 cursor-pointer transition-opacity`}
+                    className={`absolute h-5 rounded-full top-0.5 ${barBg} border ${STATUS_COLORS[group]?.replace("bg-", "border-")}/30 flex items-center px-2 cursor-pointer transition-all`}
                     style={{ left: `${barLeft}%`, width: `${barWidth}%`, minWidth: "60px" }}
                     title={epic.description || epic.summary}
                   >
