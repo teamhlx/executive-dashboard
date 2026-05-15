@@ -47,6 +47,7 @@ export function getStatusGroup(status: string): StatusGroup {
 
 export default function Home() {
   const project = projects[0];
+  const baseUrl = project.baseUrl;
   const [user, setUser] = useState<User | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
   const [showAdmin, setShowAdmin] = useState(false);
@@ -141,7 +142,7 @@ export default function Home() {
           <p className="text-gray-500 dark:text-gray-400 mt-1">{project.description}</p>
         </div>
         <div className="text-right flex items-center gap-3">
-          <FeedbackButton apiUrl={project.apiUrl} user={user} />
+          <FeedbackButton apiUrl={baseUrl} user={user} />
           <ThemeToggle />
           <div className="flex flex-col items-end gap-1">
             <div className="flex items-center gap-2">
@@ -228,7 +229,7 @@ export default function Home() {
       )}
 
       {showAdmin && user.role === "superadmin" && (
-        <AdminPanel apiUrl={project.apiUrl} onClose={() => setShowAdmin(false)} />
+        <AdminPanel apiUrl={baseUrl} onClose={() => setShowAdmin(false)} />
       )}
     </main>
   );

@@ -151,11 +151,12 @@ async function fetchOpenBugsForChat(token) {
 }
 
 exports.handler = async (event) => {
+  const origin = (event.headers && (event.headers['origin'] || event.headers['Origin'])) || 'https://dwtqsd89pnyx3.cloudfront.net';
   const corsHeaders = {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': origin,
     'Access-Control-Allow-Methods': 'GET,POST,PATCH,DELETE,OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type,Authorization',
+    'Access-Control-Allow-Headers': 'Content-Type,Authorization,Cookie',
     'Access-Control-Allow-Credentials': 'true'
   };
 
@@ -657,13 +658,7 @@ IMPORTANT: End every response with a JSON action on its own line (no markdown, r
   }
 
   // ─── Original Jira proxy ──────────────────────────────────────────────────
-  const headers = {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,POST,PATCH,DELETE,OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type,Authorization',
-    'Access-Control-Allow-Credentials': 'true'
-  };
+  const headers = corsHeaders;
 
   let db;
   try {
