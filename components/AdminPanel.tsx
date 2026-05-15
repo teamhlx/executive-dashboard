@@ -48,6 +48,7 @@ export default function AdminPanel({ apiUrl, onClose }: AdminPanelProps) {
     setLoading(true);
     setError(null);
     try {
+      const res = await authFetch(`${apiUrl}/api/admin/users`);
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Failed to load users");
       setUsers(data.users || []);
