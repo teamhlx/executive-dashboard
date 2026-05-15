@@ -67,7 +67,7 @@ function EpicCard({ epic, statusColor, statusBg, statusLabel, titleColor, descCo
           {epic.startDate && epic.dueDate && <span className="mx-1">·</span>}
           {epic.dueDate && (
             <>
-              Target: {new Date(epic.dueDate).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+              Target: {new Date(epic.dueDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
             </>
           )}
         </p>
