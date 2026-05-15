@@ -26,17 +26,20 @@ export default function EpicTimeline({ epics }: Props) {
   const epicsWithDates = epics.filter(e => e.dueDate);
   if (epicsWithDates.length === 0) return null;
 
-  const allDates: number[] = [];
-  for (const e of epicsWithDates) {
-    allDates.push(parseDate(e.dueDate)!.getTime());
-    if (e.startDate) allDates.push(parseDate(e.startDate)!.getTime());
-  }
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-  const minDate = new Date(Math.min(...allDates));
-  const maxDate = new Date(Math.max(...allDates));
+  const dueDates: number[] = epicsWithDates.map(e => parseDate(e.dueDate)!.getTime());
+  const explicitStartDates: number[] = epicsWithDates
+    .filter(e => e.startDate)
+    .map(e => parseDate(e.startDate)!.getTime());
 
-  // Extend range slightly
-  minDate.setMonth(minDate.getMonth() - 1);
+  // Left edge: today (or the earliest explicit start date if it's before today)
+  const earliestStart = explicitStartDates.length > 0 ? Math.min(...explicitStartDates) : today.getTime();
+  const minDate = new Date(Math.min(earliestStart, today.getTime()));
+
+  // Right edge: latest due date + 1 month padding
+  const maxDate = new Date(Math.max(...dueDates));
   maxDate.setMonth(maxDate.getMonth() + 1);
 
   const totalMs = maxDate.getTime() - minDate.getTime();
@@ -95,7 +98,7 @@ export default function EpicTimeline({ epics }: Props) {
             const group = getStatusGroup(epic.status);
             const endDate = parseDate(epic.dueDate)!;
             // Use real startDate if present; otherwise fall back to today
-            const startDate = parseDate(epic.startDate) ?? new Date();
+            const startDate = parseDate(epic.startDate) ?? today;
 
             const barLeft = Math.max(0, Math.min(getLeftPct(startDate), 100));
             const barRight = Math.max(0, Math.min(getLeftPct(endDate), 100));
