@@ -61,13 +61,13 @@ function EpicCard({ epic, statusColor, statusBg, statusLabel, titleColor, descCo
         <p className={`text-xs ${dateColor} mt-2`}>
           {epic.startDate && (
             <>
-              Start: {new Date(epic.startDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+              Start: {(() => { const [y,m,d] = epic.startDate!.split('-').map(Number); return new Date(y,m-1,d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }); })()}
             </>
           )}
           {epic.startDate && epic.dueDate && <span className="mx-1">·</span>}
           {epic.dueDate && (
             <>
-              Target: {new Date(epic.dueDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+              Target: {(() => { const [y,m,d] = epic.dueDate!.split('-').map(Number); return new Date(y,m-1,d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }); })()}
             </>
           )}
         </p>

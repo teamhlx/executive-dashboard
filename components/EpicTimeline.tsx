@@ -35,6 +35,11 @@ const STATUS_BG_SOLID: Record<string, string> = {
 
 function parseDate(str: string | null): Date | null {
   if (!str) return null;
+  // Parse date-only strings (YYYY-MM-DD) as local time to avoid UTC offset shift
+  if (/^\d{4}-\d{2}-\d{2}$/.test(str)) {
+    const [y, m, d] = str.split('-').map(Number);
+    return new Date(y, m - 1, d);
+  }
   return new Date(str);
 }
 
@@ -158,12 +163,14 @@ export default function EpicTimeline({ epics, hoveredKey, onHover, showUpcoming,
 
               {epicsWithDates.map((epic) => {
                 const group = getStatusGroup(epic.status);
-                const startDate = parseDate(epic.startDate) ?? today;
                 const hasDueDate = !!epic.dueDate;
+                const startDate = parseDate(epic.startDate) ?? today;
                 const endDate = hasDueDate ? parseDate(epic.dueDate)! : startDate;
+                // Guard: if start is after end (bad Jira data), clamp start to end
+                const effectiveStart = hasDueDate && startDate > endDate ? endDate : startDate;
                 const isOverdue = hasDueDate && group === "In Progress" && endDate < today;
 
-                const barLeft = Math.max(0, Math.min(getLeftPct(startDate), 100));
+                const barLeft = Math.max(0, Math.min(getLeftPct(effectiveStart), 100));
                 const barRight = Math.max(0, Math.min(getLeftPct(endDate), 100));
                 const barWidth = hasDueDate ? Math.max(barRight - barLeft, 1.5) : 0;
 
