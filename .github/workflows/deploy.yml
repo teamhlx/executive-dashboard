@@ -1,47 +1,19 @@
-name: Deploy to S3 + CloudFront
+name: Deploy
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
+# Amplify is configured with auto-build on push to main.
+# This workflow exists as a record and for manual triggers.
+# Amplify handles: build, deploy, CDN invalidation automatically.
+# App: https://main.dl0i3qehr8gc6.amplifyapp.com
+# App ID: dl0i3qehr8gc6
+
 jobs:
-  deploy:
+  notify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-west-2
-
-      - name: Deploy to S3
-        run: |
-          aws s3 sync out/ s3://executive-dashboard-bldglabs \
-            --delete \
-            --cache-control "public, max-age=31536000, immutable" \
-            --exclude "*.html"
-          aws s3 sync out/ s3://executive-dashboard-bldglabs \
-            --delete \
-            --cache-control "no-cache, no-store, must-revalidate" \
-            --include "*.html"
-
-      - name: Invalidate CloudFront
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id E22O4JBTMIHA8C \
-            --paths "/*"
+      - name: Deploy triggered
+        run: echo "Push to main detected — Amplify will build and deploy automatically."
