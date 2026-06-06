@@ -6,13 +6,13 @@ type Props = {
   epics: Epic[];
   hoveredKey: string | null;
   onHover: (key: string | null) => void;
-  showReady: boolean;
+  showResearching: boolean;
   showBacklog: boolean;
   showDone: boolean;
-  onToggleReady: () => void;
+  onToggleResearching: () => void;
   onToggleBacklog: () => void;
   onToggleDone: () => void;
-  readyCount: number;
+  researchingCount: number;
   backlogCount: number;
   doneCount: number;
   rankMap?: Record<string, number>;
@@ -48,7 +48,7 @@ function parseDate(str: string | null): Date | null {
   return new Date(str);
 }
 
-export default function EpicTimeline({ epics, hoveredKey, onHover, showReady, showBacklog, showDone, onToggleReady, onToggleBacklog, onToggleDone, readyCount, backlogCount, doneCount, rankMap = {} }: Props) {
+export default function EpicTimeline({ epics, hoveredKey, onHover, showResearching, showBacklog, showDone, onToggleResearching, onToggleBacklog, onToggleDone, researchingCount, backlogCount, doneCount, rankMap = {} }: Props) {
   void rankMap;
   if (epics.length === 0) return null;
 
@@ -101,14 +101,14 @@ export default function EpicTimeline({ epics, hoveredKey, onHover, showReady, sh
         <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-200">Timeline</h2>
         <div className="flex gap-2 flex-wrap">
           <button
-            onClick={onToggleReady}
+            onClick={onToggleResearching}
             className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
-              showReady
-                ? "bg-blue-100 border-blue-300 text-blue-700 dark:bg-blue-400/20 dark:border-blue-400/40 dark:text-blue-300"
+              showResearching
+                ? "bg-amber-100 border-amber-300 text-amber-700 dark:bg-amber-400/20 dark:border-amber-400/40 dark:text-amber-300"
                 : "bg-white border-gray-300 text-gray-600 hover:text-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
             }`}
           >
-            {showReady ? "Hide" : "Show"} Ready to Work ({readyCount})
+            {showResearching ? "Hide" : "Show"} Researching ({researchingCount})
           </button>
           <button
             onClick={onToggleBacklog}

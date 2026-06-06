@@ -11,7 +11,7 @@ type Props = {
   showSection: "active" | "secondary";
   hoveredKey?: string | null;
   onHover?: (key: string | null) => void;
-  showReady?: boolean;
+  showResearching?: boolean;
   showBacklog?: boolean;
   showDone?: boolean;
   jiraEnabled?: boolean;
@@ -173,13 +173,13 @@ function EpicSection({ epics, config, hoveredKey, onHover, jiraEnabled, showRank
   );
 }
 
-export default function EpicList({ researching, ready, backlog, done, showSection, hoveredKey = null, onHover, showReady = false, showBacklog = false, showDone = false, jiraEnabled }: Props) {
+export default function EpicList({ researching, ready, backlog, done, showSection, hoveredKey = null, onHover, showResearching = true, showBacklog = false, showDone = false, jiraEnabled }: Props) {
 
   if (showSection === "active") {
     // Continuous rank across Ready to Work → Researching → Backlog (not Done)
     const rankedEpics: Epic[] = [
       ...ready,
-      ...researching,
+      ...(showResearching ? researching : []),
       ...(showBacklog ? backlog : []),
     ];
     const rankMap = Object.fromEntries(rankedEpics.map((e, i) => [e.key, i + 1]));
@@ -198,7 +198,7 @@ export default function EpicList({ researching, ready, backlog, done, showSectio
             />
           </div>
         )}
-        {researching.length > 0 && (
+        {showResearching && researching.length > 0 && (
           <EpicSection
             epics={researching}
             config={SECTION_CONFIG.researching}
@@ -213,10 +213,10 @@ export default function EpicList({ researching, ready, backlog, done, showSectio
   }
 
   // secondary section — shows Backlog/Done when toggled on
-  // Compute continuous rank across ready + researching + backlog (not done)
+  // Compute continuous rank across ready + researching (if shown) + backlog (if shown)
   const rankedEpics: Epic[] = [
     ...ready,
-    ...researching,
+    ...(showResearching ? researching : []),
     ...(showBacklog ? backlog : []),
   ];
   const rankMap = Object.fromEntries(rankedEpics.map((e, i) => [e.key, i + 1]));

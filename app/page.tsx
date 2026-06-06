@@ -62,7 +62,7 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
-  const [showReady, setShowReady] = useState(true);
+  const [showResearching, setShowResearching] = useState(true);
   const [showBacklog, setShowBacklog] = useState(false);
   const [showDone, setShowDone] = useState(false);
 
@@ -153,8 +153,8 @@ export default function Home() {
   const rankMap = Object.fromEntries(researching.map((e, i) => [e.key, i + 1]));
 
   const timelineEpics = [
-    ...researching,
-    ...(showReady ? ready : []),
+    ...ready,
+    ...(showResearching ? researching : []),
     ...(showBacklog ? backlog : []),
     ...(showDone ? done : []),
   ];
@@ -237,13 +237,13 @@ export default function Home() {
             epics={timelineEpics}
             hoveredKey={hoveredKey}
             onHover={setHoveredKey}
-            showReady={showReady}
+            showResearching={showResearching}
             showBacklog={showBacklog}
             showDone={showDone}
-            onToggleReady={() => setShowReady(v => !v)}
+            onToggleResearching={() => setShowResearching(v => !v)}
             onToggleBacklog={() => setShowBacklog(v => !v)}
             onToggleDone={() => setShowDone(v => !v)}
-            readyCount={ready.length}
+            researchingCount={researching.length}
             backlogCount={backlog.length}
             doneCount={done.length}
             rankMap={rankMap}
@@ -254,7 +254,7 @@ export default function Home() {
             backlog={backlog}
             done={done}
             showSection="secondary"
-            showReady={showReady}
+            showResearching={showResearching}
             showBacklog={showBacklog}
             showDone={showDone}
             jiraEnabled={user?.jiraEnabled}
