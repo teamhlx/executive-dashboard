@@ -742,7 +742,7 @@ When the action is "link" or "create", your final assistant message MUST also in
     const epicsBody = JSON.stringify({
       jql: `project=${project} AND issuetype=Epic AND status != Deferred ORDER BY created ASC`,
       maxResults: 100,
-      fields: ['summary', 'status', 'duedate', 'description', 'startdate', 'customfield_10015', 'created', 'priority', 'customfield_10019']
+      fields: ['summary', 'status', 'duedate', 'description', 'startdate', 'customfield_10015', 'created', 'priority', 'customfield_10019', 'customfield_10235']
     });
 
     const epicsData = await new Promise((resolve, reject) => {
@@ -836,6 +836,7 @@ When the action is "link" or "create", your final assistant message MUST also in
       key: i.key,
       summary: i.fields.summary,
       status: i.fields.status.name,
+      readiness: i.fields.customfield_10235?.value || 'Backlog',
       startDate: i.fields.startdate || i.fields.customfield_10015 || (i.fields.created ? i.fields.created.split('T')[0] : null),
       dueDate: i.fields.duedate || null,
       description: extractText(i.fields.description).slice(0, 300) || null,

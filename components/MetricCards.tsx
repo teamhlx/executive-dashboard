@@ -1,36 +1,36 @@
 type Props = {
-  inProgress: number;
-  toDo: number;
-  complete: number;
+  researching: number;
+  ready: number;
+  done: number;
   totalStories: number;
   openBugs: number;
 };
 
-export default function MetricCards({ inProgress, toDo, complete, totalStories, openBugs }: Props) {
-  const total = inProgress + toDo + complete;
-  const pctComplete = total > 0 ? Math.round((complete / total) * 100) : 0;
+export default function MetricCards({ researching, ready, done, totalStories, openBugs }: Props) {
+  const total = researching + ready + done;
+  const pctComplete = total > 0 ? Math.round((done / total) * 100) : 0;
 
   const cards = [
     {
-      label: "In Progress",
-      value: inProgress,
+      label: "Researching",
+      value: researching,
       color: "text-amber-600 dark:text-yellow-400",
       bg: "bg-amber-50 dark:bg-yellow-400/10 border-amber-200 dark:border-yellow-400/20",
     },
     {
-      label: "Up Next",
-      value: toDo,
+      label: "Ready",
+      value: ready,
       color: "text-sky-600 dark:text-blue-400",
       bg: "bg-sky-50 dark:bg-blue-400/10 border-sky-200 dark:border-blue-400/20",
     },
     {
-      label: "Complete",
-      value: complete,
+      label: "Done",
+      value: done,
       color: "text-emerald-600 dark:text-green-400",
       bg: "bg-emerald-50 dark:bg-green-400/10 border-emerald-200 dark:border-green-400/20",
     },
     {
-      label: "% Complete",
+      label: "% Done",
       value: `${pctComplete}%`,
       color: "text-indigo-600 dark:text-indigo-400",
       bg: "bg-indigo-50 dark:bg-indigo-400/10 border-indigo-200 dark:border-indigo-400/20",

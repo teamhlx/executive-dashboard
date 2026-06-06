@@ -26,6 +26,7 @@ export type Epic = {
   key: string;
   summary: string;
   status: string;
+  readiness: string;
   startDate: string | null;
   dueDate: string | null;
   description: string | null;
@@ -39,13 +40,13 @@ export type Metrics = {
   openBugs: number;
 };
 
-export type StatusGroup = "In Progress" | "To Do" | "Complete" | "Other";
+export type ReadinessGroup = "Researching" | "Ready" | "Backlog" | "Done";
 
-export function getStatusGroup(status: string): StatusGroup {
-  if (status === "In Progress") return "In Progress";
-  if (status === "To Do") return "To Do";
-  if (status === "Deployed to Production") return "Complete";
-  return "Other";
+export function getReadinessGroup(readiness: string): ReadinessGroup {
+  if (readiness === "Researching") return "Researching";
+  if (readiness === "Ready") return "Ready";
+  if (readiness === "Done") return "Done";
+  return "Backlog";
 }
 
 export default function Home() {
@@ -61,8 +62,9 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
-  const [showUpcoming, setShowUpcoming] = useState(false);
-  const [showHistorical, setShowHistorical] = useState(false);
+  const [showReady, setShowReady] = useState(false);
+  const [showBacklog, setShowBacklog] = useState(false);
+  const [showDone, setShowDone] = useState(false);
 
   // Check session on mount
   useEffect(() => {
@@ -143,17 +145,18 @@ export default function Home() {
     localStorage.setItem('lastProject', p.id);
   }
 
-  const visibleEpics = epics.filter(e => getStatusGroup(e.status) !== "Other");
-  const inProgress = visibleEpics.filter(e => getStatusGroup(e.status) === "In Progress");
-  const toDo = visibleEpics.filter(e => getStatusGroup(e.status) === "To Do");
-  const complete = visibleEpics.filter(e => getStatusGroup(e.status) === "Complete");
+  const researching = epics.filter(e => getReadinessGroup(e.readiness) === "Researching");
+  const ready = epics.filter(e => getReadinessGroup(e.readiness) === "Ready");
+  const backlog = epics.filter(e => getReadinessGroup(e.readiness) === "Backlog");
+  const done = epics.filter(e => getReadinessGroup(e.readiness) === "Done");
 
-  const rankMap = Object.fromEntries(inProgress.map((e, i) => [e.key, i + 1]));
+  const rankMap = Object.fromEntries(researching.map((e, i) => [e.key, i + 1]));
 
   const timelineEpics = [
-    ...inProgress,
-    ...(showUpcoming ? toDo : []),
-    ...(showHistorical ? complete : []),
+    ...researching,
+    ...(showReady ? ready : []),
+    ...(showBacklog ? backlog : []),
+    ...(showDone ? done : []),
   ];
 
   const displayName = [user.firstName, user.lastName].filter(Boolean).join(" ") || user.email;
@@ -214,16 +217,17 @@ export default function Home() {
       {!loading && !error && (
         <>
           <MetricCards
-            inProgress={inProgress.length}
-            toDo={toDo.length}
-            complete={complete.length}
+            researching={researching.length}
+            ready={ready.length}
+            done={done.length}
             totalStories={metrics?.totalStories || 0}
             openBugs={metrics?.openBugs || 0}
           />
           <EpicList
-            inProgress={inProgress}
-            toDo={toDo}
-            complete={complete}
+            researching={researching}
+            ready={ready}
+            backlog={backlog}
+            done={done}
             showSection="active"
             hoveredKey={hoveredKey}
             onHover={setHoveredKey}
@@ -233,21 +237,26 @@ export default function Home() {
             epics={timelineEpics}
             hoveredKey={hoveredKey}
             onHover={setHoveredKey}
-            showUpcoming={showUpcoming}
-            showHistorical={showHistorical}
-            onToggleUpcoming={() => setShowUpcoming(v => !v)}
-            onToggleHistorical={() => setShowHistorical(v => !v)}
-            upcomingCount={toDo.length}
-            historicalCount={complete.length}
+            showReady={showReady}
+            showBacklog={showBacklog}
+            showDone={showDone}
+            onToggleReady={() => setShowReady(v => !v)}
+            onToggleBacklog={() => setShowBacklog(v => !v)}
+            onToggleDone={() => setShowDone(v => !v)}
+            readyCount={ready.length}
+            backlogCount={backlog.length}
+            doneCount={done.length}
             rankMap={rankMap}
           />
           <EpicList
-            inProgress={inProgress}
-            toDo={toDo}
-            complete={complete}
-            showSection="historical"
-            showUpcoming={showUpcoming}
-            showHistorical={showHistorical}
+            researching={researching}
+            ready={ready}
+            backlog={backlog}
+            done={done}
+            showSection="secondary"
+            showReady={showReady}
+            showBacklog={showBacklog}
+            showDone={showDone}
             jiraEnabled={user?.jiraEnabled}
           />
         </>

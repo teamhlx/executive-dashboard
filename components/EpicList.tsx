@@ -4,17 +4,16 @@ import { useState } from "react";
 import { Epic } from "@/app/page";
 
 type Props = {
-  inProgress: Epic[];
-  toDo: Epic[];
-  complete: Epic[];
-  showSection: "active" | "historical";
+  researching: Epic[];
+  ready: Epic[];
+  backlog: Epic[];
+  done: Epic[];
+  showSection: "active" | "secondary";
   hoveredKey?: string | null;
   onHover?: (key: string | null) => void;
-  // lifted toggle state for dynamic Gantt
-  showUpcoming?: boolean;
-  showHistorical?: boolean;
-  onToggleUpcoming?: () => void;
-  onToggleHistorical?: () => void;
+  showReady?: boolean;
+  showBacklog?: boolean;
+  showDone?: boolean;
   jiraEnabled?: boolean;
 };
 
@@ -94,27 +93,36 @@ function EpicCard({ epic, statusColor, statusBg, statusLabel, titleColor, descCo
 }
 
 const SECTION_CONFIG = {
-  inProgress: {
-    label: "In Progress",
-    statusLabel: "In Progress",
+  researching: {
+    label: "Researching",
+    statusLabel: "Researching",
     color: "text-amber-700 bg-amber-100 dark:text-amber-300 dark:bg-amber-500/20",
     bg: "bg-white dark:bg-gray-800 border-amber-400 dark:border-amber-500/40",
     titleColor: "text-gray-900 dark:text-white",
     descColor: "text-gray-700 dark:text-gray-300",
     dateColor: "text-gray-500 dark:text-gray-400",
   },
-  toDo: {
-    label: "Upcoming",
-    statusLabel: "Upcoming",
+  ready: {
+    label: "Ready",
+    statusLabel: "Ready",
     color: "text-sky-700 bg-sky-100 dark:text-sky-300 dark:bg-sky-500/20",
     bg: "bg-white dark:bg-gray-800 border-sky-400 dark:border-sky-500/40",
     titleColor: "text-gray-900 dark:text-white",
     descColor: "text-gray-700 dark:text-gray-300",
     dateColor: "text-gray-500 dark:text-gray-400",
   },
-  complete: {
-    label: "Complete",
-    statusLabel: "Complete",
+  backlog: {
+    label: "Backlog",
+    statusLabel: "Backlog",
+    color: "text-gray-600 bg-gray-100 dark:text-gray-300 dark:bg-gray-500/20",
+    bg: "bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500/40",
+    titleColor: "text-gray-900 dark:text-white",
+    descColor: "text-gray-700 dark:text-gray-300",
+    dateColor: "text-gray-500 dark:text-gray-400",
+  },
+  done: {
+    label: "Done",
+    statusLabel: "Done",
     color: "text-emerald-700 bg-emerald-100 dark:text-emerald-300 dark:bg-emerald-500/20",
     bg: "bg-white dark:bg-gray-800 border-emerald-400 dark:border-emerald-500/40",
     titleColor: "text-gray-900 dark:text-white",
@@ -123,123 +131,92 @@ const SECTION_CONFIG = {
   },
 };
 
-export default function EpicList({ inProgress, toDo, complete, showSection, hoveredKey = null, onHover, showUpcoming = false, showHistorical = false, onToggleUpcoming, onToggleHistorical, jiraEnabled }: Props) {
-  // toggle state is now lifted — use props if provided, else local fallback
-  const [, setLocalShowUpcoming] = useState(false);
-  const [, setLocalShowHistorical] = useState(false);
-  const isUpcoming = showUpcoming;
-  const isHistorical = showHistorical;
-  const toggleUpcoming = onToggleUpcoming ?? (() => setLocalShowUpcoming(v => !v));
-  const toggleHistorical = onToggleHistorical ?? (() => setLocalShowHistorical(v => !v));
+function EpicSection({ epics, config, hoveredKey, onHover, jiraEnabled, showRanks }: {
+  epics: Epic[];
+  config: typeof SECTION_CONFIG[keyof typeof SECTION_CONFIG];
+  hoveredKey?: string | null;
+  onHover?: (key: string | null) => void;
+  jiraEnabled?: boolean;
+  showRanks?: boolean;
+}) {
+  if (epics.length === 0) return null;
+  return (
+    <div>
+      <div className="flex items-center gap-2 mb-3">
+        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${config.color}`}>
+          {config.label}
+        </span>
+        <span className="text-xs text-gray-500">{epics.length} epic{epics.length !== 1 ? "s" : ""}</span>
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        {epics.map((epic, index) => (
+          <EpicCard
+            key={epic.key}
+            epic={epic}
+            statusColor={config.color}
+            statusBg={config.bg}
+            statusLabel={config.statusLabel}
+            titleColor={config.titleColor}
+            descColor={config.descColor}
+            dateColor={config.dateColor}
+            isHovered={epic.key === (hoveredKey ?? null)}
+            onMouseEnter={() => onHover?.(epic.key)}
+            onMouseLeave={() => onHover?.(null)}
+            rank={showRanks ? index + 1 : undefined}
+            epicPriority={epic.priority}
+            jiraEnabled={jiraEnabled}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default function EpicList({ researching, ready, backlog, done, showSection, hoveredKey = null, onHover, showReady = false, showBacklog = false, showDone = false, jiraEnabled }: Props) {
 
   if (showSection === "active") {
     return (
       <div className="mb-10">
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">In Progress</h2>
-        {inProgress.length > 0 && (
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${SECTION_CONFIG.inProgress.color}`}>
-                {SECTION_CONFIG.inProgress.label}
-              </span>
-              <span className="text-xs text-gray-500">{inProgress.length} epic{inProgress.length !== 1 ? "s" : ""}</span>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {inProgress.map((epic, index) => (
-                <EpicCard
-                  key={epic.key}
-                  epic={epic}
-                  statusColor={SECTION_CONFIG.inProgress.color}
-                  statusBg={SECTION_CONFIG.inProgress.bg}
-                  statusLabel={SECTION_CONFIG.inProgress.statusLabel}
-                  titleColor={SECTION_CONFIG.inProgress.titleColor}
-                  descColor={SECTION_CONFIG.inProgress.descColor}
-                  dateColor={SECTION_CONFIG.inProgress.dateColor}
-                  isHovered={epic.key === hoveredKey}
-                  onMouseEnter={() => onHover?.(epic.key)}
-                  onMouseLeave={() => onHover?.(null)}
-                  rank={index + 1}
-                  epicPriority={epic.priority}
-                  jiraEnabled={jiraEnabled}
-                />
-              ))}
-            </div>
-          </div>
-        )}
+        <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-200 mb-4">Researching</h2>
+        <EpicSection
+          epics={researching}
+          config={SECTION_CONFIG.researching}
+          hoveredKey={hoveredKey}
+          onHover={onHover}
+          jiraEnabled={jiraEnabled}
+          showRanks={true}
+        />
       </div>
     );
   }
 
-  // showSection === "historical" — buttons are in the Timeline header now, just render cards
-  if (!isUpcoming && !isHistorical) return null;
-
-  // suppress unused-warning for toggles when section is "historical" and props are passed
-  void toggleUpcoming;
-  void toggleHistorical;
+  // secondary section — shows hidden groups when toggled on
+  const hasAnything = (showReady && ready.length > 0) || (showBacklog && backlog.length > 0) || (showDone && done.length > 0);
+  if (!hasAnything) return null;
 
   return (
-    <div className="mt-8">
-      <div className="space-y-8">
-        {/* Upcoming — toggle */}
-        {isUpcoming && toDo.length > 0 && (
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${SECTION_CONFIG.toDo.color}`}>
-                {SECTION_CONFIG.toDo.label}
-              </span>
-              <span className="text-xs text-gray-500">{toDo.length} epic{toDo.length !== 1 ? "s" : ""}</span>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {toDo.map(epic => (
-                <EpicCard
-                  key={epic.key}
-                  epic={epic}
-                  statusColor={SECTION_CONFIG.toDo.color}
-                  statusBg={SECTION_CONFIG.toDo.bg}
-                  statusLabel={SECTION_CONFIG.toDo.statusLabel}
-                  titleColor={SECTION_CONFIG.toDo.titleColor}
-                  descColor={SECTION_CONFIG.toDo.descColor}
-                  dateColor={SECTION_CONFIG.toDo.dateColor}
-                  isHovered={false}
-                  onMouseEnter={() => {}}
-                  onMouseLeave={() => {}}
-                  jiraEnabled={jiraEnabled}
-                />
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Historical — toggle */}
-        {isHistorical && complete.length > 0 && (
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${SECTION_CONFIG.complete.color}`}>
-                {SECTION_CONFIG.complete.label}
-              </span>
-              <span className="text-xs text-gray-500">{complete.length} epic{complete.length !== 1 ? "s" : ""}</span>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {complete.map(epic => (
-                <EpicCard
-                  key={epic.key}
-                  epic={epic}
-                  statusColor={SECTION_CONFIG.complete.color}
-                  statusBg={SECTION_CONFIG.complete.bg}
-                  statusLabel={SECTION_CONFIG.complete.statusLabel}
-                  titleColor={SECTION_CONFIG.complete.titleColor}
-                  descColor={SECTION_CONFIG.complete.descColor}
-                  dateColor={SECTION_CONFIG.complete.dateColor}
-                  isHovered={false}
-                  onMouseEnter={() => {}}
-                  onMouseLeave={() => {}}
-                  jiraEnabled={jiraEnabled}
-                />
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
+    <div className="mt-8 space-y-8">
+      {showReady && (
+        <EpicSection
+          epics={ready}
+          config={SECTION_CONFIG.ready}
+          jiraEnabled={jiraEnabled}
+        />
+      )}
+      {showBacklog && (
+        <EpicSection
+          epics={backlog}
+          config={SECTION_CONFIG.backlog}
+          jiraEnabled={jiraEnabled}
+        />
+      )}
+      {showDone && (
+        <EpicSection
+          epics={done}
+          config={SECTION_CONFIG.done}
+          jiraEnabled={jiraEnabled}
+        />
+      )}
     </div>
   );
 }
