@@ -31,18 +31,19 @@ type EpicCardProps = {
   rank?: number;
   epicPriority?: string;
   jiraEnabled?: boolean;
+  isExpanded: boolean;
+  onToggleExpand: () => void;
 };
 
-function EpicCard({ epic, statusColor, statusBg, statusLabel, titleColor, descColor, dateColor, isHovered, onMouseEnter, onMouseLeave, rank, epicPriority = 'Medium', jiraEnabled }: EpicCardProps) {
+function EpicCard({ epic, statusColor, statusBg, statusLabel, titleColor, descColor, dateColor, isHovered, onMouseEnter, onMouseLeave, rank, epicPriority = 'Medium', jiraEnabled, isExpanded, onToggleExpand }: EpicCardProps) {
   const showPriorityBadge = epicPriority !== 'Medium';
-  const [clicked, setClicked] = React.useState(false);
-  const showJiraButton = jiraEnabled && clicked;
+  const showJiraButton = jiraEnabled && isExpanded;
   return (
     <div
       className={`rounded-lg border ${statusBg} p-4 transition-all cursor-pointer ${isHovered ? "ring-2 ring-indigo-500/60" : ""}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onClick={() => setClicked((v) => !v)}
+      onClick={onToggleExpand}
     >
       <div className="flex items-start justify-between gap-2 mb-2">
         <div className="flex items-center gap-1.5 flex-1 min-w-0">
@@ -132,7 +133,7 @@ const SECTION_CONFIG = {
   },
 };
 
-function EpicSection({ epics, config, hoveredKey, onHover, jiraEnabled, showRanks, rankMap }: {
+function EpicSection({ epics, config, hoveredKey, onHover, jiraEnabled, showRanks, rankMap, expandedKey, onExpandKey }: {
   epics: Epic[];
   config: typeof SECTION_CONFIG[keyof typeof SECTION_CONFIG];
   hoveredKey?: string | null;
@@ -140,6 +141,8 @@ function EpicSection({ epics, config, hoveredKey, onHover, jiraEnabled, showRank
   jiraEnabled?: boolean;
   showRanks?: boolean;
   rankMap?: Record<string, number>;
+  expandedKey: string | null;
+  onExpandKey: (key: string | null) => void;
 }) {
   if (epics.length === 0) return null;
   return (
@@ -167,6 +170,8 @@ function EpicSection({ epics, config, hoveredKey, onHover, jiraEnabled, showRank
             rank={rankMap ? rankMap[epic.key] : (showRanks ? index + 1 : undefined)}
             epicPriority={epic.priority}
             jiraEnabled={jiraEnabled}
+            isExpanded={epic.key === expandedKey}
+            onToggleExpand={() => onExpandKey(epic.key === expandedKey ? null : epic.key)}
           />
         ))}
       </div>
@@ -175,6 +180,7 @@ function EpicSection({ epics, config, hoveredKey, onHover, jiraEnabled, showRank
 }
 
 export default function EpicList({ researching, ready, backlog, done, showSection, hoveredKey = null, onHover, showResearching = true, showBacklog = false, showDone = false, jiraEnabled }: Props) {
+  const [expandedKey, setExpandedKey] = React.useState<string | null>(null);
 
   if (showSection === "active") {
     // Continuous rank across Ready to Work → Researching → Backlog (not Done)
@@ -196,6 +202,8 @@ export default function EpicList({ researching, ready, backlog, done, showSectio
               onHover={onHover}
               jiraEnabled={jiraEnabled}
               rankMap={rankMap}
+              expandedKey={expandedKey}
+              onExpandKey={setExpandedKey}
             />
           </div>
         )}
@@ -207,6 +215,8 @@ export default function EpicList({ researching, ready, backlog, done, showSectio
             onHover={onHover}
             jiraEnabled={jiraEnabled}
             rankMap={rankMap}
+            expandedKey={expandedKey}
+            onExpandKey={setExpandedKey}
           />
         )}
       </div>
@@ -233,6 +243,8 @@ export default function EpicList({ researching, ready, backlog, done, showSectio
           config={SECTION_CONFIG.backlog}
           jiraEnabled={jiraEnabled}
           rankMap={rankMap}
+          expandedKey={expandedKey}
+          onExpandKey={setExpandedKey}
         />
       )}
       {showDone && (
@@ -240,6 +252,8 @@ export default function EpicList({ researching, ready, backlog, done, showSectio
           epics={done}
           config={SECTION_CONFIG.done}
           jiraEnabled={jiraEnabled}
+          expandedKey={expandedKey}
+          onExpandKey={setExpandedKey}
         />
       )}
     </div>
