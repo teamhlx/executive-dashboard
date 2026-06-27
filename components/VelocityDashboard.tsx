@@ -3,6 +3,7 @@
 import { useState } from "react";
 import VelocityMetrics from "./VelocityMetrics";
 import VelocityChart from "./VelocityChart";
+import VelocityFTEChart from "./VelocityFTEChart";
 import VelocityAuthorBreakdown from "./VelocityAuthorBreakdown";
 import VelocityStoryList from "./VelocityStoryList";
 
@@ -166,6 +167,7 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
 
       {/* Chart */}
       <VelocityChart trends={data.trends} viewMode={viewMode} />
+      <VelocityFTEChart trends={data.trends} viewMode={viewMode} />
 
       {/* Two-column: author breakdown + story list */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
