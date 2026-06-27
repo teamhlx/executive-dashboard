@@ -1,0 +1,495 @@
+{
+  "week": "2025-W40",
+  "startDate": "2025-09-29",
+  "endDate": "2025-10-05",
+  "generatedAt": "2026-06-27T15:55:30.546Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 68,
+        "title": "small improvement",
+        "author": "Chris",
+        "mergedAt": "2025-09-29T23:44:09Z",
+        "additions": 0,
+        "customAdditions": 0,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Zero custom lines added or deleted with a single file touched, indicating a trivial config or metadata tweak to an existing collector.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 89,
+        "title": "Add coach assignment UI and auto-sync task assignments",
+        "author": "Jason",
+        "mergedAt": "2025-10-05T22:14:32Z",
+        "additions": 0,
+        "customAdditions": 535,
+        "deletions": 0,
+        "files": 7,
+        "points": 8,
+        "rationale": "535 lines across 7 files introducing coach assignment UI, schema changes, admin actions, and auto-sync task assignment logic represents a significant feature spanning data layer through UI.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 88,
+        "title": "Task Management Enhancements: Multi-Assignee Support & Coach Relationships",
+        "author": "Jason",
+        "mergedAt": "2025-10-05T18:47:07Z",
+        "additions": 0,
+        "customAdditions": 995,
+        "deletions": 0,
+        "files": 32,
+        "points": 13,
+        "rationale": "995 lines across 32 files touching schema, AI entrypoint, multiple layouts, actions, and data access layer for multi-assignee and coach relationship support constitutes a major cross-cutting architectural feature.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 7,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 87,
+        "title": "feat: Add complete task management system with inline editing and company-wide collaboration",
+        "author": "Jason",
+        "mergedAt": "2025-10-05T08:11:22Z",
+        "additions": 0,
+        "customAdditions": 1257,
+        "deletions": 0,
+        "files": 9,
+        "points": 13,
+        "rationale": "1257 lines across 9 files building a complete task management system from scratch including schema, server actions, client components with inline editing, and company-wide collaboration is a major feature addition.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 9,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 86,
+        "title": "Admin Tools: Queue Monitoring & User Management",
+        "author": "Jason",
+        "mergedAt": "2025-10-04T20:17:04Z",
+        "additions": 0,
+        "customAdditions": 1003,
+        "deletions": 0,
+        "files": 14,
+        "points": 13,
+        "rationale": "1003 lines across 14 files introducing admin queue monitoring, user management, session handling, and supporting infrastructure represents a major admin feature with architectural breadth.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 85,
+        "title": "Admin Tools: Queue Monitoring & User Management",
+        "author": "Jason",
+        "mergedAt": "2025-10-04T18:53:25Z",
+        "additions": 0,
+        "customAdditions": 1003,
+        "deletions": 0,
+        "files": 14,
+        "points": 13,
+        "rationale": "Identical scope to PR #85 — 1003 lines across the same 14 files covering admin queue monitoring and user management; likely a duplicate or re-opened PR of the same work.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 84,
+        "title": "Add broken image detection and domain name fallback for company logos",
+        "author": "Jason",
+        "mergedAt": "2025-10-04T03:17:20Z",
+        "additions": 0,
+        "customAdditions": 115,
+        "deletions": 0,
+        "files": 5,
+        "points": 3,
+        "rationale": "115 lines across 5 files adding broken image detection and domain-name logo fallback is a modest, self-contained UI/UX feature with a small utility module.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 20,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 83,
+        "title": "Add broken image detection and domain name fallback for company logos",
+        "author": "Jason",
+        "mergedAt": "2025-10-03T18:28:43Z",
+        "additions": 0,
+        "customAdditions": 115,
+        "deletions": 0,
+        "files": 5,
+        "points": 3,
+        "rationale": "Identical scope to PR #84 — 115 lines across the same 5 files for broken image detection and logo fallback; likely a duplicate or re-opened PR.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 20,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 81,
+        "title": "Fix HTML entity display in initial system message",
+        "author": "Jason",
+        "mergedAt": "2025-10-03T14:20:32Z",
+        "additions": 0,
+        "customAdditions": 1,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-line fix correcting HTML entity rendering in one component is a trivial bug fix.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 80,
+        "title": "Update lastLoginAt timestamp on user login",
+        "author": "Jason",
+        "mergedAt": "2025-10-03T02:36:59Z",
+        "additions": 0,
+        "customAdditions": 9,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Nine lines in a single file to stamp lastLoginAt on login is a trivial, single-concern change.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 79,
+        "title": "Set emailConfirmed to true during password reset",
+        "author": "Jason",
+        "mergedAt": "2025-10-03T01:51:12Z",
+        "additions": 0,
+        "customAdditions": 3,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Three lines in a single auth action to set emailConfirmed during password reset is a trivial one-liner fix.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 76,
+        "title": "Ch/collector improvements",
+        "author": "Chris",
+        "mergedAt": "2025-10-02T21:25:22Z",
+        "additions": 0,
+        "customAdditions": 21,
+        "deletions": 0,
+        "files": 9,
+        "points": 2,
+        "rationale": "21 lines spread across 9 collector files with small fixes like returning empty string instead of -1 and a typo correction are minor, low-risk bug fixes.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.85,
+          "Jason": 0.15
+        }
+      },
+      {
+        "pr": 77,
+        "title": "Add email sent notification and update T&Cs",
+        "author": "Jason",
+        "mergedAt": "2025-10-02T20:27:13Z",
+        "additions": 0,
+        "customAdditions": 126,
+        "deletions": 0,
+        "files": 7,
+        "points": 3,
+        "rationale": "126 lines across 7 files adding an email sent notification, T&C updates, and minor UI tweaks is a modest feature touching several independent areas without deep complexity.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 75,
+        "title": "Staging",
+        "author": "Jason",
+        "mergedAt": "2025-10-01T02:23:10Z",
+        "additions": 0,
+        "customAdditions": 157,
+        "deletions": 0,
+        "files": 18,
+        "points": 5,
+        "rationale": "157 lines across 18 files blending App Runner deployment config, code refactors, and several component/action cleanups represents medium effort with meaningful breadth across infra and app layers.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.45,
+          "Jason": 0.55
+        }
+      },
+      {
+        "pr": 73,
+        "title": "Ch/dockerfile",
+        "author": "Chris",
+        "mergedAt": "2025-10-01T02:15:20Z",
+        "additions": 0,
+        "customAdditions": 157,
+        "deletions": 0,
+        "files": 18,
+        "points": 5,
+        "rationale": "Same 157 lines and 18 files as PR #75, with Chris authoring the App Runner config spine and Jason contributing merge commits and code refactors across app components.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.55,
+          "Jason": 0.45
+        }
+      },
+      {
+        "pr": 74,
+        "title": "Staging, user create starts collection",
+        "author": "Jason",
+        "mergedAt": "2025-10-01T00:59:53Z",
+        "additions": 0,
+        "customAdditions": 19,
+        "deletions": 0,
+        "files": 2,
+        "points": 2,
+        "rationale": "Small addition of 19 lines across 2 files to trigger collection on user creation during staging onboarding flow.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 72,
+        "title": "Add addToQueueForUser for onboarding readiness jobs",
+        "author": "Jason",
+        "mergedAt": "2025-09-30T23:19:45Z",
+        "additions": 0,
+        "customAdditions": 19,
+        "deletions": 0,
+        "files": 2,
+        "points": 2,
+        "rationale": "Small addition of 19 lines across 2 files introducing an addToQueueForUser helper to support onboarding readiness job queuing.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 69,
+        "title": "Use tee to append env vars in build commands",
+        "author": "Jason",
+        "mergedAt": "2025-09-30T19:47:04Z",
+        "additions": 0,
+        "customAdditions": 25,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "Minor CI/build config tweak using tee to append env vars in the Amplify build commands, 25 lines in a single YAML file.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 66,
+        "title": "Ch/additional auto populate fields",
+        "author": "Chris",
+        "mergedAt": "2025-09-29T23:02:19Z",
+        "additions": 0,
+        "customAdditions": 1326,
+        "deletions": 0,
+        "files": 32,
+        "points": 13,
+        "rationale": "Large addition of 1326 custom lines across 32 files implementing numerous new AI data-field collectors, BrightData integrations, and entrypoint updates representing a major expansion of the AI/data collection pipeline.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      }
+    ],
+    "totalPoints": 104,
+    "byAuthor": {
+      "Chris": 20.8,
+      "Jason": 83.4
+    },
+    "byCategory": {
+      "AI/Agents": 16,
+      "Admin/Tools": 34,
+      "Core Platform": 32,
+      "UI/UX": 10,
+      "DevOps": 12
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Task Management & Collaboration System",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          87,
+          88,
+          89
+        ],
+        "rationale": "Built a complete task management system with inline editing, multi-assignee support, coach relationships, and a UI for coach assignment with auto-sync, enabling company-wide collaboration."
+      },
+      {
+        "id": 2,
+        "name": "Admin Queue Monitoring & User Management Tools",
+        "points": 21,
+        "category": "Admin/Tools",
+        "prs": [
+          85,
+          86
+        ],
+        "rationale": "Delivered admin tooling for monitoring job queues and managing users, giving operators visibility and control over platform activity."
+      },
+      {
+        "id": 3,
+        "name": "AI Agent Field Auto-Population Improvements",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          66,
+          76,
+          68
+        ],
+        "rationale": "Enhanced the AI collector and agents with additional auto-populated fields and incremental improvements to increase data capture accuracy during onboarding."
+      },
+      {
+        "id": 4,
+        "name": "Staging Environment & Onboarding Queue Setup",
+        "points": 13,
+        "category": "DevOps",
+        "prs": [
+          73,
+          75,
+          69,
+          74,
+          72
+        ],
+        "rationale": "Established the staging environment pipeline with Dockerfile improvements, environment variable handling, and wired up onboarding readiness job queuing for new users."
+      },
+      {
+        "id": 5,
+        "name": "Company Logo Display Reliability",
+        "points": 3,
+        "category": "UI/UX",
+        "prs": [
+          83,
+          84
+        ],
+        "rationale": "Improved company logo display by detecting broken images and falling back to domain-based logo resolution, ensuring a polished appearance across the platform."
+      },
+      {
+        "id": 6,
+        "name": "User Authentication & Account Reliability Fixes",
+        "points": 3,
+        "category": "Core Platform",
+        "prs": [
+          80,
+          79
+        ],
+        "rationale": "Improved authentication reliability by tracking last login timestamps and automatically confirming email on password reset to reduce account access friction."
+      },
+      {
+        "id": 7,
+        "name": "Email Notification & Terms and Conditions Update",
+        "points": 3,
+        "category": "UI/UX",
+        "prs": [
+          77
+        ],
+        "rationale": "Added a user-facing email sent confirmation notification and updated the Terms & Conditions to keep users informed and compliant."
+      },
+      {
+        "id": 8,
+        "name": "Chat Message Formatting Fix",
+        "points": 1,
+        "category": "UI/UX",
+        "prs": [
+          81
+        ],
+        "rationale": "Fixed HTML entity rendering in the initial system message to ensure clean, readable text in the chat interface."
+      }
+    ],
+    "totalPoints": 86,
+    "byAuthor": {
+      "Jason": 60.9,
+      "Chris": 25.1
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 24.02,
+      "grouped": 19.86
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

@@ -1,0 +1,495 @@
+{
+  "week": "2025-W35",
+  "startDate": "2025-08-25",
+  "endDate": "2025-08-31",
+  "generatedAt": "2026-06-27T15:54:02.861Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 35,
+        "title": "more fields, parallel processing, Tavily extract",
+        "author": "Chris",
+        "mergedAt": "2025-08-31T01:02:19Z",
+        "additions": 0,
+        "customAdditions": 1044,
+        "deletions": 0,
+        "files": 23,
+        "points": 13,
+        "rationale": "Major expansion of the AI readiness platform with parallel processing, Tavily extract integration, six new field calculators, and agent/tool infrastructure changes across 23 files and 1044 custom lines.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 9,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 34,
+        "title": "Update amplify.yml",
+        "author": "Jason",
+        "mergedAt": "2025-08-27T21:22:00Z",
+        "additions": 0,
+        "customAdditions": 10,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Trivial CI/CD config tweak to a single amplify.yml file with only 10 lines added.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 39,
+        "title": "Staging",
+        "author": "Jason",
+        "mergedAt": "2025-08-31T01:01:20Z",
+        "additions": 0,
+        "customAdditions": 28,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "Small UI additions across three validate-page components with 28 lines of custom changes.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 38,
+        "title": "cleanup",
+        "author": "Jason",
+        "mergedAt": "2025-08-31T00:46:51Z",
+        "additions": 0,
+        "customAdditions": 28,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "Small cleanup touching the same three validate-page components as PR #39 with 28 lines of changes.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 37,
+        "title": "Staging",
+        "author": "Jason",
+        "mergedAt": "2025-08-30T16:33:58Z",
+        "additions": 0,
+        "customAdditions": 11370,
+        "deletions": 0,
+        "files": 190,
+        "points": 21,
+        "rationale": "Transformative foundational PR introducing BullMQ worker queue, dynamic field system, full agent infrastructure, Prisma schema, and an entire Next.js frontend across 190 files representing weeks of parallel work by two contributors.",
+        "category": "Core Platform",
+        "vendored": true,
+        "vendoredRatio": 51,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.7,
+          "Jason": 0.3
+        }
+      },
+      {
+        "pr": 33,
+        "title": "Jp/staging migration fix",
+        "author": "Jason",
+        "mergedAt": "2025-08-27T20:56:08Z",
+        "additions": 0,
+        "customAdditions": 11,
+        "deletions": 0,
+        "files": 4,
+        "points": 2,
+        "rationale": "Small staging migration fix touching four files with only 11 lines of custom changes across config and schema.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 31,
+        "title": "Ch/readiness feature",
+        "author": "Chris",
+        "mergedAt": "2025-08-27T18:11:30Z",
+        "additions": 0,
+        "customAdditions": 2945,
+        "deletions": 0,
+        "files": 80,
+        "points": 21,
+        "rationale": "Epic foundational PR building the entire readiness agent system from scratch — multi-tool agent framework, structured output, 20+ field calculators, Prisma schema, worker, and UI across 80 files and 2945 custom lines.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 17,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 30,
+        "title": "Added agent window",
+        "author": "Jason",
+        "mergedAt": "2025-08-27T14:43:24Z",
+        "additions": 0,
+        "customAdditions": 134,
+        "deletions": 0,
+        "files": 5,
+        "points": 3,
+        "rationale": "Small-medium UI feature adding an agent chat sidepanel with supporting layout and style changes across five files.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 29,
+        "title": "Update amplify.yml",
+        "author": "Jason",
+        "mergedAt": "2025-08-27T05:58:54Z",
+        "additions": 0,
+        "customAdditions": 0,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Zero-line change to amplify.yml — effectively a no-op or whitespace/metadata-only update.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 28,
+        "title": "onboarding spend step gets data from field value",
+        "author": "Jason",
+        "mergedAt": "2025-08-27T05:54:51Z",
+        "additions": 0,
+        "customAdditions": 95,
+        "deletions": 0,
+        "files": 7,
+        "points": 3,
+        "rationale": "Small-medium feature wiring the onboarding spend step to live field-definition data across seven files with 95 lines of custom logic.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 27,
+        "title": "Fix staging deployment by marking baseline migration as applied",
+        "author": "Jason",
+        "mergedAt": "2025-08-27T05:25:40Z",
+        "additions": 0,
+        "customAdditions": 1,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-line fix to amplify.yml marking a baseline migration as applied to unblock staging deployment.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 26,
+        "title": "Fix Amplify Deployment and Database Migration Issues",
+        "author": "Jason",
+        "mergedAt": "2025-08-27T05:19:27Z",
+        "additions": 0,
+        "customAdditions": 32,
+        "deletions": 0,
+        "files": 5,
+        "points": 2,
+        "rationale": "Small deployment and auth fix touching amplify.yml, DAL, session, and onboarding page with 32 custom lines after excluding vendored auto-gen.",
+        "category": "DevOps",
+        "vendored": true,
+        "vendoredRatio": 86,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 25,
+        "title": "Add automatic ARR calculation based on AWS monthly spend",
+        "author": "Jason",
+        "mergedAt": "2025-08-27T00:05:32Z",
+        "additions": 0,
+        "customAdditions": 18,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "Simple feature adding automatic ARR calculation logic to a single server action file with 18 lines.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 24,
+        "title": "Migrate field definitions from seed to deployment script",
+        "author": "Jason",
+        "mergedAt": "2025-08-26T20:18:41Z",
+        "additions": 0,
+        "customAdditions": 1,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Trivial single-line change to amplify.yml migrating field definitions to a deployment script.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 23,
+        "title": "Clean database approach: Fresh deployment with field definitions",
+        "author": "Jason",
+        "mergedAt": "2025-08-26T20:09:23Z",
+        "additions": 0,
+        "customAdditions": 53,
+        "deletions": 0,
+        "files": 5,
+        "points": 2,
+        "rationale": "Small deployment improvement adding a field-definitions deploy script and corresponding amplify.yml wiring across five files with 53 lines.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 22,
+        "title": "Fix failed migration in staging database",
+        "author": "Jason",
+        "mergedAt": "2025-08-26T19:57:58Z",
+        "additions": 0,
+        "customAdditions": 1,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-line fix to a config file to address a failed migration in staging — trivial change.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 21,
+        "title": "Use explicit nvm command for Node.js 20 in Amplify",
+        "author": "Jason",
+        "mergedAt": "2025-08-26T19:49:01Z",
+        "additions": 0,
+        "customAdditions": 1,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-line addition to amplify.yml to explicitly set the nvm command — trivial config tweak.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 20,
+        "title": "Fix Node.js version for Amplify deployment",
+        "author": "Jason",
+        "mergedAt": "2025-08-26T19:44:39Z",
+        "additions": 0,
+        "customAdditions": 7,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Small set of config lines in amplify.yml to fix the Node.js version for deployment — still a trivial config fix.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 19,
+        "title": "Migrate field definitions from seed to migration process",
+        "author": "Jason",
+        "mergedAt": "2025-08-26T19:39:46Z",
+        "additions": 0,
+        "customAdditions": 379,
+        "deletions": 0,
+        "files": 8,
+        "points": 5,
+        "rationale": "Introduces a new migration generation script, restructures field definitions out of seed into a dedicated migration process, and touches multiple prisma files — a meaningful refactor of the data pipeline.",
+        "category": "Data/Schema",
+        "vendored": false,
+        "vendoredRatio": 45,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 18,
+        "title": "Readiness Assessment: Field Editing Interface and Metric Filtering",
+        "author": "Jason",
+        "mergedAt": "2025-08-26T19:18:26Z",
+        "additions": 0,
+        "customAdditions": 1846,
+        "deletions": 0,
+        "files": 57,
+        "points": 13,
+        "rationale": "Nearly 1,900 custom lines spanning 57+ files including schema changes, server actions, a field editing interface, metric filtering, onboarding steps, and multiple new UI components — a major feature with architectural breadth.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 6,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 98,
+    "byAuthor": {
+      "Chris": 48.7,
+      "Jason": 49.3
+    },
+    "byCategory": {
+      "AI/Agents": 34,
+      "DevOps": 13,
+      "UI/UX": 10,
+      "Core Platform": 36,
+      "Data/Schema": 5
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "AI-Powered Readiness Assessment Engine",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          31,
+          35
+        ],
+        "rationale": "Built and enhanced the core AI readiness feature with additional data fields, parallel processing, and Tavily extract integration to deliver richer business readiness analysis."
+      },
+      {
+        "id": 2,
+        "name": "Readiness Assessment UI and Metric Filtering",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          18,
+          25
+        ],
+        "rationale": "Delivered the field editing interface and metric filtering for readiness assessments, plus automatic ARR calculation from AWS spend data to surface actionable business metrics."
+      },
+      {
+        "id": 3,
+        "name": "Staging Environment Stabilization",
+        "points": 21,
+        "category": "Infrastructure",
+        "prs": [
+          20,
+          21,
+          22,
+          23,
+          24,
+          26,
+          27,
+          29,
+          33,
+          34
+        ],
+        "rationale": "Resolved a series of compounding deployment and database migration issues to establish a stable, reliable staging environment on AWS Amplify."
+      },
+      {
+        "id": 4,
+        "name": "Field Definitions Data Migration",
+        "points": 5,
+        "category": "Data/Schema",
+        "prs": [
+          19
+        ],
+        "rationale": "Migrated field definitions from the seed process into a proper migration pipeline to ensure consistent and repeatable data schema deployments."
+      },
+      {
+        "id": 5,
+        "name": "Staging Platform Release",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          37,
+          38,
+          39
+        ],
+        "rationale": "Deployed and cleaned up the staging release of the platform, consolidating UI and core platform changes into a shippable staging build."
+      },
+      {
+        "id": 6,
+        "name": "Agent Window and Onboarding Data Integration",
+        "points": 5,
+        "category": "UI/UX",
+        "prs": [
+          28,
+          30
+        ],
+        "rationale": "Added the agent interaction window to the UI and wired the onboarding spend step to pull live data from field values, improving the end-to-end user onboarding experience."
+      }
+    ],
+    "totalPoints": 94,
+    "byAuthor": {
+      "Chris": 21,
+      "Jason": 73
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 22.63,
+      "grouped": 21.71
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

@@ -2,7 +2,7 @@
   "week": "2026-W26",
   "startDate": "2026-06-22",
   "endDate": "2026-06-28",
-  "generatedAt": "2026-06-27T15:28:28.271Z",
+  "generatedAt": "2026-06-27T16:07:06.621Z",
   "prLevel": {
     "prs": [
       {
@@ -14,15 +14,15 @@
         "customAdditions": 966,
         "deletions": 0,
         "files": 18,
-        "points": 8,
-        "rationale": "Merge PR aggregating two hotfixes (marketplace uniqueness scoping + Bedrock toolConfig fix) plus a significant AWS Marketplace URL feature across AI agents, schema migrations, UI components, and E2E/unit tests — substantial breadth even if the individual pieces landed in separate PRs.",
+        "points": 13,
+        "rationale": "Merge PR aggregating two hotfixes (scoped marketplace uniqueness constraint + Bedrock toolConfig fix) plus a full AWS Marketplace URL intake feature with UI, server actions, schema migration, and E2E/unit tests across 17 custom files — substantial breadth even though some lines originate from constituent PRs.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": true,
         "attribution": {
-          "Jason": 0.25,
-          "Chad": 0.75
+          "Jason": 0.65,
+          "Chad": 0.35
         }
       },
       {
@@ -35,8 +35,8 @@
         "deletions": 0,
         "files": 10,
         "points": 8,
-        "rationale": "Full-stack feature adding AWS Marketplace URL-based product creation and inline company-name editing, spanning server actions, UI components, an AWS API integration layer, and E2E tests across 10 files.",
-        "category": "Integrations",
+        "rationale": "Adds AWS Marketplace URL-based product creation and an edit-company-name flow, touching server actions, UI components, a new AWS listing-details library, and E2E tests across 10 files with 667 custom lines.",
+        "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -54,7 +54,7 @@
         "deletions": 0,
         "files": 2,
         "points": 3,
-        "rationale": "Targeted hotfix correcting Bedrock toolConfig structure on competitive-analysis finalize with a focused agent change and a dedicated unit test suite to cover the regression.",
+        "rationale": "Targeted hotfix correcting Bedrock toolConfig shape for competitive-analysis finalize step, with a unit test to cover the regression — modest but non-trivial AI agent fix.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -73,7 +73,7 @@
         "deletions": 0,
         "files": 4,
         "points": 3,
-        "rationale": "Scoped database-level fix changing a global unique constraint to a per-company composite unique on marketplaceListingId, including schema migration and unit tests.",
+        "rationale": "Scopes the marketplace listing ID uniqueness constraint to per-company via a Prisma schema change, migration SQL, collector update, and unit test — small but complete data-model fix.",
         "category": "Data/Schema",
         "vendored": false,
         "vendoredRatio": 0,
@@ -92,7 +92,7 @@
         "deletions": 0,
         "files": 6,
         "points": 5,
-        "rationale": "Security-focused fix enforcing tenant isolation across automation actions and the assistant agent, touching multiple AI control-plane files and server actions with meaningful logic changes and unit test coverage.",
+        "rationale": "Enforces tenant isolation across automation control, tools, and assistant/automation server actions with supporting unit tests — meaningful security/correctness fix touching core AI automation plumbing.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -111,7 +111,7 @@
         "deletions": 0,
         "files": 2,
         "points": 2,
-        "rationale": "Small wiring fix to enqueue BTS generation directly from two slide/node components, a minimal targeted change across 25 lines in 2 files.",
+        "rationale": "Small targeted fix wiring BTS generation enqueue calls into two slide/node components — minimal logic, 25 lines across 2 files.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -130,7 +130,7 @@
         "deletions": 0,
         "files": 17,
         "points": 5,
-        "rationale": "Revert of a sizeable guided-experience UI feature (17 files, 386 lines restored) — reverting complex UI/state work requires careful reconciliation and is not trivial, but the cognitive effort is lower than the original implementation.",
+        "rationale": "Reverting a sizeable guided-experience UI feature (17 files, 386 custom lines re-added as the revert state) requires careful reconstruction of prior state and is more effort than a trivial undo.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 47,
@@ -149,7 +149,7 @@
         "deletions": 0,
         "files": 44,
         "points": 13,
-        "rationale": "Greenfield Terraform IaC foundation covering bootstrap, multi-env configs, CI/CD workflow integration, and Cognito migration plumbing across 44 files and 2462 custom lines — a major architectural infrastructure effort.",
+        "rationale": "Establishes a full Terraform IaC foundation for AWS Cognito migration including bootstrap, per-environment configs, Dockerized runner, GitHub Actions CI workflows, CODEOWNERS, and documentation across 44 files — architectural infrastructure work.",
         "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
@@ -168,7 +168,7 @@
         "deletions": 0,
         "files": 17,
         "points": 8,
-        "rationale": "New guided-experience UI system with a multi-component tray, task cards, inline prompts, assignee selectors, CRM connect panel, and AppShell integration across 1398 lines and 17 files.",
+        "rationale": "Builds a complete guided-experience UI with tray, task cards, inline prompts, CRM connect panel, assignee selectors, sandbox state pages, and AppShell integration across 17 files and ~1400 custom lines.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -187,7 +187,7 @@
         "deletions": 0,
         "files": 26,
         "points": 13,
-        "rationale": "Major architectural shift moving BTS and Competitive Analysis generation to BullMQ background workers, introducing new AI entrypoints, schema/migration for generation runs, updated studio UI components, and polling hooks across 26 files and ~1890 lines.",
+        "rationale": "Migrates BTS and Competitive Analysis generation to BullMQ background workers, adding new Prisma schema/migration, enqueue utilities, updated studio UI with polling, reworked agent tools, and slide-deck integration across 26 files and ~1890 custom lines — major architectural shift.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -206,7 +206,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Trivial single-line Dockerfile fix to include the docs/ directory in the runner image.",
+        "rationale": "Single-line Dockerfile tweak to copy docs/ into the runner image — trivial config fix.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -225,7 +225,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Duplicate of #471 — same trivial Dockerfile docs/ inclusion fix, single file, 5 lines.",
+        "rationale": "Duplicate of PR #471 — same single Dockerfile change, trivial.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -244,7 +244,7 @@
         "deletions": 0,
         "files": 35,
         "points": 13,
-        "rationale": "Large feature combining playbook editing UI, AI assistant guided flow, automation agent tooling, schema migrations for guided-flow events, performance pages, and admin tooling across 35 files and 1735 lines of custom code.",
+        "rationale": "Introduces playbook editing UI, AI assistant guided flow, outcome/task/automation schema additions, migration, new automation agent tools, guided-flow event tracking, and admin playbook hierarchy editor across 35 files and ~1735 custom lines — major feature spanning multiple platform layers.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 3,
@@ -254,15 +254,14 @@
         }
       }
     ],
-    "totalPoints": 83,
+    "totalPoints": 88,
     "byAuthor": {
-      "Jason": 50,
-      "Chad": 25,
+      "Jason": 56.5,
+      "Chad": 23.6,
       "Mauro": 8
     },
     "byCategory": {
-      "Core Platform": 21,
-      "Integrations": 8,
+      "Core Platform": 34,
       "AI/Agents": 21,
       "Data/Schema": 3,
       "UI/UX": 15,
@@ -274,18 +273,18 @@
     "stories": [
       {
         "id": 1,
-        "name": "AWS Marketplace Product Integration",
-        "points": 13,
-        "category": "Integrations",
+        "name": "AWS Marketplace Product Integration & Company Management",
+        "points": 8,
+        "category": "Core Platform",
         "prs": [
           490,
           487
         ],
-        "rationale": "Enabled users to add products directly from AWS Marketplace URLs while fixing a data integrity issue ensuring marketplace listing IDs are unique per company."
+        "rationale": "Enabled users to add products directly from AWS Marketplace URLs and fixed a data integrity issue ensuring marketplace listing IDs are unique per company."
       },
       {
         "id": 2,
-        "name": "AI Studio Background Processing & Reliability",
+        "name": "Background AI Generation for Studio (BTS & Competitive Analysis)",
         "points": 21,
         "category": "AI/Agents",
         "prs": [
@@ -293,21 +292,31 @@
           488,
           483
         ],
-        "rationale": "Moved BTS and Competitive Analysis generation to background workers for better performance, fixed a Bedrock toolConfig bug in competitive analysis, and enabled direct BTS generation queuing from assessment and strategy slides."
+        "rationale": "Moved BTS and Competitive Analysis generation to background workers for a non-blocking Studio experience, fixed a Bedrock toolConfig bug in competitive analysis, and enabled direct enqueuing from assessment and strategy slides."
       },
       {
         "id": 3,
-        "name": "Guided Experience UI Rollout",
+        "name": "Guided Experience UI Rollout & Rollback",
         "points": 13,
         "category": "UI/UX",
         "prs": [
           475,
           481
         ],
-        "rationale": "Introduced the guided experience UI and action-needed tray, then temporarily reverted it from staging to address stability concerns before re-release."
+        "rationale": "Introduced the guided experience UI with an action-needed tray, then reverted it from staging due to issues, reflecting an in-progress feature stabilization cycle."
       },
       {
         "id": 4,
+        "name": "Tenant Isolation & Security Hardening for Automation",
+        "points": 5,
+        "category": "AI/Agents",
+        "prs": [
+          485
+        ],
+        "rationale": "Enforced strict tenant isolation on automation actions to prevent cross-tenant data leakage and ensure platform security."
+      },
+      {
+        "id": 5,
         "name": "AWS Cognito Authentication Migration Foundation",
         "points": 13,
         "category": "Infrastructure",
@@ -317,51 +326,41 @@
         "rationale": "Established the Terraform infrastructure-as-code foundation required to migrate user authentication to AWS Cognito."
       },
       {
-        "id": 5,
-        "name": "Playbook Editing with AI-Assisted Guided Flow",
+        "id": 6,
+        "name": "Playbook Editing with AI Assistant Guided Flow",
         "points": 13,
         "category": "Core Platform",
         "prs": [
           470
         ],
-        "rationale": "Delivered playbook editing capabilities enhanced with an AI assistant guided flow to help users build and refine their business readiness plans."
-      },
-      {
-        "id": 6,
-        "name": "Tenant Isolation Security Enforcement",
-        "points": 5,
-        "category": "AI/Agents",
-        "prs": [
-          485
-        ],
-        "rationale": "Enforced strict tenant isolation on automation actions to prevent cross-tenant data leakage and ensure platform security."
+        "rationale": "Delivered a full playbook editing experience enhanced with an AI assistant guided flow to help users build and refine business playbooks."
       },
       {
         "id": 7,
-        "name": "Staging Environment Sync",
-        "points": 8,
-        "category": "Core Platform",
-        "prs": [
-          493
-        ],
-        "rationale": "Merged main branch changes into staging to keep the staging environment up to date with the latest production-ready code."
-      },
-      {
-        "id": 8,
-        "name": "Admin Documentation Availability Fix",
+        "name": "Admin Documentation Fix in Runner Image",
         "points": 2,
         "category": "DevOps",
         "prs": [
           471,
           472
         ],
-        "rationale": "Fixed the Docker runner image to include the docs directory so that admin documentation loads correctly in deployed environments."
+        "rationale": "Fixed the Docker runner image to correctly include the docs directory so that admin documentation loads properly in deployed environments."
+      },
+      {
+        "id": 8,
+        "name": "Staging Environment Sync & Release Promotion",
+        "points": 13,
+        "category": "Core Platform",
+        "prs": [
+          493
+        ],
+        "rationale": "Merged main branch changes into staging to synchronize environments and prepare the latest production-ready changes for validation."
       }
     ],
     "totalPoints": 88,
     "byAuthor": {
-      "Jason": 60,
-      "Chad": 20,
+      "Jason": 61.3,
+      "Chad": 18.7,
       "Mauro": 8
     }
   },
@@ -369,7 +368,7 @@
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 19.17,
+      "prLevel": 20.32,
       "grouped": 20.32
     },
     "ptsPerWeekPerFTE": 4.33

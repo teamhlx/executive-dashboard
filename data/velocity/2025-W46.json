@@ -1,0 +1,26 @@
+{
+  "week": "2025-W46",
+  "startDate": "2025-11-10",
+  "endDate": "2025-11-16",
+  "generatedAt": "2026-06-27T15:57:19.370Z",
+  "prLevel": {
+    "prs": [],
+    "totalPoints": 0,
+    "byAuthor": {},
+    "byCategory": {}
+  },
+  "grouped": {
+    "stories": [],
+    "totalPoints": 0,
+    "byAuthor": {}
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 0,
+      "grouped": 0
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

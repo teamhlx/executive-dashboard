@@ -1,0 +1,195 @@
+{
+  "week": "2026-W16",
+  "startDate": "2026-04-13",
+  "endDate": "2026-04-19",
+  "generatedAt": "2026-06-27T16:02:30.045Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 324,
+        "title": "Strategy persistence, Fundamentals inline editors, docked chat panel & UI fixes",
+        "author": "Jason",
+        "mergedAt": "2026-04-19T21:37:25Z",
+        "additions": 0,
+        "customAdditions": 2578,
+        "deletions": 0,
+        "files": 50,
+        "points": 21,
+        "rationale": "2578 custom lines across 50+ files covering strategy persistence, inline editors, a docked chat panel, slide deck mechanics, cookie-based state, and broad UI fixes represents a transformative, multi-week feature effort.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 323,
+        "title": "Product filtering, fundamentals scrollspy, and related UI",
+        "author": "Jason",
+        "mergedAt": "2026-04-17T16:07:12Z",
+        "additions": 0,
+        "customAdditions": 959,
+        "deletions": 0,
+        "files": 23,
+        "points": 13,
+        "rationale": "959 custom lines spanning product filtering, a scrollspy system with context/nav/content components, a DB migration, seed data updates, AI collector changes, and admin/analytics routes constitutes a major multi-surface feature.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 322,
+        "title": "SM-445: agent context refactor, product scoped chat",
+        "author": "Chris",
+        "mergedAt": "2026-04-17T02:29:10Z",
+        "additions": 0,
+        "customAdditions": 364,
+        "deletions": 0,
+        "files": 44,
+        "points": 8,
+        "rationale": "364 custom lines touching 44 files across the entire chat agent hierarchy — refactoring agent context and adding product-scoped chat — is a significant architectural refactor of the AI agent layer.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.92,
+          "Jason": 0.08
+        }
+      },
+      {
+        "pr": 319,
+        "title": "SM-442: adds integrated with back to the integration depth slide",
+        "author": "Chris",
+        "mergedAt": "2026-04-17T02:09:27Z",
+        "additions": 0,
+        "customAdditions": 9,
+        "deletions": 0,
+        "files": 2,
+        "points": 1,
+        "rationale": "9 custom lines across 2 files adding a single label/option to an existing integration depth slide is a trivial, single-concern change.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 320,
+        "title": "Ch/collector improvements",
+        "author": "Chris",
+        "mergedAt": "2026-04-17T02:08:33Z",
+        "additions": 0,
+        "customAdditions": 757,
+        "deletions": 0,
+        "files": 60,
+        "points": 13,
+        "rationale": "757 custom lines across 60 files systematically improving a large suite of AI data-field collectors, gap analysis agents, and their entrypoints represents a major, broad improvement to the AI/agent data-collection layer.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 321,
+        "title": "fix(SM-450): Assignee label uses email local part when name is missing",
+        "author": "Jason",
+        "mergedAt": "2026-04-16T21:04:40Z",
+        "additions": 0,
+        "customAdditions": 63,
+        "deletions": 0,
+        "files": 6,
+        "points": 3,
+        "rationale": "63 custom lines introducing a shared display-name utility, applying it across a handful of components, and adding a unit test is a clean, self-contained small-medium bug fix with proper test coverage.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 59,
+    "byAuthor": {
+      "Jason": 37.6,
+      "Chris": 21.4
+    },
+    "byCategory": {
+      "Core Platform": 24,
+      "UI/UX": 14,
+      "AI/Agents": 21
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Strategy & Fundamentals Editing Experience",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          324,
+          323
+        ],
+        "rationale": "Delivered a cohesive strategy and fundamentals authoring experience including persistence, inline editing, product filtering, scrollspy navigation, a docked chat panel, and related UI polish."
+      },
+      {
+        "id": 2,
+        "name": "AI Agent Context & Product-Scoped Chat",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          322,
+          320
+        ],
+        "rationale": "Refactored agent context to support product-scoped chat sessions and improved the collector agent with reliability and capability enhancements."
+      },
+      {
+        "id": 3,
+        "name": "Integration Depth Labeling Improvement",
+        "points": 1,
+        "category": "UI/UX",
+        "prs": [
+          319
+        ],
+        "rationale": "Added 'Integrated with' label back to the integration depth slide to restore clarity for users reviewing integration status."
+      },
+      {
+        "id": 4,
+        "name": "Assignee Display Name Fallback Fix",
+        "points": 3,
+        "category": "Core Platform",
+        "prs": [
+          321
+        ],
+        "rationale": "Fixed assignee labels to gracefully fall back to the email local part when a user's display name is not available, improving readability across the platform."
+      }
+    ],
+    "totalPoints": 46,
+    "byAuthor": {
+      "Jason": 24,
+      "Chris": 22
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 13.63,
+      "grouped": 10.62
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

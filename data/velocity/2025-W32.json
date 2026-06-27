@@ -1,0 +1,86 @@
+{
+  "week": "2025-W32",
+  "startDate": "2025-08-04",
+  "endDate": "2025-08-10",
+  "generatedAt": "2026-06-27T15:53:00.186Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 2,
+        "title": "feat: Complete Skematic Platform Implementation with Dynamic Readiness Dashboard",
+        "author": "Jason",
+        "mergedAt": "2025-08-10T17:15:19Z",
+        "additions": 0,
+        "customAdditions": 3921,
+        "deletions": 0,
+        "files": 78,
+        "points": 21,
+        "rationale": "3921 lines of custom work across 78 files establishing the entire Skematic platform from scratch — including AI readiness agents, dynamic dashboard with company scoring, auth/session, data field calculators, UI framework with branding, Docker infrastructure, and database setup — represents a transformative, multi-week foundational build.",
+        "category": "Core Platform",
+        "vendored": true,
+        "vendoredRatio": 72,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.45,
+          "Jason": 0.55
+        }
+      },
+      {
+        "pr": 1,
+        "title": "chore: enhance .gitignore for better security and development workflow",
+        "author": "Jason",
+        "mergedAt": "2025-08-10T17:03:40Z",
+        "additions": 0,
+        "customAdditions": 12,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "A 12-line addition to .gitignore is a trivial configuration tweak with no functional impact.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 22,
+    "byAuthor": {
+      "Chris": 9.5,
+      "Jason": 12.6
+    },
+    "byCategory": {
+      "Core Platform": 21,
+      "DevOps": 1
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Launch Skematic AI Readiness Platform",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          2,
+          1
+        ],
+        "rationale": "Delivered the complete Skematic platform with a dynamic readiness dashboard alongside foundational security and workflow improvements to support ongoing development."
+      }
+    ],
+    "totalPoints": 21,
+    "byAuthor": {
+      "Jason": 21
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 5.08,
+      "grouped": 4.85
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

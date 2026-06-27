@@ -1,0 +1,198 @@
+{
+  "week": "2025-W42",
+  "startDate": "2025-10-13",
+  "endDate": "2025-10-19",
+  "generatedAt": "2026-06-27T15:56:18.134Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 113,
+        "title": "removes stepper from tasks page",
+        "author": "Chris",
+        "mergedAt": "2025-10-17T20:02:15Z",
+        "additions": 0,
+        "customAdditions": 36,
+        "deletions": 0,
+        "files": 11,
+        "points": 3,
+        "rationale": "Removing the stepper/breadcrumbs from the tasks page required restructuring route layouts and touching ~11 files across the readiness module, a modest but meaningful refactor.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.85,
+          "Jason": 0.15
+        }
+      },
+      {
+        "pr": 112,
+        "title": "Add Google Tag Manager Integration",
+        "author": "Jason",
+        "mergedAt": "2025-10-15T17:43:47Z",
+        "additions": 0,
+        "customAdditions": 66,
+        "deletions": 0,
+        "files": 6,
+        "points": 2,
+        "rationale": "Adding Google Tag Manager is a straightforward integration — two small wrapper components, config updates, and wiring into the root layout with minimal custom logic.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 109,
+        "title": "adds ANALYTICS_SECRET env var to apprunner",
+        "author": "Chris",
+        "mergedAt": "2025-10-14T19:44:53Z",
+        "additions": 0,
+        "customAdditions": 585,
+        "deletions": 0,
+        "files": 31,
+        "points": 13,
+        "rationale": "This PR bundles multiple significant features — admin data tables, middleware refactor, waitlist flow, readiness thermometer redesign in the slide deck, and infra env var additions — spanning 31+ files and representing substantial architectural breadth.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.88,
+          "Jason": 0.12
+        }
+      },
+      {
+        "pr": 111,
+        "title": "readiness level",
+        "author": "Chris",
+        "mergedAt": "2025-10-14T19:31:50Z",
+        "additions": 0,
+        "customAdditions": 17,
+        "deletions": 0,
+        "files": 10,
+        "points": 3,
+        "rationale": "Introducing a readiness level concept touches 10 files across readiness actions, UI editors, and the slide deck but involves only 17 lines of custom additions, suggesting a focused and modest feature addition.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.9,
+          "Jason": 0.1
+        }
+      },
+      {
+        "pr": 110,
+        "title": "Fix: Audit log creation before user login in password reset flow",
+        "author": "Jason",
+        "mergedAt": "2025-10-14T17:39:17Z",
+        "additions": 0,
+        "customAdditions": 18,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "A targeted bug fix ensuring audit log creation is properly sequenced before user login in the password reset flow, touching 3 files with 18 lines of straightforward changes.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 105,
+        "title": "Join waitlist",
+        "author": "Chris",
+        "mergedAt": "2025-10-13T19:01:40Z",
+        "additions": 0,
+        "customAdditions": 47,
+        "deletions": 0,
+        "files": 6,
+        "points": 3,
+        "rationale": "Adding a join-waitlist feature to the slide deck required a new server action, UI wiring across multiple slide components, and a button update — a small but complete end-to-end feature addition.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.88,
+          "Jason": 0.12
+        }
+      }
+    ],
+    "totalPoints": 26,
+    "byAuthor": {
+      "Chris": 19.3,
+      "Jason": 6.8
+    },
+    "byCategory": {
+      "UI/UX": 3,
+      "Integrations": 2,
+      "Core Platform": 21
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Analytics Infrastructure Setup",
+        "points": 13,
+        "category": "Analytics",
+        "prs": [
+          109,
+          112
+        ],
+        "rationale": "Established the analytics foundation by configuring the analytics secret in the app runner environment and integrating Google Tag Manager to enable user behavior tracking."
+      },
+      {
+        "id": 2,
+        "name": "Business Readiness Level Tracking",
+        "points": 5,
+        "category": "Core Platform",
+        "prs": [
+          111,
+          113
+        ],
+        "rationale": "Introduced readiness level functionality and streamlined the tasks page UI by removing the stepper, delivering a cleaner readiness tracking experience for users."
+      },
+      {
+        "id": 3,
+        "name": "Waitlist Enrollment for New Users",
+        "points": 3,
+        "category": "Core Platform",
+        "prs": [
+          105
+        ],
+        "rationale": "Enabled prospective users to join the platform waitlist, supporting controlled onboarding and growth management."
+      },
+      {
+        "id": 4,
+        "name": "Fix Password Reset Audit Logging",
+        "points": 2,
+        "category": "Core Platform",
+        "prs": [
+          110
+        ],
+        "rationale": "Resolved a bug where audit log entries were being created before user authentication during the password reset flow, ensuring accurate and secure activity records."
+      }
+    ],
+    "totalPoints": 23,
+    "byAuthor": {
+      "Jason": 3.7,
+      "Chris": 19.3
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 6,
+      "grouped": 5.31
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

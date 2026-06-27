@@ -1,0 +1,158 @@
+{
+  "week": "2025-W47",
+  "startDate": "2025-11-17",
+  "endDate": "2025-11-23",
+  "generatedAt": "2026-06-27T15:57:32.035Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 150,
+        "title": "Clean up completed AWS Marketplace TODOs and remove test page",
+        "author": "Jason",
+        "mergedAt": "2025-11-22T22:34:04Z",
+        "additions": 0,
+        "customAdditions": 174,
+        "deletions": 0,
+        "files": 6,
+        "points": 2,
+        "rationale": "Housekeeping PR that archives/updates TODO markdown files and removes a test page — low complexity, no logic changes.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 149,
+        "title": "AWS Marketplace Integration & Credential Consolidation",
+        "author": "Jason",
+        "mergedAt": "2025-11-22T21:38:43Z",
+        "additions": 0,
+        "customAdditions": 816,
+        "deletions": 0,
+        "files": 23,
+        "points": 8,
+        "rationale": "Broad AWS Marketplace integration touching schema, auth flows, onboarding, email/S3 services, environment config, and deployment files across 23 files — significant feature work with meaningful cross-cutting changes.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 5,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 148,
+        "title": "Add AWS Marketplace SaaS Integration",
+        "author": "Jason",
+        "mergedAt": "2025-11-22T02:00:37Z",
+        "additions": 0,
+        "customAdditions": 392,
+        "deletions": 0,
+        "files": 7,
+        "points": 5,
+        "rationale": "Initial AWS Marketplace SaaS integration introducing a new API route, marketplace pages, a shell test script, and a TODO plan — solid self-contained feature foundation despite moderate line count after stripping vendored code.",
+        "category": "Integrations",
+        "vendored": true,
+        "vendoredRatio": 74,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 145,
+        "title": "SM-141: returns values instead of numbers",
+        "author": "Chris",
+        "mergedAt": "2025-11-20T17:44:10Z",
+        "additions": 0,
+        "customAdditions": 91,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "Single-file fix to return human-readable values instead of raw numbers in an AWS partner badges collector — simple targeted bug fix with minimal logic change.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.9,
+          "Jason": 0.1
+        }
+      },
+      {
+        "pr": 144,
+        "title": "Ch/sm 184",
+        "author": "Chris",
+        "mergedAt": "2025-11-20T17:41:04Z",
+        "additions": 0,
+        "customAdditions": 3350,
+        "deletions": 0,
+        "files": 34,
+        "points": 21,
+        "rationale": "Architectural overhaul of the chat agent system introducing multiple new sub-agents (field-completion, strategy-deck, support) each with their own graph, state, tools, and sessions across 34+ files — transformative, weeks-scale work.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 2,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.95,
+          "Jason": 0.05
+        }
+      }
+    ],
+    "totalPoints": 38,
+    "byAuthor": {
+      "Jason": 16.3,
+      "Chris": 21.8
+    },
+    "byCategory": {
+      "Admin/Tools": 2,
+      "Integrations": 13,
+      "AI/Agents": 23
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "AWS Marketplace Launch & Integration",
+        "points": 21,
+        "category": "Integrations",
+        "prs": [
+          148,
+          149,
+          150
+        ],
+        "rationale": "Delivered end-to-end AWS Marketplace SaaS integration including credential consolidation, subscription handling, and cleanup of scaffolding and test artifacts."
+      },
+      {
+        "id": 2,
+        "name": "AI Agent Output & Behavior Improvements",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          144,
+          145
+        ],
+        "rationale": "Enhanced AI agent reliability by fixing value return formatting and delivering broader agent behavior improvements captured in the SM-184 initiative."
+      }
+    ],
+    "totalPoints": 42,
+    "byAuthor": {
+      "Jason": 21,
+      "Chris": 21
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 8.78,
+      "grouped": 9.7
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

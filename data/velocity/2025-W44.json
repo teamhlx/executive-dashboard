@@ -1,0 +1,145 @@
+{
+  "week": "2025-W44",
+  "startDate": "2025-10-27",
+  "endDate": "2025-11-02",
+  "generatedAt": "2026-06-27T15:56:44.560Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 124,
+        "title": "Login fixes: Component refactoring and email verification fix",
+        "author": "Jason",
+        "mergedAt": "2025-10-30T22:04:58Z",
+        "additions": 0,
+        "customAdditions": 11,
+        "deletions": 0,
+        "files": 5,
+        "points": 2,
+        "rationale": "Small set of minor fixes and component tweaks across 5 files with only 11 custom lines added, indicating simple bug fixes and lightweight refactoring.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 123,
+        "title": "Ch/gap analysis",
+        "author": "Chris",
+        "mergedAt": "2025-10-30T16:44:05Z",
+        "additions": 0,
+        "customAdditions": 5666,
+        "deletions": 0,
+        "files": 111,
+        "points": 21,
+        "rationale": "Massive AI gap analysis feature spanning 111 files and 5666 custom lines, introducing a full agent architecture, multiple AI assessors, and numerous domain-specific evaluation modules representing weeks of transformative work.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 3,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 122,
+        "title": "Release: Admin & Task Management Improvements",
+        "author": "Jason",
+        "mergedAt": "2025-10-27T18:11:29Z",
+        "additions": 0,
+        "customAdditions": 567,
+        "deletions": 0,
+        "files": 8,
+        "points": 8,
+        "rationale": "Significant addition of 567 lines across 8 files covering admin task management, company pages, readiness logs, and task UI components, representing a meaningful multi-area feature release.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 121,
+        "title": "Admin & Task Management Improvements - Impersonation Fixes",
+        "author": "Jason",
+        "mergedAt": "2025-10-27T16:54:39Z",
+        "additions": 0,
+        "customAdditions": 567,
+        "deletions": 0,
+        "files": 8,
+        "points": 8,
+        "rationale": "Identical file set and line count to PR #3, indicating this is the same substantial admin and task management work likely rebased or staged with impersonation fixes included, warranting the same medium-large score.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 39,
+    "byAuthor": {
+      "Jason": 18,
+      "Chris": 21
+    },
+    "byCategory": {
+      "UI/UX": 2,
+      "AI/Agents": 21,
+      "Admin/Tools": 16
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "AI-Powered Gap Analysis",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          123
+        ],
+        "rationale": "Delivered the core gap analysis AI agent capability, enabling the platform to identify and surface business readiness gaps for users."
+      },
+      {
+        "id": 2,
+        "name": "Admin Controls & Task Management Enhancements",
+        "points": 13,
+        "category": "Admin/Tools",
+        "prs": [
+          122,
+          121
+        ],
+        "rationale": "Improved admin tooling and task management workflows, including fixes to user impersonation functionality to support internal operations and support teams."
+      },
+      {
+        "id": 3,
+        "name": "Login & Authentication Experience Fixes",
+        "points": 2,
+        "category": "UI/UX",
+        "prs": [
+          124
+        ],
+        "rationale": "Resolved login flow issues including component refactoring and email verification bugs to improve the user onboarding and authentication experience."
+      }
+    ],
+    "totalPoints": 36,
+    "byAuthor": {
+      "Chris": 21,
+      "Jason": 15
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 9.01,
+      "grouped": 8.31
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

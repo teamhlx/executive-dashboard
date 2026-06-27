@@ -1,0 +1,442 @@
+{
+  "week": "2025-W48",
+  "startDate": "2025-11-24",
+  "endDate": "2025-11-30",
+  "generatedAt": "2026-06-27T15:58:05.526Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 158,
+        "title": "Jp/tackle integration",
+        "author": "Jason",
+        "mergedAt": "2025-11-26T08:01:25Z",
+        "additions": 0,
+        "customAdditions": 1,
+        "deletions": 0,
+        "files": 2,
+        "points": 1,
+        "rationale": "Single custom line added across two files — a trivial integration touch with no meaningful logic change.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 167,
+        "title": "Handle missing S3 credentials gracefully",
+        "author": "Jason",
+        "mergedAt": "2025-11-29T21:45:11Z",
+        "additions": 0,
+        "customAdditions": 39,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "39 lines in a single service file adding graceful error handling for missing S3 credentials — a small but focused defensive improvement.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 168,
+        "title": "Staging",
+        "author": "Jason",
+        "mergedAt": "2025-11-29T22:31:15Z",
+        "additions": 0,
+        "customAdditions": 3507,
+        "deletions": 0,
+        "files": 21,
+        "points": 13,
+        "rationale": "3507 custom lines across 21 files introducing a competitive analysis agent, streaming API routes, UI slides, error dialogs, and deployment config — a major feature delivery merging two workstreams.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 4,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.45,
+          "Jason": 0.55
+        }
+      },
+      {
+        "pr": 163,
+        "title": "Ch/sm 206 bts prompt",
+        "author": "Chris",
+        "mergedAt": "2025-11-28T19:52:41Z",
+        "additions": 0,
+        "customAdditions": 536,
+        "deletions": 0,
+        "files": 7,
+        "points": 5,
+        "rationale": "536 lines across 6 files adding BTS prompt logic, new AI data field collectors, a slide component, and an API route — a solid medium feature with Chris driving the core generation logic.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 35,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.65,
+          "Jason": 0.35
+        }
+      },
+      {
+        "pr": 166,
+        "title": "Remove unused dependencies from package.json",
+        "author": "Jason",
+        "mergedAt": "2025-11-29T21:30:37Z",
+        "additions": 0,
+        "customAdditions": 0,
+        "deletions": 0,
+        "files": 2,
+        "points": 1,
+        "rationale": "Purely vendored/auto-generated changes with zero custom lines — trivial dependency cleanup.",
+        "category": "Infrastructure",
+        "vendored": true,
+        "vendoredRatio": 100,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 165,
+        "title": "introduces competitive analysis agent",
+        "author": "Chris",
+        "mergedAt": "2025-11-29T21:24:04Z",
+        "additions": 0,
+        "customAdditions": 3504,
+        "deletions": 0,
+        "files": 19,
+        "points": 13,
+        "rationale": "3504 custom lines across 19 files introducing the full competitive analysis agent, streaming routes, UI components, S3 integration, error dialog, and extensive documentation — a major architectural feature.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 1,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.5,
+          "Jason": 0.5
+        }
+      },
+      {
+        "pr": 164,
+        "title": "Staging",
+        "author": "Jason",
+        "mergedAt": "2025-11-28T21:36:15Z",
+        "additions": 0,
+        "customAdditions": 536,
+        "deletions": 0,
+        "files": 7,
+        "points": 5,
+        "rationale": "536 lines across 6 files — same scope as PR #163, a staging merge of the BTS prompt feature with Chris authoring the core generation and Jason contributing fixups and route refinements.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 35,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.6,
+          "Jason": 0.4
+        }
+      },
+      {
+        "pr": 162,
+        "title": "License-based navigation, Gantt timeline views, type safety improvements, and migration consolidation",
+        "author": "Jason",
+        "mergedAt": "2025-11-28T15:45:37Z",
+        "additions": 0,
+        "customAdditions": 3419,
+        "deletions": 0,
+        "files": 49,
+        "points": 21,
+        "rationale": "3419 lines across 49 files spanning license-based navigation, Gantt timeline views, trial flow, schema changes, AI agent updates, type safety refactors, and migration consolidation — a transformative multi-system epic.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Jason": 0.97,
+          "Chris": 0.03
+        }
+      },
+      {
+        "pr": 161,
+        "title": "Add dot visualization for single-date items in Gantt views",
+        "author": "Jason",
+        "mergedAt": "2025-11-28T15:24:53Z",
+        "additions": 0,
+        "customAdditions": 96,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "96 lines across three Gantt view components adding dot visualization for single-date items — a small, focused UI enhancement.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 160,
+        "title": "License-based navigation, Gantt timeline views, type safety improvements, and migration consolidation",
+        "author": "Jason",
+        "mergedAt": "2025-11-28T02:00:58Z",
+        "additions": 0,
+        "customAdditions": 3337,
+        "deletions": 0,
+        "files": 47,
+        "points": 21,
+        "rationale": "3337 lines across 47 files covering license-based navigation, Gantt views, trial actions, schema updates, AI agent changes, and substantial documentation — a large-scale multi-domain epic authored by a single contributor.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 4,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 159,
+        "title": "Tackle.io Integration, Gap Analysis Refactor, AWS Marketplace Fix, UI/UX Improvements",
+        "author": "Jason",
+        "mergedAt": "2025-11-26T08:21:26Z",
+        "additions": 0,
+        "customAdditions": 2439,
+        "deletions": 0,
+        "files": 54,
+        "points": 13,
+        "rationale": "2439 lines across 54 files refactoring gap analysis, adding Tackle.io integration, fixing AWS Marketplace, and improving UI/UX across many subsystems — a major feature with wide architectural reach.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 1,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 157,
+        "title": "Tackle.io Integration - CSV Upload & Dynamic Slide Deck",
+        "author": "Jason",
+        "mergedAt": "2025-11-26T07:49:04Z",
+        "additions": 0,
+        "customAdditions": 2663,
+        "deletions": 0,
+        "files": 58,
+        "points": 13,
+        "rationale": "2663 lines across 58 files introducing Tackle.io CSV upload, dynamic slide deck generation, gap analysis refactor, and marketplace fixes — a large feature touching AI, UI, and integration layers.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 18,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 155,
+        "title": "Fix AWS Marketplace registration: Add GetEntitlements API call",
+        "author": "Jason",
+        "mergedAt": "2025-11-25T17:05:52Z",
+        "additions": 0,
+        "customAdditions": 224,
+        "deletions": 0,
+        "files": 4,
+        "points": 3,
+        "rationale": "224 custom lines adding a GetEntitlements API call to fix AWS Marketplace registration, with supporting documentation — a small-medium targeted bug fix with non-trivial API integration work.",
+        "category": "Integrations",
+        "vendored": true,
+        "vendoredRatio": 72,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 154,
+        "title": "Add Goals support to snapshot system",
+        "author": "Jason",
+        "mergedAt": "2025-11-25T16:13:35Z",
+        "additions": 0,
+        "customAdditions": 930,
+        "deletions": 0,
+        "files": 11,
+        "points": 8,
+        "rationale": "930 lines across 11 files adding Goals and junction table support to the snapshot system, refactoring row components, fixing AI agent role validation, and updating docs — a significant feature with Jason driving the architecture.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Jason": 0.93,
+          "Chris": 0.07
+        }
+      },
+      {
+        "pr": 153,
+        "title": "Add Goals support to snapshot system",
+        "author": "Jason",
+        "mergedAt": "2025-11-24T20:36:04Z",
+        "additions": 0,
+        "customAdditions": 926,
+        "deletions": 0,
+        "files": 10,
+        "points": 8,
+        "rationale": "926 lines across 10 files introducing Goals support to the snapshot system including AI agent tools, actions, row components, and utility logic — a meaningful platform feature by a single author.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 152,
+        "title": "Production Release: Goals System & AWS Marketplace Integration",
+        "author": "Jason",
+        "mergedAt": "2025-11-24T06:37:32Z",
+        "additions": 0,
+        "customAdditions": 12810,
+        "deletions": 0,
+        "files": 112,
+        "points": 21,
+        "rationale": "A production release merging 12,810 custom lines across 112 files encompassing a full Goals System, AWS Marketplace integration, multiple new AI sub-agents (field-completion, gaps, strategy-deck), and significant architectural additions to the chat agent — this is clearly a multi-week transformative effort.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 3,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Jason": 0.82,
+          "Chris": 0.18
+        }
+      },
+      {
+        "pr": 151,
+        "title": "Goals, Gaps & Tasks System - Complete Agent Integration",
+        "author": "Jason",
+        "mergedAt": "2025-11-24T03:05:41Z",
+        "additions": 0,
+        "customAdditions": 9457,
+        "deletions": 0,
+        "files": 86,
+        "points": 21,
+        "rationale": "9,457 custom lines across 86 files delivering a complete Goals/Gaps/Tasks system with full agent integration, new gaps-agent sub-agent, AWS partner finder profile, and an extensive better-together story AI pipeline — representing the core feature spine of a major multi-week development effort.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 3,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Jason": 0.88,
+          "Chris": 0.12
+        }
+      }
+    ],
+    "totalPoints": 171,
+    "byAuthor": {
+      "Jason": 145,
+      "Chris": 26.2
+    },
+    "byCategory": {
+      "Integrations": 30,
+      "Infrastructure": 3,
+      "AI/Agents": 78,
+      "Core Platform": 58,
+      "UI/UX": 2
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Goals System & Snapshot Integration",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          154,
+          153
+        ],
+        "rationale": "Added Goals support to the snapshot system, enabling the platform to capture and track goal state over time."
+      },
+      {
+        "id": 2,
+        "name": "Goals, Gaps & Tasks Agent Intelligence",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          152,
+          151
+        ],
+        "rationale": "Delivered a full production release integrating Goals, Gaps, and Tasks into the AI agent system alongside AWS Marketplace support."
+      },
+      {
+        "id": 3,
+        "name": "Tackle.io Integration & AWS Marketplace Enhancements",
+        "points": 21,
+        "category": "Integrations",
+        "prs": [
+          158,
+          159,
+          157,
+          155
+        ],
+        "rationale": "Built end-to-end Tackle.io integration with CSV upload, dynamic slide decks, and fixed AWS Marketplace entitlement registration."
+      },
+      {
+        "id": 4,
+        "name": "License-Based Navigation & Gantt Timeline Views",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          162,
+          160,
+          161
+        ],
+        "rationale": "Introduced license-gated navigation, Gantt timeline views with single-date dot visualization, type safety improvements, and migration consolidation."
+      },
+      {
+        "id": 5,
+        "name": "Competitive Analysis AI Agent",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          165,
+          163,
+          164,
+          168
+        ],
+        "rationale": "Launched a new competitive analysis agent alongside BTS prompt improvements and staged releases to surface market intelligence automatically."
+      },
+      {
+        "id": 6,
+        "name": "Infrastructure Hardening & Dependency Cleanup",
+        "points": 3,
+        "category": "Infrastructure",
+        "prs": [
+          167,
+          166
+        ],
+        "rationale": "Improved platform resilience by gracefully handling missing S3 credentials and removing unused dependencies to reduce build bloat."
+      }
+    ],
+    "totalPoints": 108,
+    "byAuthor": {
+      "Jason": 97.5,
+      "Chris": 10.5
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 39.49,
+      "grouped": 24.94
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

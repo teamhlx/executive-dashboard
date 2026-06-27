@@ -1,0 +1,440 @@
+{
+  "week": "2025-W45",
+  "startDate": "2025-11-03",
+  "endDate": "2025-11-09",
+  "generatedAt": "2026-06-27T15:57:17.299Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 141,
+        "title": "Downgrade dotenv to v16.4.5 to resolve peer dependency conflict",
+        "author": "Jason",
+        "mergedAt": "2025-11-08T21:48:45Z",
+        "additions": 0,
+        "customAdditions": 1,
+        "deletions": 0,
+        "files": 2,
+        "points": 1,
+        "rationale": "Single-line package.json change to downgrade a dependency version — purely trivial config tweak.",
+        "category": "Infrastructure",
+        "vendored": true,
+        "vendoredRatio": 80,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 140,
+        "title": "Add Company File Attachments Feature",
+        "author": "Jason",
+        "mergedAt": "2025-11-08T21:32:25Z",
+        "additions": 0,
+        "customAdditions": 1418,
+        "deletions": 0,
+        "files": 15,
+        "points": 13,
+        "rationale": "Major feature adding S3-backed file attachments with schema changes, server actions, UI components, deployment config updates, and documentation across 13 custom files.",
+        "category": "Core Platform",
+        "vendored": true,
+        "vendoredRatio": 56,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 139,
+        "title": "Add Company Snapshot Feature",
+        "author": "Jason",
+        "mergedAt": "2025-11-07T19:56:32Z",
+        "additions": 0,
+        "customAdditions": 1430,
+        "deletions": 0,
+        "files": 15,
+        "points": 13,
+        "rationale": "Significant feature introducing company snapshots with new Prisma schema, seed data, multiple layout integrations, admin toggle, utility libs, and a full client-side snapshot UI.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 2,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 138,
+        "title": "Staging",
+        "author": "Jason",
+        "mergedAt": "2025-11-06T22:20:34Z",
+        "additions": 0,
+        "customAdditions": 15,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "Small targeted change of 15 lines in a single action file, with Jason's commits primarily being merges and branch integrations rather than novel logic.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.8,
+          "Jason": 0.2
+        }
+      },
+      {
+        "pr": 137,
+        "title": "seeds default gaps if no existing gaps",
+        "author": "Chris",
+        "mergedAt": "2025-11-06T22:14:14Z",
+        "additions": 0,
+        "customAdditions": 15,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "15-line addition to seed default gaps when none exist — a small conditional logic change in a single action file.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.85,
+          "Jason": 0.15
+        }
+      },
+      {
+        "pr": 135,
+        "title": "Reorganize field definitions and add automated deployment",
+        "author": "Jason",
+        "mergedAt": "2025-11-06T19:43:10Z",
+        "additions": 0,
+        "customAdditions": 438,
+        "deletions": 0,
+        "files": 5,
+        "points": 8,
+        "rationale": "Meaningful reorganization of field definitions combined with a new automated deployment script, CI/CD config, and FieldCard component updates across 5 files with 438 custom lines.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 134,
+        "title": "SM-142, SM-144 - icp profile short, multiple industry slides",
+        "author": "Chris",
+        "mergedAt": "2025-11-06T17:21:54Z",
+        "additions": 0,
+        "customAdditions": 77,
+        "deletions": 0,
+        "files": 8,
+        "points": 3,
+        "rationale": "Modest feature work across 77 custom lines touching ICP profile collectors, field definitions, and two slide components for multi-industry support.",
+        "category": "AI/Agents",
+        "vendored": true,
+        "vendoredRatio": 78,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.85,
+          "Jason": 0.15
+        }
+      },
+      {
+        "pr": 132,
+        "title": "SM-136 - Ch/gap analysis",
+        "author": "Chris",
+        "mergedAt": "2025-11-05T23:37:33Z",
+        "additions": 0,
+        "customAdditions": 69,
+        "deletions": 0,
+        "files": 6,
+        "points": 3,
+        "rationale": "Small-medium addition of gap analysis assessors and utility improvements across 6 files with 69 custom lines, with Chris authoring nearly all substantive logic.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.9,
+          "Jason": 0.1
+        }
+      },
+      {
+        "pr": 133,
+        "title": "�� Major Feature Release: AI Chat Agent System & Gap Analysis Platform",
+        "author": "Jason",
+        "mergedAt": "2025-11-04T23:38:00Z",
+        "additions": 0,
+        "customAdditions": 10561,
+        "deletions": 0,
+        "files": 144,
+        "points": 21,
+        "rationale": "Transformative epic introducing an entire LangGraph-based chat agent system, full gap analysis platform with dozens of AI assessors, component restructuring, and auth fixes across 144 files and 10,561 lines.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 5,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Jason": 0.75,
+          "Chris": 0.25
+        }
+      },
+      {
+        "pr": 127,
+        "title": "updates account creation screens",
+        "author": "Chris",
+        "mergedAt": "2025-11-04T20:00:19Z",
+        "additions": 0,
+        "customAdditions": 177,
+        "deletions": 0,
+        "files": 6,
+        "points": 3,
+        "rationale": "UI refresh of multiple onboarding screen components with 177 lines of changes across 6 files — a modest but cohesive UI update.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.9,
+          "Jason": 0.1
+        }
+      },
+      {
+        "pr": 126,
+        "title": "field definitions",
+        "author": "Chris",
+        "mergedAt": "2025-11-04T19:58:00Z",
+        "additions": 0,
+        "customAdditions": 41,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "41-line addition to a single field definitions file — a small data/schema content update.",
+        "category": "Data/Schema",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.9,
+          "Jason": 0.1
+        }
+      },
+      {
+        "pr": 130,
+        "title": "Fix PostgreSQL SSL certificate error in chat agent",
+        "author": "Jason",
+        "mergedAt": "2025-11-04T06:44:00Z",
+        "additions": 0,
+        "customAdditions": 3,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-file, 3-line fix to add SSL certificate handling for PostgreSQL connection in the chat agent.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 131,
+        "title": "Fix chat scroll behavior",
+        "author": "Jason",
+        "mergedAt": "2025-11-04T18:21:52Z",
+        "additions": 0,
+        "customAdditions": 14,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "Small bug fix addressing chat scroll behavior across 3 files with 14 lines of targeted CSS and component adjustments.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 129,
+        "title": "Upgrade LangChain to v1.0 stable",
+        "author": "Jason",
+        "mergedAt": "2025-11-04T06:30:47Z",
+        "additions": 0,
+        "customAdditions": 5,
+        "deletions": 0,
+        "files": 2,
+        "points": 1,
+        "rationale": "Trivial dependency version bump in package.json with only 5 custom lines of actual change.",
+        "category": "Infrastructure",
+        "vendored": true,
+        "vendoredRatio": 100,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 128,
+        "title": "Fix progress bar display on readiness page",
+        "author": "Jason",
+        "mergedAt": "2025-11-04T06:11:46Z",
+        "additions": 0,
+        "customAdditions": 80,
+        "deletions": 0,
+        "files": 7,
+        "points": 3,
+        "rationale": "Small-medium fix touching 7 files with 80 custom lines to correct progress bar display, also introducing a chat agent page and chat panel component adjustments.",
+        "category": "UI/UX",
+        "vendored": true,
+        "vendoredRatio": 73,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 125,
+        "title": "feat: Multi-Agent Chat System with LangGraph",
+        "author": "Jason",
+        "mergedAt": "2025-11-04T04:37:16Z",
+        "additions": 0,
+        "customAdditions": 4582,
+        "deletions": 0,
+        "files": 24,
+        "points": 21,
+        "rationale": "4582 custom lines across 24 files introducing a full multi-agent chat system with LangGraph, sub-agents, new API routes, UI components, and extensive documentation represents a transformative, weeks-long architectural addition to the platform.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 5,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 99,
+    "byAuthor": {
+      "Jason": 80.8,
+      "Chris": 18.4
+    },
+    "byCategory": {
+      "Infrastructure": 3,
+      "Core Platform": 28,
+      "AI/Agents": 50,
+      "DevOps": 8,
+      "UI/UX": 8,
+      "Data/Schema": 2
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "AI Chat Agent & Gap Analysis Platform Launch",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          125,
+          133,
+          130,
+          129
+        ],
+        "rationale": "Delivered the core multi-agent chat system with LangGraph and gap analysis capabilities, including infrastructure fixes for SSL and LangChain upgrade needed to support the stable release."
+      },
+      {
+        "id": 2,
+        "name": "Gap Analysis Intelligence & ICP Profile Enhancements",
+        "points": 8,
+        "category": "AI/Agents",
+        "prs": [
+          132,
+          134,
+          137
+        ],
+        "rationale": "Extended the gap analysis agent with channel/gap analysis logic, improved ICP profile slides with short-form and multi-industry support, and added default gap seeding to ensure reliable baseline data."
+      },
+      {
+        "id": 3,
+        "name": "Company Document & Snapshot Management",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          139,
+          140
+        ],
+        "rationale": "Enabled businesses to attach files and capture point-in-time snapshots of company data, providing richer context for AI-driven readiness assessments."
+      },
+      {
+        "id": 4,
+        "name": "Automated Deployment Pipeline & Field Structure",
+        "points": 13,
+        "category": "DevOps",
+        "prs": [
+          135,
+          126
+        ],
+        "rationale": "Reorganized field definitions for consistency and introduced automated deployment workflows to streamline release operations."
+      },
+      {
+        "id": 5,
+        "name": "Account Creation & Onboarding UI Improvements",
+        "points": 3,
+        "category": "UI/UX",
+        "prs": [
+          127
+        ],
+        "rationale": "Refreshed the account creation screens to improve the new user onboarding experience."
+      },
+      {
+        "id": 6,
+        "name": "Chat & Readiness UI Polish",
+        "points": 3,
+        "category": "UI/UX",
+        "prs": [
+          131,
+          128
+        ],
+        "rationale": "Fixed chat scroll behavior and progress bar display on the readiness page to deliver a smoother, more polished user experience."
+      },
+      {
+        "id": 7,
+        "name": "Staging Environment Stabilization",
+        "points": 2,
+        "category": "Infrastructure",
+        "prs": [
+          138
+        ],
+        "rationale": "Applied staging-specific configuration changes to ensure the pre-production environment reflects the latest platform updates."
+      },
+      {
+        "id": 8,
+        "name": "Dependency & Environment Hygiene",
+        "points": 2,
+        "category": "Infrastructure",
+        "prs": [
+          141
+        ],
+        "rationale": "Resolved a peer dependency conflict by downgrading dotenv, ensuring a clean and stable local and CI dependency tree."
+      }
+    ],
+    "totalPoints": 73,
+    "byAuthor": {
+      "Jason": 59.4,
+      "Chris": 13.6
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 22.86,
+      "grouped": 16.86
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

@@ -1,0 +1,327 @@
+{
+  "week": "2025-W33",
+  "startDate": "2025-08-11",
+  "endDate": "2025-08-17",
+  "generatedAt": "2026-06-27T15:53:23.332Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 16,
+        "title": "feat: automatic base URL detection - remove NEXT_PUBLIC_BASE_URL",
+        "author": "Jason",
+        "mergedAt": "2025-08-16T19:03:56Z",
+        "additions": 0,
+        "customAdditions": 51,
+        "deletions": 0,
+        "files": 5,
+        "points": 3,
+        "rationale": "Removes a hardcoded env var and implements automatic base URL detection across three email utility files plus config, modest but meaningful refactor across multiple files.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 15,
+        "title": "feat: Make Amplify build resilient to missing environment variables",
+        "author": "Jason",
+        "mergedAt": "2025-08-16T18:37:56Z",
+        "additions": 0,
+        "customAdditions": 22,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "Single-file change to amplify.yml adding resilience logic for missing env vars — small but deliberate DevOps fix.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 14,
+        "title": "🚀 Migrate API Routes to Server Actions",
+        "author": "Jason",
+        "mergedAt": "2025-08-16T18:29:56Z",
+        "additions": 0,
+        "customAdditions": 4409,
+        "deletions": 0,
+        "files": 97,
+        "points": 13,
+        "rationale": "Even discounting vendored/auto-gen content, migrating API routes to Server Actions across a large custom codebase with schema, seed, docs, and config changes is a major architectural shift.",
+        "category": "Core Platform",
+        "vendored": true,
+        "vendoredRatio": 70,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 13,
+        "title": "Jp/small type fixes, and one un commit that i messed up",
+        "author": "Jason",
+        "mergedAt": "2025-08-14T23:55:55Z",
+        "additions": 0,
+        "customAdditions": 7,
+        "deletions": 0,
+        "files": 6,
+        "points": 1,
+        "rationale": "Seven lines of type fixes across six files — purely trivial cleanup with no new logic.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 11,
+        "title": "readiness calculator, readiness page, readiness collector",
+        "author": "Chris",
+        "mergedAt": "2025-08-14T23:22:30Z",
+        "additions": 0,
+        "customAdditions": 1096,
+        "deletions": 0,
+        "files": 26,
+        "points": 8,
+        "rationale": "1096 custom lines introducing the readiness calculator, collector, UI components, and page represents a significant feature delivery; Jason's single commit is a minor one-line component tweak.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 20,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.95,
+          "Jason": 0.05
+        }
+      },
+      {
+        "pr": 9,
+        "title": "Ch/readiness",
+        "author": "Jason",
+        "mergedAt": "2025-08-14T18:16:41Z",
+        "additions": 0,
+        "customAdditions": 877,
+        "deletions": 0,
+        "files": 38,
+        "points": 8,
+        "rationale": "877 custom lines building out the readiness agent with MCP/search tools, data-field calculators, collector, schema, seed, and supporting infrastructure is a significant, multi-faceted feature.",
+        "category": "AI/Agents",
+        "vendored": true,
+        "vendoredRatio": 73,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 8,
+        "title": "Fix amplify.yml syntax and add environment variable logging",
+        "author": "Jason",
+        "mergedAt": "2025-08-12T00:30:20Z",
+        "additions": 0,
+        "customAdditions": 5,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Five-line syntax fix and env-var logging addition to a single config file — trivial DevOps patch.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 7,
+        "title": "Fix AWS Lambda deployment and improve TypeScript quality",
+        "author": "Jason",
+        "mergedAt": "2025-08-11T18:53:28Z",
+        "additions": 0,
+        "customAdditions": 19,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "19 lines across three files fixing Lambda deployment config, ESLint settings, and a small TypeScript quality improvement — small but purposeful fix.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 6,
+        "title": "Fix AWS Lambda Prisma deployment issue",
+        "author": "Jason",
+        "mergedAt": "2025-08-11T15:25:27Z",
+        "additions": 0,
+        "customAdditions": 2,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Two-line Prisma schema tweak to resolve an AWS Lambda deployment issue — trivial single-line-class fix.",
+        "category": "Data/Schema",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 4,
+        "title": "Changes to allow staging deploy",
+        "author": "Jason",
+        "mergedAt": "2025-08-11T14:38:00Z",
+        "additions": 0,
+        "customAdditions": 4089,
+        "deletions": 0,
+        "files": 81,
+        "points": 13,
+        "rationale": "Even after stripping 71% vendored content, ~1186 custom lines spanning auth, session, readiness agent, UI framework, Dockerfile, Amplify config, and docs across 18 commits represents a foundational platform build-out that is effectively a large architectural effort.",
+        "category": "Core Platform",
+        "vendored": true,
+        "vendoredRatio": 71,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.45,
+          "Jason": 0.55
+        }
+      },
+      {
+        "pr": 5,
+        "title": "Update package.json",
+        "author": "Jason",
+        "mergedAt": "2025-08-11T14:39:02Z",
+        "additions": 0,
+        "customAdditions": 1,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-line package.json update — trivially small change.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 3,
+        "title": "Add AWS Amplify deployment configuration",
+        "author": "Jason",
+        "mergedAt": "2025-08-11T03:44:09Z",
+        "additions": 0,
+        "customAdditions": 169,
+        "deletions": 0,
+        "files": 5,
+        "points": 3,
+        "rationale": "169 lines adding Amplify deployment configuration, next.config updates, and two documentation files — modest but deliberate infrastructure and docs setup.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 56,
+    "byAuthor": {
+      "Jason": 42.6,
+      "Chris": 13.5
+    },
+    "byCategory": {
+      "Infrastructure": 3,
+      "DevOps": 9,
+      "Core Platform": 27,
+      "AI/Agents": 16,
+      "Data/Schema": 1
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Business Readiness Assessment Engine",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          11,
+          9
+        ],
+        "rationale": "Built and integrated the core readiness calculator, collector, and page that power Skematic's AI-driven business readiness assessment feature."
+      },
+      {
+        "id": 2,
+        "name": "Staging Environment Launch",
+        "points": 21,
+        "category": "DevOps",
+        "prs": [
+          3,
+          4,
+          5,
+          7,
+          8
+        ],
+        "rationale": "Established and stabilized the AWS Amplify staging deployment pipeline, including configuration, Lambda fixes, TypeScript improvements, and syntax corrections."
+      },
+      {
+        "id": 3,
+        "name": "Production-Ready API Architecture",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          14,
+          13
+        ],
+        "rationale": "Migrated API routes to Next.js Server Actions to improve performance, security, and maintainability of the core platform backend."
+      },
+      {
+        "id": 4,
+        "name": "Resilient Cloud Infrastructure Configuration",
+        "points": 5,
+        "category": "Infrastructure",
+        "prs": [
+          16,
+          15
+        ],
+        "rationale": "Hardened the deployment infrastructure by automating base URL detection and making Amplify builds tolerant of missing environment variables."
+      },
+      {
+        "id": 5,
+        "name": "Database Deployment Stability Fix",
+        "points": 1,
+        "category": "Data/Schema",
+        "prs": [
+          6
+        ],
+        "rationale": "Resolved a critical Prisma deployment issue on AWS Lambda to ensure reliable database connectivity in production."
+      }
+    ],
+    "totalPoints": 69,
+    "byAuthor": {
+      "Chris": 10.5,
+      "Jason": 58.5
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 12.93,
+      "grouped": 15.93
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

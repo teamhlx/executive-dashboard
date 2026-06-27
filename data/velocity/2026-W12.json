@@ -1,0 +1,106 @@
+{
+  "week": "2026-W12",
+  "startDate": "2026-03-16",
+  "endDate": "2026-03-22",
+  "generatedAt": "2026-06-27T16:01:31.869Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 280,
+        "title": "Jp/company credentials",
+        "author": "Jason",
+        "mergedAt": "2026-03-16T19:15:44Z",
+        "additions": 0,
+        "customAdditions": 5470,
+        "deletions": 0,
+        "files": 84,
+        "points": 13,
+        "rationale": "84 files changed with 5470 custom lines spanning new Prisma schema models, AI data collectors, AppRunner configs, environment setup, and a suite of TODO planning docs — representing a broad architectural foundation for company credentials and related infrastructure.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 16,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 281,
+        "title": "Schema Refactor: Product-centric data model, modular Prisma schema, competitive analysis & credentials",
+        "author": "Jason",
+        "mergedAt": "2026-03-16T20:30:50Z",
+        "additions": 0,
+        "customAdditions": 19321,
+        "deletions": 0,
+        "files": 345,
+        "points": 21,
+        "rationale": "345 files and 19321 custom lines across a sweeping product-centric data model refactor, modular Prisma schema reorganization, competitive analysis models, credentials support, and AI agent updates from two contributors — a transformative, multi-week architectural overhaul.",
+        "category": "Data/Schema",
+        "vendored": false,
+        "vendoredRatio": 5,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Jason": 0.75,
+          "Chris": 0.25
+        }
+      },
+      {
+        "pr": 279,
+        "title": "Add index for Rival.marketplaceSellerId",
+        "author": "Jason",
+        "mergedAt": "2026-03-16T18:38:40Z",
+        "additions": 0,
+        "customAdditions": 3,
+        "deletions": 0,
+        "files": 2,
+        "points": 1,
+        "rationale": "A trivial single-index addition to the Rival model in the Prisma schema and corresponding migration SQL — a minimal, targeted change with no logic complexity.",
+        "category": "Data/Schema",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 35,
+    "byAuthor": {
+      "Jason": 29.8,
+      "Chris": 5.3
+    },
+    "byCategory": {
+      "Core Platform": 13,
+      "Data/Schema": 22
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Product-Centric Data Model & Competitive Intelligence Foundation",
+        "points": 21,
+        "category": "Data/Schema",
+        "prs": [
+          280,
+          281,
+          279
+        ],
+        "rationale": "Redesigned the core data architecture around a product-centric model with modular schema, introduced company credentials and competitive analysis capabilities, and optimized marketplace seller lookups — together establishing the foundational data layer for Skematic's business readiness assessments."
+      }
+    ],
+    "totalPoints": 21,
+    "byAuthor": {
+      "Jason": 21
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 8.08,
+      "grouped": 4.85
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

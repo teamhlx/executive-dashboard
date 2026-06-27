@@ -1,0 +1,93 @@
+{
+  "week": "2026-W07",
+  "startDate": "2026-02-09",
+  "endDate": "2026-02-15",
+  "generatedAt": "2026-06-27T16:00:40.383Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 253,
+        "title": "AWS Marketplace Discovery API Integration",
+        "author": "Jason",
+        "mergedAt": "2026-02-15T18:24:06Z",
+        "additions": 0,
+        "customAdditions": 1276,
+        "deletions": 0,
+        "files": 293,
+        "points": 8,
+        "rationale": "Integrates AWS Marketplace Discovery API with custom client setup, search logic, two API routes, AI agent tool wiring, config changes, and documentation across ~1276 meaningful lines — a significant new integration touching multiple layers of the platform.",
+        "category": "Integrations",
+        "vendored": true,
+        "vendoredRatio": 98,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 251,
+        "title": "Fix coach chat agent 403 error and company context selection",
+        "author": "Jason",
+        "mergedAt": "2026-02-10T21:13:22Z",
+        "additions": 0,
+        "customAdditions": 28,
+        "deletions": 0,
+        "files": 5,
+        "points": 2,
+        "rationale": "Small bug fix across 5 files with only 28 lines added, resolving a 403 error and company context selection issue in the chat agent.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 10,
+    "byAuthor": {
+      "Jason": 10
+    },
+    "byCategory": {
+      "Integrations": 8,
+      "AI/Agents": 2
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "AWS Marketplace Channel Expansion",
+        "points": 8,
+        "category": "Integrations",
+        "prs": [
+          253
+        ],
+        "rationale": "Enabled Skematic to be discoverable and accessible through the AWS Marketplace by integrating with their Discovery API, opening a new customer acquisition channel."
+      },
+      {
+        "id": 2,
+        "name": "AI Coach Chat Reliability Fix",
+        "points": 2,
+        "category": "AI/Agents",
+        "prs": [
+          251
+        ],
+        "rationale": "Resolved a 403 authentication error and improved company context selection in the coach chat agent, restoring reliable AI coaching functionality for users."
+      }
+    ],
+    "totalPoints": 10,
+    "byAuthor": {
+      "Jason": 10
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 2.31,
+      "grouped": 2.31
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "week": "2026-W04",
+  "startDate": "2026-01-19",
+  "endDate": "2026-01-25",
+  "generatedAt": "2026-06-27T15:59:45.237Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 227,
+        "title": "Remove COACH domain restriction",
+        "author": "Jason",
+        "mergedAt": "2026-01-22T17:21:45Z",
+        "additions": 0,
+        "customAdditions": 6,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "Small permission logic change across 3 files with only 6 custom lines added, removing a domain restriction with minimal complexity.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 2,
+    "byAuthor": {
+      "Jason": 2
+    },
+    "byCategory": {
+      "Admin/Tools": 2
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Expand Admin Access Controls",
+        "points": 2,
+        "category": "Admin/Tools",
+        "prs": [
+          227
+        ],
+        "rationale": "Removed the COACH domain restriction to broaden administrative access and reduce friction for eligible users."
+      }
+    ],
+    "totalPoints": 2,
+    "byAuthor": {
+      "Jason": 2
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 0.46,
+      "grouped": 0.46
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

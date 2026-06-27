@@ -1,0 +1,65 @@
+{
+  "week": "2026-W10",
+  "startDate": "2026-03-02",
+  "endDate": "2026-03-08",
+  "generatedAt": "2026-06-27T16:01:06.076Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 267,
+        "title": "Release: March 2, 2026 - AWS Listed Competitors Fix & App Runner Update",
+        "author": "Jason",
+        "mergedAt": "2026-03-03T04:18:10Z",
+        "additions": 0,
+        "customAdditions": 234,
+        "deletions": 0,
+        "files": 9,
+        "points": 3,
+        "rationale": "Small-medium release combining a targeted competitors collector fix, an App Runner config update, and several documentation/changelog additions across 9 files, but no significant new logic or architectural change.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.45,
+          "Jason": 0.55
+        }
+      }
+    ],
+    "totalPoints": 3,
+    "byAuthor": {
+      "Chris": 1.4,
+      "Jason": 1.7
+    },
+    "byCategory": {
+      "Core Platform": 3
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "AWS Marketplace Competitor Accuracy & Infrastructure Reliability",
+        "points": 3,
+        "category": "Core Platform",
+        "prs": [
+          267
+        ],
+        "rationale": "Fixed AWS listed competitor data and updated App Runner configuration to ensure accurate competitive intelligence and stable deployment infrastructure."
+      }
+    ],
+    "totalPoints": 3,
+    "byAuthor": {
+      "Jason": 3
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 0.69,
+      "grouped": 0.69
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

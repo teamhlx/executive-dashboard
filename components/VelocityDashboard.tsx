@@ -27,6 +27,8 @@ type WeekData = {
     rationale: string;
     customAdditions: number;
     isVendored: boolean;
+    isMultiAuthor?: boolean;
+    attribution?: Record<string, number>;
   }[];
   stories: {
     id: number;
@@ -205,7 +207,24 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
                       <td className="py-2 pr-4 text-gray-300 max-w-xs truncate">
                         {pr.title}
                       </td>
-                      <td className="py-2 pr-4 text-gray-400">{pr.author}</td>
+                      <td className="py-2 pr-4 text-gray-400">
+                        {pr.isMultiAuthor && pr.attribution ? (
+                          <span className="flex flex-col gap-0.5">
+                            {Object.entries(pr.attribution)
+                              .sort(([, a], [, b]) => b - a)
+                              .map(([name, fraction]) => (
+                                <span key={name} className="text-xs">
+                                  {name}{' '}
+                                  <span className="text-gray-600">
+                                    ({Math.round(fraction * 100)}%)
+                                  </span>
+                                </span>
+                              ))}
+                          </span>
+                        ) : (
+                          pr.author
+                        )}
+                      </td>
                       <td className="py-2 pr-4 text-gray-500 text-xs">
                         {pr.category}
                       </td>

@@ -1,0 +1,176 @@
+{
+  "week": "2025-W37",
+  "startDate": "2025-09-08",
+  "endDate": "2025-09-14",
+  "generatedAt": "2026-06-27T15:54:30.399Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 49,
+        "title": "Adds required data fields for strategy",
+        "author": "Chris",
+        "mergedAt": "2025-09-09T23:12:27Z",
+        "additions": 0,
+        "customAdditions": 82,
+        "deletions": 0,
+        "files": 2,
+        "points": 3,
+        "rationale": "Adding 82 lines of custom field definitions to a Prisma schema file is a modest data modeling task requiring thoughtful field design but limited complexity.",
+        "category": "Data/Schema",
+        "vendored": true,
+        "vendoredRatio": 63,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 54,
+        "title": "Ch/worker restart",
+        "author": "Chris",
+        "mergedAt": "2025-09-11T17:20:17Z",
+        "additions": 0,
+        "customAdditions": 419,
+        "deletions": 0,
+        "files": 9,
+        "points": 8,
+        "rationale": "419 lines across 9 files touching worker restart logic, BullMQ configuration, queue admin UI, entrypoint, and CI config represents a significant cross-cutting infrastructure feature.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 55,
+        "title": "Implement required fields validation and UI improvements",
+        "author": "Jason",
+        "mergedAt": "2025-09-13T04:01:43Z",
+        "additions": 0,
+        "customAdditions": 179,
+        "deletions": 0,
+        "files": 8,
+        "points": 5,
+        "rationale": "179 lines across 8 files implementing required field validation logic, a progress hook, filtering UI, and layout adjustments constitutes a solid medium-sized feature with meaningful frontend and utility work.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 53,
+        "title": "Fix logout error: User not found or not authenticated",
+        "author": "Jason",
+        "mergedAt": "2025-09-10T18:16:20Z",
+        "additions": 0,
+        "customAdditions": 34,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "34 lines across 3 files fixing a logout authentication error is a small, targeted bug fix with limited scope.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 51,
+        "title": "Next bump",
+        "author": "Jason",
+        "mergedAt": "2025-09-10T16:40:55Z",
+        "additions": 0,
+        "customAdditions": 1,
+        "deletions": 0,
+        "files": 2,
+        "points": 1,
+        "rationale": "A single custom line bumping the Next.js version in package.json is a trivial dependency update.",
+        "category": "DevOps",
+        "vendored": true,
+        "vendoredRatio": 99,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 19,
+    "byAuthor": {
+      "Chris": 11,
+      "Jason": 8
+    },
+    "byCategory": {
+      "Data/Schema": 3,
+      "Infrastructure": 8,
+      "UI/UX": 5,
+      "Core Platform": 2,
+      "DevOps": 1
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Strategy Required Fields: Data Capture & Validation",
+        "points": 13,
+        "category": "Data/Schema",
+        "prs": [
+          49,
+          55
+        ],
+        "rationale": "Introduced required data fields for strategy at the schema level and enforced them with validation logic and UI feedback, ensuring complete and consistent strategy data entry."
+      },
+      {
+        "id": 2,
+        "name": "Worker Reliability & Background Processing Stability",
+        "points": 8,
+        "category": "Infrastructure",
+        "prs": [
+          54
+        ],
+        "rationale": "Improved platform resilience by enabling worker restart capability, reducing downtime risk for background processing jobs."
+      },
+      {
+        "id": 3,
+        "name": "Fix User Logout Authentication Error",
+        "points": 2,
+        "category": "Core Platform",
+        "prs": [
+          53
+        ],
+        "rationale": "Resolved a logout error that occurred when a user was not found or authenticated, improving session handling reliability."
+      },
+      {
+        "id": 4,
+        "name": "Framework Version Upgrade",
+        "points": 1,
+        "category": "DevOps",
+        "prs": [
+          51
+        ],
+        "rationale": "Bumped the Next.js version to keep the platform up to date with the latest framework improvements and security patches."
+      }
+    ],
+    "totalPoints": 24,
+    "byAuthor": {
+      "Chris": 12.9,
+      "Jason": 11.1
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 4.39,
+      "grouped": 5.54
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

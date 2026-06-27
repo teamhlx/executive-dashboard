@@ -1,0 +1,495 @@
+{
+  "week": "2026-W25",
+  "startDate": "2026-06-15",
+  "endDate": "2026-06-21",
+  "generatedAt": "2026-06-27T16:06:34.484Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 461,
+        "title": "Ch/guided experience",
+        "author": "Chris",
+        "mergedAt": "2026-06-20T14:54:07Z",
+        "additions": 0,
+        "customAdditions": 10772,
+        "deletions": 0,
+        "files": 115,
+        "points": 21,
+        "rationale": "A transformative AI automation subsystem spanning 115+ files with a full automation agent, circuit-breaker, checkpointer, metrics, tool registry, MCP integration, and guided experience orchestration — clearly weeks of architectural work.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.75,
+          "Jason": 0.25
+        }
+      },
+      {
+        "pr": 468,
+        "title": "feat(ace): connect ACE opportunities to existing CRM deals (SM-545)",
+        "author": "Jason",
+        "mergedAt": "2026-06-21T22:29:17Z",
+        "additions": 0,
+        "customAdditions": 828,
+        "deletions": 0,
+        "files": 6,
+        "points": 5,
+        "rationale": "Meaningful feature connecting ACE opportunities to existing CRM deals across 6 files with new UI components, server actions, and integration logic totaling 828 lines.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 467,
+        "title": "feat(ace): refresh CRM contacts at ACE push time (SM-542)",
+        "author": "Jason",
+        "mergedAt": "2026-06-21T20:01:36Z",
+        "additions": 0,
+        "customAdditions": 238,
+        "deletions": 0,
+        "files": 4,
+        "points": 3,
+        "rationale": "Modest focused feature adding CRM contact hydration at ACE push time across three hydration modules and an actions file, well-scoped at 238 lines.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 466,
+        "title": "Clean up CRM stage mappings + LLM crosswalk gap-fill (SM-562)",
+        "author": "Jason",
+        "mergedAt": "2026-06-21T19:18:58Z",
+        "additions": 0,
+        "customAdditions": 410,
+        "deletions": 0,
+        "files": 4,
+        "points": 5,
+        "rationale": "Solid feature combining CRM stage mapping cleanup, an LLM-powered crosswalk gap-fill module, and a seed utility across 4 files — meaningful logic with an AI component.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 465,
+        "title": "feat(ace): submit-for-review + consolidated ACE review in prospect editor (SM-563)",
+        "author": "Jason",
+        "mergedAt": "2026-06-21T19:04:21Z",
+        "additions": 0,
+        "customAdditions": 1620,
+        "deletions": 0,
+        "files": 16,
+        "points": 8,
+        "rationale": "Significant ACE feature set introducing submit-for-review flow, a consolidated review UI, status banners, reconciliation, validator/mapper updates, and a connector deployment script across 16 files and 1620 lines.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 464,
+        "title": "feat(ace): modal radio editor for Primary Needs from AWS (SM-546)",
+        "author": "Jason",
+        "mergedAt": "2026-06-20T16:03:23Z",
+        "additions": 0,
+        "customAdditions": 305,
+        "deletions": 0,
+        "files": 6,
+        "points": 3,
+        "rationale": "Focused UI feature adding a modal radio editor for AWS Primary Needs with supporting validator and standard-values updates across 6 files and 305 lines.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 463,
+        "title": "Gate AI Alliances Assistant admin nav behind super admin",
+        "author": "Jason",
+        "mergedAt": "2026-06-20T15:15:39Z",
+        "additions": 0,
+        "customAdditions": 2,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Trivial single-line config tweak gating a nav item behind super-admin in one file.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 460,
+        "title": "fix(admin): attach skematic.ai users to the Skematic company + add edit-company UI",
+        "author": "Jason",
+        "mergedAt": "2026-06-20T03:06:28Z",
+        "additions": 0,
+        "customAdditions": 473,
+        "deletions": 0,
+        "files": 6,
+        "points": 5,
+        "rationale": "Solid admin feature combining automatic company attachment for skematic.ai users with a new edit-company UI dialog and user-type library changes across 6 files and 473 lines.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 459,
+        "title": "Fix overflowing profile name in the sidebar ",
+        "author": "Mauro",
+        "mergedAt": "2026-06-20T03:05:20Z",
+        "additions": 0,
+        "customAdditions": 75,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "Small UI fix addressing overflowing profile name in the sidebar across three layout/component files with 75 lines.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Mauro": 1
+        }
+      },
+      {
+        "pr": 457,
+        "title": "feat(mcp): Add OAuth2 token endpoint for Quick Flows integration",
+        "author": "Skippy",
+        "mergedAt": "2026-06-18T00:25:18Z",
+        "additions": 0,
+        "customAdditions": 148,
+        "deletions": 0,
+        "files": 2,
+        "points": 3,
+        "rationale": "Modest but purposeful addition of an OAuth2 token endpoint for MCP/Quick Flows integration in a new route file with env config, 148 lines of custom logic.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Skippy": 1
+        }
+      },
+      {
+        "pr": 456,
+        "title": "feat(mcp): Add playbook MCP server for Amazon Quick integration",
+        "author": "Skippy",
+        "mergedAt": "2026-06-17T23:32:45Z",
+        "additions": 0,
+        "customAdditions": 884,
+        "deletions": 0,
+        "files": 13,
+        "points": 8,
+        "rationale": "Significant new MCP server implementation with authentication, six distinct tool handlers, a README, and API routing across 13 files and 884 lines — a complete new integration surface.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Skippy": 1
+        }
+      },
+      {
+        "pr": 455,
+        "title": "Sync staging with main + Dependabot dependency bumps",
+        "author": "Jason",
+        "mergedAt": "2026-06-17T22:43:29Z",
+        "additions": 0,
+        "customAdditions": 2165,
+        "deletions": 0,
+        "files": 46,
+        "points": 8,
+        "rationale": "Large sync PR consolidating a major navigation refactor, product switcher, performance page refactor, and dependency bumps across 46 files and 2165 lines — primarily Mauro's navigation work merged with Jason's integration commits.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 26,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Mauro": 0.8,
+          "Jason": 0.2
+        }
+      },
+      {
+        "pr": 449,
+        "title": "Sm 552/move navigation to navbar",
+        "author": "Mauro",
+        "mergedAt": "2026-06-17T22:01:54Z",
+        "additions": 0,
+        "customAdditions": 2159,
+        "deletions": 0,
+        "files": 44,
+        "points": 8,
+        "rationale": "Major navigation redesign moving from a static sidebar to a hover-expanding sidebar with a global product switcher, new icons, layout refactors, and admin nav decomposition across 44 files and 2159 lines.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Mauro": 1
+        }
+      },
+      {
+        "pr": 451,
+        "title": "Release: rival-first onboarding, externalized HubSpot API, and deletion-cleanup batching",
+        "author": "Jason",
+        "mergedAt": "2026-06-16T06:15:29Z",
+        "additions": 0,
+        "customAdditions": 4966,
+        "deletions": 0,
+        "files": 91,
+        "points": 13,
+        "rationale": "Major release PR encompassing rival-first onboarding flows, externalized HubSpot API, deletion-cleanup batching, schema migrations, extensive documentation, and broad cross-cutting changes across 91 files and nearly 5000 lines.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 452,
+        "title": "refactor: address Copilot review nits from PR #451",
+        "author": "Jason",
+        "mergedAt": "2026-06-16T05:54:32Z",
+        "additions": 0,
+        "customAdditions": 27,
+        "deletions": 0,
+        "files": 3,
+        "points": 1,
+        "rationale": "Trivial nit-fix addressing Copilot review comments across 3 files with only 27 lines of changes.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 450,
+        "title": "perf: batch S3 + Pinecone deletes in rival-deletion cleanup",
+        "author": "Jason",
+        "mergedAt": "2026-06-16T04:39:00Z",
+        "additions": 0,
+        "customAdditions": 211,
+        "deletions": 0,
+        "files": 5,
+        "points": 5,
+        "rationale": "Batching S3 and Pinecone deletes across five service files is a meaningful performance refactor touching the vector store client, S3 service, and multiple cleanup services with 211 lines of custom logic.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 448,
+        "title": "fix: bump Company.updatedAt on field-value writes for outbound sync",
+        "author": "Jason",
+        "mergedAt": "2026-06-16T03:05:13Z",
+        "additions": 0,
+        "customAdditions": 120,
+        "deletions": 0,
+        "files": 6,
+        "points": 3,
+        "rationale": "Bumping Company.updatedAt on field-value writes is a modest targeted fix spanning the Prisma layer, an API route, and an admin page, with the bulk of additions being documentation updates rather than complex logic.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 447,
+        "title": "Full-collection on onboarding for non-marketplace companies + rival hard-delete cleanup",
+        "author": "Jason",
+        "mergedAt": "2026-06-15T21:56:55Z",
+        "additions": 0,
+        "customAdditions": 884,
+        "deletions": 0,
+        "files": 13,
+        "points": 13,
+        "rationale": "884 lines across 13 files introducing full-collection triggering on onboarding for non-marketplace companies, a complete rival hard-delete cleanup flow with a BullMQ job, admin UI changes, scheduler logic, and unit tests represents a major feature with architectural breadth.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 115,
+    "byAuthor": {
+      "Chris": 15.8,
+      "Jason": 71.9,
+      "Mauro": 16.4,
+      "Skippy": 11
+    },
+    "byCategory": {
+      "AI/Agents": 26,
+      "Integrations": 30,
+      "UI/UX": 21,
+      "Admin/Tools": 6,
+      "Core Platform": 32
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Guided AI Experience for Business Readiness",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          461
+        ],
+        "rationale": "Delivered a guided, AI-driven onboarding and readiness experience to help users navigate the platform with intelligent assistance."
+      },
+      {
+        "id": 2,
+        "name": "ACE Partner Program Integration & Review Workflow",
+        "points": 21,
+        "category": "Integrations",
+        "prs": [
+          468,
+          467,
+          465,
+          464
+        ],
+        "rationale": "Built end-to-end ACE partner submission capabilities including connecting opportunities to CRM deals, refreshing contacts at push time, a submit-for-review flow, and a modal editor for AWS Primary Needs."
+      },
+      {
+        "id": 3,
+        "name": "CRM Stage Mapping & AI Gap-Fill Accuracy",
+        "points": 5,
+        "category": "AI/Agents",
+        "prs": [
+          466
+        ],
+        "rationale": "Improved CRM stage mapping accuracy and used LLM-powered crosswalk logic to automatically fill gaps in deal stage data."
+      },
+      {
+        "id": 4,
+        "name": "AI Alliances Assistant Access Control",
+        "points": 1,
+        "category": "Admin/Tools",
+        "prs": [
+          463
+        ],
+        "rationale": "Restricted the AI Alliances Assistant admin navigation to super admins to prevent unauthorized access."
+      },
+      {
+        "id": 5,
+        "name": "Skematic User Company Management & Admin UI",
+        "points": 5,
+        "category": "Admin/Tools",
+        "prs": [
+          460
+        ],
+        "rationale": "Ensured skematic.ai users are properly attached to the Skematic company and added an edit-company UI for streamlined admin management."
+      },
+      {
+        "id": 6,
+        "name": "Sidebar Profile Display Fix",
+        "points": 2,
+        "category": "UI/UX",
+        "prs": [
+          459
+        ],
+        "rationale": "Fixed an overflowing profile name in the sidebar to improve visual consistency and usability."
+      },
+      {
+        "id": 7,
+        "name": "MCP Server & OAuth2 Integration for Amazon Quick Flows",
+        "points": 13,
+        "category": "Integrations",
+        "prs": [
+          457,
+          456
+        ],
+        "rationale": "Enabled Amazon Quick Flows integration by building a playbook MCP server and adding an OAuth2 token endpoint for secure authentication."
+      },
+      {
+        "id": 8,
+        "name": "Navigation Redesign & UI Modernization",
+        "points": 8,
+        "category": "UI/UX",
+        "prs": [
+          449
+        ],
+        "rationale": "Moved primary navigation to the navbar to modernize the app layout and improve overall user navigation experience."
+      },
+      {
+        "id": 9,
+        "name": "Rival-First Onboarding, HubSpot Externalization & Deletion Cleanup",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          451,
+          452,
+          450,
+          447
+        ],
+        "rationale": "Delivered a major platform release covering rival-first onboarding for non-marketplace companies, externalized HubSpot API configuration, batched S3 and Pinecone deletions for performance, and clean rival hard-delete lifecycle management."
+      },
+      {
+        "id": 10,
+        "name": "Outbound CRM Sync Reliability Fix",
+        "points": 3,
+        "category": "Integrations",
+        "prs": [
+          448
+        ],
+        "rationale": "Fixed a bug where Company.updatedAt was not being bumped on field-value writes, ensuring outbound CRM sync triggers correctly."
+      }
+    ],
+    "totalPoints": 100,
+    "byAuthor": {
+      "Chris": 21,
+      "Jason": 56,
+      "Mauro": 10,
+      "Skippy": 13
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 26.56,
+      "grouped": 23.09
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

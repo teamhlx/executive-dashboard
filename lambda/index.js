@@ -831,6 +831,8 @@ When the action is "link" or "create", your final assistant message MUST also in
           rationale: pr.rationale,
           customAdditions: pr.custom_additions,
           isVendored: pr.is_vendored,
+          isMultiAuthor: pr.is_multi_author || false,
+          attribution: pr.attribution || null,
         });
       }
       const storiesByRun = {};

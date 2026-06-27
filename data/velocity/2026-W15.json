@@ -1,0 +1,323 @@
+{
+  "week": "2026-W15",
+  "startDate": "2026-04-06",
+  "endDate": "2026-04-12",
+  "generatedAt": "2026-06-27T16:02:12.892Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 314,
+        "title": "Update apprunner.yaml to switch environment variables from staging to…",
+        "author": "Jason",
+        "mergedAt": "2026-04-11T07:33:15Z",
+        "additions": 0,
+        "customAdditions": 33,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single config file update swapping environment variable values from staging to production — trivial infrastructure change.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 312,
+        "title": "Release: April 11, 2026 — Schema Refactor, Playbooks, Products, Studio, Credentials & Competitive Intelligence",
+        "author": "Jason",
+        "mergedAt": "2026-04-11T07:21:50Z",
+        "additions": 0,
+        "customAdditions": 38333,
+        "deletions": 0,
+        "files": 515,
+        "points": 21,
+        "rationale": "Massive release PR spanning 515 files, 38k+ custom lines covering schema refactors, playbooks, products, studio, credentials, and competitive intelligence — clearly weeks of transformative work across the entire platform.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 9,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.3,
+          "Jason": 0.7
+        }
+      },
+      {
+        "pr": 309,
+        "title": "formatting",
+        "author": "Jason",
+        "mergedAt": "2026-04-10T16:26:29Z",
+        "additions": 0,
+        "customAdditions": 2,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Two-line formatting-only change in a single component file — purely cosmetic, zero logic change.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 308,
+        "title": "SM-429: Task table shows start/end dates instead of duration",
+        "author": "Jason",
+        "mergedAt": "2026-04-10T16:16:29Z",
+        "additions": 0,
+        "customAdditions": 39,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "Small targeted bug fix in TaskTable to display start/end dates instead of duration, confined to a single file with 39 lines.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 307,
+        "title": "Deduplicate layout queries & restore product collecting UI",
+        "author": "Jason",
+        "mergedAt": "2026-04-10T15:45:22Z",
+        "additions": 0,
+        "customAdditions": 126,
+        "deletions": 0,
+        "files": 13,
+        "points": 3,
+        "rationale": "Modest refactor deduplicating layout queries across multiple layout files and restoring product collecting UI, touching 13 files with 126 lines of purposeful structural cleanup.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 304,
+        "title": "Readiness and playbook UX updates across fundamentals/tasks/products",
+        "author": "Jason",
+        "mergedAt": "2026-04-10T07:05:47Z",
+        "additions": 0,
+        "customAdditions": 5762,
+        "deletions": 0,
+        "files": 68,
+        "points": 13,
+        "rationale": "Major feature PR with 5762 custom lines across 68 files covering readiness collection UX, playbook integration, task/product UI updates, and seeding — a substantial multi-area feature delivery.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 303,
+        "title": "SM-431: comments out integrated with",
+        "author": "Chris",
+        "mergedAt": "2026-04-10T01:27:27Z",
+        "additions": 0,
+        "customAdditions": 11,
+        "deletions": 0,
+        "files": 6,
+        "points": 1,
+        "rationale": "Commenting out 'integrated with' references across 6 files with only 11 lines changed — a trivial suppression/commenting task.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 302,
+        "title": "SM-426: removes AWS marketplace listing from GTM slide, removes unused GTM slide",
+        "author": "Chris",
+        "mergedAt": "2026-04-10T01:26:51Z",
+        "additions": 0,
+        "customAdditions": 13,
+        "deletions": 0,
+        "files": 5,
+        "points": 2,
+        "rationale": "Small cleanup removing AWS Marketplace listing from GTM slide and deleting an unused slide component across 5 files with 13 lines.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 299,
+        "title": "improves readiness collection, introduces CLI",
+        "author": "Chris",
+        "mergedAt": "2026-04-09T04:28:58Z",
+        "additions": 0,
+        "customAdditions": 338,
+        "deletions": 0,
+        "files": 10,
+        "points": 5,
+        "rationale": "Meaningful feature work introducing a readiness CLI, Dockerfile updates, worker integration, and an admin RunReadiness dialog — solid cross-cutting feature across 338 custom lines in 9 files.",
+        "category": "AI/Agents",
+        "vendored": true,
+        "vendoredRatio": 54,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 296,
+        "title": "fixes assessment slides, collector, competitors",
+        "author": "Chris",
+        "mergedAt": "2026-04-09T04:24:04Z",
+        "additions": 0,
+        "customAdditions": 131,
+        "deletions": 0,
+        "files": 13,
+        "points": 5,
+        "rationale": "Multi-area bug fix and refactor touching assessment slides, collector logic, competitor/rivals migration, field values, and portfolio table across 13 files — meaningful but bounded corrective work.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 293,
+        "title": "Ch/refactor/misc",
+        "author": "Chris",
+        "mergedAt": "2026-04-06T22:58:40Z",
+        "additions": 0,
+        "customAdditions": 1430,
+        "deletions": 0,
+        "files": 48,
+        "points": 8,
+        "rationale": "Significant AI agent refactor spanning chat-agent, multiple sub-agents, tools, state, prompts, and supporting infrastructure across 48 files with 1430 meaningful custom lines.",
+        "category": "AI/Agents",
+        "vendored": true,
+        "vendoredRatio": 71,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      }
+    ],
+    "totalPoints": 62,
+    "byAuthor": {
+      "Jason": 34.7,
+      "Chris": 27.3
+    },
+    "byCategory": {
+      "DevOps": 1,
+      "Core Platform": 39,
+      "UI/UX": 9,
+      "AI/Agents": 13
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Production Release: April 11, 2026 Platform Milestone",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          312
+        ],
+        "rationale": "Packaged the major April 11 release encompassing schema refactor, playbooks, products, studio, credentials, and competitive intelligence into a single deployable milestone."
+      },
+      {
+        "id": 2,
+        "name": "Readiness & Playbook Experience Overhaul",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          304,
+          307,
+          308,
+          309
+        ],
+        "rationale": "Unified improvements to the readiness and playbook UX across fundamentals, tasks, and products — including task date/duration display fixes, layout deduplication, and formatting polish."
+      },
+      {
+        "id": 3,
+        "name": "AI Readiness Collection & Developer CLI",
+        "points": 13,
+        "category": "AI/Agents",
+        "prs": [
+          293,
+          299
+        ],
+        "rationale": "Refactored the AI agent layer and improved readiness data collection while introducing a CLI tool to streamline developer workflows."
+      },
+      {
+        "id": 4,
+        "name": "Assessment Slides, Competitor & Collector Fixes",
+        "points": 5,
+        "category": "Core Platform",
+        "prs": [
+          296
+        ],
+        "rationale": "Resolved bugs in assessment slide generation, the data collector, and competitor intelligence features to ensure accurate output for end users."
+      },
+      {
+        "id": 5,
+        "name": "GTM Slide Cleanup & Marketplace Listing Removal",
+        "points": 2,
+        "category": "UI/UX",
+        "prs": [
+          302
+        ],
+        "rationale": "Cleaned up the go-to-market presentation by removing the AWS Marketplace listing and unused GTM slide to keep sales materials current and uncluttered."
+      },
+      {
+        "id": 6,
+        "name": "Disable Integrations Display in UI",
+        "points": 1,
+        "category": "UI/UX",
+        "prs": [
+          303
+        ],
+        "rationale": "Temporarily commented out the 'integrated with' section to prevent incomplete integration data from surfacing to users."
+      },
+      {
+        "id": 7,
+        "name": "Production Environment Configuration Switch",
+        "points": 1,
+        "category": "DevOps",
+        "prs": [
+          314
+        ],
+        "rationale": "Updated App Runner configuration to promote environment variables from staging to production, enabling the live deployment environment."
+      }
+    ],
+    "totalPoints": 64,
+    "byAuthor": {
+      "Jason": 43,
+      "Chris": 21
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 14.32,
+      "grouped": 14.78
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

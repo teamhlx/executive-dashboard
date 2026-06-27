@@ -1,0 +1,87 @@
+{
+  "week": "2026-W09",
+  "startDate": "2026-02-23",
+  "endDate": "2026-03-01",
+  "generatedAt": "2026-06-27T16:00:57.425Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 262,
+        "title": "Release: February 27, 2026 - Assessment Graph, AWS Marketplace Discovery & Portfolio Fixes",
+        "author": "Jason",
+        "mergedAt": "2026-02-27T18:05:34Z",
+        "additions": 0,
+        "customAdditions": 3948,
+        "deletions": 0,
+        "files": 426,
+        "points": 13,
+        "rationale": "Despite being a release bundle with heavy vendored/auto-gen content, the 3948 custom lines span AWS Marketplace discovery collectors, AI agent tooling updates, assessment graph work, portfolio query fixes, infra config, and extensive documentation — representing a major multi-feature release with architectural breadth.",
+        "category": "Core Platform",
+        "vendored": true,
+        "vendoredRatio": 94,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.55,
+          "Jason": 0.45
+        }
+      },
+      {
+        "pr": 257,
+        "title": "Assessment Features",
+        "author": "Chris",
+        "mergedAt": "2026-02-27T17:24:46Z",
+        "additions": 0,
+        "customAdditions": 201,
+        "deletions": 0,
+        "files": 11,
+        "points": 5,
+        "rationale": "201 custom lines across AWS partner badge/tier collectors, assessment graph node components (GTM, IntegrationDepth, MaturityStage), entrypoint wiring, and type/schema definitions represent a solid, self-contained assessment feature addition with both backend data collection and frontend graph node work.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 42,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      }
+    ],
+    "totalPoints": 18,
+    "byAuthor": {
+      "Chris": 12.2,
+      "Jason": 5.9
+    },
+    "byCategory": {
+      "Core Platform": 13,
+      "AI/Agents": 5
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Assessment Intelligence & Graph Capabilities",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          262,
+          257
+        ],
+        "rationale": "Combined the assessment graph visualization, AI-powered assessment features, AWS Marketplace discovery integration, and portfolio fixes into a cohesive enhancement of the platform's core assessment and readiness evaluation capabilities."
+      }
+    ],
+    "totalPoints": 21,
+    "byAuthor": {
+      "Jason": 15.2,
+      "Chris": 5.8
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 4.16,
+      "grouped": 4.85
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

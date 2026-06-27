@@ -1,0 +1,84 @@
+{
+  "week": "2026-W08",
+  "startDate": "2026-02-16",
+  "endDate": "2026-02-22",
+  "generatedAt": "2026-06-27T16:00:47.004Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 256,
+        "title": "fix: portfolio pathway matching case-insensitive + top-level gaps only",
+        "author": "Jason",
+        "mergedAt": "2026-02-16T19:45:23Z",
+        "additions": 0,
+        "customAdditions": 9,
+        "deletions": 0,
+        "files": 2,
+        "points": 2,
+        "rationale": "Small bug fix across 2 files with 9 custom lines addressing case-insensitive matching and filtering logic for top-level gaps in the portfolio pathway feature.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 255,
+        "title": "fix: portfolio table co-build/co-market/co-sell columns showing gaps completion",
+        "author": "Jason",
+        "mergedAt": "2026-02-16T19:01:39Z",
+        "additions": 0,
+        "customAdditions": 8,
+        "deletions": 0,
+        "files": 2,
+        "points": 2,
+        "rationale": "Small bug fix across 2 files with 8 custom lines correcting incorrect data being displayed in co-build/co-market/co-sell columns of the portfolio table.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 4,
+    "byAuthor": {
+      "Jason": 4
+    },
+    "byCategory": {
+      "Core Platform": 2,
+      "UI/UX": 2
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Portfolio Gap Tracking Accuracy Improvements",
+        "points": 3,
+        "category": "Core Platform",
+        "prs": [
+          256,
+          255
+        ],
+        "rationale": "Fixed portfolio pathway matching and co-build/co-market/co-sell column displays to ensure gap completion data is calculated and shown accurately across the platform."
+      }
+    ],
+    "totalPoints": 3,
+    "byAuthor": {
+      "Jason": 3
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 0.92,
+      "grouped": 0.69
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

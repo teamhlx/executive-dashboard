@@ -1,0 +1,401 @@
+{
+  "week": "2026-W21",
+  "startDate": "2026-05-18",
+  "endDate": "2026-05-24",
+  "generatedAt": "2026-06-27T16:04:43.123Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 400,
+        "title": "Support multi-environment AWS connector deployments",
+        "author": "Jason",
+        "mergedAt": "2026-05-24T22:44:44Z",
+        "additions": 0,
+        "customAdditions": 361,
+        "deletions": 0,
+        "files": 12,
+        "points": 8,
+        "rationale": "Spans 12 files across infra config, AWS CloudFormation, server actions, credential providers, and UI components to support multi-environment connector deployments — significant feature with cross-cutting changes.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 398,
+        "title": "Accept API key from query param for hubspot.fetch compatibility",
+        "author": "Jason",
+        "mergedAt": "2026-05-21T20:58:00Z",
+        "additions": 0,
+        "customAdditions": 1,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-line change to accept an API key from a query parameter in one route file.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 397,
+        "title": "Remove skematic-hubspot-connector — extracted to own repo",
+        "author": "Jason",
+        "mergedAt": "2026-05-21T20:16:14Z",
+        "additions": 0,
+        "customAdditions": 5,
+        "deletions": 0,
+        "files": 12,
+        "points": 1,
+        "rationale": "Extraction of a connector to its own repo with only a .gitignore update and minor route touch as the meaningful custom additions — essentially housekeeping.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 394,
+        "title": "Add portfolio-aware company context for chat",
+        "author": "Jason",
+        "mergedAt": "2026-05-21T05:23:05Z",
+        "additions": 0,
+        "customAdditions": 182,
+        "deletions": 0,
+        "files": 8,
+        "points": 5,
+        "rationale": "182 lines across 8 files touching the chat agent, prompts, DAL, field progress, layout, and hook to introduce portfolio-aware company context — a solid, cross-cutting feature addition.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 395,
+        "title": "ACE review: editable customer fields, improved reset & validator",
+        "author": "Jason",
+        "mergedAt": "2026-05-21T05:50:38Z",
+        "additions": 0,
+        "customAdditions": 12809,
+        "deletions": 0,
+        "files": 109,
+        "points": 21,
+        "rationale": "Over 12,800 lines across 109 files touching AI agents, sub-agents, state, tools, schema migrations, UI components, actions, and infra config — a transformative, multi-week epic covering editable customer fields, reset logic, validator improvements, and much more.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 25,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 396,
+        "title": "Propagate portfolioId to chat agent",
+        "author": "Jason",
+        "mergedAt": "2026-05-21T06:47:28Z",
+        "additions": 0,
+        "customAdditions": 36,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "36 lines across 3 files to thread a portfolioId through the chat agent route and sidebar — small, focused plumbing change.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 393,
+        "title": "Move TLS env var to docker entrypoint",
+        "author": "Jason",
+        "mergedAt": "2026-05-18T07:38:53Z",
+        "additions": 0,
+        "customAdditions": 3,
+        "deletions": 0,
+        "files": 3,
+        "points": 1,
+        "rationale": "Three-line change moving a TLS env var into the docker entrypoint across two config files and the entrypoint script.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 392,
+        "title": "Set NODE_TLS_REJECT_UNAUTHORIZED=0 in App Runner",
+        "author": "Jason",
+        "mergedAt": "2026-05-18T07:13:19Z",
+        "additions": 0,
+        "customAdditions": 2,
+        "deletions": 0,
+        "files": 2,
+        "points": 1,
+        "rationale": "Two-line config addition setting NODE_TLS_REJECT_UNAUTHORIZED in two App Runner YAML files.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 391,
+        "title": "Fix staging TLS: use instrumentation.ts for global SSL bypass",
+        "author": "Jason",
+        "mergedAt": "2026-05-18T06:34:23Z",
+        "additions": 0,
+        "customAdditions": 5,
+        "deletions": 0,
+        "files": 2,
+        "points": 2,
+        "rationale": "Five lines across two files to implement a global SSL bypass via instrumentation.ts for staging — small but deliberate architectural placement.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 390,
+        "title": "Fix TLS bypass for staging in chat agent route",
+        "author": "Jason",
+        "mergedAt": "2026-05-18T06:04:13Z",
+        "additions": 0,
+        "customAdditions": 1,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-line fix to the chat agent route for a TLS bypass on staging.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 389,
+        "title": "Add product badges to outcomes, fix outcome linking and staging SSL",
+        "author": "Jason",
+        "mergedAt": "2026-05-18T05:38:59Z",
+        "additions": 0,
+        "customAdditions": 34,
+        "deletions": 0,
+        "files": 8,
+        "points": 3,
+        "rationale": "34 lines across 8 files adding product badges to outcomes, fixing outcome linking, and addressing staging SSL — modest but multi-touch feature and bug fix.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 388,
+        "title": "Conditional rename of RivalProductComparison index",
+        "author": "Jason",
+        "mergedAt": "2026-05-18T02:16:28Z",
+        "additions": 0,
+        "customAdditions": 23,
+        "deletions": 0,
+        "files": 2,
+        "points": 2,
+        "rationale": "23 lines in two migration files to conditionally rename a database index — small schema fix with some conditional logic.",
+        "category": "Data/Schema",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 387,
+        "title": "Suggest Playbook tool, milestone UX fixes, Task Details rename (SM-513)",
+        "author": "Jason",
+        "mergedAt": "2026-05-18T01:35:10Z",
+        "additions": 0,
+        "customAdditions": 320,
+        "deletions": 0,
+        "files": 11,
+        "points": 8,
+        "rationale": "320 lines across 11 files adding a Suggest Playbook tool, milestone UX fixes, Task Details renaming, and Gantt/hierarchy editor changes — a significant cross-cutting feature touching AI tooling, admin UI, and task components.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 386,
+        "title": "fix: remove Contact Support from user menu (SM-516)",
+        "author": "Jason",
+        "mergedAt": "2026-05-18T00:45:19Z",
+        "additions": 0,
+        "customAdditions": 0,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Zero net additions — removal of a single menu item from the user menu, trivial UI change.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 57,
+    "byAuthor": {
+      "Jason": 57
+    },
+    "byCategory": {
+      "Infrastructure": 8,
+      "Integrations": 1,
+      "DevOps": 6,
+      "AI/Agents": 7,
+      "Core Platform": 29,
+      "UI/UX": 4,
+      "Data/Schema": 2
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "ACE Customer Review Experience Overhaul",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          395
+        ],
+        "rationale": "Delivered a major upgrade to the ACE review workflow with editable customer fields, improved reset behavior, and enhanced validation."
+      },
+      {
+        "id": 2,
+        "name": "Portfolio-Aware AI Chat for Companies",
+        "points": 8,
+        "category": "AI/Agents",
+        "prs": [
+          394,
+          396
+        ],
+        "rationale": "Enhanced the chat agent to understand portfolio context by adding company-level awareness and propagating portfolioId through the chat pipeline."
+      },
+      {
+        "id": 3,
+        "name": "Playbook Suggestions & Milestone UX Improvements",
+        "points": 8,
+        "category": "Core Platform",
+        "prs": [
+          387
+        ],
+        "rationale": "Introduced a Suggest Playbook tool, fixed milestone UX issues, and renamed Task Details to improve the guided workflow experience."
+      },
+      {
+        "id": 4,
+        "name": "Fix Staging TLS/SSL Connectivity Issues",
+        "points": 8,
+        "category": "DevOps",
+        "prs": [
+          391,
+          390,
+          392,
+          393
+        ],
+        "rationale": "Resolved TLS/SSL bypass problems across staging environments by applying fixes in the chat agent route, App Runner config, docker entrypoint, and instrumentation layer."
+      },
+      {
+        "id": 5,
+        "name": "Multi-Environment AWS Connector Support",
+        "points": 8,
+        "category": "Infrastructure",
+        "prs": [
+          400
+        ],
+        "rationale": "Enabled AWS connector deployments to support multiple environments, improving infrastructure flexibility and scalability."
+      },
+      {
+        "id": 6,
+        "name": "HubSpot Connector Extraction & API Compatibility",
+        "points": 2,
+        "category": "Integrations",
+        "prs": [
+          397,
+          398
+        ],
+        "rationale": "Extracted the HubSpot connector into its own repository and added query parameter API key support to maintain fetch compatibility."
+      },
+      {
+        "id": 7,
+        "name": "Product Badges on Outcomes & Outcome Linking Fixes",
+        "points": 3,
+        "category": "UI/UX",
+        "prs": [
+          389
+        ],
+        "rationale": "Added product badges to outcomes and fixed outcome linking behavior to improve clarity and navigation in the product interface."
+      },
+      {
+        "id": 8,
+        "name": "Rival Product Comparison Index Migration",
+        "points": 2,
+        "category": "Data/Schema",
+        "prs": [
+          388
+        ],
+        "rationale": "Added a conditional rename of the RivalProductComparison index to safely handle schema migration across environments."
+      },
+      {
+        "id": 9,
+        "name": "Remove Contact Support from User Menu",
+        "points": 1,
+        "category": "UI/UX",
+        "prs": [
+          386
+        ],
+        "rationale": "Removed the Contact Support option from the user menu to streamline the navigation experience."
+      }
+    ],
+    "totalPoints": 61,
+    "byAuthor": {
+      "Jason": 61
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 13.16,
+      "grouped": 14.09
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

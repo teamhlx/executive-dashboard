@@ -1,0 +1,84 @@
+{
+  "week": "2026-W13",
+  "startDate": "2026-03-23",
+  "endDate": "2026-03-29",
+  "generatedAt": "2026-06-27T16:01:39.243Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 288,
+        "title": "HubSpot sync: scheduler secret auth + App Runner HUBSPOT_SYNC_SECRET",
+        "author": "Jason",
+        "mergedAt": "2026-03-27T17:36:13Z",
+        "additions": 0,
+        "customAdditions": 70,
+        "deletions": 0,
+        "files": 6,
+        "points": 3,
+        "rationale": "Adds secret-based authentication to the HubSpot sync route and propagates the new environment variable across multiple App Runner config files and env examples — modest but multi-file infrastructure wiring.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 285,
+        "title": "Jp/api explore",
+        "author": "Jason",
+        "mergedAt": "2026-03-24T16:44:04Z",
+        "additions": 0,
+        "customAdditions": 217,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "A single documentation file addition covering AWS API discovery and usage — useful reference material but no functional code changes.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 5,
+    "byAuthor": {
+      "Jason": 5
+    },
+    "byCategory": {
+      "Integrations": 3,
+      "Infrastructure": 2
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "HubSpot Integration Security & Infrastructure Hardening",
+        "points": 5,
+        "category": "Integrations",
+        "prs": [
+          288,
+          285
+        ],
+        "rationale": "Together these PRs establish secure authentication and infrastructure configuration for the HubSpot sync service, ensuring the integration runs safely and reliably in the App Runner environment."
+      }
+    ],
+    "totalPoints": 5,
+    "byAuthor": {
+      "Jason": 5
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 1.15,
+      "grouped": 1.15
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

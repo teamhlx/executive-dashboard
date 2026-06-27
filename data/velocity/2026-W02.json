@@ -1,0 +1,164 @@
+{
+  "week": "2026-W02",
+  "startDate": "2026-01-05",
+  "endDate": "2026-01-11",
+  "generatedAt": "2026-06-27T15:59:18.177Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 212,
+        "title": "Add CSV export for admin companies page",
+        "author": "Jason",
+        "mergedAt": "2026-01-08T19:46:14Z",
+        "additions": 0,
+        "customAdditions": 317,
+        "deletions": 0,
+        "files": 3,
+        "points": 5,
+        "rationale": "317 lines across 3 files implementing a full CSV export feature with a server action, a dialog component, and page integration represents a solid, self-contained feature.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 211,
+        "title": "Improve admin dashboard time period displays",
+        "author": "Jason",
+        "mergedAt": "2026-01-07T18:58:08Z",
+        "additions": 0,
+        "customAdditions": 54,
+        "deletions": 0,
+        "files": 4,
+        "points": 2,
+        "rationale": "54 lines across 4 files with no deletions suggests minor display/styling improvements to existing time period selectors and dashboard components.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 209,
+        "title": "Add Portfolio Management System with Permissions & Testing",
+        "author": "Jason",
+        "mergedAt": "2026-01-06T07:40:11Z",
+        "additions": 0,
+        "customAdditions": 14843,
+        "deletions": 0,
+        "files": 137,
+        "points": 21,
+        "rationale": "14843 lines across 137 files encompassing a full Portfolio Management System with permissions, testing, AI agent updates, documentation, and architectural changes is clearly an epic transformation.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 16,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 208,
+        "title": "Add bulk company CSV upload with optional readiness and gap analysis",
+        "author": "Jason",
+        "mergedAt": "2026-01-06T02:16:35Z",
+        "additions": 0,
+        "customAdditions": 168,
+        "deletions": 0,
+        "files": 2,
+        "points": 3,
+        "rationale": "168 lines across 2 files adding a bulk CSV upload action and dialog component is a modest, focused feature with limited scope.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 207,
+        "title": "Add bulk company upload feature with automatic readiness collection",
+        "author": "Jason",
+        "mergedAt": "2026-01-05T20:00:38Z",
+        "additions": 0,
+        "customAdditions": 464,
+        "deletions": 0,
+        "files": 4,
+        "points": 8,
+        "rationale": "464 lines across 4 files extending bulk upload with automatic readiness collection touches the AI readiness entrypoint, a server action, a UI dialog, and the admin page, representing a significant cross-cutting feature.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 39,
+    "byAuthor": {
+      "Jason": 39
+    },
+    "byCategory": {
+      "Admin/Tools": 8,
+      "UI/UX": 2,
+      "Core Platform": 21,
+      "AI/Agents": 8
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Portfolio Management System",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          209
+        ],
+        "rationale": "Introduced a full portfolio management system with permissions and testing, forming the core infrastructure for managing groups of companies within the platform."
+      },
+      {
+        "id": 2,
+        "name": "Bulk Company Onboarding with AI Readiness Analysis",
+        "points": 13,
+        "category": "AI/Agents",
+        "prs": [
+          207,
+          208
+        ],
+        "rationale": "Enabled administrators to upload multiple companies in bulk via CSV and automatically trigger AI-powered readiness and gap analysis for each, dramatically accelerating client onboarding workflows."
+      },
+      {
+        "id": 3,
+        "name": "Admin Dashboard Data Export & Visibility Improvements",
+        "points": 8,
+        "category": "Admin/Tools",
+        "prs": [
+          212,
+          211
+        ],
+        "rationale": "Enhanced the admin dashboard by adding CSV export for the companies page and improving how time periods are displayed, giving administrators better visibility and data portability."
+      }
+    ],
+    "totalPoints": 42,
+    "byAuthor": {
+      "Jason": 42
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 9.01,
+      "grouped": 9.7
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

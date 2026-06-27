@@ -1,0 +1,404 @@
+{
+  "week": "2026-W19",
+  "startDate": "2026-05-04",
+  "endDate": "2026-05-10",
+  "generatedAt": "2026-06-27T16:03:44.891Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 359,
+        "title": "SM-503: Ace Validation Engine",
+        "author": "Chris",
+        "mergedAt": "2026-05-09T16:58:02Z",
+        "additions": 0,
+        "customAdditions": 2639,
+        "deletions": 0,
+        "files": 12,
+        "points": 13,
+        "rationale": "Introduces a complete ACE validation engine from scratch including type definitions, field definitions, mapper, validator logic, schema migrations, server actions, and a full sandbox UI — a substantial new subsystem across 12 files.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 363,
+        "title": "Ch/sm 400",
+        "author": "Jason",
+        "mergedAt": "2026-05-09T16:59:48Z",
+        "additions": 0,
+        "customAdditions": 2639,
+        "deletions": 0,
+        "files": 12,
+        "points": 13,
+        "rationale": "Same file set and line count as PR #359 — this is a merge/integration PR that consolidates the ACE validation work; Chris authored the core feature and Jason performed the merge, with Chris carrying nearly all the effort.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.9,
+          "Jason": 0.1
+        }
+      },
+      {
+        "pr": 344,
+        "title": "Ch/sm 400: Prospect Enrichment Agent",
+        "author": "Chris",
+        "mergedAt": "2026-05-09T16:55:34Z",
+        "additions": 0,
+        "customAdditions": 3287,
+        "deletions": 0,
+        "files": 25,
+        "points": 13,
+        "rationale": "Builds a full Prospect Enrichment Agent with LangGraph state machine, prompts, entrypoint, multiple schema migrations, BullMQ enqueueing, seed updates, and sandbox UI across 25 files — a major new AI agent feature.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 360,
+        "title": "Field displayName, catalog helpers, CSV/portfolio/agents alignment",
+        "author": "Jason",
+        "mergedAt": "2026-05-08T16:08:15Z",
+        "additions": 0,
+        "customAdditions": 362,
+        "deletions": 0,
+        "files": 35,
+        "points": 8,
+        "rationale": "Adds displayName to field definitions and ripples alignment fixes across catalog helpers, CSV export, portfolio, and multiple agents/tools across 35 files, but the per-file changes are modest given only 362 custom lines.",
+        "category": "Data/Schema",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 358,
+        "title": "fix(worker): CJS bundle defines import.meta.url for createRequire",
+        "author": "Jason",
+        "mergedAt": "2026-05-07T18:07:35Z",
+        "additions": 0,
+        "customAdditions": 10,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-file, 10-line build config fix to define import.meta.url for CJS bundling — a trivial infrastructure tweak.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 354,
+        "title": "Rival admin polish, ISVA Partner Finder status, readiness smoke path",
+        "author": "Jason",
+        "mergedAt": "2026-05-07T17:44:07Z",
+        "additions": 0,
+        "customAdditions": 4456,
+        "deletions": 0,
+        "files": 48,
+        "points": 13,
+        "rationale": "Wide-ranging PR touching rival admin polish, ISVA Partner Finder status field, readiness smoke path, admin UI components, orchestrator updates, and model/tool utilities across 48 files and 4456 lines — a large multi-domain effort.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 353,
+        "title": "Block portfolio access while impersonating a company",
+        "author": "Jason",
+        "mergedAt": "2026-05-07T17:28:47Z",
+        "additions": 0,
+        "customAdditions": 177,
+        "deletions": 0,
+        "files": 5,
+        "points": 3,
+        "rationale": "Adds portfolio access blocking during company impersonation with guard logic in a handful of files plus an e2e test — a focused, modest security/UX feature.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 352,
+        "title": "Fleet-wide collector + cleanup admin tools",
+        "author": "Jason",
+        "mergedAt": "2026-05-06T06:02:24Z",
+        "additions": 0,
+        "customAdditions": 1408,
+        "deletions": 0,
+        "files": 13,
+        "points": 8,
+        "rationale": "Introduces fleet-wide bulk collector dispatch, new BullMQ job types, worker handler, bulk UI dialogs for companies and rivals, and orchestrator updates across 13 files — a significant admin/infrastructure feature.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 351,
+        "title": "Maturity stage derivation, ISVA display, admin export polish",
+        "author": "Jason",
+        "mergedAt": "2026-05-06T04:55:15Z",
+        "additions": 0,
+        "customAdditions": 2670,
+        "deletions": 0,
+        "files": 39,
+        "points": 13,
+        "rationale": "Delivers maturity stage derivation logic, ISVA display integration, admin export polish, new schema fields, backfill scripts, and assessment UI node updates across 39 files — a large cross-cutting feature touching AI, UI, and data layers.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 350,
+        "title": "SM-495: refactors badge collector",
+        "author": "Chris",
+        "mergedAt": "2026-05-06T04:40:44Z",
+        "additions": 0,
+        "customAdditions": 279,
+        "deletions": 0,
+        "files": 2,
+        "points": 3,
+        "rationale": "Refactors the badge collector and updates the agent integration across 2 files with 279 lines — a focused, self-contained AI collector improvement.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 348,
+        "title": "Ch/sm 432: Maturity Stage Calculator",
+        "author": "Chris",
+        "mergedAt": "2026-05-05T14:28:00Z",
+        "additions": 0,
+        "customAdditions": 53,
+        "deletions": 0,
+        "files": 6,
+        "points": 2,
+        "rationale": "Small set of targeted UI tweaks across assessment node components and types with only 53 lines — a minor feature/display update for the maturity stage calculator.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 347,
+        "title": "Portfolio companies: PFV/backing-table rollups, competitive cards, CSV export",
+        "author": "Jason",
+        "mergedAt": "2026-05-04T20:02:57Z",
+        "additions": 0,
+        "customAdditions": 1953,
+        "deletions": 0,
+        "files": 9,
+        "points": 8,
+        "rationale": "Builds out portfolio company rollups (PFV/backing-table), competitive landscape and threat cards, CSV export, and a refresh button across 9 files with ~1953 lines — a meaningful new analytics/UI feature set.",
+        "category": "Analytics",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 346,
+        "title": "Portfolio dashboard, rival→company promotion UI, and shared user-type module",
+        "author": "Jason",
+        "mergedAt": "2026-05-04T07:58:22Z",
+        "additions": 0,
+        "customAdditions": 3772,
+        "deletions": 0,
+        "files": 39,
+        "points": 13,
+        "rationale": "Introduces the portfolio dashboard, rival-to-company promotion UI, shared user-type module, knowledge base wiring, and broad admin table/action updates across 39 files with 3772 lines — a major multi-domain feature.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 345,
+        "title": "Rival graph, product-scoped KB, bulk uploads, and lifecycle-flag cleanup",
+        "author": "Jason",
+        "mergedAt": "2026-05-04T03:08:01Z",
+        "additions": 0,
+        "customAdditions": 8554,
+        "deletions": 0,
+        "files": 110,
+        "points": 21,
+        "rationale": "Transformative PR spanning rival graph, product-scoped knowledge base, bulk uploads, competitive analysis agent, Pinecone vector store, BrightData collectors, lifecycle cleanup, and extensive schema/UI changes across 110 files with 8554 lines — clearly weeks of architectural work.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 132,
+    "byAuthor": {
+      "Chris": 42.7,
+      "Jason": 89.3
+    },
+    "byCategory": {
+      "Core Platform": 52,
+      "AI/Agents": 37,
+      "Data/Schema": 8,
+      "DevOps": 1,
+      "Admin/Tools": 21,
+      "UI/UX": 5,
+      "Analytics": 8
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "ACE Validation & Prospect Enrichment Intelligence",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          359,
+          344
+        ],
+        "rationale": "Delivered the ACE Validation Engine alongside a Prospect Enrichment Agent to automate and validate business readiness assessments end-to-end."
+      },
+      {
+        "id": 2,
+        "name": "SM-400 Core Platform Foundation",
+        "points": 13,
+        "category": "Core Platform",
+        "prs": [
+          363
+        ],
+        "rationale": "Implemented core platform changes tied to the SM-400 initiative to support downstream features and integrations."
+      },
+      {
+        "id": 3,
+        "name": "Rival & Competitive Intelligence Graph",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          345,
+          350
+        ],
+        "rationale": "Built a rival knowledge graph with product-scoped knowledge bases, bulk upload support, and a refactored badge collector to power competitive intelligence workflows."
+      },
+      {
+        "id": 4,
+        "name": "Portfolio Dashboard & Company Promotion",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          346,
+          353
+        ],
+        "rationale": "Launched the portfolio dashboard with rival-to-company promotion UI and blocked portfolio access during impersonation to protect data integrity."
+      },
+      {
+        "id": 5,
+        "name": "Maturity Stage Scoring & ISVA Readiness Display",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          351,
+          348
+        ],
+        "rationale": "Introduced maturity stage derivation logic, a user-facing Maturity Stage Calculator, and polished ISVA display and admin export capabilities."
+      },
+      {
+        "id": 6,
+        "name": "Portfolio Analytics, Rollups & CSV Export",
+        "points": 8,
+        "category": "Analytics",
+        "prs": [
+          347
+        ],
+        "rationale": "Added PFV and backing-table rollups, competitive cards, and CSV export to give portfolio managers richer company-level analytics."
+      },
+      {
+        "id": 7,
+        "name": "Admin Tooling: Fleet Collector, Partner Finder & Readiness Smoke Path",
+        "points": 21,
+        "category": "Admin/Tools",
+        "prs": [
+          354,
+          352
+        ],
+        "rationale": "Delivered fleet-wide data collection and cleanup tools alongside admin polish for the ISVA Partner Finder status and readiness smoke path to streamline operations."
+      },
+      {
+        "id": 8,
+        "name": "Data Schema Alignment: Display Names, Catalog & CSV",
+        "points": 8,
+        "category": "Data/Schema",
+        "prs": [
+          360
+        ],
+        "rationale": "Standardized field display names and catalog helpers to ensure consistent data representation across CSV exports, portfolios, and agents."
+      },
+      {
+        "id": 9,
+        "name": "Worker Bundle Compatibility Fix",
+        "points": 1,
+        "category": "DevOps",
+        "prs": [
+          358
+        ],
+        "rationale": "Fixed a CJS bundle issue with import.meta.url to restore worker compatibility in the build pipeline."
+      }
+    ],
+    "totalPoints": 135,
+    "byAuthor": {
+      "Chris": 26.4,
+      "Jason": 108.6
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 30.48,
+      "grouped": 31.18
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

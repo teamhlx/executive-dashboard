@@ -1,0 +1,167 @@
+{
+  "week": "2026-W11",
+  "startDate": "2026-03-09",
+  "endDate": "2026-03-15",
+  "generatedAt": "2026-06-27T16:01:21.631Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 276,
+        "title": "Temp sidequest",
+        "author": "Jason",
+        "mergedAt": "2026-03-12T17:21:39Z",
+        "additions": 0,
+        "customAdditions": 1018,
+        "deletions": 0,
+        "files": 21,
+        "points": 13,
+        "rationale": "Significant feature spanning AWS Marketplace competitor sync infrastructure: new Prisma schema, migration, BullMQ job types, library code for marketplace search, rival sync logic, multiple debug/export scripts, and admin queue actions — a full end-to-end pipeline with real architectural breadth.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 37,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 275,
+        "title": "Jp/atlassian confluence mcp integration",
+        "author": "Jason",
+        "mergedAt": "2026-03-10T00:22:50Z",
+        "additions": 0,
+        "customAdditions": 296,
+        "deletions": 0,
+        "files": 3,
+        "points": 1,
+        "rationale": "Only documentation and TODO planning files added — no functional code changes, making this essentially a trivial notes/planning commit.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 272,
+        "title": "Ch/refactor/fields",
+        "author": "Chris",
+        "mergedAt": "2026-03-09T22:29:33Z",
+        "additions": 0,
+        "customAdditions": 2002,
+        "deletions": 0,
+        "files": 29,
+        "points": 13,
+        "rationale": "Major refactor of the readiness data-fields system touching the abstract collector, multiple stage-two collectors, field-completion agent graph/tools/sessions, Prisma schema and migrations, server actions, and architecture docs — a wide-ranging architectural overhaul across AI and data layers.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 268,
+        "title": "Ch/sm 368",
+        "author": "Chris",
+        "mergedAt": "2026-03-09T22:29:02Z",
+        "additions": 0,
+        "customAdditions": 618,
+        "deletions": 0,
+        "files": 9,
+        "points": 5,
+        "rationale": "Solid admin feature adding a chat management UI with filtering, column definitions, a download button, Prisma schema update, and admin nav integration — meaningful but self-contained.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 7,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 265,
+        "title": "Ch/sm 343",
+        "author": "Chris",
+        "mergedAt": "2026-03-09T22:28:27Z",
+        "additions": 0,
+        "customAdditions": 4469,
+        "deletions": 0,
+        "files": 44,
+        "points": 21,
+        "rationale": "Transformative epic introducing a full Studio document editor (Lexical-based) with AI chat-agent sub-agent integration, comment nodes/plugin/sidebar, new routes and server actions, state management, and package infrastructure — weeks of core platform work.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 45,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.85,
+          "Jason": 0.15
+        }
+      }
+    ],
+    "totalPoints": 53,
+    "byAuthor": {
+      "Jason": 17.2,
+      "Chris": 35.8
+    },
+    "byCategory": {
+      "Integrations": 13,
+      "Admin/Tools": 6,
+      "AI/Agents": 13,
+      "Core Platform": 21
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Atlassian Confluence Integration",
+        "points": 13,
+        "category": "Integrations",
+        "prs": [
+          276,
+          275
+        ],
+        "rationale": "Delivered Confluence connectivity through an MCP integration alongside supporting exploratory work to enable teams to connect their Atlassian workspace to Skematic."
+      },
+      {
+        "id": 2,
+        "name": "AI Field Intelligence Refactor",
+        "points": 13,
+        "category": "AI/Agents",
+        "prs": [
+          272
+        ],
+        "rationale": "Refactored the AI fields layer to improve the reliability and maintainability of AI-powered data processing across the platform."
+      },
+      {
+        "id": 3,
+        "name": "Platform Stability & Admin Improvements",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          268,
+          265
+        ],
+        "rationale": "Delivered a set of core platform and admin enhancements addressing tracked issues to improve overall system reliability and operational capabilities."
+      }
+    ],
+    "totalPoints": 47,
+    "byAuthor": {
+      "Jason": 13,
+      "Chris": 34
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 12.24,
+      "grouped": 10.85
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

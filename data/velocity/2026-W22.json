@@ -1,0 +1,416 @@
+{
+  "week": "2026-W22",
+  "startDate": "2026-05-25",
+  "endDate": "2026-05-31",
+  "generatedAt": "2026-06-27T16:05:11.742Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 418,
+        "title": "fix: bind methods in lazy BullMQ/Redis proxies",
+        "author": "Jason",
+        "mergedAt": "2026-05-31T23:11:39Z",
+        "additions": 0,
+        "customAdditions": 19,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "Small fix binding methods in lazy proxies across a single file with 19 custom lines — straightforward but non-trivial bug fix.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 417,
+        "title": "Staging",
+        "author": "Jason",
+        "mergedAt": "2026-05-31T23:19:13Z",
+        "additions": 0,
+        "customAdditions": 155,
+        "deletions": 0,
+        "files": 4,
+        "points": 5,
+        "rationale": "Staging merge combining AWS partner badge detection improvements and lazy Redis/BullMQ init fix across 4 files, representing a consolidation of meaningful work from both contributors.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Jason": 0.55,
+          "Skippy": 0.45
+        }
+      },
+      {
+        "pr": 416,
+        "title": "fix: guard against undefined roleArn in AWS credential getDisplayMeta",
+        "author": "Skippy",
+        "mergedAt": "2026-05-31T22:58:50Z",
+        "additions": 0,
+        "customAdditions": 1,
+        "deletions": 0,
+        "files": 2,
+        "points": 1,
+        "rationale": "Single-line guard against undefined roleArn is a trivial defensive fix.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Skippy": 1
+        }
+      },
+      {
+        "pr": 415,
+        "title": "fix: lazy Redis/BullMQ init to prevent build-time ECONNREFUSED",
+        "author": "Skippy",
+        "mergedAt": "2026-05-31T20:09:46Z",
+        "additions": 0,
+        "customAdditions": 73,
+        "deletions": 0,
+        "files": 1,
+        "points": 5,
+        "rationale": "Implementing a lazy initialization pattern for Redis/BullMQ to prevent build-time connection errors is a meaningful architectural fix requiring careful proxy design across 73 custom lines.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Skippy": 1
+        }
+      },
+      {
+        "pr": 414,
+        "title": "ci: Add production ECS deploy workflow",
+        "author": "Skippy",
+        "mergedAt": "2026-05-31T15:11:31Z",
+        "additions": 0,
+        "customAdditions": 105,
+        "deletions": 0,
+        "files": 1,
+        "points": 5,
+        "rationale": "A full production ECS deploy workflow in 105 lines covering build, push, and deploy steps is solid DevOps work with meaningful complexity.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Skippy": 1
+        }
+      },
+      {
+        "pr": 413,
+        "title": "Improve 5+ AWS Customer Launches detection in partner badges collector",
+        "author": "Jason",
+        "mergedAt": "2026-05-30T23:24:27Z",
+        "additions": 0,
+        "customAdditions": 81,
+        "deletions": 0,
+        "files": 1,
+        "points": 3,
+        "rationale": "Improving detection logic for 5+ AWS customer launches in the partner badges collector with 81 lines reflects a modest but meaningful signal-parsing feature.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 412,
+        "title": "Update apprunner.yaml",
+        "author": "Jason",
+        "mergedAt": "2026-05-30T20:36:50Z",
+        "additions": 0,
+        "customAdditions": 60,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "Updating apprunner.yaml configuration across 60 lines is primarily infra config work with low complexity.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 411,
+        "title": "fix: Redis cluster mode support for ElastiCache Serverless",
+        "author": "Skippy",
+        "mergedAt": "2026-05-30T17:09:47Z",
+        "additions": 0,
+        "customAdditions": 20,
+        "deletions": 0,
+        "files": 4,
+        "points": 3,
+        "rationale": "Adding Redis cluster mode support for ElastiCache Serverless across 4 files with 20 custom lines is a focused but meaningful infrastructure compatibility fix.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Skippy": 1
+        }
+      },
+      {
+        "pr": 410,
+        "title": "fix: staging worker crash + Redis TLS for ElastiCache Serverless",
+        "author": "Skippy",
+        "mergedAt": "2026-05-30T16:31:57Z",
+        "additions": 0,
+        "customAdditions": 10,
+        "deletions": 0,
+        "files": 4,
+        "points": 2,
+        "rationale": "Small multi-file fix addressing a staging worker crash and adding Redis TLS support with only 10 custom lines.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Skippy": 1
+        }
+      },
+      {
+        "pr": 409,
+        "title": "fix: add /api/health endpoint for ECS ALB health checks",
+        "author": "Skippy",
+        "mergedAt": "2026-05-30T06:41:28Z",
+        "additions": 0,
+        "customAdditions": 5,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Adding a minimal health check endpoint in 5 lines is a trivial but necessary addition.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Skippy": 1
+        }
+      },
+      {
+        "pr": 408,
+        "title": "ci: add ECS staging deploy workflow + worker Dockerfile",
+        "author": "Skippy",
+        "mergedAt": "2026-05-30T06:14:27Z",
+        "additions": 0,
+        "customAdditions": 135,
+        "deletions": 0,
+        "files": 2,
+        "points": 5,
+        "rationale": "Creating a full ECS staging deploy workflow plus a worker Dockerfile across 135 custom lines is solid foundational DevOps work enabling a new deployment target.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Skippy": 1
+        }
+      },
+      {
+        "pr": 406,
+        "title": "Fix AWS Marketplace throttling: lower concurrency & fix retry detection",
+        "author": "Jason",
+        "mergedAt": "2026-05-26T21:42:28Z",
+        "additions": 0,
+        "customAdditions": 16,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "Small targeted fix lowering concurrency and correcting retry detection for AWS Marketplace throttling across 16 lines in 3 files.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 404,
+        "title": "Fix marketplace discovery for domain-named sellers (SM-537)",
+        "author": "Jason",
+        "mergedAt": "2026-05-26T19:21:04Z",
+        "additions": 0,
+        "customAdditions": 76,
+        "deletions": 0,
+        "files": 3,
+        "points": 5,
+        "rationale": "Fixing marketplace discovery for domain-named sellers across 3 files including discovery logic, a collector, and admin tooling represents a solid feature-level bug fix with meaningful scope.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 405,
+        "title": "Hotfix: marketplace discovery fails for domain-named sellers (SM-537)",
+        "author": "Jason",
+        "mergedAt": "2026-05-26T18:39:01Z",
+        "additions": 0,
+        "customAdditions": 44,
+        "deletions": 0,
+        "files": 1,
+        "points": 3,
+        "rationale": "Hotfix targeting the same domain-named seller issue in 44 lines within a single collector file — smaller scoped precursor to the fuller fix in #404.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 403,
+        "title": "Run Analysis buttons, product filter cleanup, concurrency tuning & admin queue improvements",
+        "author": "Jason",
+        "mergedAt": "2026-05-25T15:35:44Z",
+        "additions": 0,
+        "customAdditions": 225,
+        "deletions": 0,
+        "files": 8,
+        "points": 8,
+        "rationale": "Wide-ranging PR touching 8 files with 225 custom lines covering new UI components (Run Analysis buttons), product filter cleanup, concurrency tuning, and admin queue improvements — significant medium-large feature work.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 402,
+        "title": "Update aws-connect.ts",
+        "author": "Jason",
+        "mergedAt": "2026-05-25T02:04:48Z",
+        "additions": 0,
+        "customAdditions": 3,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "A single-file change with only 3 custom lines added and no deletions is a trivial tweak to an AWS connection action.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 53,
+    "byAuthor": {
+      "Jason": 28.8,
+      "Skippy": 24.3
+    },
+    "byCategory": {
+      "Infrastructure": 14,
+      "Core Platform": 13,
+      "Integrations": 3,
+      "DevOps": 12,
+      "AI/Agents": 3,
+      "UI/UX": 8
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Production & Staging Cloud Infrastructure Deployment",
+        "points": 21,
+        "category": "DevOps",
+        "prs": [
+          414,
+          408,
+          417,
+          412
+        ],
+        "rationale": "Established full CI/CD deploy pipelines and configuration for both staging and production environments across ECS and App Runner."
+      },
+      {
+        "id": 2,
+        "name": "Reliable Redis & BullMQ Connectivity for Cloud Environments",
+        "points": 21,
+        "category": "Infrastructure",
+        "prs": [
+          415,
+          418,
+          411,
+          410,
+          409,
+          402
+        ],
+        "rationale": "Resolved a series of Redis/BullMQ initialization, TLS, cluster mode, and health check issues to ensure stable queue and cache connectivity in staging and production cloud environments."
+      },
+      {
+        "id": 3,
+        "name": "AWS Marketplace Seller Discovery Fix",
+        "points": 13,
+        "category": "Core Platform",
+        "prs": [
+          404,
+          405
+        ],
+        "rationale": "Fixed a critical bug preventing marketplace discovery for sellers using domain-based names, ensuring accurate vendor identification."
+      },
+      {
+        "id": 4,
+        "name": "AWS Integration Stability & Credential Handling",
+        "points": 5,
+        "category": "Integrations",
+        "prs": [
+          406,
+          416
+        ],
+        "rationale": "Improved AWS integration reliability by fixing Marketplace API throttling handling and guarding against undefined role ARNs in credential display."
+      },
+      {
+        "id": 5,
+        "name": "Improved AWS Customer Launch Detection for Partner Badges",
+        "points": 3,
+        "category": "AI/Agents",
+        "prs": [
+          413
+        ],
+        "rationale": "Enhanced the partner badges collector to more accurately detect sellers with 5 or more AWS customer launches."
+      },
+      {
+        "id": 6,
+        "name": "Analysis Workflow & Admin Queue Improvements",
+        "points": 8,
+        "category": "UI/UX",
+        "prs": [
+          403
+        ],
+        "rationale": "Delivered UI improvements to run analysis controls, product filtering, concurrency tuning, and admin queue visibility for a better operator experience."
+      }
+    ],
+    "totalPoints": 71,
+    "byAuthor": {
+      "Jason": 40.5,
+      "Skippy": 30.5
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 12.24,
+      "grouped": 16.4
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

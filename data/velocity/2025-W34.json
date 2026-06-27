@@ -1,0 +1,63 @@
+{
+  "week": "2025-W34",
+  "startDate": "2025-08-18",
+  "endDate": "2025-08-24",
+  "generatedAt": "2026-06-27T15:53:29.298Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 17,
+        "title": "Jp/metric filtering and editing",
+        "author": "Jason",
+        "mergedAt": "2025-08-24T22:09:04Z",
+        "additions": 0,
+        "customAdditions": 971,
+        "deletions": 0,
+        "files": 18,
+        "points": 8,
+        "rationale": "971 custom lines across 18 files spanning schema changes, new filterable grid component, field card UI, global styles, and multiple page/component updates represents a significant feature addition with meaningful breadth across the stack.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 3,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 8,
+    "byAuthor": {
+      "Jason": 8
+    },
+    "byCategory": {
+      "UI/UX": 8
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Metric Filtering and Editing Experience",
+        "points": 8,
+        "category": "UI/UX",
+        "prs": [
+          17
+        ],
+        "rationale": "Delivered user-facing controls for filtering and editing metrics, improving how users interact with and manage business readiness data."
+      }
+    ],
+    "totalPoints": 8,
+    "byAuthor": {
+      "Jason": 8
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 1.85,
+      "grouped": 1.85
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

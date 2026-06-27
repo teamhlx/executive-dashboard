@@ -1,0 +1,422 @@
+{
+  "week": "2026-W20",
+  "startDate": "2026-05-11",
+  "endDate": "2026-05-17",
+  "generatedAt": "2026-06-27T16:04:17.021Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 384,
+        "title": "Centralized admin tools page",
+        "author": "Jason",
+        "mergedAt": "2026-05-17T17:58:08Z",
+        "additions": 0,
+        "customAdditions": 5105,
+        "deletions": 0,
+        "files": 46,
+        "points": 13,
+        "rationale": "46 files and 5105 custom lines building out a full centralized admin tools page with multiple dialog components, navigation, layout, and data tables across companies, products, rivals, and audit events — a major feature touching broad surface area.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 366,
+        "title": "feat: full prospect inbound pipeline with ACE enrichment and settings UI",
+        "author": "Jason",
+        "mergedAt": "2026-05-17T14:50:56Z",
+        "additions": 0,
+        "customAdditions": 22137,
+        "deletions": 0,
+        "files": 306,
+        "points": 21,
+        "rationale": "22137 custom lines across 306 files implementing a full prospect inbound pipeline with ACE enrichment, settings UI, schema changes, seed data, and a prospect enrichment agent — a transformative, multi-week architectural effort.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.45,
+          "Jason": 0.55
+        }
+      },
+      {
+        "pr": 383,
+        "title": "Regenerate docs and tests for post-refactor codebase",
+        "author": "Jason",
+        "mergedAt": "2026-05-17T02:04:16Z",
+        "additions": 0,
+        "customAdditions": 6592,
+        "deletions": 0,
+        "files": 100,
+        "points": 3,
+        "rationale": "6592 lines across 100 files but the bulk is regenerated docs and tests rather than novel logic, making the actual engineering effort modest — primarily a maintenance/documentation refresh task.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 382,
+        "title": "Remove legacy gaps code, rename Goals to Milestones",
+        "author": "Jason",
+        "mergedAt": "2026-05-17T02:00:25Z",
+        "additions": 0,
+        "customAdditions": 656,
+        "deletions": 0,
+        "files": 123,
+        "points": 8,
+        "rationale": "123 files touched with 656 custom lines removing legacy gaps code and performing a Goals→Milestones rename across AI agents, prompts, assessments, and UI — a significant cross-cutting refactor requiring careful coordination.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 379,
+        "title": "SM-488: can select more AWS services",
+        "author": "Chris",
+        "mergedAt": "2026-05-15T21:44:01Z",
+        "additions": 0,
+        "customAdditions": 2,
+        "deletions": 0,
+        "files": 3,
+        "points": 1,
+        "rationale": "Only 2 custom lines changed across 3 files to expand the selectable AWS services list — a trivial data/config tweak.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 380,
+        "title": "outcome page",
+        "author": "Chris",
+        "mergedAt": "2026-05-15T21:44:35Z",
+        "additions": 0,
+        "customAdditions": 132,
+        "deletions": 0,
+        "files": 2,
+        "points": 2,
+        "rationale": "132 lines across 2 files adding or updating an outcome/performance page and task detail client — a small, self-contained UI addition.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 378,
+        "title": "SM-470: updates aws product catalog",
+        "author": "Chris",
+        "mergedAt": "2026-05-15T20:09:32Z",
+        "additions": 0,
+        "customAdditions": 316,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "316 lines in a single migration SQL file adding the full AWS services catalog — straightforward data migration with no application logic changes.",
+        "category": "Data/Schema",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 377,
+        "title": "SM-512: improves user session handling to prevent 403 errors",
+        "author": "Chris",
+        "mergedAt": "2026-05-15T20:08:47Z",
+        "additions": 0,
+        "customAdditions": 84,
+        "deletions": 0,
+        "files": 3,
+        "points": 3,
+        "rationale": "84 lines across 3 files improving user session handling in DAL, session lib, and header to prevent 403 errors — a modest but meaningful security/reliability fix touching auth infrastructure.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 373,
+        "title": "SM-515: competitive analysis improvements",
+        "author": "Chris",
+        "mergedAt": "2026-05-15T20:08:05Z",
+        "additions": 0,
+        "customAdditions": 54,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "54 lines across 3 files making targeted improvements to the competitive analysis studio agent graph, tools, and toolbar plugin — a small focused enhancement.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 371,
+        "title": "SM-511: Outcomes page caching issue",
+        "author": "Chris",
+        "mergedAt": "2026-05-15T20:07:17Z",
+        "additions": 0,
+        "customAdditions": 18,
+        "deletions": 0,
+        "files": 2,
+        "points": 1,
+        "rationale": "18 lines across 2 files fixing a caching issue on the outcomes page in DAL and session — a minimal targeted bug fix.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 369,
+        "title": "SM-492: updates assessment page, removes outcomes",
+        "author": "Chris",
+        "mergedAt": "2026-05-15T20:06:17Z",
+        "additions": 0,
+        "customAdditions": 71,
+        "deletions": 0,
+        "files": 17,
+        "points": 3,
+        "rationale": "71 lines across 17 files updating the assessment page and removing outcomes — low line count but the breadth of files touched across components, hooks, utils, and sandbox pages indicates a modest coordinated refactor.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 368,
+        "title": "SM-505: Adds ISV to target industry dropdown list",
+        "author": "Chris",
+        "mergedAt": "2026-05-15T19:02:10Z",
+        "additions": 0,
+        "customAdditions": 9,
+        "deletions": 0,
+        "files": 3,
+        "points": 1,
+        "rationale": "9 lines across 3 files adding ISV to a target industry dropdown — a trivial data/config addition with a small migration.",
+        "category": "Data/Schema",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 375,
+        "title": "Add loginDisabled hard-lock for users",
+        "author": "Jason",
+        "mergedAt": "2026-05-13T23:46:19Z",
+        "additions": 0,
+        "customAdditions": 936,
+        "deletions": 0,
+        "files": 36,
+        "points": 8,
+        "rationale": "936 lines across 36 files implementing a loginDisabled hard-lock feature spanning schema, migrations, auth actions, admin UI controls, and multiple API routes — a significant security feature with broad system integration.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 374,
+        "title": "fix(readiness): Marketplace Discovery seller matching + legacy tooling",
+        "author": "Jason",
+        "mergedAt": "2026-05-13T22:09:28Z",
+        "additions": 0,
+        "customAdditions": 71,
+        "deletions": 0,
+        "files": 2,
+        "points": 2,
+        "rationale": "71 lines across 2 files fixing marketplace discovery seller matching logic plus a TODO doc — a small targeted bug fix with minor supporting documentation.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 367,
+        "title": "Exit chip for stuck portfolio-company drill-down",
+        "author": "Jason",
+        "mergedAt": "2026-05-11T21:40:59Z",
+        "additions": 0,
+        "customAdditions": 186,
+        "deletions": 0,
+        "files": 5,
+        "points": 3,
+        "rationale": "186 lines across 5 files adding an exit chip for stuck portfolio-company drill-down state, touching portfolio context actions, admin nav, layout, header, and user menu — a modest UI/UX improvement with light backend context handling.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 73,
+    "byAuthor": {
+      "Jason": 48.6,
+      "Chris": 24.5
+    },
+    "byCategory": {
+      "Admin/Tools": 16,
+      "Core Platform": 41,
+      "UI/UX": 9,
+      "Data/Schema": 3,
+      "AI/Agents": 4
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Prospect Inbound Pipeline with Enrichment",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          366
+        ],
+        "rationale": "Delivered a full prospect inbound pipeline with ACE enrichment and a settings UI to automate and streamline how new prospects enter the platform."
+      },
+      {
+        "id": 2,
+        "name": "Centralized Admin Tooling & Documentation",
+        "points": 13,
+        "category": "Admin/Tools",
+        "prs": [
+          384,
+          383
+        ],
+        "rationale": "Built a centralized admin tools page and refreshed auto-generated docs and tests to support post-refactor maintainability."
+      },
+      {
+        "id": 3,
+        "name": "Milestones Rebrand & Legacy Cleanup",
+        "points": 8,
+        "category": "Core Platform",
+        "prs": [
+          382
+        ],
+        "rationale": "Removed legacy gaps code and renamed the 'Goals' concept to 'Milestones' to align the platform with updated product terminology."
+      },
+      {
+        "id": 4,
+        "name": "User Access Control & Session Reliability",
+        "points": 8,
+        "category": "Core Platform",
+        "prs": [
+          375,
+          377,
+          371
+        ],
+        "rationale": "Hardened user access by adding a loginDisabled hard-lock, fixing session handling to prevent 403 errors, and resolving an Outcomes page caching issue."
+      },
+      {
+        "id": 5,
+        "name": "AWS Service & Product Catalog Expansion",
+        "points": 5,
+        "category": "Data/Schema",
+        "prs": [
+          379,
+          378
+        ],
+        "rationale": "Expanded the AWS product catalog data and enabled users to select a broader range of AWS services in the UI."
+      },
+      {
+        "id": 6,
+        "name": "Outcomes Page Improvements",
+        "points": 5,
+        "category": "UI/UX",
+        "prs": [
+          380,
+          369
+        ],
+        "rationale": "Refreshed the Outcomes page and updated the assessment page by removing the redundant outcomes section to streamline the user journey."
+      },
+      {
+        "id": 7,
+        "name": "Competitive Analysis & Marketplace Discovery Enhancements",
+        "points": 3,
+        "category": "AI/Agents",
+        "prs": [
+          373,
+          374
+        ],
+        "rationale": "Improved competitive analysis output quality and fixed seller matching in Marketplace Discovery while cleaning up legacy tooling."
+      },
+      {
+        "id": 8,
+        "name": "Target Industry Data Expansion",
+        "points": 1,
+        "category": "Data/Schema",
+        "prs": [
+          368
+        ],
+        "rationale": "Added ISV as an option to the target industry dropdown to better reflect the range of customers using the platform."
+      },
+      {
+        "id": 9,
+        "name": "Portfolio Company Drill-Down Navigation Fix",
+        "points": 3,
+        "category": "UI/UX",
+        "prs": [
+          367
+        ],
+        "rationale": "Added an exit chip so users can escape a stuck portfolio-company drill-down view, restoring smooth navigation in the portfolio section."
+      }
+    ],
+    "totalPoints": 67,
+    "byAuthor": {
+      "Jason": 51.8,
+      "Chris": 15.2
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 16.86,
+      "grouped": 15.47
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

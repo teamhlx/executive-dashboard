@@ -1,0 +1,147 @@
+{
+  "week": "2026-W06",
+  "startDate": "2026-02-02",
+  "endDate": "2026-02-08",
+  "generatedAt": "2026-06-27T16:00:31.489Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 250,
+        "title": "Ch/sm 335 - New /assessment page",
+        "author": "Chris",
+        "mergedAt": "2026-02-05T01:12:01Z",
+        "additions": 0,
+        "customAdditions": 2103,
+        "deletions": 0,
+        "files": 31,
+        "points": 13,
+        "rationale": "A brand-new /assessment page with 2103 custom lines across 31 files, introducing a full React Flow-based visualization with multiple node types, hooks, server actions, schema changes, and navigation — a major feature constituting a significant architectural addition to the platform.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 15,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.85,
+          "Jason": 0.15
+        }
+      },
+      {
+        "pr": 239,
+        "title": "fixes portfolio company table",
+        "author": "Chris",
+        "mergedAt": "2026-02-03T19:34:14Z",
+        "additions": 0,
+        "customAdditions": 88,
+        "deletions": 0,
+        "files": 3,
+        "points": 3,
+        "rationale": "88 lines across 3 files fixing and enhancing the portfolio company table, with Jason contributing meaningful query-level logic (selecting parentGapId, excluding child gaps) alongside Chris's UI fixes — a modest but multi-layered bug fix.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.55,
+          "Jason": 0.45
+        }
+      },
+      {
+        "pr": 246,
+        "title": "fix: HubSpot sync critical fixes",
+        "author": "Jason",
+        "mergedAt": "2026-02-02T16:44:16Z",
+        "additions": 0,
+        "customAdditions": 3,
+        "deletions": 0,
+        "files": 3,
+        "points": 1,
+        "rationale": "Only 3 custom lines changed across 3 files, representing targeted critical hotfixes to the HubSpot sync service and admin UI with minimal scope.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 245,
+        "title": "Pass appEnv to sync UI; fix lastSync check",
+        "author": "Jason",
+        "mergedAt": "2026-02-02T06:33:14Z",
+        "additions": 0,
+        "customAdditions": 11,
+        "deletions": 0,
+        "files": 4,
+        "points": 2,
+        "rationale": "11 lines across 4 files passing appEnv to the sync UI and fixing a lastSync check — a small but purposeful configuration and logic correction touching multiple layers.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 19,
+    "byAuthor": {
+      "Chris": 12.7,
+      "Jason": 6.4
+    },
+    "byCategory": {
+      "Core Platform": 13,
+      "UI/UX": 3,
+      "Integrations": 3
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "New Assessment Experience",
+        "points": 13,
+        "category": "Core Platform",
+        "prs": [
+          250
+        ],
+        "rationale": "Introduced a dedicated /assessment page as a core new feature of the platform's business readiness evaluation flow."
+      },
+      {
+        "id": 2,
+        "name": "Portfolio Company Table Fix",
+        "points": 3,
+        "category": "UI/UX",
+        "prs": [
+          239
+        ],
+        "rationale": "Resolved display issues in the portfolio company table to improve usability for users managing multiple companies."
+      },
+      {
+        "id": 3,
+        "name": "HubSpot Integration Stability",
+        "points": 3,
+        "category": "Integrations",
+        "prs": [
+          246,
+          245
+        ],
+        "rationale": "Addressed critical HubSpot sync bugs and improved environment configuration to ensure reliable CRM data synchronization."
+      }
+    ],
+    "totalPoints": 19,
+    "byAuthor": {
+      "Chris": 16,
+      "Jason": 3
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 4.39,
+      "grouped": 4.39
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

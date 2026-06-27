@@ -1,0 +1,265 @@
+{
+  "week": "2026-W24",
+  "startDate": "2026-06-08",
+  "endDate": "2026-06-14",
+  "generatedAt": "2026-06-27T16:05:54.866Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 446,
+        "title": "feat: externalize HubSpot onboarding into public API + rival-first onboarding",
+        "author": "Jason",
+        "mergedAt": "2026-06-14T17:04:15Z",
+        "additions": 0,
+        "customAdditions": 3849,
+        "deletions": 0,
+        "files": 76,
+        "points": 13,
+        "rationale": "Externalizing HubSpot onboarding into a public API with rival-first onboarding flow touches 76 files including schema migrations, AI orchestration, multiple API routes, and extensive documentation — a major feature addition with architectural implications.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 442,
+        "title": "Release: CRM/ACE parity, guided experience tasks, and CI/CD migration pipeline",
+        "author": "Jason",
+        "mergedAt": "2026-06-12T07:20:06Z",
+        "additions": 0,
+        "customAdditions": 10401,
+        "deletions": 0,
+        "files": 162,
+        "points": 21,
+        "rationale": "162 files changed with 10,401 custom lines spanning Salesforce CRM integration, ACE parity, guided experience tasks, CI/CD pipeline migration, schema changes, and comprehensive documentation represents a transformative multi-week release.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Jason": 0.65,
+          "Chris": 0.35
+        }
+      },
+      {
+        "pr": 443,
+        "title": "Address Copilot review comments on release PR #442",
+        "author": "Jason",
+        "mergedAt": "2026-06-12T06:56:54Z",
+        "additions": 0,
+        "customAdditions": 32,
+        "deletions": 0,
+        "files": 4,
+        "points": 2,
+        "rationale": "32 lines across 4 files addressing Copilot review comments — minor schema, migration, and field definition fixups with no novel logic.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 438,
+        "title": "Log missing Salesforce OAuth credentials",
+        "author": "Jason",
+        "mergedAt": "2026-06-12T06:19:03Z",
+        "additions": 0,
+        "customAdditions": 8,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "8 lines adding a missing credentials log statement to the Salesforce OAuth route — a trivial single-concern fix.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 437,
+        "title": "SM-551: introduces \"next task\" functions for guided experience",
+        "author": "Chris",
+        "mergedAt": "2026-06-12T05:59:26Z",
+        "additions": 0,
+        "customAdditions": 1405,
+        "deletions": 0,
+        "files": 17,
+        "points": 8,
+        "rationale": "1,405 lines introducing next-task logic for the guided experience, including schema changes, multiple server actions, a fetch-tree utility, a sandbox debug UI, and three unit test files — a significant self-contained feature.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 441,
+        "title": "Fix staging deploy: skip secret keys that collide with container env vars",
+        "author": "Jason",
+        "mergedAt": "2026-06-12T05:42:42Z",
+        "additions": 0,
+        "customAdditions": 16,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "16 lines in a single CI shell script adding a targeted skip condition to prevent secret key collisions — a small but meaningful bug fix.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 440,
+        "title": "CI/CD: run DB migrations on deploy + auto-sync env vars from Secrets Manager",
+        "author": "Jason",
+        "mergedAt": "2026-06-12T05:11:38Z",
+        "additions": 0,
+        "customAdditions": 254,
+        "deletions": 0,
+        "files": 5,
+        "points": 5,
+        "rationale": "254 lines across 5 files wiring DB migration execution into the deploy lifecycle and automating env-var sync from Secrets Manager — a solid DevOps feature requiring coordination across Dockerfile, entrypoint, workflows, and a new CI script.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 436,
+        "title": "fix(prisma): disambiguate duplicate 20260608000000 migration timestamp",
+        "author": "Jason",
+        "mergedAt": "2026-06-08T09:33:55Z",
+        "additions": 0,
+        "customAdditions": 0,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Zero net custom lines — purely a migration file rename to resolve a timestamp collision, with no logic changes.",
+        "category": "Data/Schema",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 435,
+        "title": "Salesforce CRM parity + CRM↔ACE crosswalk, 3-way drift reconciliation, and deal-value split",
+        "author": "Jason",
+        "mergedAt": "2026-06-08T09:07:29Z",
+        "additions": 0,
+        "customAdditions": 8423,
+        "deletions": 0,
+        "files": 83,
+        "points": 21,
+        "rationale": "8,423 custom lines across 83 files delivering full Salesforce CRM parity, a CRM↔ACE crosswalk, three-way drift reconciliation, deal-value splitting, multiple schema migrations, AI enrichment modules, and extensive documentation — an epic, multi-week architectural feature.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 74,
+    "byAuthor": {
+      "Jason": 58.7,
+      "Chris": 15.4
+    },
+    "byCategory": {
+      "Integrations": 35,
+      "Core Platform": 31,
+      "DevOps": 7,
+      "Data/Schema": 1
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Salesforce CRM Parity & ACE Integration",
+        "points": 21,
+        "category": "Integrations",
+        "prs": [
+          435,
+          438
+        ],
+        "rationale": "Delivered full Salesforce CRM feature parity with ACE crosswalk and drift reconciliation, plus improved error visibility for OAuth credential issues."
+      },
+      {
+        "id": 2,
+        "name": "HubSpot Public API & Rival-First Onboarding",
+        "points": 13,
+        "category": "Integrations",
+        "prs": [
+          446
+        ],
+        "rationale": "Externalized HubSpot onboarding into a public API and introduced a rival-first onboarding flow to streamline partner and customer activation."
+      },
+      {
+        "id": 3,
+        "name": "Guided Experience & CRM/ACE Release",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          442,
+          443,
+          437
+        ],
+        "rationale": "Shipped the major CRM/ACE parity release including guided experience next-task logic, with follow-up Copilot review fixes bundled in."
+      },
+      {
+        "id": 4,
+        "name": "Automated Deployment Pipeline & Environment Management",
+        "points": 8,
+        "category": "DevOps",
+        "prs": [
+          440,
+          441
+        ],
+        "rationale": "Automated database migrations on deploy, synced environment variables from Secrets Manager, and fixed a staging deploy conflict with container env vars."
+      },
+      {
+        "id": 5,
+        "name": "Database Migration Integrity Fix",
+        "points": 1,
+        "category": "Data/Schema",
+        "prs": [
+          436
+        ],
+        "rationale": "Resolved a duplicate Prisma migration timestamp to restore schema migration integrity."
+      }
+    ],
+    "totalPoints": 64,
+    "byAuthor": {
+      "Jason": 58.6,
+      "Chris": 5.4
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 17.09,
+      "grouped": 14.78
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

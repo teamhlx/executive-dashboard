@@ -1,0 +1,84 @@
+{
+  "week": "2025-W49",
+  "startDate": "2025-12-01",
+  "endDate": "2025-12-07",
+  "generatedAt": "2026-06-27T15:58:12.371Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 173,
+        "title": "bumps next.js version",
+        "author": "Chris",
+        "mergedAt": "2025-12-06T06:58:50Z",
+        "additions": 0,
+        "customAdditions": 1,
+        "deletions": 0,
+        "files": 2,
+        "points": 1,
+        "rationale": "Single-line version bump in package.json is a trivial dependency update with no custom logic changes.",
+        "category": "Infrastructure",
+        "vendored": true,
+        "vendoredRatio": 98,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 169,
+        "title": "removes progress steps",
+        "author": "Chris",
+        "mergedAt": "2025-12-01T17:34:51Z",
+        "additions": 0,
+        "customAdditions": 3,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Removing progress steps with only 3 custom lines changed in a single UI component is a trivial UI tweak.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      }
+    ],
+    "totalPoints": 2,
+    "byAuthor": {
+      "Chris": 2
+    },
+    "byCategory": {
+      "Infrastructure": 1,
+      "UI/UX": 1
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Platform Upgrade & Simplified Onboarding Experience",
+        "points": 2,
+        "category": "Infrastructure",
+        "prs": [
+          173,
+          169
+        ],
+        "rationale": "Updated the platform's core framework to the latest Next.js version while streamlining the user journey by removing progress steps, together delivering a more stable and frictionless experience."
+      }
+    ],
+    "totalPoints": 2,
+    "byAuthor": {
+      "Chris": 2
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 0.46,
+      "grouped": 0.46
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

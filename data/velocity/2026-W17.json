@@ -1,0 +1,246 @@
+{
+  "week": "2026-W17",
+  "startDate": "2026-04-20",
+  "endDate": "2026-04-26",
+  "generatedAt": "2026-06-27T16:02:49.839Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 333,
+        "title": "SM-406, SM-466, SM-459, improves agent, assessment ui",
+        "author": "Chris",
+        "mergedAt": "2026-04-25T17:40:27Z",
+        "additions": 0,
+        "customAdditions": 383,
+        "deletions": 0,
+        "files": 21,
+        "points": 13,
+        "rationale": "Spans 21 files across AI agent logic, schema migrations, field definitions, multiple actions/hooks, and UI components — a major multi-ticket feature touching the full stack from DB to UI.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 332,
+        "title": "SM 427: improves competitive analysis, studio",
+        "author": "Chris",
+        "mergedAt": "2026-04-25T17:38:23Z",
+        "additions": 0,
+        "customAdditions": 287,
+        "deletions": 0,
+        "files": 9,
+        "points": 8,
+        "rationale": "Meaningful improvements across competitive analysis agent/prompt and Studio editor components (toolbar, comments, editor, streaming routes) representing a significant cross-cutting feature enhancement.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 330,
+        "title": "Fix assessment page scroll, slide positioning, and remove deploy script",
+        "author": "Jason",
+        "mergedAt": "2026-04-20T20:54:06Z",
+        "additions": 0,
+        "customAdditions": 18,
+        "deletions": 0,
+        "files": 5,
+        "points": 2,
+        "rationale": "Small collection of CSS/layout scroll and positioning fixes plus removal of a deploy script — minor bug fixes across a handful of files with low custom line count.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 329,
+        "title": "Fix assessment page scroll and slide positioning",
+        "author": "Jason",
+        "mergedAt": "2026-04-20T19:53:47Z",
+        "additions": 0,
+        "customAdditions": 18,
+        "deletions": 0,
+        "files": 4,
+        "points": 2,
+        "rationale": "Nearly identical to PR #330 without the deploy script removal — small CSS/layout scroll and positioning fixes across four files.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 328,
+        "title": "Switch secrets from staging to production",
+        "author": "Jason",
+        "mergedAt": "2026-04-20T14:09:07Z",
+        "additions": 0,
+        "customAdditions": 32,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-file config change swapping environment secrets from staging to production — trivial operational tweak.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 327,
+        "title": "Enhance product management, chat integration, and UI improvements",
+        "author": "Jason",
+        "mergedAt": "2026-04-20T14:06:05Z",
+        "additions": 0,
+        "customAdditions": 5291,
+        "deletions": 0,
+        "files": 167,
+        "points": 21,
+        "rationale": "167 changed files and 5291 custom lines spanning the entire AI agent architecture, context refactoring, product-scoped chat, UI improvements, and numerous sub-systems — a transformative, multi-week epic.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.65,
+          "Jason": 0.35
+        }
+      },
+      {
+        "pr": 326,
+        "title": "Add ISVA auto-match flag to Playbooks",
+        "author": "Jason",
+        "mergedAt": "2026-04-20T02:07:34Z",
+        "additions": 0,
+        "customAdditions": 220,
+        "deletions": 0,
+        "files": 10,
+        "points": 5,
+        "rationale": "Adds a new ISVA auto-match flag across schema, migration, seed, admin UI, and playbook suggestion logic — a solid self-contained feature touching data layer through to admin tooling.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 325,
+        "title": "SM-454: Target industries multi-select, strategy chat motion, scroll fixes",
+        "author": "Jason",
+        "mergedAt": "2026-04-20T01:30:30Z",
+        "additions": 0,
+        "customAdditions": 499,
+        "deletions": 0,
+        "files": 15,
+        "points": 8,
+        "rationale": "Introduces target industries multi-select with schema migration, field collector updates, multiple UI components, chat motion/scroll fixes, and chat visibility logic — a significant cross-cutting feature.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 60,
+    "byAuthor": {
+      "Chris": 34.7,
+      "Jason": 25.4
+    },
+    "byCategory": {
+      "AI/Agents": 21,
+      "UI/UX": 4,
+      "DevOps": 1,
+      "Core Platform": 29,
+      "Admin/Tools": 5
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "AI Agent & Assessment Experience Improvements",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          333,
+          332
+        ],
+        "rationale": "Improved the AI agent behavior, assessment UI, and competitive analysis features within the Studio to deliver a more polished and capable AI-driven experience."
+      },
+      {
+        "id": 2,
+        "name": "Assessment Page Layout & Scroll Fixes",
+        "points": 3,
+        "category": "UI/UX",
+        "prs": [
+          330,
+          329
+        ],
+        "rationale": "Resolved scroll and slide positioning issues on the assessment page across two iterative fixes to ensure a smooth user experience."
+      },
+      {
+        "id": 3,
+        "name": "Production Environment Secrets Migration",
+        "points": 1,
+        "category": "DevOps",
+        "prs": [
+          328
+        ],
+        "rationale": "Switched application secrets from staging to production configuration to support a live production deployment."
+      },
+      {
+        "id": 4,
+        "name": "Product Management & Chat Integration Enhancements",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          327,
+          325
+        ],
+        "rationale": "Enhanced core product management capabilities, integrated strategy chat with motion improvements, added multi-select for target industries, and addressed various UI and scroll issues across the platform."
+      },
+      {
+        "id": 5,
+        "name": "ISVA Auto-Match for Playbooks",
+        "points": 5,
+        "category": "Admin/Tools",
+        "prs": [
+          326
+        ],
+        "rationale": "Added an ISVA auto-match flag to Playbooks, enabling automated matching logic to streamline playbook administration workflows."
+      }
+    ],
+    "totalPoints": 51,
+    "byAuthor": {
+      "Chris": 21,
+      "Jason": 30
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 13.86,
+      "grouped": 11.78
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

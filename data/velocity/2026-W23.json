@@ -1,0 +1,327 @@
+{
+  "week": "2026-W23",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-07",
+  "generatedAt": "2026-06-27T16:05:33.984Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 431,
+        "title": "P0 Ace Todos",
+        "author": "Chris",
+        "mergedAt": "2026-06-07T19:02:11Z",
+        "additions": 0,
+        "customAdditions": 2294,
+        "deletions": 0,
+        "files": 62,
+        "points": 8,
+        "rationale": "Large batch of TODO/planning docs, ACE API solutions work, validation/enums, and bug fixes across 62 files representing significant planning architecture and feature scaffolding work.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.75,
+          "Jason": 0.25
+        }
+      },
+      {
+        "pr": 434,
+        "title": "fix: remove false-positive error keyword from ResearchArchive skip log",
+        "author": "Jason",
+        "mergedAt": "2026-06-06T01:09:39Z",
+        "additions": 0,
+        "customAdditions": 1,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-line fix removing a false-positive error keyword from a log message.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 432,
+        "title": "fix: use rejectUnauthorized:true for Redis TLS connections",
+        "author": "Jason",
+        "mergedAt": "2026-06-05T18:02:51Z",
+        "additions": 0,
+        "customAdditions": 3,
+        "deletions": 0,
+        "files": 3,
+        "points": 1,
+        "rationale": "Trivial security configuration fix setting rejectUnauthorized:true across three Redis TLS connection files.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 429,
+        "title": "Doc updates",
+        "author": "Jason",
+        "mergedAt": "2026-06-04T16:43:55Z",
+        "additions": 0,
+        "customAdditions": 5438,
+        "deletions": 0,
+        "files": 131,
+        "points": 5,
+        "rationale": "Massive documentation overhaul spanning 131 files including env examples, git hooks, README, and a large archive of release notes — substantial effort but primarily doc/config authoring rather than code logic.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 5,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 427,
+        "title": "docs: engineer onboarding guide + architecture/ECS updates",
+        "author": "Jason",
+        "mergedAt": "2026-06-03T17:36:23Z",
+        "additions": 0,
+        "customAdditions": 318,
+        "deletions": 0,
+        "files": 6,
+        "points": 3,
+        "rationale": "New engineer onboarding guide plus architecture and ECS infrastructure documentation updates across 6 files with 318 lines of meaningful written content.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 426,
+        "title": "test: revamp unit suite + document E2E DB setup (Phase 1)",
+        "author": "Jason",
+        "mergedAt": "2026-06-03T16:59:35Z",
+        "additions": 0,
+        "customAdditions": 478,
+        "deletions": 0,
+        "files": 16,
+        "points": 5,
+        "rationale": "Revamped unit test suite with new test files, vitest config, git hooks, updated admin actions, user-type management, and E2E DB setup documentation across 16 files.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 36,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 425,
+        "title": "Simplify .env.example; remove apprunner artifacts",
+        "author": "Jason",
+        "mergedAt": "2026-06-03T16:50:20Z",
+        "additions": 0,
+        "customAdditions": 13,
+        "deletions": 0,
+        "files": 7,
+        "points": 1,
+        "rationale": "Minor housekeeping PR simplifying .env.example and removing AppRunner artifacts across 7 config/yaml files with only 13 net additions.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 424,
+        "title": "docs: overhaul documentation and re-enable admin docs viewer",
+        "author": "Jason",
+        "mergedAt": "2026-06-03T03:03:27Z",
+        "additions": 0,
+        "customAdditions": 4640,
+        "deletions": 0,
+        "files": 115,
+        "points": 5,
+        "rationale": "Comprehensive documentation overhaul across 115 files including re-enabling admin docs viewer, updated README, and a large archive of historical release notes — high volume but primarily doc/config work.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 423,
+        "title": "Enable Maturity Stage in portfolio column picker",
+        "author": "Jason",
+        "mergedAt": "2026-06-02T03:01:02Z",
+        "additions": 0,
+        "customAdditions": 0,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-file change enabling Maturity Stage in the portfolio column picker, likely a one-line or trivial config addition.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 420,
+        "title": "Staging - secret api",
+        "author": "Jason",
+        "mergedAt": "2026-06-01T06:33:25Z",
+        "additions": 0,
+        "customAdditions": 742,
+        "deletions": 0,
+        "files": 6,
+        "points": 8,
+        "rationale": "Introduces a secret API integration for AWS Partner Finder with two new stage-two collectors, a client library, research archive integration, unit tests, and a TODO planning doc across 6 files.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 421,
+        "title": "fix: strip query/hash in normalizeHostname (Partner Finder)",
+        "author": "Jason",
+        "mergedAt": "2026-06-01T06:31:24Z",
+        "additions": 0,
+        "customAdditions": 8,
+        "deletions": 0,
+        "files": 2,
+        "points": 1,
+        "rationale": "Small targeted bug fix stripping query strings and hash fragments in normalizeHostname with a corresponding test update across 2 files.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 419,
+        "title": "feat: resolve AWS Partner Finder data via public API (badges + tier)",
+        "author": "Jason",
+        "mergedAt": "2026-06-01T06:14:11Z",
+        "additions": 0,
+        "customAdditions": 735,
+        "deletions": 0,
+        "files": 6,
+        "points": 8,
+        "rationale": "Full feature implementation resolving AWS Partner Finder data via a public API including client library, two collectors for badges and tier, research archive integration, unit tests, and planning docs across 6 files.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 47,
+    "byAuthor": {
+      "Chris": 6,
+      "Jason": 41
+    },
+    "byCategory": {
+      "Core Platform": 14,
+      "Infrastructure": 1,
+      "Admin/Tools": 13,
+      "DevOps": 1,
+      "UI/UX": 1,
+      "Integrations": 17
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "AWS Partner Finder Integration",
+        "points": 13,
+        "category": "Integrations",
+        "prs": [
+          419,
+          420,
+          421
+        ],
+        "rationale": "Delivered end-to-end AWS Partner Finder functionality including public API resolution for badges and tier data, secure secret API access in staging, and a hostname normalization bug fix."
+      },
+      {
+        "id": 2,
+        "name": "Core Platform Stability & Quality",
+        "points": 13,
+        "category": "Core Platform",
+        "prs": [
+          431,
+          426,
+          434
+        ],
+        "rationale": "Addressed high-priority platform todos, overhauled the unit test suite with E2E database setup documentation, and eliminated a false-positive error in research archive logging."
+      },
+      {
+        "id": 3,
+        "name": "Documentation & Developer Onboarding Overhaul",
+        "points": 13,
+        "category": "Admin/Tools",
+        "prs": [
+          424,
+          427,
+          429
+        ],
+        "rationale": "Comprehensively improved developer experience by overhauling platform documentation, re-enabling the admin docs viewer, adding an engineer onboarding guide, and updating architecture and ECS references."
+      },
+      {
+        "id": 4,
+        "name": "Infrastructure Security & Environment Hygiene",
+        "points": 3,
+        "category": "Infrastructure",
+        "prs": [
+          432,
+          425
+        ],
+        "rationale": "Hardened infrastructure security by enforcing TLS certificate validation for Redis connections and cleaned up environment configuration by removing stale App Runner artifacts."
+      },
+      {
+        "id": 5,
+        "name": "Portfolio Maturity Stage Visibility",
+        "points": 1,
+        "category": "UI/UX",
+        "prs": [
+          423
+        ],
+        "rationale": "Enabled users to surface the Maturity Stage field in the portfolio column picker, improving business readiness visibility in portfolio views."
+      }
+    ],
+    "totalPoints": 43,
+    "byAuthor": {
+      "Jason": 35.6,
+      "Chris": 7.4
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 10.85,
+      "grouped": 9.93
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

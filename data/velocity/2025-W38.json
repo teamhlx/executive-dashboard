@@ -1,0 +1,104 @@
+{
+  "week": "2025-W38",
+  "startDate": "2025-09-15",
+  "endDate": "2025-09-21",
+  "generatedAt": "2026-06-27T15:54:38.737Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 59,
+        "title": "fix: AWS Product Selector X button deselection",
+        "author": "Jason",
+        "mergedAt": "2025-09-16T20:34:43Z",
+        "additions": 0,
+        "customAdditions": 25,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "Small bug fix adding deselection logic to an existing component with 25 lines in a single file.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 58,
+        "title": "feat: AWS Product Selector for Product-Based Fields",
+        "author": "Jason",
+        "mergedAt": "2025-09-16T00:43:03Z",
+        "additions": 0,
+        "customAdditions": 335,
+        "deletions": 0,
+        "files": 4,
+        "points": 5,
+        "rationale": "Solid new feature introducing a new AWS Product Selector component with integration into FieldCard and the component showcase across 4 files and 335 lines.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 57,
+        "title": "feat: Product Field Remapping and Readiness System Enhancements",
+        "author": "Jason",
+        "mergedAt": "2025-09-15T16:54:35Z",
+        "additions": 0,
+        "customAdditions": 503,
+        "deletions": 0,
+        "files": 8,
+        "points": 8,
+        "rationale": "Significant cross-cutting enhancement touching schema definitions, seed data, readiness layout and page logic, FieldCard, and multiple docs, representing meaningful architectural changes to the readiness system.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 22,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 15,
+    "byAuthor": {
+      "Jason": 15
+    },
+    "byCategory": {
+      "UI/UX": 7,
+      "Core Platform": 8
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "AWS Product Selection & Readiness Mapping",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          57,
+          58,
+          59
+        ],
+        "rationale": "Delivered end-to-end AWS product selection capability, including a new product selector UI component, deselection fix, and the underlying product field remapping and readiness system enhancements that power the feature."
+      }
+    ],
+    "totalPoints": 21,
+    "byAuthor": {
+      "Jason": 21
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 3.46,
+      "grouped": 4.85
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

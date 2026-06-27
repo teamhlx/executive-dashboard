@@ -1,0 +1,204 @@
+{
+  "week": "2025-W39",
+  "startDate": "2025-09-22",
+  "endDate": "2025-09-28",
+  "generatedAt": "2026-06-27T15:54:54.754Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 65,
+        "title": "Refactor password reset URL generation logic",
+        "author": "Jason",
+        "mergedAt": "2025-09-27T20:01:33Z",
+        "additions": 0,
+        "customAdditions": 32,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "Small refactor across 3 files with only 32 custom lines, isolating password reset URL generation logic into cleaner helpers.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 64,
+        "title": "UI Enhancements and Authentication System Overhaul",
+        "author": "Jason",
+        "mergedAt": "2025-09-27T18:48:21Z",
+        "additions": 0,
+        "customAdditions": 1725,
+        "deletions": 0,
+        "files": 28,
+        "points": 13,
+        "rationale": "Major overhaul spanning authentication flows, forgot/reset password, onboarding, email templates, schema changes, and UI across 28 files with 1725 custom lines — a broad architectural expansion of the auth system.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 63,
+        "title": "Staging update to main",
+        "author": "Jason",
+        "mergedAt": "2025-09-26T17:00:59Z",
+        "additions": 0,
+        "customAdditions": 2619,
+        "deletions": 0,
+        "files": 57,
+        "points": 13,
+        "rationale": "Large merge of 59 commits across two contributors touching 57 files with 2619 custom lines, encompassing a queue dashboard, worker restart infrastructure, slide deck features, readiness improvements, and multiple sub-PRs worth of work.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 5,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.35,
+          "Jason": 0.65
+        }
+      },
+      {
+        "pr": 62,
+        "title": "Fix deployment issues by cleaning up amplify.yml migration commands",
+        "author": "Jason",
+        "mergedAt": "2025-09-24T19:26:40Z",
+        "additions": 0,
+        "customAdditions": 0,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Trivial cleanup of Amplify migration commands in a single config file with zero net additions.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 61,
+        "title": "Fix missing getLatestFieldValuesForCompany function",
+        "author": "Jason",
+        "mergedAt": "2025-09-24T19:15:21Z",
+        "additions": 0,
+        "customAdditions": 54,
+        "deletions": 0,
+        "files": 3,
+        "points": 3,
+        "rationale": "Modest bug fix adding a missing data-access function across 3 files with 54 custom lines, including DAL and Prisma query logic.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 60,
+        "title": "Ch/slide deck",
+        "author": "Chris",
+        "mergedAt": "2025-09-24T16:11:31Z",
+        "additions": 0,
+        "customAdditions": 1107,
+        "deletions": 0,
+        "files": 32,
+        "points": 13,
+        "rationale": "Significant new slide deck feature with 1107 custom lines across 32 files, introducing a full presentation layer with multiple slide layouts, AI strategy content, context management, and scaled rendering components.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 1,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      }
+    ],
+    "totalPoints": 45,
+    "byAuthor": {
+      "Jason": 27.5,
+      "Chris": 17.6
+    },
+    "byCategory": {
+      "Core Platform": 31,
+      "DevOps": 1,
+      "AI/Agents": 13
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Authentication & User Account Security Improvements",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          64,
+          65
+        ],
+        "rationale": "Overhauled the authentication system with UI enhancements and fixed password reset URL generation to improve user account security and login experience."
+      },
+      {
+        "id": 2,
+        "name": "Staging to Production Release",
+        "points": 13,
+        "category": "Core Platform",
+        "prs": [
+          63
+        ],
+        "rationale": "Promoted accumulated staging changes to the main production branch as a scheduled release."
+      },
+      {
+        "id": 3,
+        "name": "Deployment Pipeline Reliability Fix",
+        "points": 1,
+        "category": "DevOps",
+        "prs": [
+          62
+        ],
+        "rationale": "Resolved deployment failures by cleaning up erroneous migration commands in the Amplify CI/CD configuration."
+      },
+      {
+        "id": 4,
+        "name": "Company Data Retrieval Bug Fix",
+        "points": 3,
+        "category": "Core Platform",
+        "prs": [
+          61
+        ],
+        "rationale": "Restored missing business logic for fetching the latest field values per company, ensuring data accuracy across the platform."
+      },
+      {
+        "id": 5,
+        "name": "AI-Powered Slide Deck Generation",
+        "points": 13,
+        "category": "AI/Agents",
+        "prs": [
+          60
+        ],
+        "rationale": "Built an AI agent feature to automatically generate slide decks, expanding Skematic's business readiness output capabilities."
+      }
+    ],
+    "totalPoints": 51,
+    "byAuthor": {
+      "Jason": 38,
+      "Chris": 13
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 10.39,
+      "grouped": 11.78
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

@@ -1,0 +1,146 @@
+{
+  "week": "2025-W36",
+  "startDate": "2025-09-01",
+  "endDate": "2025-09-07",
+  "generatedAt": "2026-06-27T15:54:16.267Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 46,
+        "title": "Feature/collector field progress",
+        "author": "Chris",
+        "mergedAt": "2025-09-04T22:17:39Z",
+        "additions": 0,
+        "customAdditions": 468,
+        "deletions": 0,
+        "files": 45,
+        "points": 8,
+        "rationale": "Touches 45+ files implementing a collector field progress system with abstract base classes and 20+ individual collector implementations, representing a significant feature build-out across the AI/data layer.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 22,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 48,
+        "title": "Ch/slide deck",
+        "author": "Chris",
+        "mergedAt": "2025-09-07T02:25:54Z",
+        "additions": 0,
+        "customAdditions": 895,
+        "deletions": 0,
+        "files": 59,
+        "points": 13,
+        "rationale": "895 lines across 59 files covering a full public-facing UI overhaul including login, onboarding flow, registration, password reset, and multiple multi-step components — a major frontend feature spanning layout, schemas, and pages.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 3,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 42,
+        "title": "Staging",
+        "author": "Jason",
+        "mergedAt": "2025-09-01T18:12:11Z",
+        "additions": 0,
+        "customAdditions": 2445,
+        "deletions": 0,
+        "files": 59,
+        "points": 13,
+        "rationale": "2445 lines across 59 files from a merge/integration PR combining agent enhancements, multiple calculators, UI integration of chat window and field sidebar, schema changes, and substantial documentation — architectural scope with contributions from two authors.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 40,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Jason": 0.65,
+          "Chris": 0.35
+        }
+      },
+      {
+        "pr": 41,
+        "title": "🚀 AI Agent Chat Window & Real-Time Field Progress Tracking",
+        "author": "Jason",
+        "mergedAt": "2025-09-01T16:44:04Z",
+        "additions": 0,
+        "customAdditions": 1403,
+        "deletions": 0,
+        "files": 38,
+        "points": 13,
+        "rationale": "1403 custom lines across 38 files implementing an AI agent chat window, real-time field progress tracking, new Prisma schema changes, server actions, API routes, and supporting UI — a major cross-cutting feature touching the full stack.",
+        "category": "AI/Agents",
+        "vendored": true,
+        "vendoredRatio": 52,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 47,
+    "byAuthor": {
+      "Chris": 25.6,
+      "Jason": 21.5
+    },
+    "byCategory": {
+      "AI/Agents": 21,
+      "UI/UX": 13,
+      "Core Platform": 13
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "AI-Powered Field Progress Tracking & Agent Chat Experience",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          41,
+          46
+        ],
+        "rationale": "Together these PRs deliver the end-to-end AI agent chat interface and real-time field progress tracking, giving users intelligent, live feedback as they complete their business readiness data."
+      },
+      {
+        "id": 2,
+        "name": "Staging Environment Deployment",
+        "points": 13,
+        "category": "Core Platform",
+        "prs": [
+          42
+        ],
+        "rationale": "Establishes a dedicated staging environment to support safer testing and validation of new features before production release."
+      },
+      {
+        "id": 3,
+        "name": "Slide Deck Presentation Feature",
+        "points": 13,
+        "category": "UI/UX",
+        "prs": [
+          48
+        ],
+        "rationale": "Introduces a slide deck UI experience, enabling users to view or present their business readiness information in a structured, presentation-ready format."
+      }
+    ],
+    "totalPoints": 47,
+    "byAuthor": {
+      "Chris": 21,
+      "Jason": 26
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 10.85,
+      "grouped": 10.85
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

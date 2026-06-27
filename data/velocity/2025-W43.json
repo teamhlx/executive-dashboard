@@ -1,0 +1,179 @@
+{
+  "week": "2025-W43",
+  "startDate": "2025-10-20",
+  "endDate": "2025-10-26",
+  "generatedAt": "2026-06-27T15:56:32.370Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 117,
+        "title": "Ch/collector llm",
+        "author": "Chris",
+        "mergedAt": "2025-10-21T23:22:27Z",
+        "additions": 0,
+        "customAdditions": 92,
+        "deletions": 0,
+        "files": 17,
+        "points": 5,
+        "rationale": "Spreads 92 custom lines across 17 files touching AI agent wiring, model factory, structured output, and multiple tool integrations — modest but meaningful AI/agent scaffolding work.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 4,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 120,
+        "title": "Release: Production deployment with onboarding improvements, impersonation fixes, and AI system refactoring",
+        "author": "Jason",
+        "mergedAt": "2025-10-23T17:46:12Z",
+        "additions": 0,
+        "customAdditions": 364,
+        "deletions": 0,
+        "files": 42,
+        "points": 8,
+        "rationale": "364 custom lines across a broad release PR covering AI system refactoring, onboarding improvements, impersonation fixes, and layout context changes across 40+ files — significant multi-area integration effort.",
+        "category": "Core Platform",
+        "vendored": true,
+        "vendoredRatio": 84,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.25,
+          "Jason": 0.75
+        }
+      },
+      {
+        "pr": 119,
+        "title": "Update onboarding confirmation message",
+        "author": "Jason",
+        "mergedAt": "2025-10-22T22:18:28Z",
+        "additions": 0,
+        "customAdditions": 1,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-line change to an onboarding confirmation message is a trivial copy/text update.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 118,
+        "title": "Multi-user onboarding and impersonation UX improvements",
+        "author": "Jason",
+        "mergedAt": "2025-10-22T21:04:53Z",
+        "additions": 0,
+        "customAdditions": 116,
+        "deletions": 0,
+        "files": 9,
+        "points": 5,
+        "rationale": "116 lines across 9 files adding multi-user onboarding flow improvements, impersonation UX (banner, layouts, actions) — a solid cohesive feature touching multiple layers.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 116,
+        "title": "Fix impersonation bugs and improve admin experience",
+        "author": "Jason",
+        "mergedAt": "2025-10-22T18:44:04Z",
+        "additions": 0,
+        "customAdditions": 161,
+        "deletions": 0,
+        "files": 19,
+        "points": 8,
+        "rationale": "161 custom lines (after stripping 92% vendored) across 18 files fixing impersonation bugs and improving admin experience with audit events, queue pages, DAL changes, and layout propagation — broad, meaningful platform work.",
+        "category": "Admin/Tools",
+        "vendored": true,
+        "vendoredRatio": 92,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 114,
+        "title": "Staging",
+        "author": "Jason",
+        "mergedAt": "2025-10-21T17:23:10Z",
+        "additions": 0,
+        "customAdditions": 37,
+        "deletions": 0,
+        "files": 13,
+        "points": 3,
+        "rationale": "37 custom lines across 12 files with a stepper/breadcrumb removal and minor layout/action adjustments — small-medium refactor touching several readiness UI pieces.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 24,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.45,
+          "Jason": 0.55
+        }
+      }
+    ],
+    "totalPoints": 30,
+    "byAuthor": {
+      "Chris": 8.4,
+      "Jason": 21.7
+    },
+    "byCategory": {
+      "AI/Agents": 5,
+      "Core Platform": 8,
+      "UI/UX": 9,
+      "Admin/Tools": 8
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Admin Impersonation & Onboarding Experience Overhaul",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          116,
+          118,
+          119,
+          120,
+          114
+        ],
+        "rationale": "A coordinated set of fixes and improvements across admin impersonation tooling, multi-user onboarding UX, confirmation messaging, and a production release that bundled all these changes together into a deployable state."
+      },
+      {
+        "id": 2,
+        "name": "AI Collector Agent Integration",
+        "points": 5,
+        "category": "AI/Agents",
+        "prs": [
+          117
+        ],
+        "rationale": "Introduced LLM-powered collector agent functionality, advancing Skematic's AI-driven data gathering capabilities."
+      }
+    ],
+    "totalPoints": 26,
+    "byAuthor": {
+      "Jason": 21,
+      "Chris": 5
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 6.93,
+      "grouped": 6
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

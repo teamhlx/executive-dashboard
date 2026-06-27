@@ -1,0 +1,87 @@
+{
+  "week": "2026-W14",
+  "startDate": "2026-03-30",
+  "endDate": "2026-04-05",
+  "generatedAt": "2026-06-27T16:01:47.812Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 291,
+        "title": "Align schemas, playbooks, assessment refactor, and code quality hardening",
+        "author": "Jason",
+        "mergedAt": "2026-03-31T00:34:42Z",
+        "additions": 0,
+        "customAdditions": 7783,
+        "deletions": 0,
+        "files": 128,
+        "points": 21,
+        "rationale": "128 files changed with 7783 custom lines spanning schema refactors, AI agent updates, playbook introduction, assessment page overhaul, and broad code quality hardening across the full platform stack — this is a transformative, multi-week integration effort.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.45,
+          "Jason": 0.55
+        }
+      },
+      {
+        "pr": 283,
+        "title": "Ch/refactor/misc",
+        "author": "Chris",
+        "mergedAt": "2026-03-31T00:34:44Z",
+        "additions": 0,
+        "customAdditions": 3489,
+        "deletions": 0,
+        "files": 57,
+        "points": 13,
+        "rationale": "57 files and 3489 custom lines introducing playbooks, assessment page refactor, new Prisma schema models with migrations, seed scripts, and supporting docs represent a major feature-level effort that forms the foundational spine later merged into PR #291.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.85,
+          "Jason": 0.15
+        }
+      }
+    ],
+    "totalPoints": 34,
+    "byAuthor": {
+      "Chris": 20.5,
+      "Jason": 13.6
+    },
+    "byCategory": {
+      "Core Platform": 34
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Platform Stability and Code Quality Overhaul",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          291,
+          283
+        ],
+        "rationale": "Combined schema alignment, playbook and assessment refactoring, and miscellaneous code quality improvements to strengthen the overall reliability and maintainability of the core platform."
+      }
+    ],
+    "totalPoints": 21,
+    "byAuthor": {
+      "Jason": 13,
+      "Chris": 8
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 7.85,
+      "grouped": 4.85
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}
