@@ -113,10 +113,10 @@ export default function VelocityChart({ trends, viewMode, timeRange }: Props) {
   let postRegression: { values: number[]; slope: number; slopePerMonth: number } | null = null;
 
   if (milestoneIdx > 1 && milestoneIdx < slicedWeeks.length - 1) {
-    // Pre: everything before the milestone (exclusive)
-    const prePoints = rawPoints.slice(0, milestoneIdx);
+    // Pre: everything up to and including the milestone week
+    const prePoints = rawPoints.slice(0, milestoneIdx + 1);
     preRegression = linearRegression(prePoints);
-    // Post: milestone week onward
+    // Post: milestone week onward (overlaps at the milestone)
     const postPoints = rawPoints.slice(milestoneIdx);
     postRegression = linearRegression(postPoints);
   } else {
@@ -131,9 +131,10 @@ export default function VelocityChart({ trends, viewMode, timeRange }: Props) {
       points: rawPoints[i],
     };
     if (milestoneIdx > 1 && milestoneIdx < slicedWeeks.length - 1) {
-      if (i < milestoneIdx && preRegression) {
+      if (i <= milestoneIdx && preRegression) {
         entry.trendPre = preRegression.values[i];
-      } else if (i >= milestoneIdx && postRegression) {
+      }
+      if (i >= milestoneIdx && postRegression) {
         entry.trendPost = postRegression.values[i - milestoneIdx];
       }
     } else if (preRegression) {

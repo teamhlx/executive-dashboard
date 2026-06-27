@@ -142,7 +142,7 @@ export default function VelocityFTEChart({ trends, viewMode, timeRange }: Props)
   let postRegression: { values: number[]; slope: number; slopePerMonth: number } | null = null;
 
   if (milestoneIdx > 1 && milestoneIdx < slicedWeeks.length - 1) {
-    preRegression = linearRegression(perFTEPoints.slice(0, milestoneIdx));
+    preRegression = linearRegression(perFTEPoints.slice(0, milestoneIdx + 1));
     postRegression = linearRegression(perFTEPoints.slice(milestoneIdx));
   } else {
     preRegression = linearRegression(perFTEPoints);
@@ -158,9 +158,10 @@ export default function VelocityFTEChart({ trends, viewMode, timeRange }: Props)
       fte: getFTEForWeek(week),
     };
     if (showMilestone) {
-      if (i < milestoneIdx && preRegression) {
+      if (i <= milestoneIdx && preRegression) {
         entry.trendPre = preRegression.values[i];
-      } else if (i >= milestoneIdx && postRegression) {
+      }
+      if (i >= milestoneIdx && postRegression) {
         entry.trendPost = postRegression.values[i - milestoneIdx];
       }
     } else if (preRegression) {
