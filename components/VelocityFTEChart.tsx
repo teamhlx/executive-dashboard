@@ -27,11 +27,11 @@ type Props = {
 
 // Team roster — allocation as fraction of 1 FTE
 // startWeek = first week they contributed, endWeek = last week (null = still active)
-const TEAM_ROSTER = [
+const TEAM_ROSTER: { name: string; allocation: number; startWeek: string; endWeek: string | null }[] = [
   { name: "Jason", allocation: 1.0, startWeek: "2025-W32", endWeek: null },
-  { name: "Chris", allocation: 0.8, startWeek: "2025-W32", endWeek: "2026-W25" },
-  { name: "Mauro", allocation: 0.3, startWeek: "2026-W24", endWeek: null },
-  { name: "Chad", allocation: 0.3, startWeek: "2026-W25", endWeek: null },
+  { name: "Chris", allocation: 0.8, startWeek: "2025-W32", endWeek: null },
+  { name: "Mauro", allocation: 1.0, startWeek: "2026-W24", endWeek: null },
+  { name: "Chad", allocation: 1.0, startWeek: "2026-W25", endWeek: null },
 ];
 
 // Team change milestones (for reference lines)
