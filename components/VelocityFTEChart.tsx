@@ -46,10 +46,10 @@ function getFTEForWeek(week: string): number {
     .reduce((sum, m) => sum + m.allocation, 0);
 }
 
-// Linear regression
-function linearRegression(values: number[]): number[] {
+// Linear regression — returns { values, slope (per week), slopePerMonth }
+function linearRegression(values: number[]): { values: number[]; slope: number; slopePerMonth: number } {
   const n = values.length;
-  if (n < 2) return values;
+  if (n < 2) return { values, slope: 0, slopePerMonth: 0 };
   const xMean = (n - 1) / 2;
   const yMean = values.reduce((s, v) => s + v, 0) / n;
   let num = 0, den = 0;
@@ -59,7 +59,11 @@ function linearRegression(values: number[]): number[] {
   }
   const slope = den === 0 ? 0 : num / den;
   const intercept = yMean - slope * xMean;
-  return values.map((_, i) => Math.round((intercept + slope * i) * 10) / 10);
+  return {
+    values: values.map((_, i) => Math.round((intercept + slope * i) * 10) / 10),
+    slope: Math.round(slope * 100) / 100,
+    slopePerMonth: Math.round(slope * 4.33 * 100) / 100,
+  };
 }
 
 type ChartEntry = {
@@ -134,7 +138,8 @@ export default function VelocityFTEChart({ trends, viewMode }: Props) {
     return fte > 0 ? Math.round((rawPoints[i] / fte) * 10) / 10 : 0;
   });
 
-  const trendValues = linearRegression(perFTEPoints);
+  const regression = linearRegression(perFTEPoints);
+  const trendValues = regression.values;
 
   const data: ChartEntry[] = slicedWeeks.map((week, i) => ({
     week: week.replace(/^\d{4}-/, ""),
@@ -229,6 +234,12 @@ export default function VelocityFTEChart({ trends, viewMode }: Props) {
         <span className="flex items-center gap-1.5">
           <span className="w-3 h-0.5 bg-amber-500 inline-block" style={{ borderTop: "2px dashed #f59e0b" }}></span>
           Team change
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="w-3 h-0.5 bg-emerald-400 inline-block" style={{ borderTop: "2px dashed #34d399" }}></span>
+          Trend: <span className={regression.slopePerMonth >= 0 ? "text-emerald-400" : "text-red-400"}>
+            {regression.slopePerMonth > 0 ? "+" : ""}{regression.slopePerMonth} pts/FTE/month
+          </span>
         </span>
         <span>
           Current team: {getFTEForWeek(trends.weeks[trends.weeks.length - 1])} FTE

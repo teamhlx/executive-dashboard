@@ -31,10 +31,10 @@ type ChartEntry = {
   trend?: number;
 };
 
-// Linear regression for trend line
-function linearRegression(values: number[]): number[] {
+// Linear regression for trend line — returns { values, slope (per week), slopePerMonth }
+function linearRegression(values: number[]): { values: number[]; slope: number; slopePerMonth: number } {
   const n = values.length;
-  if (n < 2) return values;
+  if (n < 2) return { values, slope: 0, slopePerMonth: 0 };
   const xMean = (n - 1) / 2;
   const yMean = values.reduce((s, v) => s + v, 0) / n;
   let num = 0, den = 0;
@@ -44,7 +44,11 @@ function linearRegression(values: number[]): number[] {
   }
   const slope = den === 0 ? 0 : num / den;
   const intercept = yMean - slope * xMean;
-  return values.map((_, i) => Math.round(intercept + slope * i));
+  return {
+    values: values.map((_, i) => Math.round(intercept + slope * i)),
+    slope: Math.round(slope * 100) / 100,
+    slopePerMonth: Math.round(slope * 4.33 * 100) / 100,
+  };
 }
 
 const CustomTooltip = ({
@@ -96,13 +100,13 @@ export default function VelocityChart({ trends, viewMode }: Props) {
   const rawPoints = trends.weeks.map((_, i) =>
     viewMode === "pr" ? trends.prLevel[i] ?? 0 : trends.grouped[i] ?? 0
   ).slice(startIdx);
-  const trendValues = linearRegression(rawPoints);
+  const regression = linearRegression(rawPoints);
   const slicedWeeks = trends.weeks.slice(startIdx);
 
   const data: ChartEntry[] = slicedWeeks.map((week, i) => ({
     week: week.replace(/^\d{4}-/, ""), // strip year → "W26"
     points: rawPoints[i],
-    trend: trendValues[i],
+    trend: regression.values[i],
   }));
 
   return (
@@ -164,6 +168,14 @@ export default function VelocityChart({ trends, viewMode }: Props) {
           />
         </LineChart>
       </ResponsiveContainer>
+      <div className="flex gap-4 mt-3 text-xs text-gray-500">
+        <span className="flex items-center gap-1.5">
+          <span className="w-3 h-0.5 inline-block" style={{ borderTop: "2px dashed #34d399" }}></span>
+          Trend: <span className={regression.slopePerMonth >= 0 ? "text-emerald-400" : "text-red-400"}>
+            {regression.slopePerMonth > 0 ? "+" : ""}{regression.slopePerMonth} pts/month
+          </span>
+        </span>
+      </div>
     </div>
   );
 }
