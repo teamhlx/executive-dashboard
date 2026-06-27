@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   LineChart,
   Line,
@@ -68,7 +69,19 @@ const CustomTooltip = ({
   );
 };
 
+type TimeRange = "all" | "year" | "6mo" | "3mo" | "1mo";
+
+const TIME_RANGES: { key: TimeRange; label: string; weeks: number }[] = [
+  { key: "all", label: "All Time", weeks: 999 },
+  { key: "year", label: "1 Year", weeks: 52 },
+  { key: "6mo", label: "6 Months", weeks: 26 },
+  { key: "3mo", label: "3 Months", weeks: 13 },
+  { key: "1mo", label: "1 Month", weeks: 4 },
+];
+
 export default function VelocityChart({ trends, viewMode }: Props) {
+  const [timeRange, setTimeRange] = useState<TimeRange>("all");
+
   if (!trends || trends.weeks.length === 0) {
     return (
       <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-6 flex items-center justify-center h-48">
@@ -77,12 +90,16 @@ export default function VelocityChart({ trends, viewMode }: Props) {
     );
   }
 
+  const maxWeeks = TIME_RANGES.find(r => r.key === timeRange)?.weeks ?? 999;
+  const startIdx = Math.max(0, trends.weeks.length - maxWeeks);
+
   const rawPoints = trends.weeks.map((_, i) =>
     viewMode === "pr" ? trends.prLevel[i] ?? 0 : trends.grouped[i] ?? 0
-  );
+  ).slice(startIdx);
   const trendValues = linearRegression(rawPoints);
+  const slicedWeeks = trends.weeks.slice(startIdx);
 
-  const data: ChartEntry[] = trends.weeks.map((week, i) => ({
+  const data: ChartEntry[] = slicedWeeks.map((week, i) => ({
     week: week.replace(/^\d{4}-/, ""), // strip year → "W26"
     points: rawPoints[i],
     trend: trendValues[i],
@@ -90,9 +107,26 @@ export default function VelocityChart({ trends, viewMode }: Props) {
 
   return (
     <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-6">
-      <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4">
-        Weekly Velocity — {viewMode === "pr" ? "PR-Level Points" : "Story-Grouped Points"}
-      </h3>
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-sm text-gray-400 uppercase tracking-wider">
+          Weekly Velocity — {viewMode === "pr" ? "PR-Level Points" : "Story-Grouped Points"}
+        </h3>
+        <div className="flex gap-1 bg-gray-900 rounded-lg p-1">
+          {TIME_RANGES.map(({ key, label }) => (
+            <button
+              key={key}
+              onClick={() => setTimeRange(key)}
+              className={`px-3 py-1 text-xs rounded-md transition-colors ${
+                timeRange === key
+                  ? "bg-indigo-600 text-white"
+                  : "text-gray-400 hover:text-gray-200 hover:bg-gray-800"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
       <ResponsiveContainer width="100%" height={200}>
         <LineChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
