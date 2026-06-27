@@ -117,7 +117,7 @@ export default function Home() {
       setVelocityLoading(true);
       setVelocityError(null);
       const res = await authFetch(
-        `${currentProject.baseUrl}/api/velocity?project=${currentProject.id}&weeks=12`
+        `${currentProject.baseUrl}/api/velocity?project=${currentProject.id}&weeks=52`
       );
       if (!res.ok) throw new Error(`API error: ${res.status}`);
       const data = await res.json();
