@@ -8,6 +8,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import FeedbackButton from "@/components/FeedbackButton";
 import LoginPage from "@/components/LoginPage";
 import AdminPanel from "@/components/AdminPanel";
+import VelocityDashboard, { VelocityPayload } from "@/components/VelocityDashboard";
 import { projects } from "@/projects.config";
 import ProjectSwitcher from "@/components/ProjectSwitcher";
 import { authFetch, setToken, clearToken } from "@/lib/auth";
@@ -55,6 +56,7 @@ export default function Home() {
   const [authLoading, setAuthLoading] = useState(true);
   const [showAdmin, setShowAdmin] = useState(false);
   const [currentProject, setCurrentProject] = useState(projects[0]);
+  const [activeTab, setActiveTab] = useState<"epics" | "velocity">("epics");
 
   const [epics, setEpics] = useState<Epic[]>([]);
   const [metrics, setMetrics] = useState<Metrics | null>(null);
@@ -65,6 +67,11 @@ export default function Home() {
   const [showResearching, setShowResearching] = useState(true);
   const [showBacklog, setShowBacklog] = useState(false);
   const [showDone, setShowDone] = useState(false);
+
+  // Velocity state
+  const [velocityData, setVelocityData] = useState<VelocityPayload | null>(null);
+  const [velocityLoading, setVelocityLoading] = useState(false);
+  const [velocityError, setVelocityError] = useState<string | null>(null);
 
   // Check session on mount
   useEffect(() => {
@@ -105,6 +112,30 @@ export default function Home() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, currentProject]);
 
+  async function fetchVelocityData() {
+    try {
+      setVelocityLoading(true);
+      setVelocityError(null);
+      const res = await authFetch(
+        `${currentProject.baseUrl}/api/velocity?project=${currentProject.id}&weeks=12`
+      );
+      if (!res.ok) throw new Error(`API error: ${res.status}`);
+      const data = await res.json();
+      setVelocityData(data);
+    } catch (e: unknown) {
+      setVelocityError(e instanceof Error ? e.message : "Failed to load velocity data");
+    } finally {
+      setVelocityLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    if (user && activeTab === "velocity") {
+      fetchVelocityData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user, currentProject, activeTab]);
+
   const handleLogout = async () => {
     clearToken();
     await authFetch(`${baseUrl}/api/auth/logout`, {
@@ -123,7 +154,6 @@ export default function Home() {
       </div>
     );
   }
-
   // Login gate
   if (!user) {
     return <LoginPage apiUrl={baseUrl} onLogin={(u) => {
@@ -188,12 +218,12 @@ export default function Home() {
               </button>
             </div>
             <button
-              onClick={fetchData}
+              onClick={activeTab === "epics" ? fetchData : fetchVelocityData}
               className="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 transition-colors"
             >
               ↻ Refresh
             </button>
-            {lastUpdated && (
+            {lastUpdated && activeTab === "epics" && (
               <p className="text-xs text-gray-500 dark:text-gray-500">
                 Updated {lastUpdated.toLocaleTimeString()}
               </p>
@@ -202,64 +232,102 @@ export default function Home() {
         </div>
       </div>
 
-      {loading && (
-        <div className="flex items-center justify-center h-64">
-          <div className="text-gray-500 dark:text-gray-400 animate-pulse">Loading dashboard…</div>
-        </div>
+      {/* Tab switcher */}
+      <div className="flex items-center gap-1 mb-8 bg-gray-800 dark:bg-gray-800 rounded-xl p-1 border border-gray-700 w-fit">
+        <button
+          onClick={() => setActiveTab("epics")}
+          className={`px-5 py-2 rounded-lg text-sm font-medium transition-colors ${
+            activeTab === "epics"
+              ? "bg-indigo-600 text-white shadow"
+              : "text-gray-400 hover:text-gray-200"
+          }`}
+        >
+          Epics
+        </button>
+        <button
+          onClick={() => setActiveTab("velocity")}
+          className={`px-5 py-2 rounded-lg text-sm font-medium transition-colors ${
+            activeTab === "velocity"
+              ? "bg-indigo-600 text-white shadow"
+              : "text-gray-400 hover:text-gray-200"
+          }`}
+        >
+          ⚡ Velocity
+        </button>
+      </div>
+
+      {/* Velocity tab */}
+      {activeTab === "velocity" && (
+        <VelocityDashboard
+          data={velocityData}
+          loading={velocityLoading}
+          error={velocityError}
+        />
       )}
 
-      {error && (
-        <div className="bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-700 rounded-lg p-4 text-red-700 dark:text-red-300 mb-6">
-          {error}
-        </div>
-      )}
-
-      {!loading && !error && (
+      {/* Epics tab */}
+      {activeTab === "epics" && (
         <>
-          <MetricCards
-            researching={researching.length}
-            ready={ready.length}
-            done={done.length}
-            totalStories={metrics?.totalStories || 0}
-            openBugs={metrics?.openBugs || 0}
-          />
-          <EpicList
-            researching={researching}
-            ready={ready}
-            backlog={backlog}
-            done={done}
-            showSection="active"
-            hoveredKey={hoveredKey}
-            onHover={setHoveredKey}
-            showResearching={showResearching}
-            jiraEnabled={user?.jiraEnabled}
-          />
-          <EpicTimeline
-            epics={timelineEpics}
-            hoveredKey={hoveredKey}
-            onHover={setHoveredKey}
-            showResearching={showResearching}
-            showBacklog={showBacklog}
-            showDone={showDone}
-            onToggleResearching={() => setShowResearching(v => !v)}
-            onToggleBacklog={() => setShowBacklog(v => !v)}
-            onToggleDone={() => setShowDone(v => !v)}
-            researchingCount={researching.length}
-            backlogCount={backlog.length}
-            doneCount={done.length}
-            rankMap={rankMap}
-          />
-          <EpicList
-            researching={researching}
-            ready={ready}
-            backlog={backlog}
-            done={done}
-            showSection="secondary"
-            showResearching={showResearching}
-            showBacklog={showBacklog}
-            showDone={showDone}
-            jiraEnabled={user?.jiraEnabled}
-          />
+          {loading && (
+            <div className="flex items-center justify-center h-64">
+              <div className="text-gray-500 dark:text-gray-400 animate-pulse">Loading dashboard…</div>
+            </div>
+          )}
+
+          {error && (
+            <div className="bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-700 rounded-lg p-4 text-red-700 dark:text-red-300 mb-6">
+              {error}
+            </div>
+          )}
+
+          {!loading && !error && (
+            <>
+              <MetricCards
+                researching={researching.length}
+                ready={ready.length}
+                done={done.length}
+                totalStories={metrics?.totalStories || 0}
+                openBugs={metrics?.openBugs || 0}
+              />
+              <EpicList
+                researching={researching}
+                ready={ready}
+                backlog={backlog}
+                done={done}
+                showSection="active"
+                hoveredKey={hoveredKey}
+                onHover={setHoveredKey}
+                showResearching={showResearching}
+                jiraEnabled={user?.jiraEnabled}
+              />
+              <EpicTimeline
+                epics={timelineEpics}
+                hoveredKey={hoveredKey}
+                onHover={setHoveredKey}
+                showResearching={showResearching}
+                showBacklog={showBacklog}
+                showDone={showDone}
+                onToggleResearching={() => setShowResearching(v => !v)}
+                onToggleBacklog={() => setShowBacklog(v => !v)}
+                onToggleDone={() => setShowDone(v => !v)}
+                researchingCount={researching.length}
+                backlogCount={backlog.length}
+                doneCount={done.length}
+                rankMap={rankMap}
+              />
+              <EpicList
+                researching={researching}
+                ready={ready}
+                backlog={backlog}
+                done={done}
+                showSection="secondary"
+                showResearching={showResearching}
+                showBacklog={showBacklog}
+                showDone={showDone}
+                jiraEnabled={user?.jiraEnabled}
+              />
+            </>
+          )}
         </>
       )}
 

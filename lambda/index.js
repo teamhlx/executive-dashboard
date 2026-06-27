@@ -713,6 +713,216 @@ When the action is "link" or "create", your final assistant message MUST also in
     }
   }
 
+  // ─── GET /api/velocity ────────────────────────────────────────────────────
+  if (method === 'GET' && path && (path === '/api/velocity' || path.startsWith('/api/velocity/'))) {
+    let db;
+    try {
+      db = await getDbClient();
+      const authUser = await getAuthUser(event, db);
+      if (!authUser) {
+        return { statusCode: 401, headers: corsHeaders, body: JSON.stringify({ error: 'Unauthorized' }) };
+      }
+
+      const qs = event.queryStringParameters || {};
+      const project = qs.project || 'skematic';
+      const weeksLimit = Math.min(parseInt(qs.weeks || '12', 10), 52);
+
+      // Sub-routes
+      const subPath = path.replace('/api/velocity', '') || '/';
+
+      // GET /api/velocity/authors
+      if (subPath === '/authors') {
+        const res = await db.query(
+          `SELECT author,
+                  COUNT(*)::int AS prs,
+                  SUM(points)::int AS total_points,
+                  ROUND(AVG(points)::numeric, 1) AS avg_points,
+                  MIN(merged_at) AS first_pr,
+                  MAX(merged_at) AS last_pr
+           FROM velocity_prs
+           WHERE project = $1 AND author != 'dependabot'
+           GROUP BY author
+           ORDER BY total_points DESC`,
+          [project]
+        );
+        const authors = {};
+        for (const row of res.rows) {
+          authors[row.author] = {
+            totalPoints: row.total_points,
+            avgPoints: parseFloat(row.avg_points),
+            prs: row.prs,
+            firstPR: row.first_pr,
+            lastPR: row.last_pr,
+          };
+        }
+        return { statusCode: 200, headers: corsHeaders, body: JSON.stringify({ authors }) };
+      }
+
+      // GET /api/velocity/trends
+      if (subPath === '/trends') {
+        const res = await db.query(
+          `SELECT r.week, r.pr_level_points, r.grouped_points, r.fte_equiv_pr, r.fte_equiv_grouped,
+                  r.start_date, r.end_date
+           FROM velocity_runs r
+           WHERE r.project = $1
+           ORDER BY r.week DESC
+           LIMIT $2`,
+          [project, weeksLimit]
+        );
+        const rows = res.rows.reverse(); // oldest first for charting
+        const trends = {
+          weeks: rows.map(r => r.week),
+          prLevel: rows.map(r => r.pr_level_points),
+          grouped: rows.map(r => r.grouped_points),
+          fteEquivPR: rows.map(r => parseFloat(r.fte_equiv_pr) || 0),
+          fteEquivGrouped: rows.map(r => parseFloat(r.fte_equiv_grouped) || 0),
+          startDates: rows.map(r => r.start_date),
+        };
+        return { statusCode: 200, headers: corsHeaders, body: JSON.stringify({ trends }) };
+      }
+
+      // GET /api/velocity (default — full dashboard payload)
+      // Fetch recent runs
+      const runsRes = await db.query(
+        `SELECT * FROM velocity_runs WHERE project = $1 ORDER BY week DESC LIMIT $2`,
+        [project, weeksLimit]
+      );
+      const runs = runsRes.rows;
+
+      if (runs.length === 0) {
+        return {
+          statusCode: 200,
+          headers: corsHeaders,
+          body: JSON.stringify({
+            weeks: [],
+            currentWeek: null,
+            trends: { weeks: [], prLevel: [], grouped: [], fteEquivPR: [], fteEquivGrouped: [] },
+            authors: {},
+            fteEquiv: { current: 0, average: 0 },
+          })
+        };
+      }
+
+      const runIds = runs.map(r => r.id);
+
+      // Fetch PRs for these runs
+      const prsRes = await db.query(
+        `SELECT * FROM velocity_prs WHERE run_id = ANY($1) ORDER BY merged_at DESC`,
+        [runIds]
+      );
+
+      // Fetch stories for these runs
+      const storiesRes = await db.query(
+        `SELECT * FROM velocity_stories WHERE run_id = ANY($1) ORDER BY points DESC`,
+        [runIds]
+      );
+
+      // Group PRs and stories by run_id
+      const prsByRun = {};
+      for (const pr of prsRes.rows) {
+        if (!prsByRun[pr.run_id]) prsByRun[pr.run_id] = [];
+        prsByRun[pr.run_id].push({
+          prNumber: pr.pr_number,
+          title: pr.title,
+          author: pr.author,
+          mergedAt: pr.merged_at,
+          points: pr.points,
+          category: pr.category,
+          rationale: pr.rationale,
+          customAdditions: pr.custom_additions,
+          isVendored: pr.is_vendored,
+        });
+      }
+      const storiesByRun = {};
+      for (const s of storiesRes.rows) {
+        if (!storiesByRun[s.run_id]) storiesByRun[s.run_id] = [];
+        storiesByRun[s.run_id].push({
+          id: s.id,
+          name: s.story_name,
+          points: s.points,
+          category: s.category,
+          prNumbers: s.pr_numbers,
+          week: s.week,
+        });
+      }
+
+      // Build weeks array
+      const weeks = runs.reverse().map(r => ({
+        week: r.week,
+        startDate: r.start_date,
+        endDate: r.end_date,
+        prLevelPoints: r.pr_level_points,
+        groupedPoints: r.grouped_points,
+        fteEquivPR: parseFloat(r.fte_equiv_pr) || 0,
+        fteEquivGrouped: parseFloat(r.fte_equiv_grouped) || 0,
+        totalPRs: r.total_prs,
+        scoredPRs: r.scored_prs,
+        generatedAt: r.generated_at,
+        prs: prsByRun[r.id] || [],
+        stories: storiesByRun[r.id] || [],
+      }));
+
+      // Current week = last entry
+      const currentWeek = weeks[weeks.length - 1] || null;
+
+      // Trends for charting
+      const trends = {
+        weeks: weeks.map(w => w.week),
+        prLevel: weeks.map(w => w.prLevelPoints),
+        grouped: weeks.map(w => w.groupedPoints),
+        fteEquivPR: weeks.map(w => w.fteEquivPR),
+        fteEquivGrouped: weeks.map(w => w.fteEquivGrouped),
+      };
+
+      // Author breakdown (all-time across returned weeks)
+      const authorsRes = await db.query(
+        `SELECT author,
+                COUNT(*)::int AS prs,
+                SUM(points)::int AS total_points,
+                ROUND(AVG(points)::numeric, 2) AS avg_per_pr
+         FROM velocity_prs
+         WHERE run_id = ANY($1) AND author != 'dependabot'
+         GROUP BY author
+         ORDER BY total_points DESC`,
+        [runIds]
+      );
+      const authors = {};
+      for (const row of authorsRes.rows) {
+        authors[row.author] = {
+          totalPoints: row.total_points,
+          avgPerPR: parseFloat(row.avg_per_pr),
+          prs: row.prs,
+          avgPerWeek: weeksLimit > 0 ? Math.round((row.total_points / weeksLimit) * 10) / 10 : 0,
+        };
+      }
+
+      // FTE equiv summary
+      const avgFTE = weeks.length > 0
+        ? Math.round((weeks.reduce((s, w) => s + w.fteEquivGrouped, 0) / weeks.length) * 100) / 100
+        : 0;
+
+      return {
+        statusCode: 200,
+        headers: corsHeaders,
+        body: JSON.stringify({
+          weeks,
+          currentWeek,
+          trends,
+          authors,
+          fteEquiv: {
+            current: currentWeek?.fteEquivGrouped || 0,
+            average: avgFTE,
+          },
+        })
+      };
+    } catch (err) {
+      console.error('GET /api/velocity error:', err);
+      return { statusCode: 500, headers: corsHeaders, body: JSON.stringify({ error: err.message }) };
+    } finally {
+      if (db) await db.end().catch(() => {});
+    }
+  }
+
   // ─── Original Jira proxy ──────────────────────────────────────────────────
   const headers = corsHeaders;
 

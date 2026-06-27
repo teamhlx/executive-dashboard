@@ -1,0 +1,312 @@
+{
+  "weeks": [
+    {
+      "week": "2026-W26",
+      "startDate": "2026-06-22",
+      "endDate": "2026-06-28",
+      "generatedAt": "2026-06-27T14:31:35.802Z",
+      "prLevel": {
+        "prs": [
+          {
+            "pr": 490,
+            "title": "feat: add product from AWS Marketplace URL + edit company name",
+            "author": "Jason",
+            "mergedAt": "2026-06-27T02:42:01Z",
+            "additions": 0,
+            "customAdditions": 667,
+            "deletions": 0,
+            "files": 10,
+            "points": 8,
+            "rationale": "Adds AWS Marketplace URL product ingestion plus company name editing across 10 files spanning actions, components, a new AWS library, and E2E tests — a meaningful dual-feature addition.",
+            "category": "Core Platform",
+            "vendored": false,
+            "vendoredRatio": 0
+          },
+          {
+            "pr": 488,
+            "title": "fix(studio): Bedrock toolConfig on competitive-analysis finalize (prod hotfix)",
+            "author": "Chad",
+            "mergedAt": "2026-06-27T00:54:22Z",
+            "additions": 0,
+            "customAdditions": 111,
+            "deletions": 0,
+            "files": 2,
+            "points": 2,
+            "rationale": "Targeted hotfix correcting Bedrock toolConfig for competitive-analysis finalize with a small agent change and accompanying unit test.",
+            "category": "AI/Agents",
+            "vendored": false,
+            "vendoredRatio": 0
+          },
+          {
+            "pr": 487,
+            "title": "fix(readiness): scope Product.marketplaceListingId unique per company (prod hotfix)",
+            "author": "Chad",
+            "mergedAt": "2026-06-27T00:29:29Z",
+            "additions": 0,
+            "customAdditions": 151,
+            "deletions": 0,
+            "files": 4,
+            "points": 3,
+            "rationale": "Scopes a unique constraint on marketplace listing IDs per company via a schema change, migration, collector update, and dedup test — a focused data integrity fix.",
+            "category": "Data/Schema",
+            "vendored": false,
+            "vendoredRatio": 0
+          },
+          {
+            "pr": 485,
+            "title": "fix(automation): enforce tenant isolation on automation actions",
+            "author": "Jason",
+            "mergedAt": "2026-06-26T21:22:21Z",
+            "additions": 0,
+            "customAdditions": 206,
+            "deletions": 0,
+            "files": 6,
+            "points": 5,
+            "rationale": "Enforces tenant isolation across automation control, tools, agent, and server actions in six files, addressing a meaningful security/correctness concern with test coverage.",
+            "category": "Core Platform",
+            "vendored": false,
+            "vendoredRatio": 0
+          },
+          {
+            "pr": 483,
+            "title": "fix(studio): enqueue BTS generation directly from assessment + strategy slides",
+            "author": "Jason",
+            "mergedAt": "2026-06-26T20:12:21Z",
+            "additions": 0,
+            "customAdditions": 25,
+            "deletions": 0,
+            "files": 2,
+            "points": 2,
+            "rationale": "Small two-file fix wiring BTS generation enqueue directly from assessment and strategy slide components.",
+            "category": "UI/UX",
+            "vendored": false,
+            "vendoredRatio": 0
+          },
+          {
+            "pr": 481,
+            "title": "Revert #475 (guided-experience UI / action-needed tray) out of staging",
+            "author": "Jason",
+            "mergedAt": "2026-06-26T18:10:01Z",
+            "additions": 0,
+            "customAdditions": 386,
+            "deletions": 0,
+            "files": 17,
+            "points": 5,
+            "rationale": "Reverts a 17-file guided-experience UI feature out of staging, requiring careful restoration of prior state across components, layout, and sandbox pages.",
+            "category": "UI/UX",
+            "vendored": false,
+            "vendoredRatio": 47
+          },
+          {
+            "pr": 480,
+            "title": "Terraform IaC foundation for AWS Cognito migration",
+            "author": "Chad",
+            "mergedAt": "2026-06-26T17:15:22Z",
+            "additions": 0,
+            "customAdditions": 2462,
+            "deletions": 0,
+            "files": 44,
+            "points": 13,
+            "rationale": "Establishes a full Terraform IaC foundation for AWS Cognito migration across 44 files including CI/CD workflows, bootstrap modules, environment configs, and module definitions — a major infrastructure architectural addition.",
+            "category": "Infrastructure",
+            "vendored": false,
+            "vendoredRatio": 0
+          },
+          {
+            "pr": 475,
+            "title": "Sm 565/guided experience UI",
+            "author": "Mauro",
+            "mergedAt": "2026-06-25T19:34:17Z",
+            "additions": 0,
+            "customAdditions": 1398,
+            "deletions": 0,
+            "files": 17,
+            "points": 8,
+            "rationale": "Implements a full guided-experience UI with tray, task cards, inline prompts, assignee selectors, CRM connect panel, and app shell integration across 17 files and 1400 lines.",
+            "category": "UI/UX",
+            "vendored": false,
+            "vendoredRatio": 0
+          },
+          {
+            "pr": 476,
+            "title": "Studio: move BTS & Competitive Analysis generation to background workers",
+            "author": "Jason",
+            "mergedAt": "2026-06-25T19:02:21Z",
+            "additions": 0,
+            "customAdditions": 1890,
+            "deletions": 0,
+            "files": 26,
+            "points": 13,
+            "rationale": "Moves BTS and Competitive Analysis generation to background BullMQ workers, touching AI agents, schema, migrations, API routes, studio components, hooks, and enqueue utilities across 26 files — a significant architectural shift.",
+            "category": "AI/Agents",
+            "vendored": false,
+            "vendoredRatio": 0
+          },
+          {
+            "pr": 472,
+            "title": "fix(docker): ship docs/ into runner image so admin docs load",
+            "author": "Jason",
+            "mergedAt": "2026-06-23T23:27:21Z",
+            "additions": 0,
+            "customAdditions": 5,
+            "deletions": 0,
+            "files": 1,
+            "points": 1,
+            "rationale": "Trivial single-file Dockerfile tweak to include the docs directory in the runner image.",
+            "category": "DevOps",
+            "vendored": false,
+            "vendoredRatio": 0
+          },
+          {
+            "pr": 471,
+            "title": "fix(docker): ship docs/ into runner image so admin docs load",
+            "author": "Jason",
+            "mergedAt": "2026-06-23T23:01:18Z",
+            "additions": 0,
+            "customAdditions": 5,
+            "deletions": 0,
+            "files": 1,
+            "points": 1,
+            "rationale": "Duplicate of PR #472 — trivial single-file Dockerfile fix to ship docs into the runner image.",
+            "category": "DevOps",
+            "vendored": false,
+            "vendoredRatio": 0
+          },
+          {
+            "pr": 470,
+            "title": "Playbook editing + AI assistant guided flow",
+            "author": "Jason",
+            "mergedAt": "2026-06-22T15:14:09Z",
+            "additions": 0,
+            "customAdditions": 1735,
+            "deletions": 0,
+            "files": 35,
+            "points": 13,
+            "rationale": "Delivers playbook editing UI, AI assistant guided flow, automation agent tooling, schema/migration changes, and performance pages across 35 files — a major multi-faceted feature spanning AI, admin, and core platform.",
+            "category": "Core Platform",
+            "vendored": false,
+            "vendoredRatio": 3
+          }
+        ],
+        "totalPoints": 74,
+        "byAuthor": {
+          "Jason": 48,
+          "Chad": 18,
+          "Mauro": 8
+        },
+        "byCategory": {
+          "Core Platform": 26,
+          "AI/Agents": 15,
+          "Data/Schema": 3,
+          "UI/UX": 15,
+          "Infrastructure": 13,
+          "DevOps": 2
+        }
+      },
+      "grouped": {
+        "stories": [
+          {
+            "id": 1,
+            "name": "AWS Marketplace Product Onboarding & Company Management",
+            "points": 8,
+            "category": "Core Platform",
+            "prs": [
+              490
+            ],
+            "rationale": "Enables users to add products directly from AWS Marketplace URLs and edit company names, streamlining product onboarding from the AWS ecosystem."
+          },
+          {
+            "id": 2,
+            "name": "AI Studio Background Processing & Reliability",
+            "points": 21,
+            "category": "AI/Agents",
+            "prs": [
+              476,
+              488,
+              483
+            ],
+            "rationale": "Moves BTS and Competitive Analysis generation to background workers for scalability, fixes Bedrock toolConfig issues in production, and ensures BTS generation can be enqueued directly from assessment and strategy slides."
+          },
+          {
+            "id": 3,
+            "name": "Marketplace Listing Data Integrity Fix",
+            "points": 3,
+            "category": "Data/Schema",
+            "prs": [
+              487
+            ],
+            "rationale": "Hotfix scoping the marketplace listing ID uniqueness constraint per company to prevent cross-tenant data collisions."
+          },
+          {
+            "id": 4,
+            "name": "Tenant Isolation & Security Hardening",
+            "points": 5,
+            "category": "Core Platform",
+            "prs": [
+              485
+            ],
+            "rationale": "Enforces strict tenant isolation on automation actions to ensure no cross-tenant data leakage in multi-tenant environments."
+          },
+          {
+            "id": 5,
+            "name": "Guided Experience & Action-Needed Tray UI",
+            "points": 13,
+            "category": "UI/UX",
+            "prs": [
+              475,
+              481
+            ],
+            "rationale": "Introduced a guided experience UI with an action-needed tray, then reverted it from staging due to instability, capturing the full spike and rollback cycle."
+          },
+          {
+            "id": 6,
+            "name": "AWS Cognito Identity Infrastructure Migration",
+            "points": 13,
+            "category": "Infrastructure",
+            "prs": [
+              480
+            ],
+            "rationale": "Lays the Terraform IaC foundation for migrating authentication to AWS Cognito, enabling a scalable and managed identity platform."
+          },
+          {
+            "id": 7,
+            "name": "Playbook Editing with AI-Assisted Guided Flow",
+            "points": 13,
+            "category": "Core Platform",
+            "prs": [
+              470
+            ],
+            "rationale": "Delivers playbook editing capabilities with an AI assistant guided flow, helping users build and refine business readiness playbooks interactively."
+          },
+          {
+            "id": 8,
+            "name": "Admin Documentation Availability Fix",
+            "points": 2,
+            "category": "DevOps",
+            "prs": [
+              471,
+              472
+            ],
+            "rationale": "Fixed Docker runner image to include the docs directory so that admin documentation loads correctly in deployed environments."
+          }
+        ],
+        "totalPoints": 78,
+        "byAuthor": {
+          "Jason": 51.5,
+          "Chad": 18.5,
+          "Mauro": 8
+        }
+      },
+      "meta": {
+        "teamSize": 1.8,
+        "codingAllocation": 0.8,
+        "fteEquiv": {
+          "prLevel": 17.09,
+          "grouped": 18.01
+        },
+        "ptsPerWeekPerFTE": 4.33
+      }
+    }
+  ],
+  "updatedAt": "2026-06-27T14:31:35.804Z"
+}
