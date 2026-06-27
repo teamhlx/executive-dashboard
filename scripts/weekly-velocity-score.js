@@ -66,6 +66,24 @@ const SKIP_PATTERNS = [
   /^staging\s*to\s*main/i,
 ];
 
+// Detect "revert of revert" / re-apply PRs that reference an original PR
+// Returns the original PR number if detected, null otherwise
+function detectReapplySource(title, body) {
+  // Patterns: "Re-apply ... (formerly #475)", "Revert of revert ... #475", "Re-land #475"
+  const patterns = [
+    /formerly\s*#(\d+)/i,
+    /re-?apply(?:ing)?\s+.*#(\d+)/i,
+    /re-?land(?:ing)?\s+.*#(\d+)/i,
+    /revert\s+.*revert\s+.*#(\d+)/i,
+  ];
+  const text = `${title} ${body || ''}`;
+  for (const p of patterns) {
+    const m = text.match(p);
+    if (m) return parseInt(m[1], 10);
+  }
+  return null;
+}
+
 // Vendored/auto-gen directory patterns (regex tested against file paths)
 const VENDORED_PATTERNS = [
   /^aws-sdk-/,
@@ -826,7 +844,13 @@ async function processWeek(weekKey, prs, opts, bedrockClient, InvokeModelCommand
 
       // Determine attribution
       let attribution;
-      if (pr.isMultiAuthor && score.attribution) {
+      if (pr.reapplySource) {
+        // Re-apply/revert-of-revert: inherit attribution from original PR author
+        // The original PR author did the work; this PR is just git plumbing
+        const originalAuthor = pr.reapplyOriginalAuthor || pr.author;
+        attribution = { [originalAuthor]: 1.0 };
+        console.log(`    #${pr.pr} is re-apply of #${pr.reapplySource} → attributing to ${originalAuthor}`);
+      } else if (pr.isMultiAuthor && score.attribution) {
         // AI-assigned attribution for multi-author PRs
         attribution = score.attribution;
       } else if (pr.isMultiAuthor && !score.attribution) {
@@ -929,6 +953,20 @@ async function processWeek(weekKey, prs, opts, bedrockClient, InvokeModelCommand
 async function enrichPR(ghClient, rawPR) {
   const prAuthor = mapAuthor(rawPR.user.login);
 
+  // Detect re-apply/revert-of-revert referencing original PR
+  const reapplySource = detectReapplySource(rawPR.title, rawPR.body);
+  let reapplyOriginalAuthor = null;
+  if (reapplySource) {
+    try {
+      const origUrl = `${GITHUB_API_BASE}/repos/${REPO}/pulls/${reapplySource}`;
+      const origPR = await httpGet(origUrl, ghClient.headers);
+      reapplyOriginalAuthor = mapAuthor(origPR.user?.login || 'unknown');
+      console.log(`    → Re-apply of #${reapplySource} (original author: ${reapplyOriginalAuthor})`);
+    } catch (err) {
+      console.warn(`  Warning: Could not fetch original PR #${reapplySource}: ${err.message}`);
+    }
+  }
+
   // Fetch files
   let files = [];
   try {
@@ -985,6 +1023,9 @@ async function enrichPR(ghClient, rawPR) {
     isMultiAuthor,
     commitsByAuthor,
     totalCommits: commits.length,
+    // Re-apply detection
+    reapplySource,
+    reapplyOriginalAuthor,
   };
 }
 
@@ -1071,9 +1112,10 @@ async function main() {
       const releaseTag = SKIP_PATTERNS.some(p => p.test(pr.title)) ? ' [RELEASE SKIP]' : '';
       const depTag = pr.author === 'dependabot' ? ' [DEPENDABOT SKIP]' : '';
       const multiTag = pr.isMultiAuthor ? ` [MULTI-AUTHOR: ${Object.keys(pr.commitsByAuthor).join(', ')}]` : '';
+      const reapplyTag = pr.reapplySource ? ` [RE-APPLY #${pr.reapplySource} → ${pr.reapplyOriginalAuthor || '?'}]` : '';
       if (releaseTag || depTag) skipCount++;
       if (pr.isMultiAuthor) multiAuthorCount++;
-      console.log(`  #${pr.pr} | ${pr.author.padEnd(8)} | +${String(pr.customAdditions).padStart(5)} custom${vendorTag}${releaseTag}${depTag}${multiTag}`);
+      console.log(`  #${pr.pr} | ${pr.author.padEnd(8)} | +${String(pr.customAdditions).padStart(5)} custom${vendorTag}${releaseTag}${depTag}${multiTag}${reapplyTag}`);
       console.log(`        ${pr.title.slice(0, 70)}`);
     }
     console.log('-'.repeat(80));
