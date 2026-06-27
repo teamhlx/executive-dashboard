@@ -35,7 +35,7 @@ jobs:
       - name: Deploy to Amplify
         run: |
           # Create deployment
-          DEPLOY_RESULT=$(aws amplify create-deployment --app-id dl0i3qehr8gc6 --branch-name main --region us-west-2)
+          DEPLOY_RESULT=$(aws amplify create-deployment --app-id d27fj5orvibcxj --branch-name main --region us-west-2)
           JOB_ID=$(echo $DEPLOY_RESULT | jq -r '.jobId')
           UPLOAD_URL=$(echo $DEPLOY_RESULT | jq -r '.zipUploadUrl')
 
@@ -46,6 +46,7 @@ jobs:
           curl -T deploy.zip "$UPLOAD_URL" --header "Content-Type: application/zip"
 
           # Start deployment
-          aws amplify start-deployment --app-id dl0i3qehr8gc6 --branch-name main --job-id $JOB_ID --region us-west-2
+          aws amplify start-deployment --app-id d27fj5orvibcxj --branch-name main --job-id $JOB_ID --region us-west-2
 
           echo "Deployment started: job $JOB_ID"
+          echo "App URL: https://main.d27fj5orvibcxj.amplifyapp.com"
