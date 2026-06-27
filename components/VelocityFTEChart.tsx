@@ -66,6 +66,37 @@ function linearRegression(values: number[]): { values: number[]; slope: number; 
   };
 }
 
+// Convert ISO week string to date of Monday of that week
+function getWeekMonday(isoWeek: string): Date | null {
+  const match = isoWeek.match(/^(\d{4})-W(\d{2})$/);
+  if (!match) return null;
+  const year = parseInt(match[1]);
+  const week = parseInt(match[2]);
+  const jan4 = new Date(year, 0, 4);
+  const dayOfWeek = jan4.getDay() || 7;
+  const monday = new Date(jan4);
+  monday.setDate(jan4.getDate() - dayOfWeek + 1 + (week - 1) * 7);
+  return monday;
+}
+
+const MONTH_NAMES_FTE = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function weekToMonthStartFTE(weeks: string[]): Set<number> {
+  const monthStarts = new Set<number>();
+  let prevMonth = -1;
+  for (let i = 0; i < weeks.length; i++) {
+    const d = getWeekMonday(weeks[i]);
+    if (d) {
+      const m = d.getMonth();
+      if (m !== prevMonth) {
+        monthStarts.add(i);
+        prevMonth = m;
+      }
+    }
+  }
+  return monthStarts;
+}
+
 type ChartEntry = {
   week: string;
   fullWeek: string;
@@ -150,9 +181,12 @@ export default function VelocityFTEChart({ trends, viewMode, timeRange }: Props)
 
   const showMilestone = milestoneIdx > 1 && milestoneIdx < slicedWeeks.length - 1;
 
+  // Determine which indices are month starts for labeling
+  const monthStartIndices = weekToMonthStartFTE(slicedWeeks);
+
   const data: ChartEntry[] = slicedWeeks.map((week, i) => {
     const entry: ChartEntry = {
-      week: week.replace(/^\d{4}-/, ""),
+      week: week.replace(/^\d{4}-/, ""), // keep unique key
       fullWeek: week,
       pointsPerFTE: perFTEPoints[i],
       fte: getFTEForWeek(week),
@@ -177,6 +211,20 @@ export default function VelocityFTEChart({ trends, viewMode, timeRange }: Props)
     displayWeek: m.week.replace(/^\d{4}-/, ""),
   })).filter(m => m.idx >= 0);
 
+  // Build week→month label map for tick formatting
+  const weekToMonthFTE: Record<string, string> = {};
+  slicedWeeks.forEach((week, i) => {
+    const shortWeek = week.replace(/^\d{4}-/, "");
+    if (monthStartIndices.has(i)) {
+      const d = getWeekMonday(week);
+      if (d) {
+        const yr = d.getFullYear().toString().slice(2);
+        weekToMonthFTE[shortWeek] = `${MONTH_NAMES_FTE[d.getMonth()]} '${yr}`;
+      }
+    }
+  });
+  const formatXTickFTE = (value: string) => weekToMonthFTE[value] || "";
+
   return (
     <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-6">
       <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4">
@@ -187,9 +235,11 @@ export default function VelocityFTEChart({ trends, viewMode, timeRange }: Props)
           <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
           <XAxis
             dataKey="week"
-            tick={{ fill: "#9ca3af", fontSize: 12 }}
+            tick={{ fill: "#9ca3af", fontSize: 11 }}
             axisLine={{ stroke: "#374151" }}
             tickLine={false}
+            tickFormatter={formatXTickFTE}
+            interval={0}
           />
           <YAxis
             tick={{ fill: "#9ca3af", fontSize: 12 }}

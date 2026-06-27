@@ -39,6 +39,40 @@ type ChartEntry = {
   trendPost?: number;
 };
 
+// Convert ISO week string to date of Monday of that week
+function getMonthLabel(isoWeek: string): Date | null {
+  // Parse "2025-W32" → date of Monday of that week
+  const match = isoWeek.match(/^(\d{4})-W(\d{2})$/);
+  if (!match) return null;
+  const year = parseInt(match[1]);
+  const week = parseInt(match[2]);
+  // Jan 4 is always in week 1 per ISO
+  const jan4 = new Date(year, 0, 4);
+  const dayOfWeek = jan4.getDay() || 7; // Mon=1..Sun=7
+  const monday = new Date(jan4);
+  monday.setDate(jan4.getDate() - dayOfWeek + 1 + (week - 1) * 7);
+  return monday;
+}
+
+const MONTH_NAMES = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function weekToMonthStart(weeks: string[]): Set<number> {
+  // Returns indices where a new month starts
+  const monthStarts = new Set<number>();
+  let prevMonth = -1;
+  for (let i = 0; i < weeks.length; i++) {
+    const d = getMonthLabel(weeks[i]);
+    if (d) {
+      const m = (d as Date).getMonth();
+      if (m !== prevMonth) {
+        monthStarts.add(i);
+        prevMonth = m;
+      }
+    }
+  }
+  return monthStarts;
+}
+
 // Linear regression for trend line — returns { values, slope (per week), slopePerMonth }
 function linearRegression(values: number[]): { values: number[]; slope: number; slopePerMonth: number } {
   const n = values.length;
@@ -124,9 +158,12 @@ export default function VelocityChart({ trends, viewMode, timeRange }: Props) {
     preRegression = linearRegression(rawPoints);
   }
 
+  // Determine which indices are month starts for labeling
+  const monthStartIndices = weekToMonthStart(slicedWeeks);
+
   const data: ChartEntry[] = slicedWeeks.map((week, i) => {
     const entry: ChartEntry = {
-      week: week.replace(/^\d{4}-/, ""), // strip year → "W26"
+      week: week.replace(/^\d{4}-/, ""), // keep "W26" as unique key for Recharts
       fullWeek: week,
       points: rawPoints[i],
     };
@@ -148,6 +185,22 @@ export default function VelocityChart({ trends, viewMode, timeRange }: Props) {
   const milestoneDisplayWeek = TEAM_MILESTONE_WEEK.replace(/^\d{4}-/, "");
   const showMilestone = milestoneIdx > 1 && milestoneIdx < slicedWeeks.length - 1;
 
+  // Build a map of week label → month display label for X-axis tick formatting
+  const weekToMonth: Record<string, string> = {};
+  slicedWeeks.forEach((week, i) => {
+    const shortWeek = week.replace(/^\d{4}-/, "");
+    if (monthStartIndices.has(i)) {
+      const d = getMonthLabel(week) as Date | null;
+      if (d) {
+        const yr = d.getFullYear().toString().slice(2);
+        weekToMonth[shortWeek] = `${MONTH_NAMES[d.getMonth()]} '${yr}`;
+      }
+    }
+  });
+
+  // Custom tick formatter: show month label or empty
+  const formatXTick = (value: string) => weekToMonth[value] || "";
+
   return (
     <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-6">
       <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4">
@@ -158,9 +211,11 @@ export default function VelocityChart({ trends, viewMode, timeRange }: Props) {
           <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
           <XAxis
             dataKey="week"
-            tick={{ fill: "#9ca3af", fontSize: 12 }}
+            tick={{ fill: "#9ca3af", fontSize: 11 }}
             axisLine={{ stroke: "#374151" }}
             tickLine={false}
+            tickFormatter={formatXTick}
+            interval={0}
           />
           <YAxis
             tick={{ fill: "#9ca3af", fontSize: 12 }}
