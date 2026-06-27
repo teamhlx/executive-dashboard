@@ -70,7 +70,8 @@ type ChartEntry = {
   week: string;
   fullWeek: string;
   pointsPerFTE: number;
-  trend?: number;
+  trendPre?: number;
+  trendPost?: number;
   fte: number;
 };
 
@@ -133,16 +134,40 @@ export default function VelocityFTEChart({ trends, viewMode, timeRange }: Props)
     return fte > 0 ? Math.round((rawPoints[i] / fte) * 10) / 10 : 0;
   });
 
-  const regression = linearRegression(perFTEPoints);
-  const trendValues = regression.values;
+  // Find milestone index within sliced data
+  const milestoneIdx = slicedWeeks.indexOf(TEAM_MILESTONES[0]?.week ?? "");
 
-  const data: ChartEntry[] = slicedWeeks.map((week, i) => ({
-    week: week.replace(/^\d{4}-/, ""),
-    fullWeek: week,
-    pointsPerFTE: perFTEPoints[i],
-    trend: trendValues[i],
-    fte: getFTEForWeek(week),
-  }));
+  // Split regression: pre-milestone and post-milestone
+  let preRegression: { values: number[]; slope: number; slopePerMonth: number } | null = null;
+  let postRegression: { values: number[]; slope: number; slopePerMonth: number } | null = null;
+
+  if (milestoneIdx > 1 && milestoneIdx < slicedWeeks.length - 1) {
+    preRegression = linearRegression(perFTEPoints.slice(0, milestoneIdx));
+    postRegression = linearRegression(perFTEPoints.slice(milestoneIdx));
+  } else {
+    preRegression = linearRegression(perFTEPoints);
+  }
+
+  const showMilestone = milestoneIdx > 1 && milestoneIdx < slicedWeeks.length - 1;
+
+  const data: ChartEntry[] = slicedWeeks.map((week, i) => {
+    const entry: ChartEntry = {
+      week: week.replace(/^\d{4}-/, ""),
+      fullWeek: week,
+      pointsPerFTE: perFTEPoints[i],
+      fte: getFTEForWeek(week),
+    };
+    if (showMilestone) {
+      if (i < milestoneIdx && preRegression) {
+        entry.trendPre = preRegression.values[i];
+      } else if (i >= milestoneIdx && postRegression) {
+        entry.trendPost = postRegression.values[i - milestoneIdx];
+      }
+    } else if (preRegression) {
+      entry.trendPre = preRegression.values[i];
+    }
+    return entry;
+  });
 
   // Find milestone positions within current data range
   const milestoneIndices = TEAM_MILESTONES.map(m => ({
@@ -198,26 +223,50 @@ export default function VelocityFTEChart({ trends, viewMode, timeRange }: Props)
           />
           <Line
             type="monotone"
-            dataKey="trend"
+            dataKey="trendPre"
             stroke="#34d399"
             strokeWidth={2}
             strokeDasharray="6 4"
             dot={false}
             activeDot={false}
-            name="Trend"
+            name="Trend (pre)"
+            connectNulls={false}
+          />
+          <Line
+            type="monotone"
+            dataKey="trendPost"
+            stroke="#22d3ee"
+            strokeWidth={2}
+            strokeDasharray="6 4"
+            dot={false}
+            activeDot={false}
+            name="Trend (post)"
+            connectNulls={false}
           />
         </LineChart>
       </ResponsiveContainer>
-      <div className="flex gap-4 mt-3 text-xs text-gray-500">
-        <span className="flex items-center gap-1.5">
-          <span className="w-3 h-0.5 bg-amber-500 inline-block" style={{ borderTop: "2px dashed #f59e0b" }}></span>
-          Team change
-        </span>
-        <span className="flex items-center gap-1.5">
-          <span className="w-3 h-0.5 bg-emerald-400 inline-block" style={{ borderTop: "2px dashed #34d399" }}></span>
-          Trend: <span className={regression.slopePerMonth >= 0 ? "text-emerald-400" : "text-red-400"}>
-            {regression.slopePerMonth > 0 ? "+" : ""}{regression.slopePerMonth} pts/FTE/month
+      <div className="flex flex-wrap gap-4 mt-3 text-xs text-gray-500">
+        {preRegression && (
+          <span className="flex items-center gap-1.5">
+            <span className="w-3 h-0.5 inline-block" style={{ borderTop: "2px dashed #34d399" }}></span>
+            {showMilestone ? "Pre-hire: " : "Trend: "}
+            <span className={preRegression.slopePerMonth >= 0 ? "text-emerald-400" : "text-red-400"}>
+              {preRegression.slopePerMonth > 0 ? "+" : ""}{preRegression.slopePerMonth} pts/FTE/month
+            </span>
           </span>
+        )}
+        {postRegression && showMilestone && (
+          <span className="flex items-center gap-1.5">
+            <span className="w-3 h-0.5 inline-block" style={{ borderTop: "2px dashed #22d3ee" }}></span>
+            Post-hire:{" "}
+            <span className={postRegression.slopePerMonth >= 0 ? "text-cyan-400" : "text-red-400"}>
+              {postRegression.slopePerMonth > 0 ? "+" : ""}{postRegression.slopePerMonth} pts/FTE/month
+            </span>
+          </span>
+        )}
+        <span className="flex items-center gap-1.5">
+          <span className="w-3 h-0.5 inline-block" style={{ borderTop: "2px dashed #f59e0b" }}></span>
+          Team change
         </span>
         <span>
           Current team: {getFTEForWeek(trends.weeks[trends.weeks.length - 1])} FTE
