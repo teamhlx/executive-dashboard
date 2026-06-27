@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   LineChart,
   Line,
@@ -23,6 +22,7 @@ type TrendData = {
 type Props = {
   trends: TrendData;
   viewMode: "pr" | "grouped";
+  timeRange: TimeRange;
 };
 
 // Team roster — allocation as fraction of 1 FTE
@@ -76,13 +76,9 @@ type ChartEntry = {
 
 type TimeRange = "all" | "year" | "6mo" | "3mo" | "1mo";
 
-const TIME_RANGES: { key: TimeRange; label: string; weeks: number }[] = [
-  { key: "all", label: "All Time", weeks: 999 },
-  { key: "year", label: "1 Year", weeks: 52 },
-  { key: "6mo", label: "6 Months", weeks: 26 },
-  { key: "3mo", label: "3 Months", weeks: 13 },
-  { key: "1mo", label: "1 Month", weeks: 4 },
-];
+const TIME_RANGE_WEEKS: Record<TimeRange, number> = {
+  all: 999, year: 52, "6mo": 26, "3mo": 13, "1mo": 4,
+};
 
 const CustomTooltip = ({
   active,
@@ -113,8 +109,7 @@ const CustomTooltip = ({
   );
 };
 
-export default function VelocityFTEChart({ trends, viewMode }: Props) {
-  const [timeRange, setTimeRange] = useState<TimeRange>("all");
+export default function VelocityFTEChart({ trends, viewMode, timeRange }: Props) {
 
   if (!trends || trends.weeks.length === 0) {
     return (
@@ -124,7 +119,7 @@ export default function VelocityFTEChart({ trends, viewMode }: Props) {
     );
   }
 
-  const maxWeeks = TIME_RANGES.find(r => r.key === timeRange)?.weeks ?? 999;
+  const maxWeeks = TIME_RANGE_WEEKS[timeRange] ?? 999;
   const startIdx = Math.max(0, trends.weeks.length - maxWeeks);
   const slicedWeeks = trends.weeks.slice(startIdx);
 
@@ -158,26 +153,9 @@ export default function VelocityFTEChart({ trends, viewMode }: Props) {
 
   return (
     <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-6">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-sm text-gray-400 uppercase tracking-wider">
-          Velocity Per FTE — {viewMode === "pr" ? "PR-Level" : "Story-Grouped"}
-        </h3>
-        <div className="flex gap-1 bg-gray-900 rounded-lg p-1">
-          {TIME_RANGES.map(({ key, label }) => (
-            <button
-              key={key}
-              onClick={() => setTimeRange(key)}
-              className={`px-3 py-1 text-xs rounded-md transition-colors ${
-                timeRange === key
-                  ? "bg-indigo-600 text-white"
-                  : "text-gray-400 hover:text-gray-200 hover:bg-gray-800"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-      </div>
+      <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4">
+        Velocity Per FTE — {viewMode === "pr" ? "PR-Level" : "Story-Grouped"}
+      </h3>
       <ResponsiveContainer width="100%" height={200}>
         <LineChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#374151" />

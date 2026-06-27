@@ -70,9 +70,20 @@ type Props = {
   error: string | null;
 };
 
+type TimeRange = "all" | "year" | "6mo" | "3mo" | "1mo";
+
+const TIME_RANGES: { key: TimeRange; label: string }[] = [
+  { key: "all", label: "All Time" },
+  { key: "year", label: "1 Year" },
+  { key: "6mo", label: "6 Months" },
+  { key: "3mo", label: "3 Months" },
+  { key: "1mo", label: "1 Month" },
+];
+
 export default function VelocityDashboard({ data, loading, error }: Props) {
   const [viewMode, setViewMode] = useState<"pr" | "grouped">("grouped");
   const [selectedWeekIdx, setSelectedWeekIdx] = useState<number | null>(null);
+  const [timeRange, setTimeRange] = useState<TimeRange>("all");
 
   if (loading) {
     return (
@@ -165,9 +176,26 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
         viewMode={viewMode}
       />
 
-      {/* Chart */}
-      <VelocityChart trends={data.trends} viewMode={viewMode} />
-      <VelocityFTEChart trends={data.trends} viewMode={viewMode} />
+      {/* Time range selector + Charts */}
+      <div className="flex justify-end mb-2">
+        <div className="flex gap-1 bg-gray-900 rounded-lg p-1">
+          {TIME_RANGES.map(({ key, label }) => (
+            <button
+              key={key}
+              onClick={() => setTimeRange(key)}
+              className={`px-3 py-1 text-xs rounded-md transition-colors ${
+                timeRange === key
+                  ? "bg-indigo-600 text-white"
+                  : "text-gray-400 hover:text-gray-200 hover:bg-gray-800"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
+      <VelocityChart trends={data.trends} viewMode={viewMode} timeRange={timeRange} />
+      <VelocityFTEChart trends={data.trends} viewMode={viewMode} timeRange={timeRange} />
 
       {/* Two-column: author breakdown + story list */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
