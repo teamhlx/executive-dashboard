@@ -52,6 +52,9 @@ const AUTHOR_MAP = {
   'skippymagnificent': 'Skippy',
   'dependabot[bot]': 'dependabot',
   'dependabot': 'dependabot',
+  'copilot': 'Copilot',
+  'github-actions[bot]': 'bot',
+  'web-flow': 'web-flow',
 };
 
 // PRs to skip entirely (release merges, staging→main, etc.)
@@ -297,6 +300,21 @@ class GitHubClient {
     }
     return allFiles;
   }
+
+  async fetchPRCommits(repo, prNumber) {
+    const allCommits = [];
+    let page = 1;
+    while (true) {
+      const url = `${GITHUB_API_BASE}/repos/${repo}/pulls/${prNumber}/commits?per_page=100&page=${page}`;
+      const commits = await httpGet(url, this.headers);
+      if (!Array.isArray(commits) || commits.length === 0) break;
+      allCommits.push(...commits);
+      if (commits.length < 100) break;
+      page++;
+      await sleep(100);
+    }
+    return allCommits;
+  }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -390,14 +408,27 @@ async function scorePRsBatch(client, InvokeModelCommand, prs) {
   const prDescriptions = prs.map((pr, idx) => {
     const fileList = pr.customFiles.slice(0, 20).join('\n    ');
     const moreFiles = pr.customFiles.length > 20 ? `\n    ... and ${pr.customFiles.length - 20} more` : '';
+
+    // Multi-author commit details
+    let authorDetails = '';
+    if (pr.isMultiAuthor) {
+      authorDetails = `\n  [MULTI-AUTHOR PR — ${pr.totalCommits} commits across ${Object.keys(pr.commitsByAuthor).length} contributors]`;
+      for (const [author, data] of Object.entries(pr.commitsByAuthor)) {
+        const msgs = data.messages.slice(0, 5).map(m => `"${m.slice(0, 80)}"`).join(', ');
+        authorDetails += `\n    ${author}: ${data.commits} commits, +${data.additions}/-${data.deletions} lines — ${msgs}`;
+      }
+    }
+
     return `
 PR ${idx + 1}: #${pr.pr} — "${pr.title}"
-  Author: ${pr.author}
+  PR opened by: ${pr.author}
   Custom additions: ${pr.customAdditions} lines | Deletions: ${pr.deletions} | Files changed: ${pr.files}
-  ${pr.isVendored ? `[VENDORED: ${Math.round(pr.vendoredRatio * 100)}% auto-gen, actual custom work: ${pr.customAdditions} lines]` : ''}
+  ${pr.isVendored ? `[VENDORED: ${Math.round(pr.vendoredRatio * 100)}% auto-gen, actual custom work: ${pr.customAdditions} lines]` : ''}${authorDetails}
   Changed files (custom):
     ${fileList}${moreFiles}`;
   }).join('\n');
+
+  const hasMultiAuthor = prs.some(pr => pr.isMultiAuthor);
 
   const prompt = `You are a software engineering effort estimator for Skematic, an AI-powered business readiness platform.
 
@@ -414,6 +445,13 @@ Categories: ${CATEGORIES.join(', ')}
 
 Use ONLY custom lines (not vendored/auto-gen) when estimating effort. If a PR is flagged as VENDORED, ignore the auto-gen lines entirely and score based only on the custom additions.
 
+${hasMultiAuthor ? `ATTRIBUTION: For PRs marked [MULTI-AUTHOR PR], analyze the commits from each contributor and provide an effort attribution split as a decimal (must sum to 1.0). Consider:
+- Architectural/core work vs. fixups/tests
+- Novel logic vs. boilerplate/config
+- Whether commits represent the "spine" of the feature or supporting contributions
+- Quality of contribution matters more than raw line count
+For single-author PRs, omit the attribution field.
+` : ''}
 PRs to score:
 ${prDescriptions}
 
@@ -423,7 +461,8 @@ Respond with a JSON array with one entry per PR (in the same order):
     "prIndex": 1,
     "points": <fibonacci number>,
     "rationale": "<one sentence explaining the score>",
-    "category": "<one of the valid categories>"
+    "category": "<one of the valid categories>"${hasMultiAuthor ? `,
+    "attribution": { "AuthorName": 0.6, "OtherAuthor": 0.4 }  // ONLY for multi-author PRs, omit for single-author` : ''}
   },
   ...
 ]
@@ -498,7 +537,16 @@ function sumByAuthor(prs) {
   const byAuthor = {};
   for (const pr of prs) {
     if (pr.author === 'dependabot') continue;
-    byAuthor[pr.author] = (byAuthor[pr.author] || 0) + (pr.points || 0);
+    const points = pr.points || 0;
+    if (pr.attribution) {
+      // Split points by attribution
+      for (const [author, fraction] of Object.entries(pr.attribution)) {
+        byAuthor[author] = Math.round(((byAuthor[author] || 0) + points * fraction) * 10) / 10;
+      }
+    } else {
+      // Fallback: full credit to PR author
+      byAuthor[pr.author] = (byAuthor[pr.author] || 0) + points;
+    }
   }
   return byAuthor;
 }
@@ -614,8 +662,9 @@ async function writeWeekToDB(weekData, project = 'skematic') {
       await db.query(
         `INSERT INTO velocity_prs
            (run_id, project, pr_number, title, author, merged_at, additions, custom_additions,
-            deletions, files_changed, points, rationale, category, is_vendored, vendored_ratio)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)
+            deletions, files_changed, points, rationale, category, is_vendored, vendored_ratio,
+            attribution, is_multi_author)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)
          ON CONFLICT (project, pr_number) DO UPDATE SET
            run_id = EXCLUDED.run_id,
            title = EXCLUDED.title,
@@ -629,7 +678,9 @@ async function writeWeekToDB(weekData, project = 'skematic') {
            rationale = EXCLUDED.rationale,
            category = EXCLUDED.category,
            is_vendored = EXCLUDED.is_vendored,
-           vendored_ratio = EXCLUDED.vendored_ratio`,
+           vendored_ratio = EXCLUDED.vendored_ratio,
+           attribution = EXCLUDED.attribution,
+           is_multi_author = EXCLUDED.is_multi_author`,
         [
           runId,
           project,
@@ -646,6 +697,8 @@ async function writeWeekToDB(weekData, project = 'skematic') {
           pr.category || null,
           pr.vendored || false,
           (pr.vendoredRatio || 0) / 100, // store as ratio 0–1
+          pr.attribution ? JSON.stringify(pr.attribution) : null,
+          pr.isMultiAuthor || false,
         ]
       );
     }
@@ -770,6 +823,26 @@ async function processWeek(weekKey, prs, opts, bedrockClient, InvokeModelCommand
     for (let j = 0; j < batch.length; j++) {
       const pr = batch[j];
       const score = scores[j] || { points: 3, rationale: 'Scoring unavailable', category: 'Core Platform' };
+
+      // Determine attribution
+      let attribution;
+      if (pr.isMultiAuthor && score.attribution) {
+        // AI-assigned attribution for multi-author PRs
+        attribution = score.attribution;
+      } else if (pr.isMultiAuthor && !score.attribution) {
+        // Fallback: lines-based split for multi-author PRs if AI didn't provide
+        const totalLines = Object.values(pr.commitsByAuthor).reduce((s, d) => s + d.additions, 0) || 1;
+        attribution = {};
+        for (const [author, data] of Object.entries(pr.commitsByAuthor)) {
+          if (author !== 'dependabot' && author !== 'unknown') {
+            attribution[author] = Math.round((data.additions / totalLines) * 100) / 100;
+          }
+        }
+      } else {
+        // Single author — 100%
+        attribution = { [pr.author]: 1.0 };
+      }
+
       scoredPRs.push({
         pr: pr.pr,
         title: pr.title,
@@ -784,6 +857,8 @@ async function processWeek(weekKey, prs, opts, bedrockClient, InvokeModelCommand
         category: score.category,
         vendored: pr.isVendored,
         vendoredRatio: Math.round((pr.vendoredRatio || 0) * 100),
+        isMultiAuthor: pr.isMultiAuthor,
+        attribution,
       });
     }
 
@@ -852,7 +927,7 @@ async function processWeek(weekKey, prs, opts, bedrockClient, InvokeModelCommand
 // Enrich PRs with File Details
 // ─────────────────────────────────────────────────────────────────────────────
 async function enrichPR(ghClient, rawPR) {
-  const author = mapAuthor(rawPR.user.login);
+  const prAuthor = mapAuthor(rawPR.user.login);
 
   // Fetch files
   let files = [];
@@ -862,12 +937,39 @@ async function enrichPR(ghClient, rawPR) {
     console.warn(`  Warning: Could not fetch files for PR #${rawPR.number}: ${err.message}`);
   }
 
+  // Fetch commits for multi-author detection
+  let commits = [];
+  try {
+    commits = await ghClient.fetchPRCommits(REPO, rawPR.number);
+  } catch (err) {
+    console.warn(`  Warning: Could not fetch commits for PR #${rawPR.number}: ${err.message}`);
+  }
+
+  // Analyze commit authors
+  const commitsByAuthor = {};
+  const IGNORE_AUTHORS = new Set(['dependabot', 'unknown', 'copilot', 'ubuntu', 'web-flow']);
+  for (const commit of commits) {
+    const login = commit.author?.login || commit.commit?.author?.name || 'unknown';
+    const authorName = mapAuthor(login);
+    if (IGNORE_AUTHORS.has(authorName.toLowerCase())) continue;
+    if (!commitsByAuthor[authorName]) {
+      commitsByAuthor[authorName] = { commits: 0, additions: 0, deletions: 0, messages: [] };
+    }
+    commitsByAuthor[authorName].commits++;
+    commitsByAuthor[authorName].additions += (commit.stats?.additions || 0);
+    commitsByAuthor[authorName].deletions += (commit.stats?.deletions || 0);
+    commitsByAuthor[authorName].messages.push(commit.commit?.message?.split('\n')[0] || '');
+  }
+
+  const authors = Object.keys(commitsByAuthor);
+  const isMultiAuthor = authors.length > 1;
+
   const classification = classifyFiles(files);
 
   return {
     pr: rawPR.number,
     title: rawPR.title,
-    author,
+    author: prAuthor,
     authorLogin: rawPR.user.login,
     mergedAt: rawPR.merged_at,
     additions: rawPR.additions || 0,
@@ -879,6 +981,10 @@ async function enrichPR(ghClient, rawPR) {
     isVendored: classification.isVendored,
     customFiles: classification.customFiles,
     vendoredFiles: classification.vendoredFiles,
+    // Multi-author attribution data
+    isMultiAuthor,
+    commitsByAuthor,
+    totalCommits: commits.length,
   };
 }
 
@@ -959,16 +1065,22 @@ async function main() {
     console.log('\n📊 DRY RUN — PR Summary:');
     console.log('-'.repeat(80));
     let skipCount = 0;
+    let multiAuthorCount = 0;
     for (const pr of enrichedPRs) {
       const vendorTag = pr.isVendored ? ` [VENDORED ${Math.round(pr.vendoredRatio * 100)}%]` : '';
       const releaseTag = SKIP_PATTERNS.some(p => p.test(pr.title)) ? ' [RELEASE SKIP]' : '';
       const depTag = pr.author === 'dependabot' ? ' [DEPENDABOT SKIP]' : '';
+      const multiTag = pr.isMultiAuthor ? ` [MULTI-AUTHOR: ${Object.keys(pr.commitsByAuthor).join(', ')}]` : '';
       if (releaseTag || depTag) skipCount++;
-      console.log(`  #${pr.pr} | ${pr.author.padEnd(8)} | +${String(pr.customAdditions).padStart(5)} custom${vendorTag}${releaseTag}${depTag}`);
+      if (pr.isMultiAuthor) multiAuthorCount++;
+      console.log(`  #${pr.pr} | ${pr.author.padEnd(8)} | +${String(pr.customAdditions).padStart(5)} custom${vendorTag}${releaseTag}${depTag}${multiTag}`);
       console.log(`        ${pr.title.slice(0, 70)}`);
     }
     console.log('-'.repeat(80));
     console.log(`\nTotal PRs: ${enrichedPRs.length} (${skipCount} will be skipped, ${enrichedPRs.length - skipCount} will be scored)`);
+    if (multiAuthorCount > 0) {
+      console.log(`Multi-author PRs: ${multiAuthorCount} (will get AI-weighted attribution)`);
+    }
     console.log(`(Use without --dry-run to score with AI)`);
     return;
   }

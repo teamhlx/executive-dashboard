@@ -4,9 +4,29 @@
       "week": "2026-W26",
       "startDate": "2026-06-22",
       "endDate": "2026-06-28",
-      "generatedAt": "2026-06-27T14:31:35.802Z",
+      "generatedAt": "2026-06-27T15:28:28.271Z",
       "prLevel": {
         "prs": [
+          {
+            "pr": 493,
+            "title": "Merge main into staging",
+            "author": "Jason",
+            "mergedAt": "2026-06-27T15:09:31Z",
+            "additions": 0,
+            "customAdditions": 966,
+            "deletions": 0,
+            "files": 18,
+            "points": 8,
+            "rationale": "Merge PR aggregating two hotfixes (marketplace uniqueness scoping + Bedrock toolConfig fix) plus a significant AWS Marketplace URL feature across AI agents, schema migrations, UI components, and E2E/unit tests — substantial breadth even if the individual pieces landed in separate PRs.",
+            "category": "Core Platform",
+            "vendored": false,
+            "vendoredRatio": 0,
+            "isMultiAuthor": true,
+            "attribution": {
+              "Jason": 0.25,
+              "Chad": 0.75
+            }
+          },
           {
             "pr": 490,
             "title": "feat: add product from AWS Marketplace URL + edit company name",
@@ -17,10 +37,14 @@
             "deletions": 0,
             "files": 10,
             "points": 8,
-            "rationale": "Adds AWS Marketplace URL product ingestion plus company name editing across 10 files spanning actions, components, a new AWS library, and E2E tests — a meaningful dual-feature addition.",
-            "category": "Core Platform",
+            "rationale": "Full-stack feature adding AWS Marketplace URL-based product creation and inline company-name editing, spanning server actions, UI components, an AWS API integration layer, and E2E tests across 10 files.",
+            "category": "Integrations",
             "vendored": false,
-            "vendoredRatio": 0
+            "vendoredRatio": 0,
+            "isMultiAuthor": false,
+            "attribution": {
+              "Jason": 1
+            }
           },
           {
             "pr": 488,
@@ -31,11 +55,15 @@
             "customAdditions": 111,
             "deletions": 0,
             "files": 2,
-            "points": 2,
-            "rationale": "Targeted hotfix correcting Bedrock toolConfig for competitive-analysis finalize with a small agent change and accompanying unit test.",
+            "points": 3,
+            "rationale": "Targeted hotfix correcting Bedrock toolConfig structure on competitive-analysis finalize with a focused agent change and a dedicated unit test suite to cover the regression.",
             "category": "AI/Agents",
             "vendored": false,
-            "vendoredRatio": 0
+            "vendoredRatio": 0,
+            "isMultiAuthor": false,
+            "attribution": {
+              "Chad": 1
+            }
           },
           {
             "pr": 487,
@@ -47,10 +75,14 @@
             "deletions": 0,
             "files": 4,
             "points": 3,
-            "rationale": "Scopes a unique constraint on marketplace listing IDs per company via a schema change, migration, collector update, and dedup test — a focused data integrity fix.",
+            "rationale": "Scoped database-level fix changing a global unique constraint to a per-company composite unique on marketplaceListingId, including schema migration and unit tests.",
             "category": "Data/Schema",
             "vendored": false,
-            "vendoredRatio": 0
+            "vendoredRatio": 0,
+            "isMultiAuthor": false,
+            "attribution": {
+              "Chad": 1
+            }
           },
           {
             "pr": 485,
@@ -62,10 +94,14 @@
             "deletions": 0,
             "files": 6,
             "points": 5,
-            "rationale": "Enforces tenant isolation across automation control, tools, agent, and server actions in six files, addressing a meaningful security/correctness concern with test coverage.",
-            "category": "Core Platform",
+            "rationale": "Security-focused fix enforcing tenant isolation across automation actions and the assistant agent, touching multiple AI control-plane files and server actions with meaningful logic changes and unit test coverage.",
+            "category": "AI/Agents",
             "vendored": false,
-            "vendoredRatio": 0
+            "vendoredRatio": 0,
+            "isMultiAuthor": false,
+            "attribution": {
+              "Jason": 1
+            }
           },
           {
             "pr": 483,
@@ -77,10 +113,14 @@
             "deletions": 0,
             "files": 2,
             "points": 2,
-            "rationale": "Small two-file fix wiring BTS generation enqueue directly from assessment and strategy slide components.",
+            "rationale": "Small wiring fix to enqueue BTS generation directly from two slide/node components, a minimal targeted change across 25 lines in 2 files.",
             "category": "UI/UX",
             "vendored": false,
-            "vendoredRatio": 0
+            "vendoredRatio": 0,
+            "isMultiAuthor": false,
+            "attribution": {
+              "Jason": 1
+            }
           },
           {
             "pr": 481,
@@ -92,10 +132,14 @@
             "deletions": 0,
             "files": 17,
             "points": 5,
-            "rationale": "Reverts a 17-file guided-experience UI feature out of staging, requiring careful restoration of prior state across components, layout, and sandbox pages.",
+            "rationale": "Revert of a sizeable guided-experience UI feature (17 files, 386 lines restored) — reverting complex UI/state work requires careful reconciliation and is not trivial, but the cognitive effort is lower than the original implementation.",
             "category": "UI/UX",
             "vendored": false,
-            "vendoredRatio": 47
+            "vendoredRatio": 47,
+            "isMultiAuthor": false,
+            "attribution": {
+              "Jason": 1
+            }
           },
           {
             "pr": 480,
@@ -107,10 +151,14 @@
             "deletions": 0,
             "files": 44,
             "points": 13,
-            "rationale": "Establishes a full Terraform IaC foundation for AWS Cognito migration across 44 files including CI/CD workflows, bootstrap modules, environment configs, and module definitions — a major infrastructure architectural addition.",
+            "rationale": "Greenfield Terraform IaC foundation covering bootstrap, multi-env configs, CI/CD workflow integration, and Cognito migration plumbing across 44 files and 2462 custom lines — a major architectural infrastructure effort.",
             "category": "Infrastructure",
             "vendored": false,
-            "vendoredRatio": 0
+            "vendoredRatio": 0,
+            "isMultiAuthor": false,
+            "attribution": {
+              "Chad": 1
+            }
           },
           {
             "pr": 475,
@@ -122,10 +170,14 @@
             "deletions": 0,
             "files": 17,
             "points": 8,
-            "rationale": "Implements a full guided-experience UI with tray, task cards, inline prompts, assignee selectors, CRM connect panel, and app shell integration across 17 files and 1400 lines.",
+            "rationale": "New guided-experience UI system with a multi-component tray, task cards, inline prompts, assignee selectors, CRM connect panel, and AppShell integration across 1398 lines and 17 files.",
             "category": "UI/UX",
             "vendored": false,
-            "vendoredRatio": 0
+            "vendoredRatio": 0,
+            "isMultiAuthor": false,
+            "attribution": {
+              "Mauro": 1
+            }
           },
           {
             "pr": 476,
@@ -137,10 +189,14 @@
             "deletions": 0,
             "files": 26,
             "points": 13,
-            "rationale": "Moves BTS and Competitive Analysis generation to background BullMQ workers, touching AI agents, schema, migrations, API routes, studio components, hooks, and enqueue utilities across 26 files — a significant architectural shift.",
+            "rationale": "Major architectural shift moving BTS and Competitive Analysis generation to BullMQ background workers, introducing new AI entrypoints, schema/migration for generation runs, updated studio UI components, and polling hooks across 26 files and ~1890 lines.",
             "category": "AI/Agents",
             "vendored": false,
-            "vendoredRatio": 0
+            "vendoredRatio": 0,
+            "isMultiAuthor": false,
+            "attribution": {
+              "Jason": 1
+            }
           },
           {
             "pr": 472,
@@ -152,10 +208,14 @@
             "deletions": 0,
             "files": 1,
             "points": 1,
-            "rationale": "Trivial single-file Dockerfile tweak to include the docs directory in the runner image.",
+            "rationale": "Trivial single-line Dockerfile fix to include the docs/ directory in the runner image.",
             "category": "DevOps",
             "vendored": false,
-            "vendoredRatio": 0
+            "vendoredRatio": 0,
+            "isMultiAuthor": false,
+            "attribution": {
+              "Jason": 1
+            }
           },
           {
             "pr": 471,
@@ -167,10 +227,14 @@
             "deletions": 0,
             "files": 1,
             "points": 1,
-            "rationale": "Duplicate of PR #472 — trivial single-file Dockerfile fix to ship docs into the runner image.",
+            "rationale": "Duplicate of #471 — same trivial Dockerfile docs/ inclusion fix, single file, 5 lines.",
             "category": "DevOps",
             "vendored": false,
-            "vendoredRatio": 0
+            "vendoredRatio": 0,
+            "isMultiAuthor": false,
+            "attribution": {
+              "Jason": 1
+            }
           },
           {
             "pr": 470,
@@ -182,21 +246,26 @@
             "deletions": 0,
             "files": 35,
             "points": 13,
-            "rationale": "Delivers playbook editing UI, AI assistant guided flow, automation agent tooling, schema/migration changes, and performance pages across 35 files — a major multi-faceted feature spanning AI, admin, and core platform.",
+            "rationale": "Large feature combining playbook editing UI, AI assistant guided flow, automation agent tooling, schema migrations for guided-flow events, performance pages, and admin tooling across 35 files and 1735 lines of custom code.",
             "category": "Core Platform",
             "vendored": false,
-            "vendoredRatio": 3
+            "vendoredRatio": 3,
+            "isMultiAuthor": false,
+            "attribution": {
+              "Jason": 1
+            }
           }
         ],
-        "totalPoints": 74,
+        "totalPoints": 83,
         "byAuthor": {
-          "Jason": 48,
-          "Chad": 18,
+          "Jason": 50,
+          "Chad": 25,
           "Mauro": 8
         },
         "byCategory": {
-          "Core Platform": 26,
-          "AI/Agents": 15,
+          "Core Platform": 21,
+          "Integrations": 8,
+          "AI/Agents": 21,
           "Data/Schema": 3,
           "UI/UX": 15,
           "Infrastructure": 13,
@@ -207,13 +276,14 @@
         "stories": [
           {
             "id": 1,
-            "name": "AWS Marketplace Product Onboarding & Company Management",
-            "points": 8,
-            "category": "Core Platform",
+            "name": "AWS Marketplace Product Integration",
+            "points": 13,
+            "category": "Integrations",
             "prs": [
-              490
+              490,
+              487
             ],
-            "rationale": "Enables users to add products directly from AWS Marketplace URLs and edit company names, streamlining product onboarding from the AWS ecosystem."
+            "rationale": "Enabled users to add products directly from AWS Marketplace URLs while fixing a data integrity issue ensuring marketplace listing IDs are unique per company."
           },
           {
             "id": 2,
@@ -225,58 +295,58 @@
               488,
               483
             ],
-            "rationale": "Moves BTS and Competitive Analysis generation to background workers for scalability, fixes Bedrock toolConfig issues in production, and ensures BTS generation can be enqueued directly from assessment and strategy slides."
+            "rationale": "Moved BTS and Competitive Analysis generation to background workers for better performance, fixed a Bedrock toolConfig bug in competitive analysis, and enabled direct BTS generation queuing from assessment and strategy slides."
           },
           {
             "id": 3,
-            "name": "Marketplace Listing Data Integrity Fix",
-            "points": 3,
-            "category": "Data/Schema",
-            "prs": [
-              487
-            ],
-            "rationale": "Hotfix scoping the marketplace listing ID uniqueness constraint per company to prevent cross-tenant data collisions."
-          },
-          {
-            "id": 4,
-            "name": "Tenant Isolation & Security Hardening",
-            "points": 5,
-            "category": "Core Platform",
-            "prs": [
-              485
-            ],
-            "rationale": "Enforces strict tenant isolation on automation actions to ensure no cross-tenant data leakage in multi-tenant environments."
-          },
-          {
-            "id": 5,
-            "name": "Guided Experience & Action-Needed Tray UI",
+            "name": "Guided Experience UI Rollout",
             "points": 13,
             "category": "UI/UX",
             "prs": [
               475,
               481
             ],
-            "rationale": "Introduced a guided experience UI with an action-needed tray, then reverted it from staging due to instability, capturing the full spike and rollback cycle."
+            "rationale": "Introduced the guided experience UI and action-needed tray, then temporarily reverted it from staging to address stability concerns before re-release."
           },
           {
-            "id": 6,
-            "name": "AWS Cognito Identity Infrastructure Migration",
+            "id": 4,
+            "name": "AWS Cognito Authentication Migration Foundation",
             "points": 13,
             "category": "Infrastructure",
             "prs": [
               480
             ],
-            "rationale": "Lays the Terraform IaC foundation for migrating authentication to AWS Cognito, enabling a scalable and managed identity platform."
+            "rationale": "Established the Terraform infrastructure-as-code foundation required to migrate user authentication to AWS Cognito."
           },
           {
-            "id": 7,
+            "id": 5,
             "name": "Playbook Editing with AI-Assisted Guided Flow",
             "points": 13,
             "category": "Core Platform",
             "prs": [
               470
             ],
-            "rationale": "Delivers playbook editing capabilities with an AI assistant guided flow, helping users build and refine business readiness playbooks interactively."
+            "rationale": "Delivered playbook editing capabilities enhanced with an AI assistant guided flow to help users build and refine their business readiness plans."
+          },
+          {
+            "id": 6,
+            "name": "Tenant Isolation Security Enforcement",
+            "points": 5,
+            "category": "AI/Agents",
+            "prs": [
+              485
+            ],
+            "rationale": "Enforced strict tenant isolation on automation actions to prevent cross-tenant data leakage and ensure platform security."
+          },
+          {
+            "id": 7,
+            "name": "Staging Environment Sync",
+            "points": 8,
+            "category": "Core Platform",
+            "prs": [
+              493
+            ],
+            "rationale": "Merged main branch changes into staging to keep the staging environment up to date with the latest production-ready code."
           },
           {
             "id": 8,
@@ -287,13 +357,13 @@
               471,
               472
             ],
-            "rationale": "Fixed Docker runner image to include the docs directory so that admin documentation loads correctly in deployed environments."
+            "rationale": "Fixed the Docker runner image to include the docs directory so that admin documentation loads correctly in deployed environments."
           }
         ],
-        "totalPoints": 78,
+        "totalPoints": 88,
         "byAuthor": {
-          "Jason": 51.5,
-          "Chad": 18.5,
+          "Jason": 60,
+          "Chad": 20,
           "Mauro": 8
         }
       },
@@ -301,12 +371,12 @@
         "teamSize": 1.8,
         "codingAllocation": 0.8,
         "fteEquiv": {
-          "prLevel": 17.09,
-          "grouped": 18.01
+          "prLevel": 19.17,
+          "grouped": 20.32
         },
         "ptsPerWeekPerFTE": 4.33
       }
     }
   ],
-  "updatedAt": "2026-06-27T14:31:35.804Z"
+  "updatedAt": "2026-06-27T15:28:28.273Z"
 }
