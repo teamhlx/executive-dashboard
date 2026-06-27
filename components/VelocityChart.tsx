@@ -27,7 +27,24 @@ type Props = {
 type ChartEntry = {
   week: string;
   points: number;
+  trend?: number;
 };
+
+// Linear regression for trend line
+function linearRegression(values: number[]): number[] {
+  const n = values.length;
+  if (n < 2) return values;
+  const xMean = (n - 1) / 2;
+  const yMean = values.reduce((s, v) => s + v, 0) / n;
+  let num = 0, den = 0;
+  for (let i = 0; i < n; i++) {
+    num += (i - xMean) * (values[i] - yMean);
+    den += (i - xMean) * (i - xMean);
+  }
+  const slope = den === 0 ? 0 : num / den;
+  const intercept = yMean - slope * xMean;
+  return values.map((_, i) => Math.round(intercept + slope * i));
+}
 
 const CustomTooltip = ({
   active,
@@ -35,7 +52,7 @@ const CustomTooltip = ({
   label,
 }: {
   active?: boolean;
-  payload?: { value: number; color: string }[];
+  payload?: { value: number; color: string; dataKey: string }[];
   label?: string;
 }) => {
   if (!active || !payload?.length) return null;
@@ -44,7 +61,7 @@ const CustomTooltip = ({
       <p className="text-gray-300 text-sm font-medium mb-1">{label}</p>
       {payload.map((p, i) => (
         <p key={i} className="text-sm" style={{ color: p.color }}>
-          {p.value} pts
+          {p.dataKey === "trend" ? "Trend" : "Actual"}: {p.value} pts
         </p>
       ))}
     </div>
@@ -60,10 +77,15 @@ export default function VelocityChart({ trends, viewMode }: Props) {
     );
   }
 
+  const rawPoints = trends.weeks.map((_, i) =>
+    viewMode === "pr" ? trends.prLevel[i] ?? 0 : trends.grouped[i] ?? 0
+  );
+  const trendValues = linearRegression(rawPoints);
+
   const data: ChartEntry[] = trends.weeks.map((week, i) => ({
     week: week.replace(/^\d{4}-/, ""), // strip year → "W26"
-    points:
-      viewMode === "pr" ? trends.prLevel[i] ?? 0 : trends.grouped[i] ?? 0,
+    points: rawPoints[i],
+    trend: trendValues[i],
   }));
 
   return (
@@ -94,6 +116,17 @@ export default function VelocityChart({ trends, viewMode }: Props) {
             strokeWidth={2}
             dot={{ fill: "#818cf8", r: 4 }}
             activeDot={{ r: 6, fill: "#a5b4fc" }}
+            name="Points"
+          />
+          <Line
+            type="monotone"
+            dataKey="trend"
+            stroke="#34d399"
+            strokeWidth={2}
+            strokeDasharray="6 4"
+            dot={false}
+            activeDot={false}
+            name="Trend"
           />
         </LineChart>
       </ResponsiveContainer>
