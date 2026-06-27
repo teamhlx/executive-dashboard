@@ -31,13 +31,12 @@ const TEAM_ROSTER: { name: string; allocation: number; startWeek: string; endWee
   { name: "Jason", allocation: 1.0, startWeek: "2025-W32", endWeek: null },
   { name: "Chris", allocation: 0.8, startWeek: "2025-W32", endWeek: null },
   { name: "Mauro", allocation: 1.0, startWeek: "2026-W24", endWeek: null },
-  { name: "Chad", allocation: 1.0, startWeek: "2026-W25", endWeek: null },
+  { name: "Chad", allocation: 1.0, startWeek: "2026-W24", endWeek: null },
 ];
 
 // Team change milestones (for reference lines)
 const TEAM_MILESTONES = [
-  { week: "2026-W24", label: "Mauro joins" },
-  { week: "2026-W25", label: "Chad joins" },
+  { week: "2026-W24", label: "Mauro & Chad join" },
 ];
 
 // Calculate total FTE headcount for a given week
