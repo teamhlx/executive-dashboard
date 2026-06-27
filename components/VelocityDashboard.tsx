@@ -216,7 +216,7 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
                                 <span key={name} className="text-xs">
                                   {name}{' '}
                                   <span className="text-gray-600">
-                                    ({Math.round(fraction * 100)}%)
+                                    ({Math.round(fraction * 100)}% · {Math.round(pr.points * fraction)}pts)
                                   </span>
                                 </span>
                               ))}
