@@ -1,19 +1,51 @@
-name: Deploy
+name: Deploy to Amplify
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-# Amplify is configured with auto-build on push to main.
-# This workflow exists as a record and for manual triggers.
-# Amplify handles: build, deploy, CDN invalidation automatically.
-# App: https://main.dl0i3qehr8gc6.amplifyapp.com
-# App ID: dl0i3qehr8gc6
-
 jobs:
-  notify:
+  deploy:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
-      - name: Deploy triggered
-        run: echo "Push to main detected — Amplify will build and deploy automatically."
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: us-west-2
+
+      - name: Deploy to Amplify
+        run: |
+          # Create deployment
+          DEPLOY_RESULT=$(aws amplify create-deployment --app-id dl0i3qehr8gc6 --branch-name main --region us-west-2)
+          JOB_ID=$(echo $DEPLOY_RESULT | jq -r '.jobId')
+          UPLOAD_URL=$(echo $DEPLOY_RESULT | jq -r '.zipUploadUrl')
+
+          # Zip the static output
+          cd out && zip -r ../deploy.zip . && cd ..
+
+          # Upload
+          curl -T deploy.zip "$UPLOAD_URL" --header "Content-Type: application/zip"
+
+          # Start deployment
+          aws amplify start-deployment --app-id dl0i3qehr8gc6 --branch-name main --job-id $JOB_ID --region us-west-2
+
+          echo "Deployment started: job $JOB_ID"
