@@ -46,7 +46,10 @@ export default function VelocityAuthorBreakdown({ authors }: Props) {
         Points by Author
       </h3>
       <div className="space-y-4">
-        {entries.map(([author, data]) => (
+        {entries.map(([author, data]) => {
+          const multiplier = data.avgPerWeek > 0 ? (data.avgPerWeek / 8).toFixed(1) : '—';
+          const aboveAvg = data.avgPerWeek >= 8;
+          return (
           <div key={author}>
             <div className="flex items-center justify-between mb-1">
               <div className="flex items-center gap-2">
@@ -73,8 +76,15 @@ export default function VelocityAuthorBreakdown({ authors }: Props) {
                 }}
               />
             </div>
+            <div className="mt-1 flex items-center gap-2">
+              <span className="text-xs text-gray-500">{data.avgPerWeek.toFixed(1)} pts/wk</span>
+              <span className={`text-xs font-medium ${aboveAvg ? 'text-emerald-400' : 'text-amber-400'}`}>
+                {multiplier}× industry avg
+              </span>
+            </div>
           </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
