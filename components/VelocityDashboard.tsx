@@ -86,7 +86,6 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
   const [viewMode] = useState<"pr" | "grouped">("pr");
   const [timeRange, setTimeRange] = useState<TimeRange>("all");
   const [showMethodology, setShowMethodology] = useState(false);
-  const [showPRs, setShowPRs] = useState(false);
   const [showAllPRs, setShowAllPRs] = useState(false);
 
   if (loading) {
@@ -264,22 +263,14 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
         />
       </div>
 
-      {/* PR Table — collapsed by default, expandable */}
+      {/* PR Table */}
       {filteredWeeks.some(w => w.prs.length > 0) && (
         <div className="mt-6 bg-gray-800 rounded-xl border border-gray-700 p-6">
-          <button
-            onClick={() => setShowPRs(!showPRs)}
-            className="w-full flex items-center justify-between"
-          >
-            <h3 className="text-sm text-gray-400 uppercase tracking-wider">
-              PRs — {rangeLabel}{" "}
-              <span className="text-gray-500">({filteredWeeks.reduce((s, w) => s + w.prs.length, 0)})</span>
-            </h3>
-            <span className="text-gray-500 text-sm">{showPRs ? "▾" : "▸"}</span>
-          </button>
-          {showPRs && (
-            <>
-          <div className="overflow-x-auto mt-4">
+          <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4">
+            PRs — {rangeLabel}{" "}
+            <span className="text-gray-500">({filteredWeeks.reduce((s, w) => s + w.prs.length, 0)})</span>
+          </h3>
+          <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="text-left text-gray-500 text-xs uppercase tracking-wider border-b border-gray-700">
@@ -354,8 +345,6 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
             }
             return null;
           })()}
-            </>
-          )}
         </div>
       )}
     </div>
