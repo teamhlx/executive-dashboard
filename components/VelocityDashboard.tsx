@@ -82,7 +82,7 @@ const TIME_RANGES: { key: TimeRange; label: string }[] = [
 ];
 
 export default function VelocityDashboard({ data, loading, error }: Props) {
-  const [viewMode, setViewMode] = useState<"pr" | "grouped">("grouped");
+  const [viewMode] = useState<"pr" | "grouped">("pr");
   const [selectedWeekIdx, setSelectedWeekIdx] = useState<number | null>(null);
   const [timeRange, setTimeRange] = useState<TimeRange>("all");
   const [showMethodology, setShowMethodology] = useState(false);
@@ -167,30 +167,9 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
       {/* Scoring methodology modal */}
       <ScoringMethodologyModal open={showMethodology} onClose={() => setShowMethodology(false)} />
 
-      {/* View mode toggle */}
+      {/* Controls row */}
       <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-1 bg-gray-800 rounded-lg p-1 border border-gray-700">
-          <button
-            onClick={() => setViewMode("grouped")}
-            className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${
-              viewMode === "grouped"
-                ? "bg-indigo-600 text-white"
-                : "text-gray-400 hover:text-gray-200"
-            }`}
-          >
-            Story-Grouped
-          </button>
-          <button
-            onClick={() => setViewMode("pr")}
-            className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${
-              viewMode === "pr"
-                ? "bg-indigo-600 text-white"
-                : "text-gray-400 hover:text-gray-200"
-            }`}
-          >
-            PR-Level
-          </button>
-        </div>
+        <div />
 
         {/* Info button + Week selector */}
         <div className="flex items-center gap-4">
