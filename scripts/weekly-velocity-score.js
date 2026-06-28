@@ -987,6 +987,12 @@ async function enrichPR(ghClient, rawPR) {
   const commitsByAuthor = {};
   const IGNORE_AUTHORS = new Set(['dependabot', 'unknown', 'copilot', 'ubuntu', 'web-flow', 'bot']);
   for (const commit of commits) {
+    // Skip merge commits (2+ parents = git merge, not real work)
+    if (commit.parents && commit.parents.length >= 2) continue;
+    // Skip merge-from-branch commits by message pattern
+    const msg = commit.commit?.message || '';
+    if (/^Merge (branch|remote-tracking|pull request)/i.test(msg)) continue;
+
     const login = commit.author?.login || commit.commit?.author?.name || 'unknown';
     const authorName = mapAuthor(login);
     if (IGNORE_AUTHORS.has(authorName.toLowerCase())) continue;
@@ -996,7 +1002,7 @@ async function enrichPR(ghClient, rawPR) {
     commitsByAuthor[authorName].commits++;
     commitsByAuthor[authorName].additions += (commit.stats?.additions || 0);
     commitsByAuthor[authorName].deletions += (commit.stats?.deletions || 0);
-    commitsByAuthor[authorName].messages.push(commit.commit?.message?.split('\n')[0] || '');
+    commitsByAuthor[authorName].messages.push(msg.split('\n')[0] || '');
   }
 
   const authors = Object.keys(commitsByAuthor);
