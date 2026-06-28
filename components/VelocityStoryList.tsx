@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 type Story = {
   id: number;
   name: string;
@@ -47,19 +49,30 @@ function ptColor(pts: number): string {
   return FIBO_COLOR[pts] ?? "text-gray-300";
 }
 
+const INITIAL_COUNT = 10;
+
 export default function VelocityStoryList({ stories, week }: Props) {
+  const [expanded, setExpanded] = useState(false);
+
   if (!stories || stories.length === 0) {
     return (
       <div className="bg-gray-800 rounded-xl border border-gray-700 p-6">
         <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4">
           Stories {week ? `— ${week}` : ""}
         </h3>
-        <p className="text-gray-500 text-sm">No stories for this week</p>
+        <p className="text-gray-500 text-sm">No stories for this period</p>
       </div>
     );
   }
 
-  const sorted = [...stories].sort((a, b) => b.points - a.points);
+  // Sort by week descending (newest first), then by points descending within same week
+  const sorted = [...stories].sort((a, b) => {
+    if (a.week !== b.week) return b.week.localeCompare(a.week);
+    return b.points - a.points;
+  });
+
+  const visible = expanded ? sorted : sorted.slice(0, INITIAL_COUNT);
+  const hasMore = sorted.length > INITIAL_COUNT;
 
   return (
     <div className="bg-gray-800 rounded-xl border border-gray-700 p-6">
@@ -68,9 +81,9 @@ export default function VelocityStoryList({ stories, week }: Props) {
         <span className="text-gray-500">({stories.length})</span>
       </h3>
       <div className="space-y-3">
-        {sorted.map((story) => (
+        {visible.map((story) => (
           <div
-            key={story.id}
+            key={`${story.week}-${story.id}`}
             className="flex items-start gap-3 p-3 rounded-lg bg-gray-750 border border-gray-700 hover:border-gray-600 transition-colors"
           >
             <span
@@ -92,6 +105,7 @@ export default function VelocityStoryList({ stories, week }: Props) {
                 >
                   {story.category}
                 </span>
+                <span className="text-xs text-gray-600">{story.week}</span>
                 <span className="text-xs text-gray-500">
                   PRs: {story.prNumbers.join(", ")}
                 </span>
@@ -100,6 +114,14 @@ export default function VelocityStoryList({ stories, week }: Props) {
           </div>
         ))}
       </div>
+      {hasMore && (
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="mt-4 w-full py-2 text-xs text-gray-400 hover:text-gray-200 bg-gray-750 border border-gray-700 hover:border-gray-600 rounded-lg transition-colors"
+        >
+          {expanded ? "Show less" : `Show all ${sorted.length} stories`}
+        </button>
+      )}
     </div>
   );
 }

@@ -86,6 +86,8 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
   const [viewMode] = useState<"pr" | "grouped">("pr");
   const [timeRange, setTimeRange] = useState<TimeRange>("all");
   const [showMethodology, setShowMethodology] = useState(false);
+  const [showPRs, setShowPRs] = useState(false);
+  const [showAllPRs, setShowAllPRs] = useState(false);
 
   if (loading) {
     return (
@@ -262,13 +264,22 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
         />
       </div>
 
-      {/* PR Table */}
+      {/* PR Table — collapsed by default, expandable */}
       {filteredWeeks.some(w => w.prs.length > 0) && (
         <div className="mt-6 bg-gray-800 rounded-xl border border-gray-700 p-6">
-          <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4">
-            PRs — {rangeLabel}
-          </h3>
-          <div className="overflow-x-auto">
+          <button
+            onClick={() => setShowPRs(!showPRs)}
+            className="w-full flex items-center justify-between"
+          >
+            <h3 className="text-sm text-gray-400 uppercase tracking-wider">
+              PRs — {rangeLabel}{" "}
+              <span className="text-gray-500">({filteredWeeks.reduce((s, w) => s + w.prs.length, 0)})</span>
+            </h3>
+            <span className="text-gray-500 text-sm">{showPRs ? "▾" : "▸"}</span>
+          </button>
+          {showPRs && (
+            <>
+          <div className="overflow-x-auto mt-4">
             <table className="w-full text-sm">
               <thead>
                 <tr className="text-left text-gray-500 text-xs uppercase tracking-wider border-b border-gray-700">
@@ -280,9 +291,11 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
                 </tr>
               </thead>
               <tbody>
-                {filteredWeeks.flatMap(w => w.prs)
-                  .sort((a, b) => b.points - a.points)
-                  .map((pr) => (
+                {(() => {
+                  const allPRs = filteredWeeks.flatMap(w => w.prs)
+                    .sort((a, b) => new Date(b.mergedAt).getTime() - new Date(a.mergedAt).getTime());
+                  const visiblePRs = showAllPRs ? allPRs : allPRs.slice(0, 10);
+                  return visiblePRs.map((pr) => (
                     <tr
                       key={pr.prNumber}
                       className="border-b border-gray-700/50 hover:bg-gray-750 transition-colors"
@@ -318,10 +331,27 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
                         {pr.points}
                       </td>
                     </tr>
-                  ))}
+                  ));
+                })()}
               </tbody>
             </table>
           </div>
+          {(() => {
+            const totalPRsCount = filteredWeeks.reduce((s, w) => s + w.prs.length, 0);
+            if (totalPRsCount > 10) {
+              return (
+                <button
+                  onClick={() => setShowAllPRs(!showAllPRs)}
+                  className="mt-4 w-full py-2 text-xs text-gray-400 hover:text-gray-200 bg-gray-750 border border-gray-700 hover:border-gray-600 rounded-lg transition-colors"
+                >
+                  {showAllPRs ? "Show less" : `Show all ${totalPRsCount} PRs`}
+                </button>
+              );
+            }
+            return null;
+          })()}
+            </>
+          )}
         </div>
       )}
     </div>
