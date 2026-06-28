@@ -4,6 +4,7 @@ import { useState } from "react";
 import VelocityMetrics from "./VelocityMetrics";
 import VelocityChart from "./VelocityChart";
 import VelocityFTEChart from "./VelocityFTEChart";
+import VelocityEffectiveFTEChart from "./VelocityEffectiveFTEChart";
 import VelocityAuthorBreakdown from "./VelocityAuthorBreakdown";
 import VelocityStoryList from "./VelocityStoryList";
 import ScoringMethodologyModal from "./ScoringMethodologyModal";
@@ -215,8 +216,42 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
       />
 
       {/* Charts */}
-      <VelocityChart trends={data.trends} viewMode={viewMode} timeRange={timeRange} />
-      <VelocityFTEChart trends={data.trends} viewMode={viewMode} timeRange={timeRange} />
+      <VelocityChart
+        trends={data.trends}
+        viewMode={viewMode}
+        timeRange={timeRange}
+        infoContent={
+          <>
+            <p>Shows the team&apos;s total story points delivered each week over time.</p>
+            <p className="mt-2">The purple line is actual weekly output. Dashed trend lines show the trajectory before and after team composition changes.</p>
+            <p className="mt-2">Higher is better — this represents raw team throughput regardless of team size.</p>
+          </>
+        }
+      />
+      <VelocityFTEChart
+        trends={data.trends}
+        viewMode={viewMode}
+        timeRange={timeRange}
+        infoContent={
+          <>
+            <p>Shows points delivered per Full-Time Equivalent (FTE) engineer each week — a measure of individual productivity normalized by team size and allocation.</p>
+            <p className="mt-2">If an engineer works 80% time (0.8 FTE), their output is normalized accordingly so comparisons are fair.</p>
+            <p className="mt-2">This isolates efficiency from headcount — a team that doubles in size but maintains the same per-FTE output is scaling well.</p>
+          </>
+        }
+      />
+      <VelocityEffectiveFTEChart
+        trends={data.trends}
+        viewMode={viewMode}
+        timeRange={timeRange}
+        infoContent={
+          <>
+            <p>Shows how many full-time engineers&apos; worth of output the team produces each week, based on the national industry benchmark of <strong>8 story points per engineer per week</strong>.</p>
+            <p className="mt-2">The purple line is effective FTE output (total points ÷ 8). The gray dashed line shows actual team headcount.</p>
+            <p className="mt-2">When the purple line is above the gray line, the team is outperforming the industry average. When below, the team is under-producing relative to headcount.</p>
+          </>
+        }
+      />
 
       {/* Two-column: author breakdown + story list */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

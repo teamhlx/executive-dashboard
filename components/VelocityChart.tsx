@@ -10,6 +10,7 @@ import {
   ReferenceLine,
   ResponsiveContainer,
 } from "recharts";
+import ChartInfoButton from "./ChartInfoButton";
 
 type TrendData = {
   weeks: string[];
@@ -25,6 +26,7 @@ type Props = {
   trends: TrendData;
   viewMode: "pr" | "grouped";
   timeRange: TimeRange;
+  infoContent?: React.ReactNode;
 };
 
 // Team milestone — same as FTE chart
@@ -121,7 +123,7 @@ const TIME_RANGE_WEEKS: Record<TimeRange, number> = {
   all: 999, year: 52, "6mo": 26, "3mo": 13, "1mo": 4,
 };
 
-export default function VelocityChart({ trends, viewMode, timeRange }: Props) {
+export default function VelocityChart({ trends, viewMode, timeRange, infoContent }: Props) {
 
   if (!trends || trends.weeks.length === 0) {
     return (
@@ -203,8 +205,11 @@ export default function VelocityChart({ trends, viewMode, timeRange }: Props) {
 
   return (
     <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-6">
-      <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4">
-        Weekly Velocity — {viewMode === "pr" ? "PR-Level Points" : "Story-Grouped Points"}
+      <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4 flex items-center">
+        <span>Weekly Velocity — {viewMode === "pr" ? "PR-Level Points" : "Story-Grouped Points"}</span>
+        {infoContent && (
+          <ChartInfoButton title="Weekly Velocity">{infoContent}</ChartInfoButton>
+        )}
       </h3>
       <ResponsiveContainer width="100%" height={200}>
         <LineChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
