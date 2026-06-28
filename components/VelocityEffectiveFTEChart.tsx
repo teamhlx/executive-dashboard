@@ -128,6 +128,9 @@ const CustomTooltip = ({
 }) => {
   if (!active || !payload?.length) return null;
   const entry = payload[0]?.payload as ChartEntry | undefined;
+  const effectiveFTE = entry?.effectiveFTE ?? 0;
+  const actualFTE = entry?.actualFTE ?? 1;
+  const multiplier = actualFTE > 0 ? (effectiveFTE / actualFTE).toFixed(1) : '—';
   return (
     <div className="bg-gray-800 border border-gray-700 rounded-lg p-3 shadow-xl">
       <p className="text-gray-300 text-sm font-medium mb-1">{entry?.fullWeek || label}</p>
@@ -143,6 +146,9 @@ const CustomTooltip = ({
           </p>
         );
       })}
+      <p className="text-sm font-semibold text-amber-400 mt-1 border-t border-gray-700 pt-1">
+        {multiplier}× national average
+      </p>
     </div>
   );
 };
