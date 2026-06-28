@@ -1,59 +1,52 @@
 "use client";
 
-type WeekData = {
-  week: string;
-  prLevelPoints: number;
-  groupedPoints: number;
-  fteEquivPR: number;
-  fteEquivGrouped: number;
-  totalPRs: number;
-  scoredPRs: number;
-  stories: { points: number; name: string; category: string; prNumbers: number[] }[];
-};
-
 type Props = {
-  currentWeek: WeekData | null;
-  averageFTE: number;
-  viewMode: "pr" | "grouped";
+  totalPoints: number;
+  avgPointsPerWeek: number;
+  fteEquiv: number;
+  avgFTE: number;
+  totalPRs: number;
+  totalStories: number;
+  numWeeks: number;
+  rangeLabel: string;
 };
 
-export default function VelocityMetrics({ currentWeek, averageFTE, viewMode }: Props) {
-  const points =
-    viewMode === "pr"
-      ? currentWeek?.prLevelPoints ?? 0
-      : currentWeek?.groupedPoints ?? 0;
-
-  const fte =
-    viewMode === "pr"
-      ? currentWeek?.fteEquivPR ?? 0
-      : currentWeek?.fteEquivGrouped ?? 0;
-
+export default function VelocityMetrics({
+  totalPoints,
+  avgPointsPerWeek,
+  fteEquiv,
+  avgFTE,
+  totalPRs,
+  totalStories,
+  numWeeks,
+  rangeLabel,
+}: Props) {
   const cards = [
     {
-      label: "Points This Week",
-      value: points,
-      sub: viewMode === "pr" ? "PR-level" : "Story-grouped",
+      label: "Total Points",
+      value: totalPoints,
+      sub: `${avgPointsPerWeek} avg/week (${numWeeks}w)`,
       color: "text-indigo-400",
       bg: "bg-indigo-400/10 border-indigo-400/20",
     },
     {
       label: "FTE Equivalent",
-      value: fte.toFixed(1),
-      sub: `avg ${averageFTE.toFixed(1)} / week`,
+      value: fteEquiv.toFixed(1),
+      sub: `avg ${avgFTE.toFixed(1)} / week`,
       color: "text-emerald-400",
       bg: "bg-emerald-400/10 border-emerald-400/20",
     },
     {
       label: "PRs Merged",
-      value: currentWeek?.scoredPRs ?? 0,
-      sub: `${currentWeek?.week ?? "—"}`,
+      value: totalPRs,
+      sub: rangeLabel,
       color: "text-sky-400",
       bg: "bg-sky-400/10 border-sky-400/20",
     },
     {
       label: "Stories",
-      value: currentWeek?.stories?.length ?? 0,
-      sub: viewMode === "grouped" ? "grouped initiatives" : "N/A (PR view)",
+      value: totalStories,
+      sub: `across ${numWeeks} weeks`,
       color: "text-violet-400",
       bg: "bg-violet-400/10 border-violet-400/20",
     },
