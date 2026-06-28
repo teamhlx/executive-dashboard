@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import MetricCards from "@/components/MetricCards";
 import EpicTimeline from "@/components/EpicTimeline";
 import EpicList from "@/components/EpicList";
-import ThemeToggle from "@/components/ThemeToggle";
-import FeedbackButton from "@/components/FeedbackButton";
 import LoginPage from "@/components/LoginPage";
 import AdminPanel from "@/components/AdminPanel";
 import VelocityDashboard, { VelocityPayload } from "@/components/VelocityDashboard";
@@ -197,8 +195,6 @@ export default function Home() {
       <div className="flex items-start justify-between mb-10">
         <ProjectSwitcher projects={userProjects} currentProject={currentProject} onSwitch={handleProjectSwitch} />
         <div className="text-right flex items-center gap-3">
-          <FeedbackButton apiUrl={baseUrl} user={user} />
-          <ThemeToggle />
           <div className="flex flex-col items-end gap-1">
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500 dark:text-gray-400">{displayName}</span>

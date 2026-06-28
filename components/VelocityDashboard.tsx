@@ -178,20 +178,27 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
 
       {/* Controls row */}
       <div className="flex items-center justify-between mb-6">
-        <div className="flex gap-1 bg-gray-900 rounded-lg p-1">
-          {TIME_RANGES.map(({ key, label }) => (
-            <button
-              key={key}
-              onClick={() => setTimeRange(key)}
-              className={`px-3 py-1.5 text-xs rounded-md transition-colors ${
-                timeRange === key
-                  ? "bg-indigo-600 text-white"
-                  : "text-gray-400 hover:text-gray-200 hover:bg-gray-800"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
+        <div className="flex items-center gap-4">
+          <div className="flex gap-1 bg-gray-900 rounded-lg p-1">
+            {TIME_RANGES.map(({ key, label }) => (
+              <button
+                key={key}
+                onClick={() => setTimeRange(key)}
+                className={`px-3 py-1.5 text-xs rounded-md transition-colors ${
+                  timeRange === key
+                    ? "bg-indigo-600 text-white"
+                    : "text-gray-400 hover:text-gray-200 hover:bg-gray-800"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+          {weeks.length > 0 && weeks[weeks.length - 1].generatedAt && (
+            <span className="text-xs text-gray-500">
+              Last scored: {new Date(weeks[weeks.length - 1].generatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}
+            </span>
+          )}
         </div>
 
         <button
