@@ -1,5 +1,6 @@
 "use client";
 
+import { weekToLabel } from "./weekUtils";
 import {
   LineChart,
   Line,
@@ -166,7 +167,7 @@ export default function VelocityChart({ trends, viewMode, timeRange, infoContent
   const data: ChartEntry[] = slicedWeeks.map((week, i) => {
     const entry: ChartEntry = {
       week: week.replace(/^\d{4}-/, ""), // keep "W26" as unique key for Recharts
-      fullWeek: week,
+      fullWeek: weekToLabel(week),
       points: rawPoints[i],
     };
     if (milestoneIdx > 1 && milestoneIdx < slicedWeeks.length - 1) {

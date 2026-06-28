@@ -1,5 +1,6 @@
 "use client";
 
+import { weekToLabel } from "./weekUtils";
 import {
   LineChart,
   Line,
@@ -189,7 +190,7 @@ export default function VelocityFTEChart({ trends, viewMode, timeRange, infoCont
   const data: ChartEntry[] = slicedWeeks.map((week, i) => {
     const entry: ChartEntry = {
       week: week.replace(/^\d{4}-/, ""), // keep unique key
-      fullWeek: week,
+      fullWeek: weekToLabel(week),
       pointsPerFTE: perFTEPoints[i],
       fte: getFTEForWeek(week),
     };

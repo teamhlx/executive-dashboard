@@ -257,7 +257,7 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
       {/* Two-column: author breakdown + velocity momentum */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <VelocityAuthorBreakdown authors={filteredAuthors} />
-        <div className="bg-gray-800 rounded-xl border border-gray-700 p-6">
+        <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 h-full">
           <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4">
             Velocity Momentum
           </h3>

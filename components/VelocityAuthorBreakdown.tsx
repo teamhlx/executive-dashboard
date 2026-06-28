@@ -29,7 +29,7 @@ export default function VelocityAuthorBreakdown({ authors }: Props) {
 
   if (entries.length === 0) {
     return (
-      <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-6">
+      <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 h-full">
         <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4">
           Author Breakdown
         </h3>
@@ -41,7 +41,7 @@ export default function VelocityAuthorBreakdown({ authors }: Props) {
   const maxPoints = Math.max(...entries.map(([, d]) => d.totalPoints), 1);
 
   return (
-    <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-6">
+    <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 h-full">
       <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4">
         Points by Author
       </h3>
