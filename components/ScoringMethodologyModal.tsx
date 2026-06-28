@@ -135,9 +135,21 @@ export default function ScoringMethodologyModal({ open, onClose }: Props) {
             <h3 className="text-violet-400 font-semibold text-base mb-2">
               Uniform Measurement
             </h3>
-            <p>
+            <p className="mb-3">
               Every engineer — regardless of role, seniority, or tenure — is measured using the exact same metrics, scoring methodology, and industry benchmark. There is no curve, no weighting by experience level, and no separate standard for new hires vs. veterans. Output is output.
             </p>
+            <div className="bg-gray-800 rounded-lg border border-gray-700 p-4">
+              <p className="text-gray-400 text-xs uppercase tracking-wider font-medium mb-2">FTE Allocation &amp; Part-Time Adjustment</p>
+              <p className="text-gray-300 text-sm leading-relaxed mb-2">
+                The system assumes a <strong className="text-gray-100">40-hour work week</strong> as the baseline for 1.0 FTE. If an engineer is scheduled for fewer than 40 hours per week (e.g. 32 hours = 0.8 FTE), their allocation is factored into the per-FTE velocity calculation proportionally.
+              </p>
+              <p className="text-gray-300 text-sm leading-relaxed mb-2">
+                This means the <em>Velocity Per FTE</em> chart normalizes output by each team member&apos;s actual committed hours — a 0.8 FTE engineer producing 6.4 points/week is performing at the same efficiency as a 1.0 FTE engineer producing 8 points/week. Both are hitting the benchmark.
+              </p>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Raw point totals (the main velocity chart) are <em>not</em> adjusted — they show absolute team output. The per-FTE view is where allocation normalization applies, giving a fair apples-to-apples efficiency comparison regardless of scheduled hours.
+              </p>
+            </div>
           </section>
         </div>
 
