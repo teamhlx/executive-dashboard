@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 1,
         "points": 2,
-        "rationale": "Small fix binding methods in lazy proxies across a single file with 19 custom lines — straightforward but non-trivial bug fix.",
+        "rationale": "Small fix binding methods in lazy proxies across a single file with 19 custom lines \u2014 straightforward but non-trivial bug fix.",
         "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
@@ -40,14 +40,13 @@
         "vendoredRatio": 0,
         "isMultiAuthor": true,
         "attribution": {
-          "Jason": 0.55,
-          "Skippy": 0.45
+          "Jason": 1.0
         }
       },
       {
         "pr": 416,
         "title": "fix: guard against undefined roleArn in AWS credential getDisplayMeta",
-        "author": "Skippy",
+        "author": "Jason",
         "mergedAt": "2026-05-31T22:58:50Z",
         "additions": 0,
         "customAdditions": 1,
@@ -60,13 +59,13 @@
         "vendoredRatio": 0,
         "isMultiAuthor": false,
         "attribution": {
-          "Skippy": 1
+          "Jason": 1
         }
       },
       {
         "pr": 415,
         "title": "fix: lazy Redis/BullMQ init to prevent build-time ECONNREFUSED",
-        "author": "Skippy",
+        "author": "Jason",
         "mergedAt": "2026-05-31T20:09:46Z",
         "additions": 0,
         "customAdditions": 73,
@@ -79,13 +78,13 @@
         "vendoredRatio": 0,
         "isMultiAuthor": false,
         "attribution": {
-          "Skippy": 1
+          "Jason": 1
         }
       },
       {
         "pr": 414,
         "title": "ci: Add production ECS deploy workflow",
-        "author": "Skippy",
+        "author": "Jason",
         "mergedAt": "2026-05-31T15:11:31Z",
         "additions": 0,
         "customAdditions": 105,
@@ -98,7 +97,7 @@
         "vendoredRatio": 0,
         "isMultiAuthor": false,
         "attribution": {
-          "Skippy": 1
+          "Jason": 1
         }
       },
       {
@@ -142,7 +141,7 @@
       {
         "pr": 411,
         "title": "fix: Redis cluster mode support for ElastiCache Serverless",
-        "author": "Skippy",
+        "author": "Jason",
         "mergedAt": "2026-05-30T17:09:47Z",
         "additions": 0,
         "customAdditions": 20,
@@ -155,13 +154,13 @@
         "vendoredRatio": 0,
         "isMultiAuthor": false,
         "attribution": {
-          "Skippy": 1
+          "Jason": 1
         }
       },
       {
         "pr": 410,
         "title": "fix: staging worker crash + Redis TLS for ElastiCache Serverless",
-        "author": "Skippy",
+        "author": "Jason",
         "mergedAt": "2026-05-30T16:31:57Z",
         "additions": 0,
         "customAdditions": 10,
@@ -174,13 +173,13 @@
         "vendoredRatio": 0,
         "isMultiAuthor": false,
         "attribution": {
-          "Skippy": 1
+          "Jason": 1
         }
       },
       {
         "pr": 409,
         "title": "fix: add /api/health endpoint for ECS ALB health checks",
-        "author": "Skippy",
+        "author": "Jason",
         "mergedAt": "2026-05-30T06:41:28Z",
         "additions": 0,
         "customAdditions": 5,
@@ -193,13 +192,13 @@
         "vendoredRatio": 0,
         "isMultiAuthor": false,
         "attribution": {
-          "Skippy": 1
+          "Jason": 1
         }
       },
       {
         "pr": 408,
         "title": "ci: add ECS staging deploy workflow + worker Dockerfile",
-        "author": "Skippy",
+        "author": "Jason",
         "mergedAt": "2026-05-30T06:14:27Z",
         "additions": 0,
         "customAdditions": 135,
@@ -212,7 +211,7 @@
         "vendoredRatio": 0,
         "isMultiAuthor": false,
         "attribution": {
-          "Skippy": 1
+          "Jason": 1
         }
       },
       {
@@ -263,7 +262,7 @@
         "deletions": 0,
         "files": 1,
         "points": 3,
-        "rationale": "Hotfix targeting the same domain-named seller issue in 44 lines within a single collector file — smaller scoped precursor to the fuller fix in #404.",
+        "rationale": "Hotfix targeting the same domain-named seller issue in 44 lines within a single collector file \u2014 smaller scoped precursor to the fuller fix in #404.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -282,7 +281,7 @@
         "deletions": 0,
         "files": 8,
         "points": 8,
-        "rationale": "Wide-ranging PR touching 8 files with 225 custom lines covering new UI components (Run Analysis buttons), product filter cleanup, concurrency tuning, and admin queue improvements — significant medium-large feature work.",
+        "rationale": "Wide-ranging PR touching 8 files with 225 custom lines covering new UI components (Run Analysis buttons), product filter cleanup, concurrency tuning, and admin queue improvements \u2014 significant medium-large feature work.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -313,8 +312,7 @@
     ],
     "totalPoints": 53,
     "byAuthor": {
-      "Jason": 28.8,
-      "Skippy": 24.3
+      "Jason": 53.1
     },
     "byCategory": {
       "Infrastructure": 14,
@@ -400,8 +398,7 @@
     ],
     "totalPoints": 71,
     "byAuthor": {
-      "Jason": 40.5,
-      "Skippy": 30.5
+      "Jason": 71.0
     }
   },
   "meta": {

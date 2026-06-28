@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 115,
         "points": 21,
-        "rationale": "A transformative AI automation subsystem spanning 115+ files with a full automation agent, circuit-breaker, checkpointer, metrics, tool registry, MCP integration, and guided experience orchestration — clearly weeks of architectural work.",
+        "rationale": "A transformative AI automation subsystem spanning 115+ files with a full automation agent, circuit-breaker, checkpointer, metrics, tool registry, MCP integration, and guided experience orchestration \u2014 clearly weeks of architectural work.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -73,7 +73,7 @@
         "deletions": 0,
         "files": 4,
         "points": 5,
-        "rationale": "Solid feature combining CRM stage mapping cleanup, an LLM-powered crosswalk gap-fill module, and a seed utility across 4 files — meaningful logic with an AI component.",
+        "rationale": "Solid feature combining CRM stage mapping cleanup, an LLM-powered crosswalk gap-fill module, and a seed utility across 4 files \u2014 meaningful logic with an AI component.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -180,7 +180,7 @@
       {
         "pr": 457,
         "title": "feat(mcp): Add OAuth2 token endpoint for Quick Flows integration",
-        "author": "Skippy",
+        "author": "Jason",
         "mergedAt": "2026-06-18T00:25:18Z",
         "additions": 0,
         "customAdditions": 148,
@@ -193,26 +193,26 @@
         "vendoredRatio": 0,
         "isMultiAuthor": false,
         "attribution": {
-          "Skippy": 1
+          "Jason": 1
         }
       },
       {
         "pr": 456,
         "title": "feat(mcp): Add playbook MCP server for Amazon Quick integration",
-        "author": "Skippy",
+        "author": "Jason",
         "mergedAt": "2026-06-17T23:32:45Z",
         "additions": 0,
         "customAdditions": 884,
         "deletions": 0,
         "files": 13,
         "points": 8,
-        "rationale": "Significant new MCP server implementation with authentication, six distinct tool handlers, a README, and API routing across 13 files and 884 lines — a complete new integration surface.",
+        "rationale": "Significant new MCP server implementation with authentication, six distinct tool handlers, a README, and API routing across 13 files and 884 lines \u2014 a complete new integration surface.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
         "attribution": {
-          "Skippy": 1
+          "Jason": 1
         }
       },
       {
@@ -225,7 +225,7 @@
         "deletions": 0,
         "files": 46,
         "points": 8,
-        "rationale": "Large sync PR consolidating a major navigation refactor, product switcher, performance page refactor, and dependency bumps across 46 files and 2165 lines — primarily Mauro's navigation work merged with Jason's integration commits.",
+        "rationale": "Large sync PR consolidating a major navigation refactor, product switcher, performance page refactor, and dependency bumps across 46 files and 2165 lines \u2014 primarily Mauro's navigation work merged with Jason's integration commits.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 26,
@@ -353,9 +353,8 @@
     "totalPoints": 115,
     "byAuthor": {
       "Chris": 15.8,
-      "Jason": 71.9,
-      "Mauro": 16.4,
-      "Skippy": 11
+      "Jason": 82.9,
+      "Mauro": 16.4
     },
     "byCategory": {
       "AI/Agents": 26,
@@ -478,9 +477,8 @@
     "totalPoints": 100,
     "byAuthor": {
       "Chris": 21,
-      "Jason": 56,
-      "Mauro": 10,
-      "Skippy": 13
+      "Jason": 69,
+      "Mauro": 10
     }
   },
   "meta": {

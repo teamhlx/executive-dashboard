@@ -733,7 +733,7 @@ When the action is "link" or "create", your final assistant message MUST also in
       // GET /api/velocity/authors
       if (subPath === '/authors') {
         const res = await db.query(
-          `SELECT author,
+          `SELECT CASE WHEN author = 'Skippy' THEN 'Jason' ELSE author END AS author,
                   COUNT(*)::int AS prs,
                   SUM(points)::int AS total_points,
                   ROUND(AVG(points)::numeric, 1) AS avg_points,
@@ -741,7 +741,7 @@ When the action is "link" or "create", your final assistant message MUST also in
                   MAX(merged_at) AS last_pr
            FROM velocity_prs
            WHERE project = $1 AND author != 'dependabot'
-           GROUP BY author
+           GROUP BY CASE WHEN author = 'Skippy' THEN 'Jason' ELSE author END
            ORDER BY total_points DESC`,
           [project]
         );
@@ -878,13 +878,13 @@ When the action is "link" or "create", your final assistant message MUST also in
 
       // Author breakdown (all-time across returned weeks)
       const authorsRes = await db.query(
-        `SELECT author,
+        `SELECT CASE WHEN author = 'Skippy' THEN 'Jason' ELSE author END AS author,
                 COUNT(*)::int AS prs,
                 SUM(points)::int AS total_points,
                 ROUND(AVG(points)::numeric, 2) AS avg_per_pr
          FROM velocity_prs
          WHERE run_id = ANY($1) AND author != 'dependabot'
-         GROUP BY author
+         GROUP BY CASE WHEN author = 'Skippy' THEN 'Jason' ELSE author END
          ORDER BY total_points DESC`,
         [runIds]
       );

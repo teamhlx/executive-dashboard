@@ -49,7 +49,7 @@ const AUTHOR_MAP = {
   'mauro': 'Mauro',
   'chadgrant': 'Chad',
   'chad': 'Chad',
-  'skippymagnificent': 'Skippy',
+  'skippymagnificent': 'Jason',
   'dependabot[bot]': 'dependabot',
   'dependabot': 'dependabot',
   'copilot': 'Copilot',
@@ -381,7 +381,7 @@ function mapAuthor(login) {
   if (normalized.startsWith('chad')) return 'Chad';
   if (normalized.startsWith('chris')) return 'Chris';
   if (normalized.startsWith('jason')) return 'Jason';
-  if (normalized.startsWith('skippy')) return 'Skippy';
+  if (normalized.startsWith('skippy')) return 'Jason';
   if (normalized.includes('dependabot')) return 'dependabot';
   return login; // Fallback: original login
 }
