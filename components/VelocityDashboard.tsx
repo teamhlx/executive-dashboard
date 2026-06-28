@@ -6,6 +6,7 @@ import VelocityChart from "./VelocityChart";
 import VelocityFTEChart from "./VelocityFTEChart";
 import VelocityAuthorBreakdown from "./VelocityAuthorBreakdown";
 import VelocityStoryList from "./VelocityStoryList";
+import ScoringMethodologyModal from "./ScoringMethodologyModal";
 
 type WeekData = {
   week: string;
@@ -84,6 +85,7 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
   const [viewMode, setViewMode] = useState<"pr" | "grouped">("grouped");
   const [selectedWeekIdx, setSelectedWeekIdx] = useState<number | null>(null);
   const [timeRange, setTimeRange] = useState<TimeRange>("all");
+  const [showMethodology, setShowMethodology] = useState(false);
 
   if (loading) {
     return (
@@ -124,8 +126,47 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
     selectedWeekIdx !== null ? selectedWeekIdx : weeks.length - 1;
   const displayWeek = weeks[selectedIdx] ?? data.currentWeek;
 
+  // Compute author breakdown filtered by time range (same logic as charts)
+  const TIME_RANGE_WEEKS_MAP: Record<TimeRange, number> = {
+    all: 999, year: 52, "6mo": 26, "3mo": 13, "1mo": 4,
+  };
+  const maxWeeksForAuthors = TIME_RANGE_WEEKS_MAP[timeRange] ?? 999;
+  const startIdxForAuthors = Math.max(0, weeks.length - maxWeeksForAuthors);
+  const filteredWeeks = weeks.slice(startIdxForAuthors);
+
+  const filteredAuthors: Record<string, AuthorData> = {};
+  for (const w of filteredWeeks) {
+    for (const pr of w.prs) {
+      if (pr.isMultiAuthor && pr.attribution) {
+        for (const [name, fraction] of Object.entries(pr.attribution)) {
+          if (!filteredAuthors[name]) {
+            filteredAuthors[name] = { totalPoints: 0, avgPerPR: 0, prs: 0, avgPerWeek: 0 };
+          }
+          filteredAuthors[name].totalPoints += Math.round(pr.points * fraction);
+          filteredAuthors[name].prs += 1;
+        }
+      } else {
+        const name = pr.author;
+        if (!filteredAuthors[name]) {
+          filteredAuthors[name] = { totalPoints: 0, avgPerPR: 0, prs: 0, avgPerWeek: 0 };
+        }
+        filteredAuthors[name].totalPoints += pr.points;
+        filteredAuthors[name].prs += 1;
+      }
+    }
+  }
+  // Compute derived stats
+  const numFilteredWeeks = filteredWeeks.length || 1;
+  for (const author of Object.values(filteredAuthors)) {
+    author.avgPerPR = author.prs > 0 ? Math.round((author.totalPoints / author.prs) * 10) / 10 : 0;
+    author.avgPerWeek = Math.round((author.totalPoints / numFilteredWeeks) * 10) / 10;
+  }
+
   return (
     <div>
+      {/* Scoring methodology modal */}
+      <ScoringMethodologyModal open={showMethodology} onClose={() => setShowMethodology(false)} />
+
       {/* View mode toggle */}
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-1 bg-gray-800 rounded-lg p-1 border border-gray-700">
@@ -151,8 +192,17 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
           </button>
         </div>
 
-        {/* Week selector */}
-        <div className="flex items-center gap-2">
+        {/* Info button + Week selector */}
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => setShowMethodology(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-gray-400 hover:text-gray-200 bg-gray-800 border border-gray-700 hover:border-gray-600 transition-colors"
+            title="How scoring works"
+          >
+            <span className="text-base leading-none">ℹ️</span>
+            <span>Methodology</span>
+          </button>
+          <div className="flex items-center gap-2">
           <span className="text-xs text-gray-500">Week:</span>
           <select
             value={selectedIdx}
@@ -166,6 +216,7 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
               </option>
             ))}
           </select>
+          </div>
         </div>
       </div>
 
@@ -199,7 +250,7 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
 
       {/* Two-column: author breakdown + story list */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <VelocityAuthorBreakdown authors={data.authors} />
+        <VelocityAuthorBreakdown authors={filteredAuthors} />
         <VelocityStoryList
           stories={displayWeek?.stories ?? []}
           week={displayWeek?.week ?? null}
