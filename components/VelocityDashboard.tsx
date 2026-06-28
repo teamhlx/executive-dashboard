@@ -287,6 +287,7 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
                   <th className="pb-2 pr-4">Title</th>
                   <th className="pb-2 pr-4">Author</th>
                   <th className="pb-2 pr-4">Category</th>
+                  <th className="pb-2 pr-4">Merged</th>
                   <th className="pb-2 pr-4 text-right">Points</th>
                 </tr>
               </thead>
@@ -326,6 +327,9 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
                       </td>
                       <td className="py-2 pr-4 text-gray-500 text-xs">
                         {pr.category}
+                      </td>
+                      <td className="py-2 pr-4 text-gray-500 text-xs tabular-nums">
+                        {pr.mergedAt ? new Date(pr.mergedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '—'}
                       </td>
                       <td className="py-2 text-right font-bold text-indigo-400">
                         {pr.points}
