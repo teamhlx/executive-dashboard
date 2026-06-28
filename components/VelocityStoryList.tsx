@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { weekToLabel } from "./weekUtils";
 
 type Story = {
   id: number;
@@ -105,7 +106,7 @@ export default function VelocityStoryList({ stories, week }: Props) {
                 >
                   {story.category}
                 </span>
-                <span className="text-xs text-gray-600">{story.week}</span>
+                <span className="text-xs text-gray-600">{weekToLabel(story.week)}</span>
                 <span className="text-xs text-gray-500">
                   PRs: {story.prNumbers.join(", ")}
                 </span>
