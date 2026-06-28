@@ -985,7 +985,7 @@ async function enrichPR(ghClient, rawPR) {
 
   // Analyze commit authors
   const commitsByAuthor = {};
-  const IGNORE_AUTHORS = new Set(['dependabot', 'unknown', 'copilot', 'ubuntu', 'web-flow']);
+  const IGNORE_AUTHORS = new Set(['dependabot', 'unknown', 'copilot', 'ubuntu', 'web-flow', 'bot']);
   for (const commit of commits) {
     const login = commit.author?.login || commit.commit?.author?.name || 'unknown';
     const authorName = mapAuthor(login);

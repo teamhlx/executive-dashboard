@@ -99,8 +99,7 @@
         "vendoredRatio": 13,
         "isMultiAuthor": true,
         "attribution": {
-          "Jason": 0.97,
-          "bot": 0.03
+          "Jason": 1
         }
       },
       {
@@ -201,9 +200,8 @@
     ],
     "totalPoints": 69,
     "byAuthor": {
-      "Jason": 53.8,
-      "Chris": 14.6,
-      "bot": 0.6
+      "Jason": 54.4,
+      "Chris": 14.6
     },
     "byCategory": {
       "Admin/Tools": 10,

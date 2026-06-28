@@ -5603,8 +5603,7 @@
             "vendoredRatio": 13,
             "isMultiAuthor": true,
             "attribution": {
-              "Jason": 0.97,
-              "bot": 0.03
+              "Jason": 1
             }
           },
           {
@@ -5705,9 +5704,8 @@
         ],
         "totalPoints": 69,
         "byAuthor": {
-          "Jason": 53.8,
-          "Chris": 14.6,
-          "bot": 0.6
+          "Jason": 54.4,
+          "Chris": 14.6
         },
         "byCategory": {
           "Admin/Tools": 10,
@@ -5977,8 +5975,7 @@
             "vendoredRatio": 10,
             "isMultiAuthor": true,
             "attribution": {
-              "Jason": 0.95,
-              "bot": 0.05
+              "Jason": 1
             }
           },
           {
@@ -6017,8 +6014,7 @@
             "isMultiAuthor": true,
             "attribution": {
               "Chris": 0.35,
-              "Jason": 0.6,
-              "bot": 0.05
+              "Jason": 0.65
             }
           },
           {
@@ -6083,8 +6079,7 @@
         ],
         "totalPoints": 50,
         "byAuthor": {
-          "Jason": 32.1,
-          "bot": 0.7,
+          "Jason": 32.8,
           "Chris": 17.5
         },
         "byCategory": {

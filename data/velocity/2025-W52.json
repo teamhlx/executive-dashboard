@@ -15,14 +15,13 @@
         "deletions": 0,
         "files": 30,
         "points": 8,
-        "rationale": "Release PR bundling admin dashboard charts, enhanced filtering for users/companies, and extensive documentation updates across ~30 files — meaningful feature work but largely an integration/release branch of PR #204's content.",
+        "rationale": "Release PR bundling admin dashboard charts, enhanced filtering for users/companies, and extensive documentation updates across ~30 files \u2014 meaningful feature work but largely an integration/release branch of PR #204's content.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 10,
         "isMultiAuthor": true,
         "attribution": {
-          "Jason": 0.95,
-          "bot": 0.05
+          "Jason": 1
         }
       },
       {
@@ -35,7 +34,7 @@
         "deletions": 0,
         "files": 28,
         "points": 8,
-        "rationale": "Adds admin dashboard analytics charts, enhanced filtering systems for users and companies, and supporting documentation across ~28 files — a solid multi-component feature with new UI components and page-level logic.",
+        "rationale": "Adds admin dashboard analytics charts, enhanced filtering systems for users and companies, and supporting documentation across ~28 files \u2014 a solid multi-component feature with new UI components and page-level logic.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 14,
@@ -54,15 +53,14 @@
         "deletions": 0,
         "files": 10,
         "points": 5,
-        "rationale": "Updates AWS partner tier validation logic, adds git hooks and a GitHub Action to protect apprunner.yaml, and touches core AI data-field collectors and Prisma definitions — meaningful infrastructure and domain logic work across several layers.",
+        "rationale": "Updates AWS partner tier validation logic, adds git hooks and a GitHub Action to protect apprunner.yaml, and touches core AI data-field collectors and Prisma definitions \u2014 meaningful infrastructure and domain logic work across several layers.",
         "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": true,
         "attribution": {
           "Chris": 0.35,
-          "Jason": 0.6,
-          "bot": 0.05
+          "Jason": 0.65
         }
       },
       {
@@ -75,7 +73,7 @@
         "deletions": 0,
         "files": 5,
         "points": 3,
-        "rationale": "Focused change to AWS partnership tier definitions across the collector, interfaces, and Prisma field definitions — a modest domain update touching a small number of files with limited but purposeful logic changes.",
+        "rationale": "Focused change to AWS partnership tier definitions across the collector, interfaces, and Prisma field definitions \u2014 a modest domain update touching a small number of files with limited but purposeful logic changes.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 1,
@@ -95,7 +93,7 @@
         "deletions": 0,
         "files": 121,
         "points": 21,
-        "rationale": "Massive release PR spanning 121 files and 9000+ custom lines covering automatic AWS microsite generation, AI agent post-processing pipelines, chat agent sub-agents, gap/competitive analysis updates, admin enhancements, S3 file viewing, and extensive infrastructure/config changes — clearly weeks of transformative work across multiple domains.",
+        "rationale": "Massive release PR spanning 121 files and 9000+ custom lines covering automatic AWS microsite generation, AI agent post-processing pipelines, chat agent sub-agents, gap/competitive analysis updates, admin enhancements, S3 file viewing, and extensive infrastructure/config changes \u2014 clearly weeks of transformative work across multiple domains.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 3,
@@ -115,7 +113,7 @@
         "deletions": 0,
         "files": 47,
         "points": 5,
-        "rationale": "Adds admin access to a comprehensive documentation system with 47 files including a full historical backfill of per-PR release notes, user guides, and new feature docs — significant in volume but the bulk is documentation/content rather than complex engineering logic.",
+        "rationale": "Adds admin access to a comprehensive documentation system with 47 files including a full historical backfill of per-PR release notes, user guides, and new feature docs \u2014 significant in volume but the bulk is documentation/content rather than complex engineering logic.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -127,8 +125,7 @@
     ],
     "totalPoints": 50,
     "byAuthor": {
-      "Jason": 32.1,
-      "bot": 0.7,
+      "Jason": 32.8,
       "Chris": 17.5
     },
     "byCategory": {
