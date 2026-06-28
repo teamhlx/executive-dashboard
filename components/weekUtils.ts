@@ -20,5 +20,7 @@ export function weekToLabel(isoWeek: string): string {
   targetMonday.setDate(mondayWeek1.getDate() + (week - 1) * 7);
   
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  return `Week of ${months[targetMonday.getMonth()]} ${targetMonday.getDate()}`;
+  const currentYear = new Date().getFullYear();
+  const showYear = year !== currentYear;
+  return `Week of ${months[targetMonday.getMonth()]} ${targetMonday.getDate()}${showYear ? `, ${year}` : ""}`;
 }

@@ -367,7 +367,7 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
                         {pr.category}
                       </td>
                       <td className="py-2 pr-4 text-gray-500 text-xs tabular-nums">
-                        {pr.mergedAt ? new Date(pr.mergedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '—'}
+                        {pr.mergedAt ? (() => { const d = new Date(pr.mergedAt); const opts: Intl.DateTimeFormatOptions = { month: 'short', day: 'numeric' }; if (d.getFullYear() !== new Date().getFullYear()) opts.year = 'numeric'; return d.toLocaleDateString('en-US', opts); })() : '—'}
                       </td>
                       <td className="py-2 text-right font-bold text-indigo-400">
                         {pr.points}
