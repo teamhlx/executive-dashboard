@@ -29,7 +29,7 @@ export default function ScoringMethodologyModal({ open, onClose }: Props) {
         if (e.target === overlayRef.current) onClose();
       }}
     >
-      <div className="bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl max-w-2xl w-full mx-4 max-h-[85vh] overflow-y-auto">
+      <div className="bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl max-w-4xl w-full mx-4 max-h-[85vh] overflow-y-auto">
         {/* Header */}
         <div className="sticky top-0 bg-gray-900 border-b border-gray-700 px-6 py-4 flex items-center justify-between rounded-t-2xl">
           <h2 className="text-lg font-semibold text-gray-100">
@@ -78,6 +78,13 @@ export default function ScoringMethodologyModal({ open, onClose }: Props) {
             <p className="mt-3 text-gray-400">
               The scale is intentionally non-linear: a 13-point PR is not 13× the effort of a 1-point PR — it&apos;s typically 5–8× more complex, involving multiple systems, significant architecture decisions, and extensive testing. A 21-point PR represents a major feature or subsystem delivery.
             </p>
+            <div className="mt-4 flex justify-center">
+              <img
+                src="/fibonacci-spiral.png"
+                alt="Fibonacci spiral visualization showing the non-linear scaling of point values"
+                className="rounded-lg border border-gray-700 max-w-sm w-full"
+              />
+            </div>
           </section>
 
           {/* Scoring Method */}
