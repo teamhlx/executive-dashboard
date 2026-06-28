@@ -254,16 +254,63 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
         }
       />
 
-      {/* Two-column: author breakdown + story list */}
+      {/* Two-column: author breakdown + velocity momentum */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <VelocityAuthorBreakdown authors={filteredAuthors} />
-        <VelocityStoryList
-          stories={filteredWeeks.flatMap(w => w.stories ?? [])}
-          week={rangeLabel}
-        />
+        <div className="bg-gray-800 rounded-xl border border-gray-700 p-6">
+          <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4">
+            Velocity Momentum
+          </h3>
+          {(() => {
+            const numWeeksHalf = Math.floor(filteredWeeks.length / 2);
+            if (numWeeksHalf < 2) return <p className="text-gray-500 text-sm">Not enough data for trend comparison</p>;
+            const recentHalf = filteredWeeks.slice(filteredWeeks.length - numWeeksHalf);
+            const olderHalf = filteredWeeks.slice(0, numWeeksHalf);
+            const recentAvg = recentHalf.reduce((s, w) => s + w.prLevelPoints, 0) / recentHalf.length;
+            const olderAvg = olderHalf.reduce((s, w) => s + w.prLevelPoints, 0) / olderHalf.length;
+            const changePct = olderAvg > 0 ? Math.round(((recentAvg - olderAvg) / olderAvg) * 100) : 0;
+            const isUp = changePct > 0;
+            const recentPRsPerWeek = recentHalf.reduce((s, w) => s + w.scoredPRs, 0) / recentHalf.length;
+            const olderPRsPerWeek = olderHalf.reduce((s, w) => s + w.scoredPRs, 0) / olderHalf.length;
+            const prChangePct = olderPRsPerWeek > 0 ? Math.round(((recentPRsPerWeek - olderPRsPerWeek) / olderPRsPerWeek) * 100) : 0;
+            return (
+              <div className="space-y-4">
+                <div className="flex items-center justify-between p-3 rounded-lg bg-gray-750 border border-gray-700">
+                  <div>
+                    <p className="text-xs text-gray-500 uppercase">Points/Week Trend</p>
+                    <p className="text-lg font-bold text-gray-200">{recentAvg.toFixed(1)} <span className="text-sm text-gray-500">avg (recent {recentHalf.length}w)</span></p>
+                  </div>
+                  <div className={`text-right ${isUp ? 'text-emerald-400' : 'text-red-400'}`}>
+                    <p className="text-2xl font-bold">{isUp ? '+' : ''}{changePct}%</p>
+                    <p className="text-xs text-gray-500">vs prior {olderHalf.length}w ({olderAvg.toFixed(1)})</p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between p-3 rounded-lg bg-gray-750 border border-gray-700">
+                  <div>
+                    <p className="text-xs text-gray-500 uppercase">PRs/Week Trend</p>
+                    <p className="text-lg font-bold text-gray-200">{recentPRsPerWeek.toFixed(1)} <span className="text-sm text-gray-500">avg (recent {recentHalf.length}w)</span></p>
+                  </div>
+                  <div className={`text-right ${prChangePct >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                    <p className="text-2xl font-bold">{prChangePct >= 0 ? '+' : ''}{prChangePct}%</p>
+                    <p className="text-xs text-gray-500">vs prior {olderHalf.length}w ({olderPRsPerWeek.toFixed(1)})</p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between p-3 rounded-lg bg-gray-750 border border-gray-700">
+                  <div>
+                    <p className="text-xs text-gray-500 uppercase">Points/PR (Complexity)</p>
+                    <p className="text-lg font-bold text-gray-200">{(recentHalf.reduce((s, w) => s + w.prLevelPoints, 0) / Math.max(1, recentHalf.reduce((s, w) => s + w.scoredPRs, 0))).toFixed(1)} <span className="text-sm text-gray-500">avg</span></p>
+                  </div>
+                  <div className="text-right text-gray-400">
+                    <p className="text-sm">recent {recentHalf.length}w</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
+        </div>
       </div>
 
-      {/* PR Table */}
+      {/* PR Table — full width */}
       {filteredWeeks.some(w => w.prs.length > 0) && (
         <div className="mt-6 bg-gray-800 rounded-xl border border-gray-700 p-6">
           <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4">
@@ -347,6 +394,12 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
           })()}
         </div>
       )}
+
+      {/* Stories — full width */}
+      <VelocityStoryList
+        stories={filteredWeeks.flatMap(w => w.stories ?? [])}
+        week={rangeLabel}
+      />
     </div>
   );
 }
