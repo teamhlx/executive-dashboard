@@ -153,11 +153,19 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
       }
     }
   }
-  // Compute derived stats
+  // Compute derived stats — each author's avgPerWeek uses only their active weeks
+  const AUTHOR_START_WEEKS: Record<string, string> = {
+    Jason: "2025-W32",
+    Chris: "2025-W32",
+    Mauro: "2026-W24",
+    Chad: "2026-W24",
+  };
   const numFilteredWeeks = filteredWeeks.length || 1;
-  for (const author of Object.values(filteredAuthors)) {
+  for (const [name, author] of Object.entries(filteredAuthors)) {
+    const startWeek = AUTHOR_START_WEEKS[name] ?? filteredWeeks[0]?.week ?? "2025-W32";
+    const activeWeeks = filteredWeeks.filter(w => w.week >= startWeek).length || 1;
     author.avgPerPR = author.prs > 0 ? Math.round((author.totalPoints / author.prs) * 10) / 10 : 0;
-    author.avgPerWeek = Math.round((author.totalPoints / numFilteredWeeks) * 10) / 10;
+    author.avgPerWeek = Math.round((author.totalPoints / activeWeeks) * 10) / 10;
   }
 
   // Aggregate metrics for the filtered range
