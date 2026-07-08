@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { weekToLabel } from "./weekUtils";
 import {
   LineChart,
@@ -113,6 +114,28 @@ const CustomTooltip = ({
 };
 
 export default function VelocityContributorChart({ weeks, timeRange, infoContent }: Props) {
+  const [visibleAuthors, setVisibleAuthors] = useState<Set<AuthorName>>(new Set(AUTHORS));
+
+  const toggleAuthor = (author: AuthorName) => {
+    setVisibleAuthors((prev) => {
+      const next = new Set(prev);
+      if (next.has(author) && next.size > 1) {
+        // If clicking an already-visible author and others are also visible, show ONLY that one
+        if (next.size === 1) {
+          // Already solo — reset to all
+          return new Set(AUTHORS);
+        }
+        return new Set([author]);
+      } else if (next.has(author) && next.size === 1) {
+        // Clicking the solo author — reset to all
+        return new Set(AUTHORS);
+      } else {
+        // Author is hidden — show only that one
+        return new Set([author]);
+      }
+    });
+  };
+
   if (!weeks || weeks.length === 0) {
     return (
       <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-6 flex items-center justify-center h-48">
@@ -206,26 +229,50 @@ export default function VelocityContributorChart({ weeks, timeRange, infoContent
               type="monotone"
               dataKey={author}
               stroke={AUTHOR_COLORS[author]}
-              strokeWidth={2}
-              dot={{ fill: AUTHOR_COLORS[author], r: 3 }}
-              activeDot={{ r: 5, fill: AUTHOR_COLORS[author] }}
+              strokeWidth={visibleAuthors.has(author) ? 2 : 0}
+              dot={visibleAuthors.has(author) ? { fill: AUTHOR_COLORS[author], r: 3 } : false}
+              activeDot={visibleAuthors.has(author) ? { r: 5, fill: AUTHOR_COLORS[author] } : false}
               name={author}
               connectNulls={false}
+              hide={!visibleAuthors.has(author)}
             />
           ))}
         </LineChart>
       </ResponsiveContainer>
-      {/* Legend */}
-      <div className="flex flex-wrap gap-4 mt-3 text-xs text-gray-400">
-        {AUTHORS.map((author) => (
-          <span key={author} className="flex items-center gap-1.5">
-            <span
-              className="w-3 h-0.5 inline-block rounded"
-              style={{ backgroundColor: AUTHOR_COLORS[author], height: "2px", minWidth: "12px" }}
-            />
-            {author}
-          </span>
-        ))}
+      {/* Interactive Legend */}
+      <div className="flex flex-wrap gap-4 mt-3 text-xs">
+        {AUTHORS.map((author) => {
+          const isActive = visibleAuthors.has(author);
+          return (
+            <button
+              key={author}
+              onClick={() => toggleAuthor(author)}
+              className={`flex items-center gap-1.5 px-2 py-1 rounded transition-colors ${
+                isActive
+                  ? "text-gray-200 bg-gray-700/50"
+                  : "text-gray-500 hover:text-gray-400"
+              }`}
+            >
+              <span
+                className="inline-block rounded"
+                style={{
+                  backgroundColor: isActive ? AUTHOR_COLORS[author] : "#4b5563",
+                  height: "2px",
+                  minWidth: "12px",
+                }}
+              />
+              {author}
+            </button>
+          );
+        })}
+        {visibleAuthors.size < AUTHORS.length && (
+          <button
+            onClick={() => setVisibleAuthors(new Set(AUTHORS))}
+            className="text-gray-500 hover:text-gray-300 px-2 py-1 transition-colors"
+          >
+            Show all
+          </button>
+        )}
       </div>
     </div>
   );
