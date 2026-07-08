@@ -197,6 +197,9 @@ export default function VelocityContributorChart({ weeks, timeRange, infoContent
 
   const formatXTick = (value: string) => weekToMonth[value] || "";
 
+  // Fixed Y-axis domain based on ALL authors (keeps scale stable when filtering)
+  const yMax = Math.max(...data.flatMap((d) => AUTHORS.map((a) => d[a])), 0);
+
   return (
     <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-6">
       <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4 flex items-center">
@@ -221,6 +224,7 @@ export default function VelocityContributorChart({ weeks, timeRange, infoContent
             axisLine={false}
             tickLine={false}
             width={35}
+            domain={[0, yMax]}
           />
           <Tooltip content={<CustomTooltip />} />
           {AUTHORS.map((author) => (
