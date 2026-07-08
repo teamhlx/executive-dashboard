@@ -4,7 +4,7 @@ import { useState } from "react";
 import VelocityMetrics from "./VelocityMetrics";
 import VelocityChart from "./VelocityChart";
 import VelocityFTEChart from "./VelocityFTEChart";
-import VelocityEffectiveFTEChart from "./VelocityEffectiveFTEChart";
+import VelocityContributorChart from "./VelocityContributorChart";
 import VelocityAuthorBreakdown from "./VelocityAuthorBreakdown";
 import VelocityStoryList from "./VelocityStoryList";
 import ScoringMethodologyModal from "./ScoringMethodologyModal";
@@ -256,15 +256,14 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
           </>
         }
       />
-      <VelocityEffectiveFTEChart
-        trends={data.trends}
-        viewMode={viewMode}
+      <VelocityContributorChart
+        weeks={filteredWeeks}
         timeRange={timeRange}
         infoContent={
           <>
-            <p>Shows how many full-time engineers&apos; worth of output the team produces each week, based on the national industry benchmark of <strong>8 story points per engineer per week</strong>.</p>
-            <p className="mt-2">The purple line is effective FTE output (total points ÷ 8). The gray dashed line shows actual team headcount.</p>
-            <p className="mt-2">When the purple line is above the gray line, the team is outperforming the industry average. When below, the team is under-producing relative to headcount.</p>
+            <p>Shows each contributor&apos;s individual story points output per week.</p>
+            <p className="mt-2">Multi-author PRs have their points split proportionally between contributors based on commit attribution.</p>
+            <p className="mt-2">This helps identify individual output trends and contribution balance across the team.</p>
           </>
         }
       />
