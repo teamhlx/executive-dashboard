@@ -1,47 +1,10 @@
 type Props = {
-  prdReview: number;
-  scoping: number;
-  ready: number;
-  done: number;
   totalStories: number;
   openBugs: number;
 };
 
-export default function MetricCards({ prdReview, scoping, ready, done, totalStories, openBugs }: Props) {
-  const total = prdReview + scoping + ready + done;
-  const pctComplete = total > 0 ? Math.round((done / total) * 100) : 0;
-
+export default function MetricCards({ totalStories, openBugs }: Props) {
   const cards = [
-    {
-      label: "PRD Review",
-      value: prdReview,
-      color: "text-violet-600 dark:text-violet-400",
-      bg: "bg-violet-50 dark:bg-violet-400/10 border-violet-200 dark:border-violet-400/20",
-    },
-    {
-      label: "Scoping",
-      value: scoping,
-      color: "text-amber-600 dark:text-amber-400",
-      bg: "bg-amber-50 dark:bg-amber-400/10 border-amber-200 dark:border-amber-400/20",
-    },
-    {
-      label: "Ready",
-      value: ready,
-      color: "text-sky-600 dark:text-blue-400",
-      bg: "bg-sky-50 dark:bg-blue-400/10 border-sky-200 dark:border-blue-400/20",
-    },
-    {
-      label: "Done",
-      value: done,
-      color: "text-emerald-600 dark:text-green-400",
-      bg: "bg-emerald-50 dark:bg-green-400/10 border-emerald-200 dark:border-green-400/20",
-    },
-    {
-      label: "% Done",
-      value: `${pctComplete}%`,
-      color: "text-indigo-600 dark:text-indigo-400",
-      bg: "bg-indigo-50 dark:bg-indigo-400/10 border-indigo-200 dark:border-indigo-400/20",
-    },
     {
       label: "Open Tasks",
       value: totalStories,
@@ -59,7 +22,7 @@ export default function MetricCards({ prdReview, scoping, ready, done, totalStor
   ];
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4 mb-10">
+    <div className="grid grid-cols-2 gap-4 mb-10">
       {cards.map((card) => (
         <div key={card.label} className={`rounded-xl border p-4 ${card.bg}`}>
           <p className="text-xs text-gray-500 dark:text-gray-500 uppercase tracking-wider mb-1">{card.label}</p>

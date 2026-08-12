@@ -289,10 +289,6 @@ export default function Home() {
           {!loading && !error && (
             <>
               <MetricCards
-                prdReview={prdReview.length}
-                scoping={scoping.length}
-                ready={ready.length}
-                done={done.length}
                 totalStories={metrics?.totalStories || 0}
                 openBugs={metrics?.openBugs || 0}
               />
