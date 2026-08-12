@@ -62,7 +62,7 @@ function ProgressRow({
         </div>
       </td>
       <td className={`pl-2 py-1 text-xs tabular-nums ${dateColor} whitespace-nowrap align-middle text-right`}>
-        {total > 0 ? `${completed} of ${total}` : "None"}
+        {total > 0 ? `${completed} of ${total}` : "—"}
       </td>
     </tr>
   );
@@ -90,14 +90,16 @@ function EpicStoryPoints({ completed, total, completedStories, totalStories, une
           barClass="bg-emerald-500"
           dateColor={dateColor}
         />
-        <tr>
-          <td colSpan={2} className={`pr-2 pt-1.5 text-xs ${dateColor} align-middle`}>
-            Stories with no story points set
-          </td>
-          <td className={`pl-2 pt-1.5 text-xs tabular-nums ${dateColor} whitespace-nowrap align-middle text-right`}>
-            {storyIssueCount > 0 ? `${unestimatedStories} of ${storyIssueCount}` : "None"}
-          </td>
-        </tr>
+        {unestimatedStories > 0 && (
+          <tr>
+            <td colSpan={2} className={`pr-2 pt-1.5 text-xs text-amber-400 align-middle`}>
+              ⚠ Unestimated stories
+            </td>
+            <td className={`pl-2 pt-1.5 text-xs tabular-nums text-amber-400 whitespace-nowrap align-middle text-right`}>
+              {unestimatedStories}
+            </td>
+          </tr>
+        )}
       </tbody>
     </table>
   );

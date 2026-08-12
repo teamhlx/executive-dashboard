@@ -1048,21 +1048,11 @@ When the action is "link" or "create", your final assistant message MUST also in
 
     const fieldIds = await resolveJiraFieldIds(token);
 
-    const [epicsData, storiesData, bugsData, childIssues] = await Promise.all([
+    const [epicsData, childIssues] = await Promise.all([
       jiraPost('/rest/api/3/search/jql', token, {
         jql: `project=${project} AND issuetype=Epic AND status != Deferred ORDER BY created ASC`,
         maxResults: 100,
         fields: ['summary', 'status', 'duedate', 'description', 'startdate', 'customfield_10015', 'created', 'priority', 'customfield_10019', 'customfield_10235']
-      }),
-      jiraPost('/rest/api/3/search/jql', token, {
-        jql: `project=${project} AND issuetype=Story`,
-        maxResults: 0,
-        fields: ['status']
-      }),
-      jiraPost('/rest/api/3/search/jql', token, {
-        jql: `project=${project} AND issuetype=Bug AND status != Done`,
-        maxResults: 0,
-        fields: ['status']
       }),
       jiraSearchAll(
         token,
@@ -1135,8 +1125,8 @@ When the action is "link" or "create", your final assistant message MUST also in
       body: JSON.stringify({
         epics,
         metrics: {
-          totalStories: storiesData.total || 0,
-          openBugs: bugsData.total || 0
+          totalStories: childIssues.filter(i => (i.fields?.issuetype?.name || '') === 'Story').length,
+          openBugs: childIssues.filter(i => (i.fields?.issuetype?.name || '') === 'Bug' && !isCompletedStatus(i.fields?.status)).length
         }
       })
     };
