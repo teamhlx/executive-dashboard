@@ -43,7 +43,7 @@ export default function MetricCards({ prdReview, scoping, ready, done, totalStor
       bg: "bg-indigo-50 dark:bg-indigo-400/10 border-indigo-200 dark:border-indigo-400/20",
     },
     {
-      label: "Total Stories",
+      label: "Open Tasks",
       value: totalStories,
       color: "text-gray-700 dark:text-gray-300",
       bg: "bg-gray-100 dark:bg-gray-700/30 border-gray-200 dark:border-gray-600/20",

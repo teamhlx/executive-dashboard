@@ -1121,7 +1121,10 @@ When the action is "link" or "create", your final assistant message MUST also in
       body: JSON.stringify({
         epics,
         metrics: {
-          totalStories: childIssues.filter(i => (i.fields?.issuetype?.name || '') === 'Story').length,
+          totalStories: childIssues.filter(i => {
+            const t = (i.fields?.issuetype?.name || '').toLowerCase();
+            return (t === 'story' || t === 'task') && !isCompletedStatus(i.fields?.status);
+          }).length,
           openBugs: childIssues.filter(i => (i.fields?.issuetype?.name || '') === 'Bug' && !isCompletedStatus(i.fields?.status)).length
         }
       })
