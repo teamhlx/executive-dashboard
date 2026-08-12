@@ -1079,6 +1079,8 @@ When the action is "link" or "create", your final assistant message MUST also in
       priorityId: i.fields.priority?.id || '3',
       storyPoints: 0,
       completedPoints: 0,
+      totalStories: 0,
+      completedStories: 0,
     }));
 
     const epicKeys = new Set(epics.map(e => e.key));
@@ -1087,15 +1089,21 @@ When the action is "link" or "create", your final assistant message MUST also in
       const epicKey = childEpicKey(issue, epicKeys, fieldIds.epicLink);
       if (!epicKey) continue;
       const pts = storyPointValue(issue.fields, fieldIds.storyPoints);
-      if (!pointsByEpic[epicKey]) pointsByEpic[epicKey] = { storyPoints: 0, completedPoints: 0 };
+      if (!pointsByEpic[epicKey]) pointsByEpic[epicKey] = { storyPoints: 0, completedPoints: 0, totalStories: 0, completedStories: 0 };
       pointsByEpic[epicKey].storyPoints += pts;
-      if (isCompletedStatus(issue.fields.status)) pointsByEpic[epicKey].completedPoints += pts;
+      pointsByEpic[epicKey].totalStories += 1;
+      if (isCompletedStatus(issue.fields.status)) {
+        pointsByEpic[epicKey].completedPoints += pts;
+        pointsByEpic[epicKey].completedStories += 1;
+      }
     }
     for (const epic of epics) {
       const pts = pointsByEpic[epic.key];
       if (!pts) continue;
       epic.storyPoints = pts.storyPoints;
       epic.completedPoints = pts.completedPoints;
+      epic.totalStories = pts.totalStories;
+      epic.completedStories = pts.completedStories;
     }
 
     // Sort by Jira board rank (lexicographic — the native board order)

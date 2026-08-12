@@ -34,6 +34,8 @@ export type Epic = {
   jiraRank: string;
   storyPoints?: number;
   completedPoints?: number;
+  totalStories?: number;
+  completedStories?: number;
 };
 
 export type Metrics = {

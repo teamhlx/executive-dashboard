@@ -37,27 +37,41 @@ type EpicCardProps = {
   onToggleExpand: () => void;
 };
 
-function EpicStoryPoints({ completed, total, dateColor }: { completed: number; total: number; dateColor: string }) {
-  const pct = total > 0 ? Math.min(100, Math.round((completed / total) * 100)) : 0;
+function EpicStoryPoints({ completed, total, completedStories, totalStories, dateColor }: { completed: number; total: number; completedStories: number; totalStories: number; dateColor: string }) {
+  const ptsPct = total > 0 ? Math.min(100, Math.round((completed / total) * 100)) : 0;
+  const storiesPct = totalStories > 0 ? Math.min(100, Math.round((completedStories / totalStories) * 100)) : 0;
+  const hasPoints = total > 0;
+  const hasStories = totalStories > 0;
+
+  if (!hasPoints && !hasStories) {
+    return <div className="mt-3"><span className={`text-xs ${dateColor}`}>No story points</span></div>;
+  }
+
   return (
     <div
-      className="mt-3"
+      className="mt-3 space-y-2"
       title="Completed: Approved, Dev Complete, In Testing (on Staging), QA Testing, StagingItem, UAT Testing, Deployed to Production"
     >
-      <div className="flex items-center justify-between gap-2 mb-1">
-        <span className={`text-xs ${dateColor}`}>
-          {total > 0 ? `${completed} of ${total} pts` : "No story points"}
-        </span>
-        {total > 0 && (
-          <span className={`text-xs tabular-nums ${dateColor}`}>{pct}%</span>
-        )}
-      </div>
-      {total > 0 && (
-        <div className="h-1.5 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
-          <div
-            className="h-full rounded-full bg-emerald-500"
-            style={{ width: `${pct}%` }}
-          />
+      {hasPoints && (
+        <div>
+          <div className="flex items-center justify-between gap-2 mb-1">
+            <span className={`text-xs ${dateColor}`}>Points: {completed} of {total}</span>
+            <span className={`text-xs tabular-nums ${dateColor}`}>{ptsPct}%</span>
+          </div>
+          <div className="h-1.5 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
+            <div className="h-full rounded-full bg-emerald-500" style={{ width: `${ptsPct}%` }} />
+          </div>
+        </div>
+      )}
+      {hasStories && (
+        <div>
+          <div className="flex items-center justify-between gap-2 mb-1">
+            <span className={`text-xs ${dateColor}`}>Stories: {completedStories} of {totalStories}</span>
+            <span className={`text-xs tabular-nums ${dateColor}`}>{storiesPct}%</span>
+          </div>
+          <div className="h-1.5 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
+            <div className="h-full rounded-full bg-sky-500" style={{ width: `${storiesPct}%` }} />
+          </div>
         </div>
       )}
     </div>
@@ -109,6 +123,8 @@ function EpicCard({ epic, statusColor, statusBg, statusLabel, titleColor, descCo
       <EpicStoryPoints
         completed={epic.completedPoints ?? 0}
         total={epic.storyPoints ?? 0}
+        completedStories={epic.completedStories ?? 0}
+        totalStories={epic.totalStories ?? 0}
         dateColor={dateColor}
       />
       {showJiraButton && (
