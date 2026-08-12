@@ -134,6 +134,8 @@ npm run dev          # http://localhost:3000
 npm run build        # Static export to ./out
 ```
 
+`next dev` proxies `/api/*` to API Gateway so the browser stays same-origin. Production builds still call the API directly (static export to Amplify). Restart the dev server after changing `next.config.ts`.
+
 ## Environment
 
 The scoring script needs:
@@ -144,7 +146,7 @@ The scoring script needs:
 Lambda needs:
 - Jira API token in SSM (`/executive-dashboard/jira-api-token`)
 - PostgreSQL connection string in Lambda env vars
-- CORS origins: Amplify URL + localhost:3000
+- CORS origins: Amplify URL + localhost:3000 (API Gateway currently omits localhost, so local dev uses the Next.js proxy instead)
 
 ## Team Roster (FTE)
 
