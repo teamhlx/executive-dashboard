@@ -1095,11 +1095,7 @@ When the action is "link" or "create", your final assistant message MUST also in
       if (!pointsByEpic[epicKey]) pointsByEpic[epicKey] = { storyPoints: 0, completedPoints: 0, totalStories: 0, completedStories: 0, unestimatedStories: 0, storyIssueCount: 0 };
       pointsByEpic[epicKey].storyPoints += pts;
       pointsByEpic[epicKey].totalStories += 1;
-      const isStory = (issue.fields?.issuetype?.name || '') === 'Story';
-      if (isStory) {
-        pointsByEpic[epicKey].storyIssueCount += 1;
-        if (pts === 0) pointsByEpic[epicKey].unestimatedStories += 1;
-      }
+      if (pts === 0) pointsByEpic[epicKey].unestimatedStories += 1;
       if (isCompletedStatus(issue.fields.status)) {
         pointsByEpic[epicKey].completedPoints += pts;
         pointsByEpic[epicKey].completedStories += 1;
