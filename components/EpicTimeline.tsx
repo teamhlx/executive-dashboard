@@ -6,34 +6,40 @@ type Props = {
   epics: Epic[];
   hoveredKey: string | null;
   onHover: (key: string | null) => void;
-  showResearching: boolean;
+  showPrdReview: boolean;
+  showScoping: boolean;
   showBacklog: boolean;
   showDone: boolean;
-  onToggleResearching: () => void;
+  onTogglePrdReview: () => void;
+  onToggleScoping: () => void;
   onToggleBacklog: () => void;
   onToggleDone: () => void;
-  researchingCount: number;
+  prdReviewCount: number;
+  scopingCount: number;
   backlogCount: number;
   doneCount: number;
   rankMap?: Record<string, number>;
 };
 
 const READINESS_COLORS: Record<string, string> = {
-  "Researching": "bg-yellow-400",
+  "PRD Review": "bg-violet-500",
+  "Scoping": "bg-amber-400",
   "Ready": "bg-blue-500",
   "Backlog": "bg-gray-400",
   "Done": "bg-green-500",
 };
 
 const READINESS_BG: Record<string, string> = {
-  "Researching": "bg-yellow-400/20",
+  "PRD Review": "bg-violet-500/20",
+  "Scoping": "bg-amber-400/20",
   "Ready": "bg-blue-500/20",
   "Backlog": "bg-gray-400/20",
   "Done": "bg-green-500/20",
 };
 
 const READINESS_BG_SOLID: Record<string, string> = {
-  "Researching": "bg-yellow-400/40",
+  "PRD Review": "bg-violet-500/40",
+  "Scoping": "bg-amber-400/40",
   "Ready": "bg-blue-500/40",
   "Backlog": "bg-gray-400/40",
   "Done": "bg-green-500/40",
@@ -48,7 +54,7 @@ function parseDate(str: string | null): Date | null {
   return new Date(str);
 }
 
-export default function EpicTimeline({ epics, hoveredKey, onHover, showResearching, showBacklog, showDone, onToggleResearching, onToggleBacklog, onToggleDone, researchingCount, backlogCount, doneCount, rankMap = {} }: Props) {
+export default function EpicTimeline({ epics, hoveredKey, onHover, showPrdReview, showScoping, showBacklog, showDone, onTogglePrdReview, onToggleScoping, onToggleBacklog, onToggleDone, prdReviewCount, scopingCount, backlogCount, doneCount, rankMap = {} }: Props) {
   void rankMap;
   if (epics.length === 0) return null;
 
@@ -101,14 +107,24 @@ export default function EpicTimeline({ epics, hoveredKey, onHover, showResearchi
         <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-200">Timeline</h2>
         <div className="flex gap-2 flex-wrap">
           <button
-            onClick={onToggleResearching}
+            onClick={onTogglePrdReview}
             className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
-              showResearching
+              showPrdReview
+                ? "bg-violet-100 border-violet-300 text-violet-700 dark:bg-violet-400/20 dark:border-violet-400/40 dark:text-violet-300"
+                : "bg-white border-gray-300 text-gray-600 hover:text-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+            }`}
+          >
+            {showPrdReview ? "Hide" : "Show"} PRD Review ({prdReviewCount})
+          </button>
+          <button
+            onClick={onToggleScoping}
+            className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
+              showScoping
                 ? "bg-amber-100 border-amber-300 text-amber-700 dark:bg-amber-400/20 dark:border-amber-400/40 dark:text-amber-300"
                 : "bg-white border-gray-300 text-gray-600 hover:text-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
             }`}
           >
-            {showResearching ? "Hide" : "Show"} Researching ({researchingCount})
+            {showScoping ? "Hide" : "Show"} Scoping ({scopingCount})
           </button>
           <button
             onClick={onToggleBacklog}
@@ -171,7 +187,7 @@ export default function EpicTimeline({ epics, hoveredKey, onHover, showResearchi
                 const startDate = parseDate(epic.startDate) ?? today;
                 const endDate = hasDueDate ? parseDate(epic.dueDate)! : startDate;
                 const effectiveStart = hasDueDate && startDate > endDate ? endDate : startDate;
-                const isOverdue = hasDueDate && group === "Researching" && endDate < today;
+                const isOverdue = hasDueDate && (group === "PRD Review" || group === "Scoping") && endDate < today;
 
                 const barLeft = Math.max(0, Math.min(getLeftPct(effectiveStart), 100));
                 const barRight = Math.max(0, Math.min(getLeftPct(endDate), 100));

@@ -39,10 +39,11 @@ export type Metrics = {
   openBugs: number;
 };
 
-export type ReadinessGroup = "Researching" | "Ready" | "Backlog" | "Done";
+export type ReadinessGroup = "PRD Review" | "Scoping" | "Ready" | "Backlog" | "Done";
 
 export function getReadinessGroup(readiness: string): ReadinessGroup {
-  if (readiness === "Researching") return "Researching";
+  if (readiness === "Initial PRD Review") return "PRD Review";
+  if (readiness === "Engineering Scoping") return "Scoping";
   if (readiness === "Ready" || readiness === "Ready to Work") return "Ready";
   if (readiness === "Done") return "Done";
   return "Backlog";
@@ -62,7 +63,8 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
-  const [showResearching, setShowResearching] = useState(true);
+  const [showPrdReview, setShowPrdReview] = useState(true);
+  const [showScoping, setShowScoping] = useState(true);
   const [showBacklog, setShowBacklog] = useState(false);
   const [showDone, setShowDone] = useState(false);
 
@@ -173,17 +175,19 @@ export default function Home() {
     localStorage.setItem('lastProject', p.id);
   }
 
-  const researching = epics.filter(e => getReadinessGroup(e.readiness) === "Researching");
+  const prdReview = epics.filter(e => getReadinessGroup(e.readiness) === "PRD Review");
+  const scoping = epics.filter(e => getReadinessGroup(e.readiness) === "Scoping");
   const ready = epics.filter(e => getReadinessGroup(e.readiness) === "Ready");
   const backlog = epics.filter(e => getReadinessGroup(e.readiness) === "Backlog");
   const done = epics.filter(e => getReadinessGroup(e.readiness) === "Done");
 
-  const rankMap = Object.fromEntries(researching.map((e, i) => [e.key, i + 1]));
+  const rankMap = Object.fromEntries([...prdReview, ...scoping].map((e, i) => [e.key, i + 1]));
 
   const timelineEpics = [
     ...(showDone ? done : []),
     ...ready,
-    ...(showResearching ? researching : []),
+    ...(showScoping ? scoping : []),
+    ...(showPrdReview ? prdReview : []),
     ...(showBacklog ? backlog : []),
   ];
 
@@ -279,45 +283,53 @@ export default function Home() {
           {!loading && !error && (
             <>
               <MetricCards
-                researching={researching.length}
+                prdReview={prdReview.length}
+                scoping={scoping.length}
                 ready={ready.length}
                 done={done.length}
                 totalStories={metrics?.totalStories || 0}
                 openBugs={metrics?.openBugs || 0}
               />
               <EpicList
-                researching={researching}
+                prdReview={prdReview}
+                scoping={scoping}
                 ready={ready}
                 backlog={backlog}
                 done={done}
                 showSection="active"
                 hoveredKey={hoveredKey}
                 onHover={setHoveredKey}
-                showResearching={showResearching}
+                showPrdReview={showPrdReview}
+                showScoping={showScoping}
                 jiraEnabled={user?.jiraEnabled}
               />
               <EpicTimeline
                 epics={timelineEpics}
                 hoveredKey={hoveredKey}
                 onHover={setHoveredKey}
-                showResearching={showResearching}
+                showPrdReview={showPrdReview}
+                showScoping={showScoping}
                 showBacklog={showBacklog}
                 showDone={showDone}
-                onToggleResearching={() => setShowResearching(v => !v)}
+                onTogglePrdReview={() => setShowPrdReview(v => !v)}
+                onToggleScoping={() => setShowScoping(v => !v)}
                 onToggleBacklog={() => setShowBacklog(v => !v)}
                 onToggleDone={() => setShowDone(v => !v)}
-                researchingCount={researching.length}
+                prdReviewCount={prdReview.length}
+                scopingCount={scoping.length}
                 backlogCount={backlog.length}
                 doneCount={done.length}
                 rankMap={rankMap}
               />
               <EpicList
-                researching={researching}
+                prdReview={prdReview}
+                scoping={scoping}
                 ready={ready}
                 backlog={backlog}
                 done={done}
                 showSection="secondary"
-                showResearching={showResearching}
+                showPrdReview={showPrdReview}
+                showScoping={showScoping}
                 showBacklog={showBacklog}
                 showDone={showDone}
                 jiraEnabled={user?.jiraEnabled}

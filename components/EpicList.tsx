@@ -4,14 +4,16 @@ import React from "react";
 import { Epic } from "@/app/page";
 
 type Props = {
-  researching: Epic[];
+  prdReview: Epic[];
+  scoping: Epic[];
   ready: Epic[];
   backlog: Epic[];
   done: Epic[];
   showSection: "active" | "secondary";
   hoveredKey?: string | null;
   onHover?: (key: string | null) => void;
-  showResearching?: boolean;
+  showPrdReview?: boolean;
+  showScoping?: boolean;
   showBacklog?: boolean;
   showDone?: boolean;
   jiraEnabled?: boolean;
@@ -95,9 +97,18 @@ function EpicCard({ epic, statusColor, statusBg, statusLabel, titleColor, descCo
 }
 
 const SECTION_CONFIG = {
-  researching: {
-    label: "Researching",
-    statusLabel: "Researching",
+  prdReview: {
+    label: "Initial PRD Review",
+    statusLabel: "Initial PRD Review",
+    color: "text-violet-700 bg-violet-100 dark:text-violet-300 dark:bg-violet-500/20",
+    bg: "bg-white dark:bg-gray-800 border-violet-400 dark:border-violet-500/40",
+    titleColor: "text-gray-900 dark:text-white",
+    descColor: "text-gray-700 dark:text-gray-300",
+    dateColor: "text-gray-500 dark:text-gray-400",
+  },
+  scoping: {
+    label: "Engineering Scoping",
+    statusLabel: "Engineering Scoping",
     color: "text-amber-700 bg-amber-100 dark:text-amber-300 dark:bg-amber-500/20",
     bg: "bg-white dark:bg-gray-800 border-amber-400 dark:border-amber-500/40",
     titleColor: "text-gray-900 dark:text-white",
@@ -179,14 +190,15 @@ function EpicSection({ epics, config, hoveredKey, onHover, jiraEnabled, showRank
   );
 }
 
-export default function EpicList({ researching, ready, backlog, done, showSection, hoveredKey = null, onHover, showResearching = true, showBacklog = false, showDone = false, jiraEnabled }: Props) {
+export default function EpicList({ prdReview, scoping, ready, backlog, done, showSection, hoveredKey = null, onHover, showPrdReview = true, showScoping = true, showBacklog = false, showDone = false, jiraEnabled }: Props) {
   const [expandedKey, setExpandedKey] = React.useState<string | null>(null);
 
   if (showSection === "active") {
-    // Continuous rank across Ready to Work → Researching → Backlog (not Done)
+    // Continuous rank across Ready to Work → Engineering Scoping → PRD Review → Backlog (not Done)
     const rankedEpics: Epic[] = [
       ...ready,
-      ...(showResearching ? researching : []),
+      ...(showScoping ? scoping : []),
+      ...(showPrdReview ? prdReview : []),
       ...(showBacklog ? backlog : []),
     ];
     const rankMap = Object.fromEntries(rankedEpics.map((e, i) => [e.key, i + 1]));
@@ -207,10 +219,24 @@ export default function EpicList({ researching, ready, backlog, done, showSectio
             />
           </div>
         )}
-        {showResearching && researching.length > 0 && (
+        {showScoping && scoping.length > 0 && (
+          <div className="mb-6">
+            <EpicSection
+              epics={scoping}
+              config={SECTION_CONFIG.scoping}
+              hoveredKey={hoveredKey}
+              onHover={onHover}
+              jiraEnabled={jiraEnabled}
+              rankMap={rankMap}
+              expandedKey={expandedKey}
+              onExpandKey={setExpandedKey}
+            />
+          </div>
+        )}
+        {showPrdReview && prdReview.length > 0 && (
           <EpicSection
-            epics={researching}
-            config={SECTION_CONFIG.researching}
+            epics={prdReview}
+            config={SECTION_CONFIG.prdReview}
             hoveredKey={hoveredKey}
             onHover={onHover}
             jiraEnabled={jiraEnabled}
@@ -224,10 +250,11 @@ export default function EpicList({ researching, ready, backlog, done, showSectio
   }
 
   // secondary section — shows Backlog/Done when toggled on
-  // Compute continuous rank across ready + researching (if shown) + backlog (if shown)
+  // Compute continuous rank across ready + scoping + prdReview (if shown) + backlog (if shown)
   const rankedEpics: Epic[] = [
     ...ready,
-    ...(showResearching ? researching : []),
+    ...(showScoping ? scoping : []),
+    ...(showPrdReview ? prdReview : []),
     ...(showBacklog ? backlog : []),
   ];
   const rankMap = Object.fromEntries(rankedEpics.map((e, i) => [e.key, i + 1]));
