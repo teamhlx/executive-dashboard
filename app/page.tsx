@@ -36,6 +36,8 @@ export type Epic = {
   completedPoints?: number;
   totalStories?: number;
   completedStories?: number;
+  unestimatedStories?: number;
+  storyIssueCount?: number;
 };
 
 export type Metrics = {

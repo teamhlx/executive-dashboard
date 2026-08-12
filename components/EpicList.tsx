@@ -68,7 +68,7 @@ function ProgressRow({
   );
 }
 
-function EpicStoryPoints({ completed, total, completedStories, totalStories, dateColor }: { completed: number; total: number; completedStories: number; totalStories: number; dateColor: string }) {
+function EpicStoryPoints({ completed, total, completedStories, totalStories, unestimatedStories, storyIssueCount, dateColor }: { completed: number; total: number; completedStories: number; totalStories: number; unestimatedStories: number; storyIssueCount: number; dateColor: string }) {
   return (
     <table
       className="w-full border-collapse"
@@ -90,6 +90,14 @@ function EpicStoryPoints({ completed, total, completedStories, totalStories, dat
           barClass="bg-emerald-500"
           dateColor={dateColor}
         />
+        <tr>
+          <td colSpan={2} className={`pr-2 pt-1.5 text-xs ${dateColor} align-middle`}>
+            Stories with no story points set
+          </td>
+          <td className={`pl-2 pt-1.5 text-xs tabular-nums ${dateColor} whitespace-nowrap align-middle text-right`}>
+            {storyIssueCount > 0 ? `${unestimatedStories} of ${storyIssueCount}` : "None"}
+          </td>
+        </tr>
       </tbody>
     </table>
   );
@@ -143,6 +151,8 @@ function EpicCard({ epic, statusColor, statusBg, statusLabel, titleColor, descCo
           total={epic.storyPoints ?? 0}
           completedStories={epic.completedStories ?? 0}
           totalStories={epic.totalStories ?? 0}
+          unestimatedStories={epic.unestimatedStories ?? 0}
+          storyIssueCount={epic.storyIssueCount ?? 0}
           dateColor={dateColor}
         />
         {showJiraButton && (

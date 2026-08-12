@@ -185,13 +185,18 @@ async function resolveJiraFieldIds(token) {
     const fields = await jiraRequest('/rest/api/3/field', token);
     const list = Array.isArray(fields) ? fields : [];
     const byName = (name) => list.find(f => (f.name || '').toLowerCase() === name.toLowerCase())?.id;
+    const estimate = byName('Story point estimate');
+    const classic = byName('Story Points');
+    const storyPoints = estimate || classic || 'customfield_10016';
+    const storyPointsAlt = [estimate, classic].find(id => id && id !== storyPoints) || null;
     return {
-      storyPoints: byName('Story point estimate') || byName('Story Points') || 'customfield_10016',
+      storyPoints,
+      storyPointsAlt,
       epicLink: byName('Epic Link') || 'customfield_10014',
     };
   } catch (e) {
     console.error('resolveJiraFieldIds error:', e);
-    return { storyPoints: 'customfield_10016', epicLink: 'customfield_10014' };
+    return { storyPoints: 'customfield_10016', storyPointsAlt: null, epicLink: 'customfield_10014' };
   }
 }
 
@@ -212,9 +217,15 @@ function isCompletedStatus(status) {
   return COMPLETED_STATUS_NAMES.has(name);
 }
 
-function storyPointValue(fields, storyPointsField) {
-  const n = Number(fields?.[storyPointsField]);
-  return Number.isFinite(n) ? n : 0;
+function storyPointValue(fields, storyPointsField, storyPointsAlt) {
+  for (const id of [storyPointsField, storyPointsAlt]) {
+    if (!id) continue;
+    const raw = fields?.[id];
+    if (raw == null || raw === '') continue;
+    const n = Number(raw);
+    if (Number.isFinite(n) && n > 0) return n;
+  }
+  return 0;
 }
 
 function childEpicKey(issue, epicKeys, epicLinkField) {
@@ -1056,7 +1067,7 @@ When the action is "link" or "create", your final assistant message MUST also in
       jiraSearchAll(
         token,
         `project=${project} AND issuetype in (Story, Task, Bug)`,
-        ['parent', 'status', fieldIds.storyPoints, fieldIds.epicLink, 'issuetype']
+        ['parent', 'status', fieldIds.storyPoints, fieldIds.storyPointsAlt, fieldIds.epicLink, 'issuetype'].filter(Boolean)
       ),
     ]);
 
@@ -1081,6 +1092,8 @@ When the action is "link" or "create", your final assistant message MUST also in
       completedPoints: 0,
       totalStories: 0,
       completedStories: 0,
+      unestimatedStories: 0,
+      storyIssueCount: 0,
     }));
 
     const epicKeys = new Set(epics.map(e => e.key));
@@ -1088,10 +1101,15 @@ When the action is "link" or "create", your final assistant message MUST also in
     for (const issue of childIssues) {
       const epicKey = childEpicKey(issue, epicKeys, fieldIds.epicLink);
       if (!epicKey) continue;
-      const pts = storyPointValue(issue.fields, fieldIds.storyPoints);
-      if (!pointsByEpic[epicKey]) pointsByEpic[epicKey] = { storyPoints: 0, completedPoints: 0, totalStories: 0, completedStories: 0 };
+      const pts = storyPointValue(issue.fields, fieldIds.storyPoints, fieldIds.storyPointsAlt);
+      if (!pointsByEpic[epicKey]) pointsByEpic[epicKey] = { storyPoints: 0, completedPoints: 0, totalStories: 0, completedStories: 0, unestimatedStories: 0, storyIssueCount: 0 };
       pointsByEpic[epicKey].storyPoints += pts;
       pointsByEpic[epicKey].totalStories += 1;
+      const isStory = (issue.fields?.issuetype?.name || '') === 'Story';
+      if (isStory) {
+        pointsByEpic[epicKey].storyIssueCount += 1;
+        if (pts === 0) pointsByEpic[epicKey].unestimatedStories += 1;
+      }
       if (isCompletedStatus(issue.fields.status)) {
         pointsByEpic[epicKey].completedPoints += pts;
         pointsByEpic[epicKey].completedStories += 1;
@@ -1104,6 +1122,8 @@ When the action is "link" or "create", your final assistant message MUST also in
       epic.completedPoints = pts.completedPoints;
       epic.totalStories = pts.totalStories;
       epic.completedStories = pts.completedStories;
+      epic.unestimatedStories = pts.unestimatedStories;
+      epic.storyIssueCount = pts.storyIssueCount;
     }
 
     // Sort by Jira board rank (lexicographic — the native board order)
