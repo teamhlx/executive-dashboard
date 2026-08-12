@@ -37,44 +37,61 @@ type EpicCardProps = {
   onToggleExpand: () => void;
 };
 
-function EpicStoryPoints({ completed, total, completedStories, totalStories, dateColor }: { completed: number; total: number; completedStories: number; totalStories: number; dateColor: string }) {
-  const ptsPct = total > 0 ? Math.min(100, Math.round((completed / total) * 100)) : 0;
-  const storiesPct = totalStories > 0 ? Math.min(100, Math.round((completedStories / totalStories) * 100)) : 0;
-  const hasPoints = total > 0;
-  const hasStories = totalStories > 0;
-
-  if (!hasPoints && !hasStories) {
-    return <div className="mt-3"><span className={`text-xs ${dateColor}`}>No story points</span></div>;
-  }
-
+function ProgressRow({
+  label,
+  completed,
+  total,
+  barClass,
+  dateColor,
+  labelTitle,
+}: {
+  label: string;
+  completed: number;
+  total: number;
+  barClass: string;
+  dateColor: string;
+  labelTitle?: string;
+}) {
+  const pct = total > 0 ? Math.min(100, Math.round((completed / total) * 100)) : 0;
   return (
-    <div
-      className="mt-3 space-y-2"
+    <tr>
+      <td className={`pr-2 py-1 text-xs ${dateColor} whitespace-nowrap align-middle`} title={labelTitle}>{label}</td>
+      <td className="w-full py-1 align-middle">
+        <div className="h-1.5 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
+          <div className={`h-full rounded-full ${barClass}`} style={{ width: `${pct}%` }} />
+        </div>
+      </td>
+      <td className={`pl-2 py-1 text-xs tabular-nums ${dateColor} whitespace-nowrap align-middle text-right`}>
+        {total > 0 ? `${completed} of ${total}` : "None"}
+      </td>
+    </tr>
+  );
+}
+
+function EpicStoryPoints({ completed, total, completedStories, totalStories, dateColor }: { completed: number; total: number; completedStories: number; totalStories: number; dateColor: string }) {
+  return (
+    <table
+      className="w-full border-collapse"
       title="Completed: Approved, Dev Complete, In Testing (on Staging), QA Testing, StagingItem, UAT Testing, Deployed to Production"
     >
-      {hasPoints && (
-        <div>
-          <div className="flex items-center justify-between gap-2 mb-1">
-            <span className={`text-xs ${dateColor}`}>Points: {completed} of {total}</span>
-            <span className={`text-xs tabular-nums ${dateColor}`}>{ptsPct}%</span>
-          </div>
-          <div className="h-1.5 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
-            <div className="h-full rounded-full bg-emerald-500" style={{ width: `${ptsPct}%` }} />
-          </div>
-        </div>
-      )}
-      {hasStories && (
-        <div>
-          <div className="flex items-center justify-between gap-2 mb-1">
-            <span className={`text-xs ${dateColor}`}>Stories: {completedStories} of {totalStories}</span>
-            <span className={`text-xs tabular-nums ${dateColor}`}>{storiesPct}%</span>
-          </div>
-          <div className="h-1.5 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
-            <div className="h-full rounded-full bg-sky-500" style={{ width: `${storiesPct}%` }} />
-          </div>
-        </div>
-      )}
-    </div>
+      <tbody>
+        <ProgressRow
+          label="Story Count"
+          completed={completedStories}
+          total={totalStories}
+          barClass="bg-sky-500"
+          dateColor={dateColor}
+        />
+        <ProgressRow
+          label="Est. Points"
+          labelTitle="Estimated points"
+          completed={completed}
+          total={total}
+          barClass="bg-emerald-500"
+          dateColor={dateColor}
+        />
+      </tbody>
+    </table>
   );
 }
 
@@ -83,7 +100,7 @@ function EpicCard({ epic, statusColor, statusBg, statusLabel, titleColor, descCo
   const showJiraButton = jiraEnabled && isExpanded;
   return (
     <div
-      className={`rounded-lg border ${statusBg} p-4 transition-all cursor-pointer ${isHovered ? "ring-2 ring-indigo-500/60" : ""}`}
+      className={`h-full flex flex-col rounded-lg border ${statusBg} p-4 transition-all cursor-pointer ${isHovered ? "ring-2 ring-indigo-500/60" : ""}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={onToggleExpand}
@@ -120,26 +137,28 @@ function EpicCard({ epic, statusColor, statusBg, statusLabel, titleColor, descCo
           )}
         </p>
       )}
-      <EpicStoryPoints
-        completed={epic.completedPoints ?? 0}
-        total={epic.storyPoints ?? 0}
-        completedStories={epic.completedStories ?? 0}
-        totalStories={epic.totalStories ?? 0}
-        dateColor={dateColor}
-      />
-      {showJiraButton && (
-        <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-600">
-          <a
-            href={`https://bldglabs.atlassian.net/browse/${epic.key}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="inline-flex items-center gap-1.5 text-xs font-medium bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-md transition-colors"
-          >
-            ↗ Launch Jira
-          </a>
-        </div>
-      )}
+      <div className="mt-auto pt-3">
+        <EpicStoryPoints
+          completed={epic.completedPoints ?? 0}
+          total={epic.storyPoints ?? 0}
+          completedStories={epic.completedStories ?? 0}
+          totalStories={epic.totalStories ?? 0}
+          dateColor={dateColor}
+        />
+        {showJiraButton && (
+          <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-600">
+            <a
+              href={`https://bldglabs.atlassian.net/browse/${epic.key}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1.5 text-xs font-medium bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-md transition-colors"
+            >
+              ↗ Launch Jira
+            </a>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
