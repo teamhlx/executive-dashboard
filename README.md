@@ -13,7 +13,7 @@ Two tabs:
 - Groups by **Readiness** field: Initial PRD Review → Engineering Scoping → Ready to Work → Done
 - Metric cards (counts per readiness state, % done, total stories, open bugs)
 - Gantt timeline with due-date bars and toggle filters
-- Epic cards with descriptions, priority, and Jira links
+- Epic cards with descriptions, priority, Jira links, and story-point progress (completed of total)
 
 ### Velocity Tab
 - AI-scored PR velocity from `skematic-ai/skematic-next`

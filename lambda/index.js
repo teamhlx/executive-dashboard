@@ -141,6 +141,91 @@ function jiraRequest(path, token) {
   });
 }
 
+function jiraPost(path, token, bodyObj) {
+  const body = JSON.stringify(bodyObj);
+  return new Promise((resolve, reject) => {
+    const auth = Buffer.from(`skippy@jpv.dev:${token}`).toString('base64');
+    const options = {
+      hostname: 'bldglabs.atlassian.net',
+      path,
+      method: 'POST',
+      headers: {
+        'Authorization': `Basic ${auth}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Content-Length': Buffer.byteLength(body)
+      }
+    };
+    const req = https.request(options, (res) => {
+      let data = '';
+      res.on('data', chunk => data += chunk);
+      res.on('end', () => resolve(JSON.parse(data)));
+    });
+    req.on('error', reject);
+    req.write(body);
+    req.end();
+  });
+}
+
+async function jiraSearchAll(token, jql, fields, maxResults = 100) {
+  const issues = [];
+  let nextPageToken;
+  do {
+    const payload = { jql, maxResults, fields };
+    if (nextPageToken) payload.nextPageToken = nextPageToken;
+    const data = await jiraPost('/rest/api/3/search/jql', token, payload);
+    issues.push(...(data.issues || []));
+    nextPageToken = data.nextPageToken;
+  } while (nextPageToken);
+  return issues;
+}
+
+async function resolveJiraFieldIds(token) {
+  try {
+    const fields = await jiraRequest('/rest/api/3/field', token);
+    const list = Array.isArray(fields) ? fields : [];
+    const byName = (name) => list.find(f => (f.name || '').toLowerCase() === name.toLowerCase())?.id;
+    return {
+      storyPoints: byName('Story Points') || byName('Story point estimate') || 'customfield_10016',
+      epicLink: byName('Epic Link') || 'customfield_10014',
+    };
+  } catch (e) {
+    console.error('resolveJiraFieldIds error:', e);
+    return { storyPoints: 'customfield_10016', epicLink: 'customfield_10014' };
+  }
+}
+
+// Story-point "completed" statuses from the Jira board.
+// To Do, In Progress, Rework, and Deferred do not count as done.
+const COMPLETED_STATUS_NAMES = new Set([
+  'approved',
+  'dev complete',
+  'in testing (on staging)',
+  'qa testing',
+  'stagingitem',
+  'uat testing',
+  'deployed to production',
+]);
+
+function isCompletedStatus(status) {
+  const name = (status?.name || '').trim().toLowerCase();
+  return COMPLETED_STATUS_NAMES.has(name);
+}
+
+function storyPointValue(fields, storyPointsField) {
+  const n = Number(fields?.[storyPointsField]);
+  return Number.isFinite(n) ? n : 0;
+}
+
+function childEpicKey(issue, epicKeys, epicLinkField) {
+  const parentKey = issue.fields?.parent?.key;
+  if (parentKey && epicKeys.has(parentKey)) return parentKey;
+  const link = issue.fields?.[epicLinkField];
+  const linkKey = typeof link === 'string' ? link : link?.key;
+  if (linkKey && epicKeys.has(linkKey)) return linkKey;
+  return null;
+}
+
 async function fetchOpenBugsForChat(token) {
   return new Promise((resolve, reject) => {
     const body = JSON.stringify({
@@ -950,93 +1035,30 @@ When the action is "link" or "create", your final assistant message MUST also in
       }
     }
 
-    // Fetch epics
-    const epicsBody = JSON.stringify({
-      jql: `project=${project} AND issuetype=Epic AND status != Deferred ORDER BY created ASC`,
-      maxResults: 100,
-      fields: ['summary', 'status', 'duedate', 'description', 'startdate', 'customfield_10015', 'created', 'priority', 'customfield_10019', 'customfield_10235']
-    });
+    const fieldIds = await resolveJiraFieldIds(token);
 
-    const epicsData = await new Promise((resolve, reject) => {
-      const auth = Buffer.from(`skippy@jpv.dev:${token}`).toString('base64');
-      const options = {
-        hostname: 'bldglabs.atlassian.net',
-        path: '/rest/api/3/search/jql',
-        method: 'POST',
-        headers: {
-          'Authorization': `Basic ${auth}`,
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Content-Length': Buffer.byteLength(epicsBody)
-        }
-      };
-      const req = https.request(options, (res) => {
-        let data = '';
-        res.on('data', chunk => data += chunk);
-        res.on('end', () => resolve(JSON.parse(data)));
-      });
-      req.on('error', reject);
-      req.write(epicsBody);
-      req.end();
-    });
-
-    // Fetch story metrics
-    const storiesData = await new Promise((resolve, reject) => {
-      const body = JSON.stringify({
+    const [epicsData, storiesData, bugsData, childIssues] = await Promise.all([
+      jiraPost('/rest/api/3/search/jql', token, {
+        jql: `project=${project} AND issuetype=Epic AND status != Deferred ORDER BY created ASC`,
+        maxResults: 100,
+        fields: ['summary', 'status', 'duedate', 'description', 'startdate', 'customfield_10015', 'created', 'priority', 'customfield_10019', 'customfield_10235']
+      }),
+      jiraPost('/rest/api/3/search/jql', token, {
         jql: `project=${project} AND issuetype=Story`,
         maxResults: 0,
         fields: ['status']
-      });
-      const auth = Buffer.from(`skippy@jpv.dev:${token}`).toString('base64');
-      const options = {
-        hostname: 'bldglabs.atlassian.net',
-        path: '/rest/api/3/search/jql',
-        method: 'POST',
-        headers: {
-          'Authorization': `Basic ${auth}`,
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Content-Length': Buffer.byteLength(body)
-        }
-      };
-      const req = https.request(options, (res) => {
-        let data = '';
-        res.on('data', chunk => data += chunk);
-        res.on('end', () => resolve(JSON.parse(data)));
-      });
-      req.on('error', reject);
-      req.write(body);
-      req.end();
-    });
-
-    // Fetch bug metrics
-    const bugsData = await new Promise((resolve, reject) => {
-      const body = JSON.stringify({
+      }),
+      jiraPost('/rest/api/3/search/jql', token, {
         jql: `project=${project} AND issuetype=Bug AND status != Done`,
         maxResults: 0,
         fields: ['status']
-      });
-      const auth = Buffer.from(`skippy@jpv.dev:${token}`).toString('base64');
-      const options = {
-        hostname: 'bldglabs.atlassian.net',
-        path: '/rest/api/3/search/jql',
-        method: 'POST',
-        headers: {
-          'Authorization': `Basic ${auth}`,
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Content-Length': Buffer.byteLength(body)
-        }
-      };
-      const req = https.request(options, (res) => {
-        let data = '';
-        res.on('data', chunk => data += chunk);
-        res.on('end', () => resolve(JSON.parse(data)));
-      });
-      req.on('error', reject);
-      req.write(body);
-      req.end();
-    });
+      }),
+      jiraSearchAll(
+        token,
+        `project=${project} AND issuetype in (Story, Task, Bug)`,
+        ['parent', 'status', fieldIds.storyPoints, fieldIds.epicLink, 'issuetype']
+      ),
+    ]);
 
     function extractText(node) {
       if (!node) return '';
@@ -1055,7 +1077,26 @@ When the action is "link" or "create", your final assistant message MUST also in
       jiraRank: i.fields.customfield_10019 || '',
       priority: i.fields.priority?.name || 'Medium',
       priorityId: i.fields.priority?.id || '3',
+      storyPoints: 0,
+      completedPoints: 0,
     }));
+
+    const epicKeys = new Set(epics.map(e => e.key));
+    const pointsByEpic = {};
+    for (const issue of childIssues) {
+      const epicKey = childEpicKey(issue, epicKeys, fieldIds.epicLink);
+      if (!epicKey) continue;
+      const pts = storyPointValue(issue.fields, fieldIds.storyPoints);
+      if (!pointsByEpic[epicKey]) pointsByEpic[epicKey] = { storyPoints: 0, completedPoints: 0 };
+      pointsByEpic[epicKey].storyPoints += pts;
+      if (isCompletedStatus(issue.fields.status)) pointsByEpic[epicKey].completedPoints += pts;
+    }
+    for (const epic of epics) {
+      const pts = pointsByEpic[epic.key];
+      if (!pts) continue;
+      epic.storyPoints = pts.storyPoints;
+      epic.completedPoints = pts.completedPoints;
+    }
 
     // Sort by Jira board rank (lexicographic — the native board order)
     epics.sort((a, b) => a.jiraRank.localeCompare(b.jiraRank));

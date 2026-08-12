@@ -32,6 +32,8 @@ export type Epic = {
   priority: string;
   priorityId: string;
   jiraRank: string;
+  storyPoints?: number;
+  completedPoints?: number;
 };
 
 export type Metrics = {

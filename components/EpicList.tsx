@@ -37,6 +37,33 @@ type EpicCardProps = {
   onToggleExpand: () => void;
 };
 
+function EpicStoryPoints({ completed, total, dateColor }: { completed: number; total: number; dateColor: string }) {
+  const pct = total > 0 ? Math.min(100, Math.round((completed / total) * 100)) : 0;
+  return (
+    <div
+      className="mt-3"
+      title="Completed: Approved, Dev Complete, In Testing (on Staging), QA Testing, StagingItem, UAT Testing, Deployed to Production"
+    >
+      <div className="flex items-center justify-between gap-2 mb-1">
+        <span className={`text-xs ${dateColor}`}>
+          {total > 0 ? `${completed} of ${total} pts` : "No story points"}
+        </span>
+        {total > 0 && (
+          <span className={`text-xs tabular-nums ${dateColor}`}>{pct}%</span>
+        )}
+      </div>
+      {total > 0 && (
+        <div className="h-1.5 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
+          <div
+            className="h-full rounded-full bg-emerald-500"
+            style={{ width: `${pct}%` }}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
 function EpicCard({ epic, statusColor, statusBg, statusLabel, titleColor, descColor, dateColor, isHovered, onMouseEnter, onMouseLeave, rank, epicPriority = 'Medium', jiraEnabled, isExpanded, onToggleExpand }: EpicCardProps) {
   const showPriorityBadge = epicPriority !== 'Medium';
   const showJiraButton = jiraEnabled && isExpanded;
@@ -79,6 +106,11 @@ function EpicCard({ epic, statusColor, statusBg, statusLabel, titleColor, descCo
           )}
         </p>
       )}
+      <EpicStoryPoints
+        completed={epic.completedPoints ?? 0}
+        total={epic.storyPoints ?? 0}
+        dateColor={dateColor}
+      />
       {showJiraButton && (
         <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-600">
           <a
