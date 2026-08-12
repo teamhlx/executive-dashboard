@@ -186,7 +186,7 @@ async function resolveJiraFieldIds(token) {
     const list = Array.isArray(fields) ? fields : [];
     const byName = (name) => list.find(f => (f.name || '').toLowerCase() === name.toLowerCase())?.id;
     return {
-      storyPoints: byName('Story Points') || byName('Story point estimate') || 'customfield_10016',
+      storyPoints: byName('Story point estimate') || byName('Story Points') || 'customfield_10016',
       epicLink: byName('Epic Link') || 'customfield_10014',
     };
   } catch (e) {
