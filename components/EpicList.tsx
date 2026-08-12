@@ -55,7 +55,7 @@ function EpicStoryPoints({ completed, total, completedStories, totalStories, dat
       {hasPoints && (
         <div>
           <div className="flex items-center justify-between gap-2 mb-1">
-            <span className={`text-xs ${dateColor}`}>Points: {completed} of {total}</span>
+            <span className={`text-xs ${dateColor}`}>Story points: {completed} of {total}</span>
             <span className={`text-xs tabular-nums ${dateColor}`}>{ptsPct}%</span>
           </div>
           <div className="h-1.5 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
