@@ -170,7 +170,7 @@ export default function VelocityChart({ trends, viewMode, timeRange, infoContent
 
   const data: ChartEntry[] = slicedWeeks.map((week, i) => {
     const entry: ChartEntry = {
-      week: week.replace(/^\d{4}-/, ""), // keep "W26" as unique key for Recharts
+      week: week, // Keep full ISO week to avoid year collisions
       fullWeek: weekToLabel(week),
       points: rawPoints[i],
     };
@@ -191,18 +191,17 @@ export default function VelocityChart({ trends, viewMode, timeRange, infoContent
   });
 
   // Milestone display week for ReferenceLine
-  const milestoneDisplayWeek = TEAM_MILESTONE_WEEK.replace(/^\d{4}-/, "");
+  const milestoneDisplayWeek = TEAM_MILESTONE_WEEK;
   const showMilestone = milestoneIdx > 1 && milestoneIdx < slicedWeeks.length - 1;
 
   // Build a map of week label → month display label for X-axis tick formatting
   const weekToMonth: Record<string, string> = {};
   slicedWeeks.forEach((week, i) => {
-    const shortWeek = week.replace(/^\d{4}-/, "");
     if (monthStartIndices.has(i)) {
       const d = getMonthLabel(week) as Date | null;
       if (d) {
         const yr = d.getFullYear().toString().slice(2);
-        weekToMonth[shortWeek] = `${MONTH_NAMES[d.getMonth()]} '${yr}`;
+        weekToMonth[week] = `${MONTH_NAMES[d.getMonth()]} '${yr}`;
       }
     }
   });
@@ -241,7 +240,6 @@ export default function VelocityChart({ trends, viewMode, timeRange, infoContent
             <ReferenceLine
               x={milestoneDisplayWeek}
               stroke="#f59e0b"
-              strokeDasharray="4 4"
               strokeWidth={1.5}
               label={{
                 value: TEAM_MILESTONE_LABEL,

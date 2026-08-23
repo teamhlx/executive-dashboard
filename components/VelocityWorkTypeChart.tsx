@@ -301,7 +301,6 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
             <ReferenceLine
               x={MILESTONE_WEEK}
               stroke="#f59e0b"
-              strokeDasharray="4 4"
               strokeWidth={1.5}
               label={{
                 value: MILESTONE_LABEL,
