@@ -8,6 +8,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
+  Legend,
   ReferenceLine,
   ResponsiveContainer,
 } from "recharts";
@@ -253,6 +254,12 @@ export default function VelocityChart({ trends, viewMode, timeRange, chartMode, 
             domain={[0, "auto"]}
           />
           <Tooltip content={<CustomTooltip />} />
+          <Legend
+            verticalAlign="bottom"
+            height={24}
+            iconType="line"
+            wrapperStyle={{ fontSize: 11, color: "#9ca3af" }}
+          />
           {showMilestone && (
             <ReferenceLine
               x={milestoneDisplayWeek}
@@ -286,6 +293,7 @@ export default function VelocityChart({ trends, viewMode, timeRange, chartMode, 
               dot={false}
               activeDot={false}
               name="Trend (pre)"
+              legendType="none"
               connectNulls={false}
             />
           )}
@@ -299,6 +307,7 @@ export default function VelocityChart({ trends, viewMode, timeRange, chartMode, 
               dot={false}
               activeDot={false}
               name="Trend (post)"
+              legendType="none"
               connectNulls={false}
             />
           )}
@@ -306,12 +315,12 @@ export default function VelocityChart({ trends, viewMode, timeRange, chartMode, 
             <Line
               type="monotone"
               dataKey="trendAll"
-              stroke="#9ca3af"
-              strokeWidth={2.5}
-              strokeDasharray="4 3"
+              stroke="#ef4444"
+              strokeWidth={3}
+              strokeDasharray="6 3"
               dot={false}
               activeDot={false}
-              name="Trend (overall)"
+              name="Overall Trend"
               connectNulls={false}
             />
           )}
