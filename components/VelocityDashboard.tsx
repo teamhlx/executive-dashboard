@@ -85,7 +85,7 @@ const TIME_RANGES: { key: TimeRange; label: string }[] = [
 
 export default function VelocityDashboard({ data, loading, error }: Props) {
   const [viewMode] = useState<"pr" | "grouped">("pr");
-  const [timeRange, setTimeRange] = useState<TimeRange>("all");
+  const [timeRange, setTimeRange] = useState<TimeRange>("6mo");
   const [showMethodology, setShowMethodology] = useState(false);
   const [showAllPRs, setShowAllPRs] = useState(false);
 
@@ -268,8 +268,9 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
       />
 
       {/* Two-column: author breakdown + velocity momentum */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className={`grid grid-cols-1 ${timeRange !== "all" && timeRange !== "year" ? "lg:grid-cols-2" : ""} gap-6`}>
         <VelocityAuthorBreakdown authors={filteredAuthors} />
+        {timeRange !== "all" && timeRange !== "year" && (
         <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 h-full">
           <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4">
             Velocity Momentum
@@ -402,6 +403,7 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
             );
           })()}
         </div>
+        )}
       </div>
 
       {/* PR Table — full width */}
