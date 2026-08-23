@@ -24,7 +24,7 @@ type WeekData = {
   }[];
 };
 
-type TimeRange = "all" | "year" | "6mo" | "4mo" | "3mo" | "1mo";
+type TimeRange = "all" | "year" | "6mo" | "4mo" | "3mo" | "6wk" | "4wk";
 
 type Props = {
   weeks: WeekData[];
@@ -87,7 +87,7 @@ function weekToMonthStart(weeks: string[]): Set<number> {
 }
 
 const TIME_RANGE_WEEKS: Record<TimeRange, number> = {
-  all: 999, year: 52, "6mo": 26, "4mo": 17, "3mo": 13, "1mo": 4,
+  all: 999, year: 52, "6mo": 26, "4mo": 17, "3mo": 13, "6wk": 6, "4wk": 4,
 };
 
 type ChartEntry = {
