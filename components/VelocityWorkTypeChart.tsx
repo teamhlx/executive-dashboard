@@ -228,15 +228,6 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, chartMode, inf
           <ChartInfoButton title="Work Type Breakdown">{infoContent}</ChartInfoButton>
         )}
       </h3>
-      {/* Summary badges */}
-      <div className="flex gap-4 mb-4 text-xs">
-        <span className="px-2 py-1 rounded bg-indigo-500/20 text-indigo-300">
-          Features: {totals.featuresPct}% ({totals.features} pts)
-        </span>
-        <span className="px-2 py-1 rounded bg-amber-500/20 text-amber-300">
-          Infra: {totals.infraPct}% ({totals.infrastructure} pts)
-        </span>
-      </div>
       <ResponsiveContainer width="100%" height={200}>
         <LineChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
