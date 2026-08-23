@@ -317,7 +317,7 @@ export default function VelocityChart({ trends, viewMode, timeRange, chartMode, 
               dataKey="trendAll"
               stroke="#ef4444"
               strokeWidth={3}
-              strokeDasharray="6 3"
+              strokeDasharray="12 4"
               dot={false}
               activeDot={false}
               name="Overall Trend"
