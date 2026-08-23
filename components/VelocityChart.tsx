@@ -176,17 +176,17 @@ export default function VelocityChart({ trends, viewMode, timeRange, infoContent
     };
     if (milestoneIdx > 1 && milestoneIdx < slicedWeeks.length - 1) {
       if (i <= milestoneIdx && preRegression) {
-        entry.trendPre = preRegression.values[i];
+        entry.trendPre = Math.max(0, preRegression.values[i]);
       }
       if (i >= milestoneIdx && postRegression) {
-        entry.trendPost = postRegression.values[i - milestoneIdx];
+        entry.trendPost = Math.max(0, postRegression.values[i - milestoneIdx]);
       }
     } else if (preRegression) {
       // Single trend line (milestone not in view)
-      entry.trendPre = preRegression.values[i];
+      entry.trendPre = Math.max(0, preRegression.values[i]);
     }
-    // Overall trend always present
-    entry.trendAll = allRegression.values[i];
+    // Overall trend always present (clamped to zero)
+    entry.trendAll = Math.max(0, allRegression.values[i]);
     return entry;
   });
 
@@ -234,6 +234,7 @@ export default function VelocityChart({ trends, viewMode, timeRange, infoContent
             axisLine={false}
             tickLine={false}
             width={35}
+            domain={[0, "auto"]}
           />
           <Tooltip content={<CustomTooltip />} />
           {showMilestone && (

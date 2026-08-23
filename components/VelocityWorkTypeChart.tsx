@@ -49,10 +49,8 @@ type ChartEntry = {
   fullWeek: string;
   features: number;
   infrastructure: number;
-  featuresTrendPre?: number;
-  featuresTrendPost?: number;
-  infraTrendPre?: number;
-  infraTrendPost?: number;
+  featuresTrend?: number;
+  infraTrend?: number;
 };
 
 // Linear regression helper
@@ -151,48 +149,19 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
       return { week: w.week, fullWeek: weekToLabel(w.week), features, infrastructure };
     });
 
-    // Compute trend lines
+    // Single trend line across all data (no split)
     const featuresRaw = raw.map((d) => d.features);
     const infraRaw = raw.map((d) => d.infrastructure);
+    const featTrend = linearRegression(featuresRaw).values;
+    const infraTrend = linearRegression(infraRaw).values;
 
-    let featPre: number[] | null = null;
-    let featPost: number[] | null = null;
-    let infraPre: number[] | null = null;
-    let infraPost: number[] | null = null;
-
-    if (showMilestone) {
-      featPre = linearRegression(featuresRaw.slice(0, milestoneIdx + 1)).values;
-      featPost = linearRegression(featuresRaw.slice(milestoneIdx)).values;
-      infraPre = linearRegression(infraRaw.slice(0, milestoneIdx + 1)).values;
-      infraPost = linearRegression(infraRaw.slice(milestoneIdx)).values;
-    } else {
-      featPre = linearRegression(featuresRaw).values;
-      infraPre = linearRegression(infraRaw).values;
-    }
-
-    // Second pass: attach trend values
-    return raw.map((d, i) => {
-      const entry: ChartEntry = { ...d };
-      if (showMilestone) {
-        if (i <= milestoneIdx && featPre) {
-          entry.featuresTrendPre = featPre[i];
-        }
-        if (i >= milestoneIdx && featPost) {
-          entry.featuresTrendPost = featPost[i - milestoneIdx];
-        }
-        if (i <= milestoneIdx && infraPre) {
-          entry.infraTrendPre = infraPre[i];
-        }
-        if (i >= milestoneIdx && infraPost) {
-          entry.infraTrendPost = infraPost[i - milestoneIdx];
-        }
-      } else {
-        if (featPre) entry.featuresTrendPre = featPre[i];
-        if (infraPre) entry.infraTrendPre = infraPre[i];
-      }
-      return entry;
-    });
-  }, [slicedWeeks, milestoneIdx, showMilestone]);
+    // Attach trend values, clamped to zero minimum
+    return raw.map((d, i) => ({
+      ...d,
+      featuresTrend: Math.max(0, featTrend[i]),
+      infraTrend: Math.max(0, infraTrend[i]),
+    }));
+  }, [slicedWeeks]);
 
   // Build month label map for X-axis tick formatter
   const weekToMonth: Record<string, string> = {};
@@ -281,6 +250,7 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
             axisLine={false}
             tickLine={false}
             width={35}
+            domain={[0, "auto"]}
           />
           <Tooltip content={<CustomTooltip />} />
           {/* Actual data lines */}
@@ -302,10 +272,10 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
             activeDot={{ r: 5, fill: "#f59e0b" }}
             name="Infrastructure"
           />
-          {/* Features trend lines (dashed) */}
+          {/* Features trend line (dashed) */}
           <Line
             type="monotone"
-            dataKey="featuresTrendPre"
+            dataKey="featuresTrend"
             stroke="#818cf8"
             strokeWidth={1.5}
             strokeDasharray="5 3"
@@ -314,32 +284,10 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
             connectNulls={false}
             legendType="none"
           />
+          {/* Infrastructure trend line (dashed) */}
           <Line
             type="monotone"
-            dataKey="featuresTrendPost"
-            stroke="#818cf8"
-            strokeWidth={1.5}
-            strokeDasharray="5 3"
-            dot={false}
-            activeDot={false}
-            connectNulls={false}
-            legendType="none"
-          />
-          {/* Infrastructure trend lines (dashed) */}
-          <Line
-            type="monotone"
-            dataKey="infraTrendPre"
-            stroke="#f59e0b"
-            strokeWidth={1.5}
-            strokeDasharray="5 3"
-            dot={false}
-            activeDot={false}
-            connectNulls={false}
-            legendType="none"
-          />
-          <Line
-            type="monotone"
-            dataKey="infraTrendPost"
+            dataKey="infraTrend"
             stroke="#f59e0b"
             strokeWidth={1.5}
             strokeDasharray="5 3"
@@ -352,13 +300,13 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
           {showMilestone && (
             <ReferenceLine
               x={MILESTONE_WEEK}
-              stroke="#22d3ee"
+              stroke="#f59e0b"
               strokeDasharray="4 4"
               strokeWidth={1.5}
               label={{
                 value: MILESTONE_LABEL,
                 position: "top",
-                fill: "#22d3ee",
+                fill: "#f59e0b",
                 fontSize: 10,
               }}
             />
