@@ -280,7 +280,8 @@ export default function VelocityChart({ trends, viewMode, timeRange, chartMode, 
             strokeWidth={showActuals ? 2 : 0}
             dot={showTrends && showActuals ? { fill: "#818cf8", r: 2 } : false}
             activeDot={showActuals ? { r: 3, fill: "#a5b4fc" } : false}
-            name="Points"
+            name="Actuals"
+            legendType="none"
             hide={!showActuals}
           />
           {showTrends && (
@@ -320,7 +321,7 @@ export default function VelocityChart({ trends, viewMode, timeRange, chartMode, 
               strokeDasharray="12 4"
               dot={false}
               activeDot={false}
-              name="Overall Trend"
+              name="All Time"
               connectNulls={false}
             />
           )}
