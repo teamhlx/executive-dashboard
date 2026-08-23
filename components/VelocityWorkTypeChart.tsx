@@ -3,8 +3,8 @@
 import { useMemo } from "react";
 import { weekToLabel } from "./weekUtils";
 import {
-  AreaChart,
-  Area,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -194,7 +194,7 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
         </span>
       </div>
       <ResponsiveContainer width="100%" height={200}>
-        <AreaChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+        <LineChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
           <XAxis
             dataKey="week"
@@ -211,29 +211,29 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
             width={35}
           />
           <Tooltip content={<CustomTooltip />} />
-          <Area
+          <Line
             type="monotone"
             dataKey="features"
-            stackId="1"
             stroke="#818cf8"
-            fill="#818cf8"
-            fillOpacity={0.4}
+            strokeWidth={2}
+            dot={{ fill: "#818cf8", r: 3 }}
+            activeDot={{ r: 5, fill: "#818cf8" }}
             name="Features"
           />
-          <Area
+          <Line
             type="monotone"
             dataKey="infrastructure"
-            stackId="1"
             stroke="#f59e0b"
-            fill="#f59e0b"
-            fillOpacity={0.4}
+            strokeWidth={2}
+            dot={{ fill: "#f59e0b", r: 3 }}
+            activeDot={{ r: 5, fill: "#f59e0b" }}
             name="Infrastructure"
           />
           <Legend
             wrapperStyle={{ fontSize: "12px", color: "#9ca3af" }}
-            iconType="square"
+            iconType="plainline"
           />
-        </AreaChart>
+        </LineChart>
       </ResponsiveContainer>
     </div>
   );
