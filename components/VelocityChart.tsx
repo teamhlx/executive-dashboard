@@ -40,6 +40,7 @@ type ChartEntry = {
   points: number;
   trendPre?: number;
   trendPost?: number;
+  trendAll?: number;
 };
 
 // Convert ISO week string to date of Monday of that week
@@ -161,6 +162,9 @@ export default function VelocityChart({ trends, viewMode, timeRange, infoContent
     preRegression = linearRegression(rawPoints);
   }
 
+  // Overall trend line across all data
+  const allRegression = linearRegression(rawPoints);
+
   // Determine which indices are month starts for labeling
   const monthStartIndices = weekToMonthStart(slicedWeeks);
 
@@ -181,6 +185,8 @@ export default function VelocityChart({ trends, viewMode, timeRange, infoContent
       // Single trend line (milestone not in view)
       entry.trendPre = preRegression.values[i];
     }
+    // Overall trend always present
+    entry.trendAll = allRegression.values[i];
     return entry;
   });
 
@@ -275,6 +281,17 @@ export default function VelocityChart({ trends, viewMode, timeRange, infoContent
             name="Trend (post)"
             connectNulls={false}
           />
+          <Line
+            type="monotone"
+            dataKey="trendAll"
+            stroke="#9ca3af"
+            strokeWidth={1.5}
+            strokeDasharray="4 3"
+            dot={false}
+            activeDot={false}
+            name="Trend (overall)"
+            connectNulls={false}
+          />
         </LineChart>
       </ResponsiveContainer>
       <div className="flex flex-wrap gap-4 mt-3 text-xs text-gray-500">
@@ -300,6 +317,15 @@ export default function VelocityChart({ trends, viewMode, timeRange, infoContent
           <span className="flex items-center gap-1.5">
             <span className="w-3 h-0.5 inline-block" style={{ borderTop: "2px dashed #f59e0b" }}></span>
             Team change
+          </span>
+        )}
+        {showMilestone && (
+          <span className="flex items-center gap-1.5">
+            <span className="w-3 h-0.5 inline-block" style={{ borderTop: "2px dashed #9ca3af" }}></span>
+            Overall:{" "}
+            <span className={allRegression.slopePerMonth >= 0 ? "text-gray-300" : "text-red-400"}>
+              {allRegression.slopePerMonth > 0 ? "+" : ""}{allRegression.slopePerMonth} pts/month
+            </span>
           </span>
         )}
       </div>
