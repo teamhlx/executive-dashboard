@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { weekToLabel } from "./weekUtils";
 import {
   LineChart,
@@ -28,6 +27,8 @@ type Props = {
   trends: TrendData;
   viewMode: "pr" | "grouped";
   timeRange: TimeRange;
+  chartMode: "all" | "trends" | "actuals";
+  onChartModeChange: (mode: "all" | "trends" | "actuals") => void;
   infoContent?: React.ReactNode;
 };
 
@@ -126,9 +127,9 @@ const TIME_RANGE_WEEKS: Record<TimeRange, number> = {
   all: 999, year: 52, "6mo": 26, "3mo": 13, "1mo": 4,
 };
 
-export default function VelocityChart({ trends, viewMode, timeRange, infoContent }: Props) {
-  const [showTrends, setShowTrends] = useState(true);
-  const [showActuals, setShowActuals] = useState(true);
+export default function VelocityChart({ trends, viewMode, timeRange, chartMode, onChartModeChange, infoContent }: Props) {
+  const showTrends = chartMode === "all" || chartMode === "trends";
+  const showActuals = chartMode === "all" || chartMode === "actuals";
 
   if (!trends || trends.weeks.length === 0) {
     return (
@@ -219,22 +220,19 @@ export default function VelocityChart({ trends, viewMode, timeRange, infoContent
         {infoContent && (
           <ChartInfoButton title="Weekly Velocity">{infoContent}</ChartInfoButton>
         )}
-        <button
-          onClick={() => setShowTrends((v) => !v)}
-          className={`ml-auto text-xs px-2 py-1 rounded transition-colors ${
-            showTrends ? "bg-gray-700 text-gray-200" : "bg-gray-700/30 text-gray-500 hover:text-gray-400"
-          }`}
-        >
-          {showTrends ? "Hide Trends" : "Show Trends"}
-        </button>
-        <button
-          onClick={() => setShowActuals((v) => !v)}
-          className={`ml-2 text-xs px-2 py-1 rounded transition-colors ${
-            showActuals ? "bg-gray-700 text-gray-200" : "bg-gray-700/30 text-gray-500 hover:text-gray-400"
-          }`}
-        >
-          {showActuals ? "Hide Actuals" : "Show Actuals"}
-        </button>
+        <div className="ml-auto flex text-xs">
+          {(["all", "trends", "actuals"] as const).map((mode) => (
+            <button
+              key={mode}
+              onClick={() => onChartModeChange(mode)}
+              className={`px-2 py-1 rounded transition-colors capitalize ${
+                chartMode === mode ? "bg-gray-700 text-gray-200" : "text-gray-500 hover:text-gray-400"
+              }`}
+            >
+              {mode === "all" ? "All" : mode === "trends" ? "Trends" : "Actuals"}
+            </button>
+          ))}
+        </div>
       </h3>
       <ResponsiveContainer width="100%" height={200}>
         <LineChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>

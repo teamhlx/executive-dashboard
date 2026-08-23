@@ -86,6 +86,7 @@ const TIME_RANGES: { key: TimeRange; label: string }[] = [
 export default function VelocityDashboard({ data, loading, error }: Props) {
   const [viewMode] = useState<"pr" | "grouped">("pr");
   const [timeRange, setTimeRange] = useState<TimeRange>("6mo");
+  const [chartMode, setChartMode] = useState<"all" | "trends" | "actuals">("all");
   const [showMethodology, setShowMethodology] = useState(false);
   const [showAllPRs, setShowAllPRs] = useState(false);
 
@@ -232,11 +233,70 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
         rangeLabel={rangeLabel}
       />
 
+      {/* Points/Week trend cards — Features vs Infrastructure */}
+      {timeRange !== "all" && timeRange !== "year" && (() => {
+        const numWeeksHalf = Math.floor(filteredWeeks.length / 2);
+        if (numWeeksHalf < 2) return null;
+        const recentHalf = filteredWeeks.slice(filteredWeeks.length - numWeeksHalf);
+        const olderHalf = filteredWeeks.slice(0, numWeeksHalf);
+
+        const INFRA_CATS = new Set(["Infrastructure", "DevOps"]);
+        const classify = (cat: string) => INFRA_CATS.has(cat) ? "infra" : "features";
+
+        let featPtsRecent = 0, infraPtsRecent = 0, featPtsOlder = 0, infraPtsOlder = 0;
+        for (const w of recentHalf) {
+          for (const pr of w.prs) {
+            if (classify(pr.category) === "features") featPtsRecent += pr.points;
+            else infraPtsRecent += pr.points;
+          }
+        }
+        for (const w of olderHalf) {
+          for (const pr of w.prs) {
+            if (classify(pr.category) === "features") featPtsOlder += pr.points;
+            else infraPtsOlder += pr.points;
+          }
+        }
+
+        const featAvgRecent = featPtsRecent / recentHalf.length;
+        const featAvgOlder = featPtsOlder / olderHalf.length;
+        const infraAvgRecent = infraPtsRecent / recentHalf.length;
+        const infraAvgOlder = infraPtsOlder / olderHalf.length;
+        const featChange = featAvgOlder > 0 ? Math.round(((featAvgRecent - featAvgOlder) / featAvgOlder) * 100) : 0;
+        const infraChange = infraAvgOlder > 0 ? Math.round(((infraAvgRecent - infraAvgOlder) / infraAvgOlder) * 100) : 0;
+
+        return (
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            <div className="flex items-center justify-between p-4 rounded-xl bg-gray-800 border border-gray-700">
+              <div>
+                <p className="text-xs text-gray-500 uppercase">Features pts/week</p>
+                <p className="text-xl font-bold text-gray-200">{featAvgRecent.toFixed(1)} <span className="text-sm text-gray-500">avg ({recentHalf.length}w)</span></p>
+              </div>
+              <div className={`text-right ${featChange >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                <p className="text-2xl font-bold">{featChange >= 0 ? '+' : ''}{featChange}%</p>
+                <p className="text-xs text-gray-500">vs prior ({featAvgOlder.toFixed(1)})</p>
+              </div>
+            </div>
+            <div className="flex items-center justify-between p-4 rounded-xl bg-gray-800 border border-gray-700">
+              <div>
+                <p className="text-xs text-gray-500 uppercase">Infra pts/week</p>
+                <p className="text-xl font-bold text-gray-200">{infraAvgRecent.toFixed(1)} <span className="text-sm text-gray-500">avg ({recentHalf.length}w)</span></p>
+              </div>
+              <div className={`text-right ${infraChange >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                <p className="text-2xl font-bold">{infraChange >= 0 ? '+' : ''}{infraChange}%</p>
+                <p className="text-xs text-gray-500">vs prior ({infraAvgOlder.toFixed(1)})</p>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
       {/* Charts */}
       <VelocityChart
         trends={data.trends}
         viewMode={viewMode}
         timeRange={timeRange}
+        chartMode={chartMode}
+        onChartModeChange={setChartMode}
         infoContent={
           <>
             <p>Shows the team&apos;s total story points delivered each week over time.</p>
@@ -248,6 +308,7 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
       <VelocityWorkTypeChart
         weeks={filteredWeeks}
         timeRange={timeRange}
+        chartMode={chartMode}
         infoContent={
           <>
             <p>Breaks down weekly story points into <strong>Features</strong> (everything that ships product value) vs <strong>Infrastructure</strong> (DevOps + Infrastructure work).</p>
@@ -267,144 +328,8 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
         }
       />
 
-      {/* Two-column: author breakdown + velocity momentum */}
-      <div className={`grid grid-cols-1 ${timeRange !== "all" && timeRange !== "year" ? "lg:grid-cols-2" : ""} gap-6`}>
-        <VelocityAuthorBreakdown authors={filteredAuthors} />
-        {timeRange !== "all" && timeRange !== "year" && (
-        <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 h-full">
-          <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4">
-            Velocity Momentum
-          </h3>
-          {(() => {
-            const numWeeksHalf = Math.floor(filteredWeeks.length / 2);
-            if (numWeeksHalf < 2) return <p className="text-gray-500 text-sm">Not enough data for trend comparison</p>;
-            const recentHalf = filteredWeeks.slice(filteredWeeks.length - numWeeksHalf);
-            const olderHalf = filteredWeeks.slice(0, numWeeksHalf);
-
-            const INFRA_CATS = new Set(["Infrastructure", "DevOps"]);
-            const classify = (cat: string) => INFRA_CATS.has(cat) ? "infra" : "features";
-
-            // Compute per-bucket stats for a set of weeks
-            const bucketStats = (weeks: typeof filteredWeeks) => {
-              let featPts = 0, infraPts = 0, featPRs = 0, infraPRs = 0;
-              for (const w of weeks) {
-                for (const pr of w.prs) {
-                  if (classify(pr.category) === "features") {
-                    featPts += pr.points;
-                    featPRs++;
-                  } else {
-                    infraPts += pr.points;
-                    infraPRs++;
-                  }
-                }
-              }
-              const n = weeks.length;
-              return {
-                featPtsPerWeek: featPts / n,
-                infraPtsPerWeek: infraPts / n,
-                featPRsPerWeek: featPRs / n,
-                infraPRsPerWeek: infraPRs / n,
-                featPtsPerPR: featPRs > 0 ? featPts / featPRs : 0,
-                infraPtsPerPR: infraPRs > 0 ? infraPts / infraPRs : 0,
-              };
-            };
-
-            const recent = bucketStats(recentHalf);
-            const older = bucketStats(olderHalf);
-
-            const pctChange = (curr: number, prev: number) =>
-              prev > 0 ? Math.round(((curr - prev) / prev) * 100) : 0;
-
-            const featPtsChange = pctChange(recent.featPtsPerWeek, older.featPtsPerWeek);
-            const infraPtsChange = pctChange(recent.infraPtsPerWeek, older.infraPtsPerWeek);
-            const featPRsChange = pctChange(recent.featPRsPerWeek, older.featPRsPerWeek);
-            const infraPRsChange = pctChange(recent.infraPRsPerWeek, older.infraPRsPerWeek);
-
-            const MetricRow = ({ label, recentVal, changePct, priorVal, suffix }: { label: string; recentVal: string; changePct: number; priorVal: string; suffix: string }) => (
-              <div className="flex items-center justify-between p-2 rounded-lg bg-gray-750 border border-gray-700">
-                <div>
-                  <p className="text-xs text-gray-500 uppercase">{label}</p>
-                  <p className="text-base font-bold text-gray-200">{recentVal} <span className="text-xs text-gray-500">{suffix}</span></p>
-                </div>
-                <div className={`text-right ${changePct >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
-                  <p className="text-xl font-bold">{changePct >= 0 ? '+' : ''}{changePct}%</p>
-                  <p className="text-xs text-gray-500">vs prior ({priorVal})</p>
-                </div>
-              </div>
-            );
-
-            return (
-              <div className="space-y-4">
-                {/* Points/Week */}
-                <div className="space-y-2">
-                  <p className="text-xs text-gray-500 uppercase font-medium">Points/Week Trend</p>
-                  <div className="grid grid-cols-2 gap-2">
-                    <MetricRow
-                      label="Features"
-                      recentVal={recent.featPtsPerWeek.toFixed(1)}
-                      changePct={featPtsChange}
-                      priorVal={older.featPtsPerWeek.toFixed(1)}
-                      suffix={`avg (${recentHalf.length}w)`}
-                    />
-                    <MetricRow
-                      label="Infrastructure"
-                      recentVal={recent.infraPtsPerWeek.toFixed(1)}
-                      changePct={infraPtsChange}
-                      priorVal={older.infraPtsPerWeek.toFixed(1)}
-                      suffix={`avg (${recentHalf.length}w)`}
-                    />
-                  </div>
-                </div>
-                {/* PRs/Week */}
-                <div className="space-y-2">
-                  <p className="text-xs text-gray-500 uppercase font-medium">PRs/Week Trend</p>
-                  <div className="grid grid-cols-2 gap-2">
-                    <MetricRow
-                      label="Features"
-                      recentVal={recent.featPRsPerWeek.toFixed(1)}
-                      changePct={featPRsChange}
-                      priorVal={older.featPRsPerWeek.toFixed(1)}
-                      suffix={`avg (${recentHalf.length}w)`}
-                    />
-                    <MetricRow
-                      label="Infrastructure"
-                      recentVal={recent.infraPRsPerWeek.toFixed(1)}
-                      changePct={infraPRsChange}
-                      priorVal={older.infraPRsPerWeek.toFixed(1)}
-                      suffix={`avg (${recentHalf.length}w)`}
-                    />
-                  </div>
-                </div>
-                {/* Points/PR */}
-                <div className="space-y-2">
-                  <p className="text-xs text-gray-500 uppercase font-medium">Points/PR (Complexity)</p>
-                  <div className="grid grid-cols-2 gap-2">
-                    <div className="flex items-center justify-between p-2 rounded-lg bg-gray-750 border border-gray-700">
-                      <div>
-                        <p className="text-xs text-gray-500 uppercase">Features</p>
-                        <p className="text-base font-bold text-gray-200">{recent.featPtsPerPR.toFixed(1)} <span className="text-xs text-gray-500">avg</span></p>
-                      </div>
-                      <div className="text-right text-gray-400">
-                        <p className="text-xs">{recentHalf.length}w</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between p-2 rounded-lg bg-gray-750 border border-gray-700">
-                      <div>
-                        <p className="text-xs text-gray-500 uppercase">Infrastructure</p>
-                        <p className="text-base font-bold text-gray-200">{recent.infraPtsPerPR.toFixed(1)} <span className="text-xs text-gray-500">avg</span></p>
-                      </div>
-                      <div className="text-right text-gray-400">
-                        <p className="text-xs">{recentHalf.length}w</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })()}
-        </div>
-        )}
-      </div>
+      {/* Author breakdown — full width */}
+      <VelocityAuthorBreakdown authors={filteredAuthors} />
 
       {/* PR Table — full width */}
       {filteredWeeks.some(w => w.prs.length > 0) && (

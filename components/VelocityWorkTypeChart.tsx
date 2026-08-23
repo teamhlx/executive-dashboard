@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { weekToLabel } from "./weekUtils";
 import {
   LineChart,
@@ -31,6 +31,7 @@ type TimeRange = "all" | "year" | "6mo" | "3mo" | "1mo";
 type Props = {
   weeks: WeekData[];
   timeRange: TimeRange;
+  chartMode: "all" | "trends" | "actuals";
   infoContent?: React.ReactNode;
 };
 
@@ -112,9 +113,9 @@ function classifyCategory(category: string): "features" | "infrastructure" {
   return "features";
 }
 
-export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }: Props) {
-  const [showTrends, setShowTrends] = useState(true);
-  const [showActuals, setShowActuals] = useState(true);
+export default function VelocityWorkTypeChart({ weeks, timeRange, chartMode, infoContent }: Props) {
+  const showTrends = chartMode === "all" || chartMode === "trends";
+  const showActuals = chartMode === "all" || chartMode === "actuals";
   if (!weeks || weeks.length === 0) {
     return (
       <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-6 flex items-center justify-center h-48">
@@ -226,22 +227,6 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
         {infoContent && (
           <ChartInfoButton title="Work Type Breakdown">{infoContent}</ChartInfoButton>
         )}
-        <button
-          onClick={() => setShowTrends((v) => !v)}
-          className={`ml-auto text-xs px-2 py-1 rounded transition-colors ${
-            showTrends ? "bg-gray-700 text-gray-200" : "bg-gray-700/30 text-gray-500 hover:text-gray-400"
-          }`}
-        >
-          {showTrends ? "Hide Trends" : "Show Trends"}
-        </button>
-        <button
-          onClick={() => setShowActuals((v) => !v)}
-          className={`ml-2 text-xs px-2 py-1 rounded transition-colors ${
-            showActuals ? "bg-gray-700 text-gray-200" : "bg-gray-700/30 text-gray-500 hover:text-gray-400"
-          }`}
-        >
-          {showActuals ? "Hide Actuals" : "Show Actuals"}
-        </button>
       </h3>
       {/* Summary badges */}
       <div className="flex gap-4 mb-4 text-xs">
