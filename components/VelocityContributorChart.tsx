@@ -176,7 +176,7 @@ export default function VelocityContributorChart({ weeks, timeRange, infoContent
     }
 
     return {
-      week: w.week.replace(/^\d{4}-/, ""),
+      week: w.week, // Keep full ISO week (e.g. "2026-W32") to avoid year collisions
       fullWeek: weekToLabel(w.week),
       ...authorPoints,
     };
@@ -185,12 +185,11 @@ export default function VelocityContributorChart({ weeks, timeRange, infoContent
   // Build month label map for X-axis tick formatter
   const weekToMonth: Record<string, string> = {};
   slicedWeeks.forEach((w, i) => {
-    const shortWeek = w.week.replace(/^\d{4}-/, "");
     if (monthStartIndices.has(i)) {
       const d = getMonthLabel(w.week) as Date | null;
       if (d) {
         const yr = d.getFullYear().toString().slice(2);
-        weekToMonth[shortWeek] = `${MONTH_NAMES[d.getMonth()]} '${yr}`;
+        weekToMonth[w.week] = `${MONTH_NAMES[d.getMonth()]} '${yr}`;
       }
     }
   });

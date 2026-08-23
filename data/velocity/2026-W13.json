@@ -2,7 +2,7 @@
   "week": "2026-W13",
   "startDate": "2026-03-23",
   "endDate": "2026-03-29",
-  "generatedAt": "2026-06-27T16:01:39.243Z",
+  "generatedAt": "2026-08-10T18:54:39.098Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 6,
         "points": 3,
-        "rationale": "Adds secret-based authentication to the HubSpot sync route and propagates the new environment variable across multiple App Runner config files and env examples — modest but multi-file infrastructure wiring.",
+        "rationale": "Adds secret-based authentication to the HubSpot sync route and wires the corresponding environment variable across multiple App Runner config files — modest but meaningful security/config work spanning 6 files.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 1,
         "points": 2,
-        "rationale": "A single documentation file addition covering AWS API discovery and usage — useful reference material but no functional code changes.",
+        "rationale": "A single documentation file addition capturing API discovery and usage notes — useful reference material but purely documentation with no code changes.",
         "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
@@ -57,14 +57,14 @@
     "stories": [
       {
         "id": 1,
-        "name": "HubSpot Integration Security & Infrastructure Hardening",
+        "name": "HubSpot Integration Security & Deployment Hardening",
         "points": 5,
         "category": "Integrations",
         "prs": [
           288,
           285
         ],
-        "rationale": "Together these PRs establish secure authentication and infrastructure configuration for the HubSpot sync service, ensuring the integration runs safely and reliably in the App Runner environment."
+        "rationale": "Together these PRs establish secure authentication and infrastructure configuration for the HubSpot sync service, enabling a production-ready integration pipeline."
       }
     ],
     "totalPoints": 5,

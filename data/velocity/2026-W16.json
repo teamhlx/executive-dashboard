@@ -2,7 +2,7 @@
   "week": "2026-W16",
   "startDate": "2026-04-13",
   "endDate": "2026-04-19",
-  "generatedAt": "2026-06-27T16:02:30.045Z",
+  "generatedAt": "2026-08-10T18:55:34.821Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 50,
         "points": 21,
-        "rationale": "2578 custom lines across 50+ files covering strategy persistence, inline editors, a docked chat panel, slide deck mechanics, cookie-based state, and broad UI fixes represents a transformative, multi-week feature effort.",
+        "rationale": "2578 custom additions across 50 files spanning strategy persistence, inline editors, a docked chat panel, slide deck mechanics, and numerous UI fixes represents weeks of transformative, multi-system work.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 23,
         "points": 13,
-        "rationale": "959 custom lines spanning product filtering, a scrollspy system with context/nav/content components, a DB migration, seed data updates, AI collector changes, and admin/analytics routes constitutes a major multi-surface feature.",
+        "rationale": "959 custom lines across 23 files covering product filtering, a scrollspy navigation system, schema migrations, seed data, analytics, and multiple new/refactored components constitutes a major feature set.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -53,14 +53,13 @@
         "deletions": 0,
         "files": 44,
         "points": 8,
-        "rationale": "364 custom lines touching 44 files across the entire chat agent hierarchy — refactoring agent context and adding product-scoped chat — is a significant architectural refactor of the AI agent layer.",
+        "rationale": "364 custom lines touching 44 files for a meaningful architectural refactor of agent context and introduction of product-scoped chat across many sub-agents and state modules is a significant, cross-cutting change.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
-        "isMultiAuthor": true,
+        "isMultiAuthor": false,
         "attribution": {
-          "Chris": 0.92,
-          "Jason": 0.08
+          "Chris": 1
         }
       },
       {
@@ -72,9 +71,9 @@
         "customAdditions": 9,
         "deletions": 0,
         "files": 2,
-        "points": 1,
-        "rationale": "9 custom lines across 2 files adding a single label/option to an existing integration depth slide is a trivial, single-concern change.",
-        "category": "UI/UX",
+        "points": 2,
+        "rationale": "9 custom lines across 2 files adding a single UI option to an existing slide node is a small, focused addition.",
+        "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -92,7 +91,7 @@
         "deletions": 0,
         "files": 60,
         "points": 13,
-        "rationale": "757 custom lines across 60 files systematically improving a large suite of AI data-field collectors, gap analysis agents, and their entrypoints represents a major, broad improvement to the AI/agent data-collection layer.",
+        "rationale": "757 custom lines across 60 files systematically improving collectors across stage-one and stage-two for many company and product fields, plus gap analysis and agent updates, represents a major feature enhancement.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -111,7 +110,7 @@
         "deletions": 0,
         "files": 6,
         "points": 3,
-        "rationale": "63 custom lines introducing a shared display-name utility, applying it across a handful of components, and adding a unit test is a clean, self-contained small-medium bug fix with proper test coverage.",
+        "rationale": "63 custom lines across 6 files implementing a display-name utility with a unit test and wiring it into assignee and task components is a modest, well-scoped bug fix with proper test coverage.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -121,29 +120,29 @@
         }
       }
     ],
-    "totalPoints": 59,
+    "totalPoints": 60,
     "byAuthor": {
-      "Jason": 37.6,
-      "Chris": 21.4
+      "Jason": 37,
+      "Chris": 23
     },
     "byCategory": {
       "Core Platform": 24,
-      "UI/UX": 14,
-      "AI/Agents": 21
+      "UI/UX": 13,
+      "AI/Agents": 23
     }
   },
   "grouped": {
     "stories": [
       {
         "id": 1,
-        "name": "Strategy & Fundamentals Editing Experience",
+        "name": "Strategy & Fundamentals Authoring Experience",
         "points": 21,
         "category": "Core Platform",
         "prs": [
           324,
           323
         ],
-        "rationale": "Delivered a cohesive strategy and fundamentals authoring experience including persistence, inline editing, product filtering, scrollspy navigation, a docked chat panel, and related UI polish."
+        "rationale": "Delivered a cohesive strategy and fundamentals editing experience including persistence, inline editors, scrollspy navigation, product filtering, a docked chat panel, and related UI polish."
       },
       {
         "id": 2,
@@ -154,17 +153,17 @@
           322,
           320
         ],
-        "rationale": "Refactored agent context to support product-scoped chat sessions and improved the collector agent with reliability and capability enhancements."
+        "rationale": "Refactored agent context architecture and improved the collector, enabling product-scoped chat interactions and more accurate AI-driven data gathering."
       },
       {
         "id": 3,
-        "name": "Integration Depth Labeling Improvement",
-        "points": 1,
-        "category": "UI/UX",
+        "name": "Integration Depth Signal Enhancement",
+        "points": 2,
+        "category": "AI/Agents",
         "prs": [
           319
         ],
-        "rationale": "Added 'Integrated with' label back to the integration depth slide to restore clarity for users reviewing integration status."
+        "rationale": "Added the 'integrated with' signal to the integration depth slide, improving the richness of integration assessment data."
       },
       {
         "id": 4,
@@ -174,21 +173,21 @@
         "prs": [
           321
         ],
-        "rationale": "Fixed assignee labels to gracefully fall back to the email local part when a user's display name is not available, improving readability across the platform."
+        "rationale": "Fixed assignee labels to gracefully fall back to the email local part when a user's full name is not available, improving readability across the platform."
       }
     ],
-    "totalPoints": 46,
+    "totalPoints": 47,
     "byAuthor": {
       "Jason": 24,
-      "Chris": 22
+      "Chris": 23
     }
   },
   "meta": {
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 13.63,
-      "grouped": 10.62
+      "prLevel": 13.86,
+      "grouped": 10.85
     },
     "ptsPerWeekPerFTE": 4.33
   }

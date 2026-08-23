@@ -2,7 +2,7 @@
   "week": "2026-W22",
   "startDate": "2026-05-25",
   "endDate": "2026-05-31",
-  "generatedAt": "2026-06-27T16:05:11.742Z",
+  "generatedAt": "2026-08-10T18:58:30.564Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 1,
         "points": 2,
-        "rationale": "Small fix binding methods in lazy proxies across a single file with 19 custom lines \u2014 straightforward but non-trivial bug fix.",
+        "rationale": "Small bug fix binding methods in lazy proxies across a single file with 19 custom lines.",
         "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
@@ -34,13 +34,13 @@
         "deletions": 0,
         "files": 4,
         "points": 5,
-        "rationale": "Staging merge combining AWS partner badge detection improvements and lazy Redis/BullMQ init fix across 4 files, representing a consolidation of meaningful work from both contributors.",
+        "rationale": "Medium-sized staging release spanning a new AWS partner badges collector, app runner config, and BullMQ/credential fixes across 4 files with 155 lines.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
-        "isMultiAuthor": true,
+        "isMultiAuthor": false,
         "attribution": {
-          "Jason": 1.0
+          "Jason": 1
         }
       },
       {
@@ -53,7 +53,7 @@
         "deletions": 0,
         "files": 2,
         "points": 1,
-        "rationale": "Single-line guard against undefined roleArn is a trivial defensive fix.",
+        "rationale": "Trivial one-line guard against undefined roleArn in a credential display method.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -71,8 +71,8 @@
         "customAdditions": 73,
         "deletions": 0,
         "files": 1,
-        "points": 5,
-        "rationale": "Implementing a lazy initialization pattern for Redis/BullMQ to prevent build-time connection errors is a meaningful architectural fix requiring careful proxy design across 73 custom lines.",
+        "points": 3,
+        "rationale": "Modest but meaningful refactor introducing lazy initialization for Redis/BullMQ to prevent build-time connection errors in a single file with 73 lines.",
         "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
@@ -91,7 +91,7 @@
         "deletions": 0,
         "files": 1,
         "points": 5,
-        "rationale": "A full production ECS deploy workflow in 105 lines covering build, push, and deploy steps is solid DevOps work with meaningful complexity.",
+        "rationale": "Solid DevOps work adding a full production ECS deploy workflow with 105 lines of CI configuration.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -110,7 +110,7 @@
         "deletions": 0,
         "files": 1,
         "points": 3,
-        "rationale": "Improving detection logic for 5+ AWS customer launches in the partner badges collector with 81 lines reflects a modest but meaningful signal-parsing feature.",
+        "rationale": "Modest feature improvement enhancing AWS partner badge detection logic with 81 custom lines in a single collector file.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -129,7 +129,7 @@
         "deletions": 0,
         "files": 1,
         "points": 2,
-        "rationale": "Updating apprunner.yaml configuration across 60 lines is primarily infra config work with low complexity.",
+        "rationale": "Small infrastructure config update to apprunner.yaml with 60 lines, likely environment or service tuning.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -148,7 +148,7 @@
         "deletions": 0,
         "files": 4,
         "points": 3,
-        "rationale": "Adding Redis cluster mode support for ElastiCache Serverless across 4 files with 20 custom lines is a focused but meaningful infrastructure compatibility fix.",
+        "rationale": "Small-medium fix enabling Redis cluster mode support across 4 files with 20 custom lines, touching BullMQ, semaphore, and worker entry points.",
         "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
@@ -167,7 +167,7 @@
         "deletions": 0,
         "files": 4,
         "points": 2,
-        "rationale": "Small multi-file fix addressing a staging worker crash and adding Redis TLS support with only 10 custom lines.",
+        "rationale": "Small fix addressing a staging worker crash and adding Redis TLS support across 4 files with only 10 custom lines.",
         "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
@@ -186,7 +186,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Adding a minimal health check endpoint in 5 lines is a trivial but necessary addition.",
+        "rationale": "Trivial addition of a single health check API route with 5 lines for ECS ALB compatibility.",
         "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
@@ -205,7 +205,7 @@
         "deletions": 0,
         "files": 2,
         "points": 5,
-        "rationale": "Creating a full ECS staging deploy workflow plus a worker Dockerfile across 135 custom lines is solid foundational DevOps work enabling a new deployment target.",
+        "rationale": "Meaningful DevOps addition of a full ECS staging deploy workflow and a worker Dockerfile across 2 files with 135 custom lines.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -224,7 +224,7 @@
         "deletions": 0,
         "files": 3,
         "points": 2,
-        "rationale": "Small targeted fix lowering concurrency and correcting retry detection for AWS Marketplace throttling across 16 lines in 3 files.",
+        "rationale": "Small bug fix lowering concurrency and correcting retry detection for AWS Marketplace throttling across 3 files with 16 custom lines.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -243,8 +243,8 @@
         "deletions": 0,
         "files": 3,
         "points": 5,
-        "rationale": "Fixing marketplace discovery for domain-named sellers across 3 files including discovery logic, a collector, and admin tooling represents a solid feature-level bug fix with meaningful scope.",
-        "category": "Core Platform",
+        "rationale": "Solid multi-file fix for domain-named seller marketplace discovery touching the collector, admin tools UI, and discovery library with 76 custom lines.",
+        "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -262,8 +262,8 @@
         "deletions": 0,
         "files": 1,
         "points": 3,
-        "rationale": "Hotfix targeting the same domain-named seller issue in 44 lines within a single collector file \u2014 smaller scoped precursor to the fuller fix in #404.",
-        "category": "Core Platform",
+        "rationale": "Small-medium hotfix for the same domain-named seller issue scoped to the collector file with 44 custom lines, likely a targeted patch before the fuller fix.",
+        "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -281,7 +281,7 @@
         "deletions": 0,
         "files": 8,
         "points": 8,
-        "rationale": "Wide-ranging PR touching 8 files with 225 custom lines covering new UI components (Run Analysis buttons), product filter cleanup, concurrency tuning, and admin queue improvements \u2014 significant medium-large feature work.",
+        "rationale": "Significant medium-large feature spanning UI additions (Run Analysis buttons, product filter cleanup), admin queue improvements, dashboard actions, and concurrency tuning across 8 files with 225 custom lines.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -300,7 +300,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "A single-file change with only 3 custom lines added and no deletions is a trivial tweak to an AWS connection action.",
+        "rationale": "A single-file change with only 3 custom additions and no deletions in an AWS connection action file indicates a trivial config tweak or minor fix.",
         "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
@@ -310,16 +310,16 @@
         }
       }
     ],
-    "totalPoints": 53,
+    "totalPoints": 51,
     "byAuthor": {
-      "Jason": 53.1
+      "Jason": 51
     },
     "byCategory": {
-      "Infrastructure": 14,
-      "Core Platform": 13,
+      "Infrastructure": 12,
+      "Core Platform": 5,
       "Integrations": 3,
       "DevOps": 12,
-      "AI/Agents": 3,
+      "AI/Agents": 11,
       "UI/UX": 8
     }
   },
@@ -327,86 +327,86 @@
     "stories": [
       {
         "id": 1,
-        "name": "Production & Staging Cloud Infrastructure Deployment",
+        "name": "Production & Staging Deployment Pipeline",
         "points": 21,
         "category": "DevOps",
         "prs": [
           414,
+          412,
           408,
-          417,
-          412
+          417
         ],
-        "rationale": "Established full CI/CD deploy pipelines and configuration for both staging and production environments across ECS and App Runner."
+        "rationale": "Established full CI/CD deployment pipelines for both staging and production environments, including ECS workflows, App Runner configuration, and the staging environment itself."
       },
       {
         "id": 2,
-        "name": "Reliable Redis & BullMQ Connectivity for Cloud Environments",
-        "points": 21,
+        "name": "ElastiCache & Redis Production Readiness",
+        "points": 13,
         "category": "Infrastructure",
         "prs": [
-          415,
-          418,
           411,
           410,
+          415,
+          418,
           409,
           402
         ],
-        "rationale": "Resolved a series of Redis/BullMQ initialization, TLS, cluster mode, and health check issues to ensure stable queue and cache connectivity in staging and production cloud environments."
+        "rationale": "Resolved a series of Redis/ElastiCache connectivity issues including cluster mode support, TLS configuration, lazy initialization to prevent build-time errors, and ALB health check endpoint for ECS."
       },
       {
         "id": 3,
         "name": "AWS Marketplace Seller Discovery Fix",
         "points": 13,
-        "category": "Core Platform",
+        "category": "AI/Agents",
         "prs": [
           404,
-          405
+          405,
+          406
         ],
-        "rationale": "Fixed a critical bug preventing marketplace discovery for sellers using domain-based names, ensuring accurate vendor identification."
+        "rationale": "Fixed marketplace discovery failures for domain-named sellers and addressed AWS Marketplace API throttling with lower concurrency and improved retry logic."
       },
       {
         "id": 4,
-        "name": "AWS Integration Stability & Credential Handling",
-        "points": 5,
-        "category": "Integrations",
-        "prs": [
-          406,
-          416
-        ],
-        "rationale": "Improved AWS integration reliability by fixing Marketplace API throttling handling and guarding against undefined role ARNs in credential display."
-      },
-      {
-        "id": 5,
-        "name": "Improved AWS Customer Launch Detection for Partner Badges",
+        "name": "Partner Badge & Customer Launch Detection",
         "points": 3,
         "category": "AI/Agents",
         "prs": [
           413
         ],
-        "rationale": "Enhanced the partner badges collector to more accurately detect sellers with 5 or more AWS customer launches."
+        "rationale": "Improved accuracy of detecting AWS partners with 5+ customer launches in the partner badges data collector."
       },
       {
-        "id": 6,
-        "name": "Analysis Workflow & Admin Queue Improvements",
+        "id": 5,
+        "name": "Analysis UI & Queue Management Improvements",
         "points": 8,
         "category": "UI/UX",
         "prs": [
           403
         ],
-        "rationale": "Delivered UI improvements to run analysis controls, product filtering, concurrency tuning, and admin queue visibility for a better operator experience."
+        "rationale": "Enhanced the user-facing analysis experience with improved run buttons, product filter cleanup, concurrency tuning, and admin queue visibility."
+      },
+      {
+        "id": 6,
+        "name": "AWS Integration Stability Fixes",
+        "points": 2,
+        "category": "Integrations",
+        "prs": [
+          416
+        ],
+        "rationale": "Guarded against undefined roleArn values in AWS credential display metadata to prevent integration errors."
       }
     ],
-    "totalPoints": 71,
+    "totalPoints": 60,
     "byAuthor": {
-      "Jason": 71.0
+      "Jason": 60
     }
   },
   "meta": {
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 12.24,
-      "grouped": 16.4
+      "prLevel": 11.78,
+      "grouped": 13.86
     },
     "ptsPerWeekPerFTE": 4.33
   }

@@ -2,7 +2,7 @@
   "week": "2025-W41",
   "startDate": "2025-10-06",
   "endDate": "2025-10-12",
-  "generatedAt": "2026-06-27T15:56:01.637Z",
+  "generatedAt": "2026-08-10T18:48:21.493Z",
   "prLevel": {
     "prs": [
       {
@@ -15,14 +15,14 @@
         "deletions": 0,
         "files": 6,
         "points": 3,
-        "rationale": "Refactors the readiness thermometer component, extracts shared utility logic, and integrates it into the slide deck across 6 files with 48 custom lines — a modest but meaningful refactor and feature integration.",
+        "rationale": "Refactors the readiness thermometer component, extracts shared utility logic, and integrates it into the slide deck across 6 files — modest but meaningful refactor.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": true,
         "attribution": {
-          "Chris": 0.6,
-          "Jason": 0.4
+          "Chris": 0.5,
+          "Jason": 0.5
         }
       },
       {
@@ -35,14 +35,13 @@
         "deletions": 0,
         "files": 9,
         "points": 8,
-        "rationale": "Introduces data tables for users and queue with column definitions, refactors admin auth check into middleware, and adds queue utilities across 9 files with 467 custom lines — a significant admin feature and architectural refactor.",
+        "rationale": "Introduces data tables for users and queue, refactors admin authorization checks, and touches worker/middleware — a significant admin feature spanning 9 files with 467 custom lines.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
-        "isMultiAuthor": true,
+        "isMultiAuthor": false,
         "attribution": {
-          "Chris": 0.9,
-          "Jason": 0.1
+          "Chris": 1
         }
       },
       {
@@ -55,7 +54,7 @@
         "deletions": 0,
         "files": 4,
         "points": 5,
-        "rationale": "Adds or updates server actions for AWS products and monthly spend, updates the AWS product selector component, and touches the readiness page across 4 files with 61 lines — solid feature work spanning data fetching and UI.",
+        "rationale": "Adds or refactors server actions for AWS products and monthly spend, updates the readiness page, and improves the AWS product selector — a solid set of interconnected feature changes across 4 files.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -74,7 +73,7 @@
         "deletions": 0,
         "files": 4,
         "points": 5,
-        "rationale": "Fixes onboarding authentication flow and AWS product fetching across the same 4 files as PR #108 with 61 custom lines, indicating meaningful bug fixes touching auth, server actions, and a UI selector component.",
+        "rationale": "Fixes onboarding authentication flow and AWS product fetching across the same 4 files as PR #108, with 61 lines of meaningful bug-fix and auth logic.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -93,8 +92,8 @@
         "deletions": 0,
         "files": 1,
         "points": 2,
-        "rationale": "Small improvement to DOMPurify loading and error handling in a single component with only 10 custom lines — a minor defensive fix.",
-        "category": "Core Platform",
+        "rationale": "Small improvement to DOMPurify loading and error handling in a single component with 10 custom lines.",
+        "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -112,7 +111,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Only 4 lines changed in a single file as a debugging pass — trivial change.",
+        "rationale": "Trivial debug change of 4 lines in a single file.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -131,7 +130,7 @@
         "deletions": 0,
         "files": 3,
         "points": 3,
-        "rationale": "Improves companyId handling in the DAL, updates the AI readiness entrypoint, and adds an admin test page across 3 files with 60 custom lines — a small but meaningful multi-layer improvement.",
+        "rationale": "Improves companyId handling in the DAL, adds an admin test page, and updates the AI entrypoint — a modest but cross-cutting change across 3 files.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -150,8 +149,8 @@
         "deletions": 0,
         "files": 5,
         "points": 5,
-        "rationale": "Debugging work spanning 5 files including the AI entrypoint, queue action, worker, and a new admin readiness-logs page with 140 custom lines — meaningful cross-cutting diagnostic and observability additions.",
-        "category": "AI/Agents",
+        "rationale": "Debugging work spanning the AI entrypoint, queue action, worker, admin nav, and a new readiness-logs page — 140 lines across 5 files representing meaningful diagnostic and logging infrastructure.",
+        "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -169,7 +168,7 @@
         "deletions": 0,
         "files": 2,
         "points": 2,
-        "rationale": "Small infrastructure update adding migration support to the entrypoint script and App Runner config across 2 files with 8 lines.",
+        "rationale": "Small infrastructure update adding migration support to the entrypoint script and App Runner config across 2 files.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -188,7 +187,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Trivial App Runner config tweak adding a DATABASE_URL secret with only 4 lines in one file.",
+        "rationale": "Trivial config tweak updating build order and adding a DATABASE_URL secret in apprunner.yaml.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -207,7 +206,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Minor App Runner build/run configuration update with 7 lines in a single YAML file.",
+        "rationale": "Minor apprunner.yaml build and run configuration adjustment with 7 lines in a single file.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -226,7 +225,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Small App Runner YAML update with 9 lines in one file — a config tweak.",
+        "rationale": "Small apprunner.yaml config update with 9 lines in a single file.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -264,7 +263,7 @@
         "deletions": 0,
         "files": 4,
         "points": 2,
-        "rationale": "Adds error handling across 4 files (analytics, editor, slide deck client, middleware) with only 20 custom lines — small defensive improvements.",
+        "rationale": "Adds lightweight error handling across analytics, editor, and middleware in 4 files with 20 lines — small but cross-cutting defensive improvements.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -283,7 +282,7 @@
         "deletions": 0,
         "files": 69,
         "points": 21,
-        "rationale": "A transformative release spanning 69 files and 4693 custom lines covering a full task management system with drag-and-drop hierarchy, an audit/event system, admin enhancements, auth flows (password reset, email verify), schema changes, and multi-week contributions from two engineers.",
+        "rationale": "A transformative release spanning 69 files and 4693 lines, introducing a full task management system with drag-and-drop hierarchy, an audit/event system, admin enhancements, onboarding flows, password reset, and schema changes — clearly weeks of work.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 5,
@@ -303,7 +302,7 @@
         "deletions": 0,
         "files": 36,
         "points": 13,
-        "rationale": "1531 custom lines across 36 files spanning schema changes, new audit event tracking infrastructure, multiple public-facing pages, admin views, and cross-cutting concerns represents a major feature with architectural implications.",
+        "rationale": "1531 custom lines across 36+ files spanning schema changes, new audit event table/columns, multiple public auth flows (forgot/reset password, email verification), onboarding updates, and admin audit UI represents a major feature with broad architectural and cross-cutting impact.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 4,
@@ -322,7 +321,7 @@
         "deletions": 0,
         "files": 4,
         "points": 5,
-        "rationale": "616 lines across 4 files adding password change and role management dialogs with corresponding admin actions is a solid, self-contained admin feature with meaningful UI and backend work.",
+        "rationale": "616 lines across 4 files adding password change and role management dialogs plus wiring into the admin users page is a solid, self-contained admin feature with meaningful UI and backend action work.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -334,14 +333,14 @@
     ],
     "totalPoints": 79,
     "byAuthor": {
-      "Chris": 29.4,
-      "Jason": 49.7
+      "Chris": 29.9,
+      "Jason": 49.2
     },
     "byCategory": {
-      "UI/UX": 3,
+      "UI/UX": 5,
       "Admin/Tools": 16,
-      "Core Platform": 49,
-      "AI/Agents": 5,
+      "Core Platform": 47,
+      "Infrastructure": 5,
       "DevOps": 6
     }
   },
@@ -358,9 +357,11 @@
           97,
           98,
           99,
+          100,
+          102,
           108
         ],
-        "rationale": "Iteratively configured and stabilized the staging environment including AppRunner setup, build order, database secrets, migration entrypoints, and final staging deployment."
+        "rationale": "A sustained effort to configure, debug, and successfully deploy the staging environment including AppRunner configuration, database migrations, build order fixes, and infrastructure debugging."
       },
       {
         "id": 2,
@@ -371,33 +372,11 @@
           93,
           91
         ],
-        "rationale": "Delivered a major feature release combining task management, an audit table/system, and admin enhancements to give teams visibility and control over platform activity."
+        "rationale": "A major feature release delivering task management capabilities, an audit trail table, and significant admin enhancements to support operational oversight of the platform."
       },
       {
         "id": 3,
-        "name": "Onboarding Authentication & AWS Product Integration Fix",
-        "points": 5,
-        "category": "Core Platform",
-        "prs": [
-          107
-        ],
-        "rationale": "Resolved broken onboarding authentication flow and fixed AWS product fetching to ensure new users can successfully complete sign-up and access their products."
-      },
-      {
-        "id": 4,
-        "name": "Platform Stability & Error Handling Improvements",
-        "points": 5,
-        "category": "Core Platform",
-        "prs": [
-          94,
-          103,
-          102
-        ],
-        "rationale": "Improved overall platform resilience by adding error handling for analytics and editor actions, fixing DOMPurify loading issues, and resolving miscellaneous bugs surfaced during debugging."
-      },
-      {
-        "id": 5,
-        "name": "Admin User & Queue Management Dashboard",
+        "name": "Admin Control Center: User Management & Data Tables",
         "points": 13,
         "category": "Admin/Tools",
         "prs": [
@@ -405,32 +384,43 @@
           92,
           101
         ],
-        "rationale": "Built out a comprehensive admin experience including data tables for users and queue management, password and role controls, and improved company ID handling with a dedicated admin test page."
+        "rationale": "Expanded admin tooling with data tables for users and queues, password and role controls, improved companyId handling, and a dedicated admin test page to support internal operations."
       },
       {
-        "id": 6,
-        "name": "Business Readiness Score Visual & Slide Deck Integration",
+        "id": 4,
+        "name": "Onboarding & Authentication Reliability",
+        "points": 5,
+        "category": "Core Platform",
+        "prs": [
+          107
+        ],
+        "rationale": "Fixed critical issues in the onboarding flow including authentication failures and AWS product fetching to ensure new users can successfully complete setup."
+      },
+      {
+        "id": 5,
+        "name": "Readiness Score Visual Redesign",
         "points": 3,
         "category": "UI/UX",
         "prs": [
           106
         ],
-        "rationale": "Refactored the readiness thermometer component and embedded it into the slide deck to give stakeholders a clear visual representation of business readiness."
+        "rationale": "Refactored the readiness thermometer component and integrated it into the slide deck presentation to give stakeholders a clearer visual representation of business readiness."
       },
       {
-        "id": 7,
-        "name": "AI Agent Debugging & Progress Tracking",
-        "points": 5,
-        "category": "AI/Agents",
+        "id": 6,
+        "name": "Platform Error Handling & Resilience",
+        "points": 3,
+        "category": "Core Platform",
         "prs": [
-          100
+          94,
+          103
         ],
-        "rationale": "Advanced debugging efforts on AI agent workflows to identify and address progress-blocking issues in the agent pipeline."
+        "rationale": "Improved platform stability by adding error handling for analytics and editor actions and improving DOMPurify loading to prevent content-related failures."
       }
     ],
-    "totalPoints": 73,
+    "totalPoints": 66,
     "byAuthor": {
-      "Jason": 55.5,
+      "Jason": 48.5,
       "Chris": 17.5
     }
   },
@@ -439,7 +429,7 @@
     "codingAllocation": 0.8,
     "fteEquiv": {
       "prLevel": 18.24,
-      "grouped": 16.86
+      "grouped": 15.24
     },
     "ptsPerWeekPerFTE": 4.33
   }

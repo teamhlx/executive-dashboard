@@ -2,7 +2,7 @@
   "week": "2025-W44",
   "startDate": "2025-10-27",
   "endDate": "2025-11-02",
-  "generatedAt": "2026-06-27T15:56:44.560Z",
+  "generatedAt": "2026-08-10T18:49:09.594Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 5,
         "points": 2,
-        "rationale": "Small set of minor fixes and component tweaks across 5 files with only 11 custom lines added, indicating simple bug fixes and lightweight refactoring.",
+        "rationale": "Small set of minor fixes and component tweaks across 5 files with only 11 custom lines added, indicating lightweight bug fixes and simple refactoring.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 111,
         "points": 21,
-        "rationale": "Massive AI gap analysis feature spanning 111 files and 5666 custom lines, introducing a full agent architecture, multiple AI assessors, and numerous domain-specific evaluation modules representing weeks of transformative work.",
+        "rationale": "Massive AI-driven gap analysis feature spanning 111 files and 5666 custom lines, introducing a multi-agent architecture with numerous assessment modules, making it a transformative, weeks-long epic.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 3,
@@ -53,7 +53,7 @@
         "deletions": 0,
         "files": 8,
         "points": 8,
-        "rationale": "Significant addition of 567 lines across 8 files covering admin task management, company pages, readiness logs, and task UI components, representing a meaningful multi-area feature release.",
+        "rationale": "Significant admin and task management feature spanning 8 files with 567 custom lines covering task actions, admin pages, navigation, and task UI components.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -72,7 +72,7 @@
         "deletions": 0,
         "files": 8,
         "points": 8,
-        "rationale": "Identical file set and line count to PR #3, indicating this is the same substantial admin and task management work likely rebased or staged with impersonation fixes included, warranting the same medium-large score.",
+        "rationale": "Identical scope to PR #123 with the same 567 custom lines across the same 8 files, representing a parallel or release branch of the same significant admin and task management work with impersonation fixes included.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -103,18 +103,18 @@
         "prs": [
           123
         ],
-        "rationale": "Delivered the core gap analysis AI agent capability, enabling the platform to identify and surface business readiness gaps for users."
+        "rationale": "Delivered the core gap analysis AI agent capability, enabling Skematic to automatically identify and surface business readiness gaps for users."
       },
       {
         "id": 2,
-        "name": "Admin Controls & Task Management Enhancements",
+        "name": "Admin Tools & Task Management Stability",
         "points": 13,
         "category": "Admin/Tools",
         "prs": [
           122,
           121
         ],
-        "rationale": "Improved admin tooling and task management workflows, including fixes to user impersonation functionality to support internal operations and support teams."
+        "rationale": "Improved admin tooling and task management workflows, including fixes to user impersonation to ensure reliable admin oversight and support operations."
       },
       {
         "id": 3,
@@ -124,7 +124,7 @@
         "prs": [
           124
         ],
-        "rationale": "Resolved login flow issues including component refactoring and email verification bugs to improve the user onboarding and authentication experience."
+        "rationale": "Resolved login flow issues including component refactoring and email verification fixes to ensure a smooth and reliable user authentication experience."
       }
     ],
     "totalPoints": 36,

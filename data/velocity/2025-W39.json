@@ -2,7 +2,7 @@
   "week": "2025-W39",
   "startDate": "2025-09-22",
   "endDate": "2025-09-28",
-  "generatedAt": "2026-06-27T15:54:54.754Z",
+  "generatedAt": "2026-08-10T18:47:07.638Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 3,
         "points": 2,
-        "rationale": "Small refactor across 3 files with only 32 custom lines, isolating password reset URL generation logic into cleaner helpers.",
+        "rationale": "Small refactor across 3 files with 32 custom lines, consolidating password reset URL generation logic without adding new functionality.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 28,
         "points": 13,
-        "rationale": "Major overhaul spanning authentication flows, forgot/reset password, onboarding, email templates, schema changes, and UI across 28 files with 1725 custom lines — a broad architectural expansion of the auth system.",
+        "rationale": "Major feature spanning 28 files with 1725 custom lines covering authentication overhaul, forgot/reset password flows, onboarding updates, schema changes, and email templates — a significant architectural addition.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -52,15 +52,15 @@
         "customAdditions": 2619,
         "deletions": 0,
         "files": 57,
-        "points": 13,
-        "rationale": "Large merge of 59 commits across two contributors touching 57 files with 2619 custom lines, encompassing a queue dashboard, worker restart infrastructure, slide deck features, readiness improvements, and multiple sub-PRs worth of work.",
+        "points": 21,
+        "rationale": "Transformative merge of 59 commits across 2 contributors touching 57 files with 2619 custom lines, encompassing queue dashboard, worker infrastructure, AI slide deck, readiness improvements, UI enhancements, and auth changes — weeks of parallel work.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 5,
         "isMultiAuthor": true,
         "attribution": {
-          "Chris": 0.35,
-          "Jason": 0.65
+          "Chris": 0.45,
+          "Jason": 0.55
         }
       },
       {
@@ -73,7 +73,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Trivial cleanup of Amplify migration commands in a single config file with zero net additions.",
+        "rationale": "Trivial cleanup of amplify.yml migration commands with zero net additions, purely a config fix to unblock deployment.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -92,7 +92,7 @@
         "deletions": 0,
         "files": 3,
         "points": 3,
-        "rationale": "Modest bug fix adding a missing data-access function across 3 files with 54 custom lines, including DAL and Prisma query logic.",
+        "rationale": "Modest bug fix adding 54 lines across 3 files to introduce the missing getLatestFieldValuesForCompany function and wire it into the slide deck component and DAL.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -111,7 +111,7 @@
         "deletions": 0,
         "files": 32,
         "points": 13,
-        "rationale": "Significant new slide deck feature with 1107 custom lines across 32 files, introducing a full presentation layer with multiple slide layouts, AI strategy content, context management, and scaled rendering components.",
+        "rationale": "Major feature introduction of the full AI-powered slide deck system across 32 files with 1107 custom lines, including new layouts, individual slide components, context management, AI content generation, and markdown rendering.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 1,
@@ -121,13 +121,13 @@
         }
       }
     ],
-    "totalPoints": 45,
+    "totalPoints": 53,
     "byAuthor": {
-      "Jason": 27.5,
-      "Chris": 17.6
+      "Jason": 30.6,
+      "Chris": 22.5
     },
     "byCategory": {
-      "Core Platform": 31,
+      "Core Platform": 39,
       "DevOps": 1,
       "AI/Agents": 13
     }
@@ -136,44 +136,44 @@
     "stories": [
       {
         "id": 1,
-        "name": "Authentication & User Account Security Improvements",
+        "name": "Authentication & User Access Improvements",
         "points": 21,
         "category": "Core Platform",
         "prs": [
           64,
           65
         ],
-        "rationale": "Overhauled the authentication system with UI enhancements and fixed password reset URL generation to improve user account security and login experience."
+        "rationale": "Overhauled the authentication system with UI enhancements and fixed password reset URL generation to improve the end-to-end user login and account recovery experience."
       },
       {
         "id": 2,
-        "name": "Staging to Production Release",
-        "points": 13,
+        "name": "Staging-to-Production Release",
+        "points": 21,
         "category": "Core Platform",
         "prs": [
           63
         ],
-        "rationale": "Promoted accumulated staging changes to the main production branch as a scheduled release."
+        "rationale": "Promoted the latest staging changes to the main production branch, delivering the accumulated sprint work to end users."
       },
       {
         "id": 3,
-        "name": "Deployment Pipeline Reliability Fix",
+        "name": "Deployment Pipeline Stability",
         "points": 1,
         "category": "DevOps",
         "prs": [
           62
         ],
-        "rationale": "Resolved deployment failures by cleaning up erroneous migration commands in the Amplify CI/CD configuration."
+        "rationale": "Resolved deployment failures by cleaning up migration commands in the Amplify configuration to ensure reliable automated deployments."
       },
       {
         "id": 4,
-        "name": "Company Data Retrieval Bug Fix",
+        "name": "Data Retrieval Bug Fix for Company Field Values",
         "points": 3,
         "category": "Core Platform",
         "prs": [
           61
         ],
-        "rationale": "Restored missing business logic for fetching the latest field values per company, ensuring data accuracy across the platform."
+        "rationale": "Restored missing business logic for fetching the latest field values per company, ensuring accurate data is available across platform features."
       },
       {
         "id": 5,
@@ -183,12 +183,12 @@
         "prs": [
           60
         ],
-        "rationale": "Built an AI agent feature to automatically generate slide decks, expanding Skematic's business readiness output capabilities."
+        "rationale": "Built out AI-driven slide deck creation capabilities, enabling Skematic to automatically generate presentation-ready content for business readiness assessments."
       }
     ],
-    "totalPoints": 51,
+    "totalPoints": 59,
     "byAuthor": {
-      "Jason": 38,
+      "Jason": 46,
       "Chris": 13
     }
   },
@@ -196,8 +196,8 @@
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 10.39,
-      "grouped": 11.78
+      "prLevel": 12.24,
+      "grouped": 13.63
     },
     "ptsPerWeekPerFTE": 4.33
   }

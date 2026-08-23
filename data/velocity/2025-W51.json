@@ -2,28 +2,9 @@
   "week": "2025-W51",
   "startDate": "2025-12-15",
   "endDate": "2025-12-21",
-  "generatedAt": "2026-06-27T15:58:48.582Z",
+  "generatedAt": "2026-08-10T18:51:29.397Z",
   "prLevel": {
     "prs": [
-      {
-        "pr": 189,
-        "title": "Split apprunner config into prod and staging files",
-        "author": "Jason",
-        "mergedAt": "2025-12-17T22:14:18Z",
-        "additions": 0,
-        "customAdditions": 159,
-        "deletions": 0,
-        "files": 4,
-        "points": 3,
-        "rationale": "Splitting a single AppRunner config into prod and staging files is a meaningful infra config change across 4 files but involves no novel logic.",
-        "category": "DevOps",
-        "vendored": false,
-        "vendoredRatio": 0,
-        "isMultiAuthor": false,
-        "attribution": {
-          "Jason": 1
-        }
-      },
       {
         "pr": 190,
         "title": "Jp/staging to apprunner",
@@ -34,7 +15,26 @@
         "deletions": 0,
         "files": 3,
         "points": 2,
-        "rationale": "Small follow-up AppRunner config adjustment with gitattributes update and minor YAML changes across 3 files.",
+        "rationale": "Small infrastructure config addition setting up staging AppRunner deployment across 3 files with 80 lines of YAML/config.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 189,
+        "title": "Split apprunner config into prod and staging files",
+        "author": "Jason",
+        "mergedAt": "2025-12-17T22:14:18Z",
+        "additions": 0,
+        "customAdditions": 159,
+        "deletions": 0,
+        "files": 4,
+        "points": 3,
+        "rationale": "Splitting a single AppRunner config into separate prod and staging files is a modest but meaningful infrastructure organization change across 4 files and 159 lines.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -53,14 +53,13 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Reverting a single-file verbose logging change is a trivial one-line or near-trivial rollback; Jason's commits are purely merge commits with no code contribution.",
+        "rationale": "Reverting verbose debug logging added in a prior PR is a trivial single-file cleanup with 23 lines.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
-        "isMultiAuthor": true,
+        "isMultiAuthor": false,
         "attribution": {
-          "Chris": 1,
-          "Jason": 0
+          "Chris": 1
         }
       },
       {
@@ -73,14 +72,14 @@
         "deletions": 0,
         "files": 20,
         "points": 13,
-        "rationale": "Major AI agent feature spanning 20 files including multiple sub-agents, post-response graphs, state management, a new API route, and UI hook/component updates representing significant architectural work.",
+        "rationale": "A large AI agent improvement spanning 20 files and 1032 lines including core agent logic, multiple sub-agents, post-response graphs, state management, UI hooks, and API routes — representing significant architectural depth.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 14,
         "isMultiAuthor": true,
         "attribution": {
-          "Chris": 0.85,
-          "Jason": 0.15
+          "Chris": 0.88,
+          "Jason": 0.12
         }
       },
       {
@@ -92,9 +91,9 @@
         "customAdditions": 162,
         "deletions": 0,
         "files": 4,
-        "points": 5,
-        "rationale": "Adding a company role field touches schema, server action, and UI dialog across 4 files, with Jason contributing a meaningful enum rename/refactor on top of Chris's initial feature work.",
-        "category": "Data/Schema",
+        "points": 3,
+        "rationale": "Adding a company role field involves schema change, a server action update, and UI dialog changes across 4 files, with Jason's rename/enum conversion adding meaningful cleanup on top.",
+        "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 2,
         "isMultiAuthor": true,
@@ -113,7 +112,7 @@
         "deletions": 0,
         "files": 12,
         "points": 5,
-        "rationale": "Renaming a user field across 12 files including schema, seed, multiple admin pages, session lib, and documentation is a meaningful cross-cutting refactor.",
+        "rationale": "Renaming a user field across 12 files including schema, session, admin pages, actions, and documentation represents a meaningful cross-cutting refactor with non-trivial coordination effort.",
         "category": "Data/Schema",
         "vendored": false,
         "vendoredRatio": 4,
@@ -132,14 +131,14 @@
         "deletions": 0,
         "files": 3,
         "points": 5,
-        "rationale": "Improving competitive analysis spans the AI agent, a complex slide component, and a streaming API route with meaningful logic changes across all three files; Jason's tool_calls fix is a non-trivial contribution.",
+        "rationale": "Improving competitive analysis spans agent logic, a stream API route, and a slide UI component across 3 files with 115 lines of meaningful feature-level changes.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": true,
         "attribution": {
-          "Chris": 0.75,
-          "Jason": 0.25
+          "Chris": 0.82,
+          "Jason": 0.18
         }
       },
       {
@@ -152,7 +151,7 @@
         "deletions": 0,
         "files": 4,
         "points": 3,
-        "rationale": "Adding prod/staging AppRunner config files with secrets updates across 4 files is a solid infra config change but largely declarative YAML work.",
+        "rationale": "Adding prod/staging AppRunner configs with updated secrets across 4 files and 188 lines is a solid infrastructure setup task, slightly more involved than a simple config tweak.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -170,8 +169,8 @@
         "customAdditions": 759,
         "deletions": 0,
         "files": 5,
-        "points": 8,
-        "rationale": "Fixing leads upload involves a new API route, a significant CSV upload dialog component rewrite, and three documentation/planning files capturing architectural decisions, totalling meaningful backend and UI effort.",
+        "points": 5,
+        "rationale": "A leads upload fix with a reworked API route and CSV upload dialog (the core functional changes) plus substantial documentation/TODO notes across 5 files totaling 759 lines — functional work is medium-sized but well-documented.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -190,7 +189,7 @@
         "deletions": 0,
         "files": 1,
         "points": 2,
-        "rationale": "Adding verbose debug logging to a single assessor file is a small, targeted diagnostic change.",
+        "rationale": "Adding verbose debug logging to a single assessor file is a small, temporary diagnostic change with 93 lines of log statements.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -209,7 +208,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "A 3-line fix to a single admin page is a trivial bug fix.",
+        "rationale": "A 3-line fix to a single admin page is a trivial targeted correction.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -228,7 +227,7 @@
         "deletions": 0,
         "files": 10,
         "points": 8,
-        "rationale": "Enabling company creation without users touches 10 files spanning admin UI, actions, DAL, queue actions across multiple feature areas, and a data-fields collector — a significant cross-cutting feature.",
+        "rationale": "Enabling company creation without users touches 10 files including admin UI, DAL, actions across multiple feature areas (readiness, gaps, strategy, admin), representing a significant cross-cutting feature addition.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -247,7 +246,7 @@
         "deletions": 0,
         "files": 4,
         "points": 2,
-        "rationale": "Only 30 custom lines across 3 files saving BTS as a company field value is a small targeted feature addition once vendored/auto-gen lines are excluded.",
+        "rationale": "Only 30 lines of custom work (flagged as 82% vendored) saving BTS as a company field value across 3 files is a small targeted feature addition.",
         "category": "Data/Schema",
         "vendored": true,
         "vendoredRatio": 82,
@@ -265,8 +264,8 @@
         "customAdditions": 908,
         "deletions": 0,
         "files": 9,
-        "points": 13,
-        "rationale": "Introducing automatic AWS microsite generation is a major new feature with a full prompt, streaming API route, new UI button and page integration, gap management component updates, and Docker config across 9 files.",
+        "points": 8,
+        "rationale": "Introducing automatic AWS microsite generation is a significant new feature spanning a full API pipeline (prompt, route, stream), UI components, gap actions, and docker config across 9 files and 908 lines.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -285,7 +284,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "A 5-line style fix to a single slide component is a trivial UI tweak.",
+        "rationale": "A 5-line single-file slide style fix is a trivial UI tweak.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -304,7 +303,7 @@
         "deletions": 0,
         "files": 3,
         "points": 5,
-        "rationale": "Implements end-to-end lead CSV email delivery across three files — a server action, an email service integration, and a UI dialog component — representing a solid, self-contained feature.",
+        "rationale": "Integrates CSV export with email delivery across three files — a server action, an email service abstraction, and a dialog UI component — representing a solid end-to-end feature with meaningful cross-layer coordination.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -323,7 +322,7 @@
         "deletions": 0,
         "files": 5,
         "points": 8,
-        "rationale": "Builds out a significant admin feature spanning S3 service integration, file attachment actions, and multiple new UI components across five files with nearly 800 custom lines, constituting a meaningful new capability with backend and frontend complexity.",
+        "rationale": "Builds out a significant admin feature spanning S3 file browsing, attachment management, server actions, and an S3 service layer across five files with nearly 800 lines of custom code, constituting a major new capability with multiple coordinated components.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -333,16 +332,17 @@
         }
       }
     ],
-    "totalPoints": 85,
+    "totalPoints": 75,
     "byAuthor": {
-      "Jason": 27.1,
-      "Chris": 58.1
+      "Jason": 22.6,
+      "Chris": 52.5
     },
     "byCategory": {
       "DevOps": 8,
-      "AI/Agents": 34,
-      "Data/Schema": 12,
-      "Integrations": 13,
+      "AI/Agents": 29,
+      "Core Platform": 3,
+      "Data/Schema": 7,
+      "Integrations": 10,
       "Admin/Tools": 17,
       "UI/UX": 1
     }
@@ -351,83 +351,73 @@
     "stories": [
       {
         "id": 1,
-        "name": "Staging and Production Environment Separation",
+        "name": "Staging Environment Migration to AppRunner",
         "points": 8,
         "category": "DevOps",
         "prs": [
-          189,
           190,
+          189,
           191
         ],
-        "rationale": "Established separate AppRunner configurations for production and staging environments, including updated secrets management, enabling safer deployments and environment isolation."
+        "rationale": "Migrated the staging environment to AWS AppRunner by splitting prod/staging configurations and updating associated secrets, enabling isolated and reproducible deployment environments."
       },
       {
         "id": 2,
-        "name": "AI Agent Debugging and Gap Assessor Improvements",
-        "points": 3,
+        "name": "AI Agent Core Build and Debugging",
+        "points": 21,
         "category": "AI/Agents",
         "prs": [
+          183,
           186,
           188
         ],
-        "rationale": "Added and then reverted verbose logging to the gap assessor agent to support a targeted debugging session without leaving noise in production."
+        "rationale": "Built the core AI agent feature and iterated on its reliability by adding then reverting verbose logging used to diagnose issues during development."
       },
       {
         "id": 3,
-        "name": "New AI Agent for Business Readiness Analysis",
-        "points": 13,
-        "category": "AI/Agents",
-        "prs": [
-          183
-        ],
-        "rationale": "Introduced a major new AI agent to expand the platform's automated business readiness assessment capabilities."
-      },
-      {
-        "id": 4,
-        "name": "Competitive Analysis AI Enhancement",
+        "name": "Competitive Analysis AI Improvement",
         "points": 5,
         "category": "AI/Agents",
         "prs": [
           184
         ],
-        "rationale": "Improved the competitive analysis AI agent to deliver higher-quality and more comprehensive competitive insights for businesses."
+        "rationale": "Enhanced the AI-powered competitive analysis capability to produce higher quality and more actionable insights for businesses."
       },
       {
-        "id": 5,
-        "name": "Automatic Microsite Generation for Companies",
-        "points": 13,
+        "id": 4,
+        "name": "Automated Microsite Generation",
+        "points": 8,
         "category": "AI/Agents",
         "prs": [
           179
         ],
-        "rationale": "Introduced automated AWS-hosted microsite generation, allowing the platform to spin up company-specific microsites without manual intervention."
+        "rationale": "Introduced automatic AWS-hosted microsite generation, enabling the platform to programmatically create and deploy customer-facing microsites."
+      },
+      {
+        "id": 5,
+        "name": "Company Role and User Type Management",
+        "points": 8,
+        "category": "Core Platform",
+        "prs": [
+          185,
+          193
+        ],
+        "rationale": "Added a company role concept and standardized the user role field to 'type' across the codebase, strengthening the platform's access and identity model."
       },
       {
         "id": 6,
-        "name": "Company Role and User Type Data Modelling",
-        "points": 13,
-        "category": "Data/Schema",
-        "prs": [
-          185,
-          193,
-          180
-        ],
-        "rationale": "Expanded the data model by adding company roles, renaming the user role field to type for clarity, and persisting business type scores as company field values."
-      },
-      {
-        "id": 7,
-        "name": "Lead Upload and Email Distribution Fix",
-        "points": 13,
+        "name": "Lead Upload and CSV Email Delivery",
+        "points": 8,
         "category": "Integrations",
         "prs": [
           187,
           176
         ],
-        "rationale": "Fixed the leads CSV upload flow and added the ability to send lead CSVs via email, improving the reliability and reach of lead management workflows."
+        "rationale": "Fixed the leads CSV upload flow and added the ability to send lead CSVs via email, improving the end-to-end lead management and sharing experience."
       },
       {
-        "id": 8,
-        "name": "Company Administration and S3 File Management",
+        "id": 7,
+        "name": "Company Admin Tools: Creation and File Viewing",
         "points": 21,
         "category": "Admin/Tools",
         "prs": [
@@ -435,7 +425,17 @@
           182,
           175
         ],
-        "rationale": "Enabled creation of companies without requiring users upfront and added an admin interface to view company-associated S3 files, streamlining internal company management."
+        "rationale": "Enabled admins to create companies without requiring existing users and to view associated S3 files, expanding internal tooling for company lifecycle management."
+      },
+      {
+        "id": 8,
+        "name": "Save Business Target Segment as Company Field",
+        "points": 2,
+        "category": "Data/Schema",
+        "prs": [
+          180
+        ],
+        "rationale": "Persisted the Business Target Segment (BTS) as a company-level field value, ensuring key segmentation data is stored against the company record."
       },
       {
         "id": 9,
@@ -445,21 +445,21 @@
         "prs": [
           177
         ],
-        "rationale": "Corrected slide styling issues to ensure consistent and polished presentation of business readiness content."
+        "rationale": "Fixed styling issues in slide components to improve the visual presentation experience for end users."
       }
     ],
-    "totalPoints": 90,
+    "totalPoints": 82,
     "byAuthor": {
-      "Jason": 22.7,
-      "Chris": 67.3
+      "Jason": 18.2,
+      "Chris": 63.8
     }
   },
   "meta": {
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 19.63,
-      "grouped": 20.78
+      "prLevel": 17.32,
+      "grouped": 18.94
     },
     "ptsPerWeekPerFTE": 4.33
   }

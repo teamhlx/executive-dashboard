@@ -2,7 +2,7 @@
   "week": "2026-W15",
   "startDate": "2026-04-06",
   "endDate": "2026-04-12",
-  "generatedAt": "2026-06-27T16:02:12.892Z",
+  "generatedAt": "2026-08-10T18:55:15.953Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Single config file update swapping environment variable values from staging to production — trivial infrastructure change.",
+        "rationale": "Single config file update swapping environment variable values from staging to production — trivial infrastructure tweak.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 515,
         "points": 21,
-        "rationale": "Massive release PR spanning 515 files, 38k+ custom lines covering schema refactors, playbooks, products, studio, credentials, and competitive intelligence — clearly weeks of transformative work across the entire platform.",
+        "rationale": "Massive release PR spanning 515 files, 38k+ custom lines covering schema refactors, playbooks, products, studio, credentials, and competitive intelligence — a multi-week transformative effort across virtually every platform layer.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 9,
@@ -54,7 +54,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Two-line formatting-only change in a single component file — purely cosmetic, zero logic change.",
+        "rationale": "Two-line formatting-only change to a single component — trivial cleanup with no functional impact.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -73,7 +73,7 @@
         "deletions": 0,
         "files": 1,
         "points": 2,
-        "rationale": "Small targeted bug fix in TaskTable to display start/end dates instead of duration, confined to a single file with 39 lines.",
+        "rationale": "Small targeted fix to the TaskTable component to display start/end dates instead of duration — simple, well-scoped bug fix in a single file.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -92,8 +92,8 @@
         "deletions": 0,
         "files": 13,
         "points": 3,
-        "rationale": "Modest refactor deduplicating layout queries across multiple layout files and restoring product collecting UI, touching 13 files with 126 lines of purposeful structural cleanup.",
-        "category": "UI/UX",
+        "rationale": "Deduplicates layout queries across multiple layout files and restores product collecting UI, touching 13 files with modest but meaningful refactoring effort.",
+        "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -111,7 +111,7 @@
         "deletions": 0,
         "files": 68,
         "points": 13,
-        "rationale": "Major feature PR with 5762 custom lines across 68 files covering readiness collection UX, playbook integration, task/product UI updates, and seeding — a substantial multi-area feature delivery.",
+        "rationale": "Large feature PR touching 68 files with 5762 custom lines, delivering significant UX updates across readiness, playbooks, fundamentals, tasks, and products with new server actions, seed data, and documentation.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -129,8 +129,8 @@
         "customAdditions": 11,
         "deletions": 0,
         "files": 6,
-        "points": 1,
-        "rationale": "Commenting out 'integrated with' references across 6 files with only 11 lines changed — a trivial suppression/commenting task.",
+        "points": 2,
+        "rationale": "Small change commenting out 'integrated with' references across 6 files — minor suppression of a UI/data element with minimal logic change.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -149,7 +149,7 @@
         "deletions": 0,
         "files": 5,
         "points": 2,
-        "rationale": "Small cleanup removing AWS Marketplace listing from GTM slide and deleting an unused slide component across 5 files with 13 lines.",
+        "rationale": "Small cleanup removing AWS Marketplace listing from the GTM slide and dropping an unused GTM slide across 5 files — straightforward removal with minimal complexity.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -168,7 +168,7 @@
         "deletions": 0,
         "files": 10,
         "points": 5,
-        "rationale": "Meaningful feature work introducing a readiness CLI, Dockerfile updates, worker integration, and an admin RunReadiness dialog — solid cross-cutting feature across 338 custom lines in 9 files.",
+        "rationale": "Introduces a new readiness CLI, wires it into the worker and Dockerfile, adds a RunReadiness admin dialog, and improves field progress hooks — solid feature work across 9 custom files despite vendored content being excluded.",
         "category": "AI/Agents",
         "vendored": true,
         "vendoredRatio": 54,
@@ -187,8 +187,8 @@
         "deletions": 0,
         "files": 13,
         "points": 5,
-        "rationale": "Multi-area bug fix and refactor touching assessment slides, collector logic, competitor/rivals migration, field values, and portfolio table across 13 files — meaningful but bounded corrective work.",
-        "category": "Core Platform",
+        "rationale": "Fixes span across assessment slides, collector logic, competitor/rivals migration, and multiple supporting files — meaningful multi-area bug fix and refactor work touching 13 files including a schema migration.",
+        "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -206,7 +206,7 @@
         "deletions": 0,
         "files": 48,
         "points": 8,
-        "rationale": "Significant AI agent refactor spanning chat-agent, multiple sub-agents, tools, state, prompts, and supporting infrastructure across 48 files with 1430 meaningful custom lines.",
+        "rationale": "Broad refactor across the chat agent, all sub-agents, and supporting infrastructure touching 48 files with 1430 custom lines — significant architectural cleanup and restructuring of the AI agent layer.",
         "category": "AI/Agents",
         "vendored": true,
         "vendoredRatio": 71,
@@ -216,107 +216,107 @@
         }
       }
     ],
-    "totalPoints": 62,
+    "totalPoints": 63,
     "byAuthor": {
       "Jason": 34.7,
-      "Chris": 27.3
+      "Chris": 28.3
     },
     "byCategory": {
       "DevOps": 1,
-      "Core Platform": 39,
-      "UI/UX": 9,
-      "AI/Agents": 13
+      "Core Platform": 37,
+      "UI/UX": 7,
+      "AI/Agents": 18
     }
   },
   "grouped": {
     "stories": [
       {
         "id": 1,
-        "name": "Production Release: April 11, 2026 Platform Milestone",
+        "name": "Production Release: April 11, 2026 Platform Update",
         "points": 21,
         "category": "Core Platform",
         "prs": [
           312
         ],
-        "rationale": "Packaged the major April 11 release encompassing schema refactor, playbooks, products, studio, credentials, and competitive intelligence into a single deployable milestone."
+        "rationale": "Comprehensive release bundling schema refactoring, playbooks, products, studio, credentials, and competitive intelligence features into a single deployable milestone."
       },
       {
         "id": 2,
-        "name": "Readiness & Playbook Experience Overhaul",
+        "name": "Readiness & Playbook Experience Improvements",
         "points": 21,
         "category": "Core Platform",
         "prs": [
           304,
-          307,
-          308,
-          309
+          307
         ],
-        "rationale": "Unified improvements to the readiness and playbook UX across fundamentals, tasks, and products — including task date/duration display fixes, layout deduplication, and formatting polish."
+        "rationale": "Overhauled the readiness and playbook UX across fundamentals, tasks, and products while deduplicating layout queries and restoring product collection workflows."
       },
       {
         "id": 3,
-        "name": "AI Readiness Collection & Developer CLI",
-        "points": 13,
+        "name": "AI Readiness Collection & Assessment Enhancements",
+        "points": 21,
         "category": "AI/Agents",
         "prs": [
           293,
+          296,
           299
         ],
-        "rationale": "Refactored the AI agent layer and improved readiness data collection while introducing a CLI tool to streamline developer workflows."
+        "rationale": "Refactored the AI agent layer, fixed assessment slide generation, improved readiness data collection, and introduced a CLI tool for agent interaction."
       },
       {
         "id": 4,
-        "name": "Assessment Slides, Competitor & Collector Fixes",
-        "points": 5,
-        "category": "Core Platform",
+        "name": "GTM Slide & Marketplace Presentation Cleanup",
+        "points": 3,
+        "category": "UI/UX",
         "prs": [
-          296
+          302,
+          303
         ],
-        "rationale": "Resolved bugs in assessment slide generation, the data collector, and competitor intelligence features to ensure accurate output for end users."
+        "rationale": "Cleaned up go-to-market slides by removing the AWS Marketplace listing, unused slides, and commenting out the 'integrated with' section."
       },
       {
         "id": 5,
-        "name": "GTM Slide Cleanup & Marketplace Listing Removal",
+        "name": "Task Table Date Display Fix",
         "points": 2,
         "category": "UI/UX",
         "prs": [
-          302
+          308
         ],
-        "rationale": "Cleaned up the go-to-market presentation by removing the AWS Marketplace listing and unused GTM slide to keep sales materials current and uncluttered."
+        "rationale": "Fixed the task table to correctly show task duration instead of raw start and end dates."
       },
       {
         "id": 6,
-        "name": "Disable Integrations Display in UI",
+        "name": "UI Formatting Polish",
         "points": 1,
         "category": "UI/UX",
         "prs": [
-          303
+          309
         ],
-        "rationale": "Temporarily commented out the 'integrated with' section to prevent incomplete integration data from surfacing to users."
+        "rationale": "Applied minor formatting corrections across the UI for visual consistency."
       },
       {
         "id": 7,
-        "name": "Production Environment Configuration Switch",
+        "name": "Staging-to-Production Environment Configuration Switch",
         "points": 1,
         "category": "DevOps",
         "prs": [
           314
         ],
-        "rationale": "Updated App Runner configuration to promote environment variables from staging to production, enabling the live deployment environment."
+        "rationale": "Updated App Runner configuration to promote environment variables from staging to production settings."
       }
     ],
-    "totalPoints": 64,
+    "totalPoints": 70,
     "byAuthor": {
-      "Jason": 43,
-      "Chris": 21
+      "Jason": 46,
+      "Chris": 24
     }
   },
   "meta": {
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 14.32,
-      "grouped": 14.78
+      "prLevel": 14.55,
+      "grouped": 16.17
     },
     "ptsPerWeekPerFTE": 4.33
   }

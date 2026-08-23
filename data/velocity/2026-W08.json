@@ -2,7 +2,7 @@
   "week": "2026-W08",
   "startDate": "2026-02-16",
   "endDate": "2026-02-22",
-  "generatedAt": "2026-06-27T16:00:47.004Z",
+  "generatedAt": "2026-08-10T18:53:44.256Z",
   "prLevel": {
     "prs": [
       {
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 2,
         "points": 2,
-        "rationale": "Small bug fix across 2 files with 8 custom lines correcting incorrect data being displayed in co-build/co-market/co-sell columns of the portfolio table.",
+        "rationale": "Small bug fix across 2 files with 8 custom lines correcting incorrect data display in co-build/co-market/co-sell columns of the portfolio table.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -64,7 +64,7 @@
           256,
           255
         ],
-        "rationale": "Fixed portfolio pathway matching and co-build/co-market/co-sell column displays to ensure gap completion data is calculated and shown accurately across the platform."
+        "rationale": "Fixed two related bugs in portfolio pathway gap detection and display — ensuring case-insensitive matching and correct gap completion visibility across co-build, co-market, and co-sell columns."
       }
     ],
     "totalPoints": 3,

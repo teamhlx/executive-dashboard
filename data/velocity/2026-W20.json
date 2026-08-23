@@ -2,7 +2,7 @@
   "week": "2026-W20",
   "startDate": "2026-05-11",
   "endDate": "2026-05-17",
-  "generatedAt": "2026-06-27T16:04:17.021Z",
+  "generatedAt": "2026-08-10T18:57:33.925Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 46,
         "points": 13,
-        "rationale": "46 files and 5105 custom lines building out a full centralized admin tools page with multiple dialog components, navigation, layout, and data tables across companies, products, rivals, and audit events — a major feature touching broad surface area.",
+        "rationale": "46 files and 5105 lines building a full centralized admin tools page with multiple bulk-action dialogs, navigation, layout, and per-entity admin pages represents a major feature with significant UI/UX surface area.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -34,14 +34,14 @@
         "deletions": 0,
         "files": 306,
         "points": 21,
-        "rationale": "22137 custom lines across 306 files implementing a full prospect inbound pipeline with ACE enrichment, settings UI, schema changes, seed data, and a prospect enrichment agent — a transformative, multi-week architectural effort.",
-        "category": "Core Platform",
+        "rationale": "306 files and 22137 custom lines delivering a full prospect inbound pipeline, ACE enrichment agent, outbound push, marketplace ARN resolution, AWS credential persistence, and settings UI constitutes a transformative, multi-week epic spanning AI, integrations, schema, and UI.",
+        "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": true,
         "attribution": {
-          "Chris": 0.45,
-          "Jason": 0.55
+          "Chris": 0.25,
+          "Jason": 0.75
         }
       },
       {
@@ -53,8 +53,8 @@
         "customAdditions": 6592,
         "deletions": 0,
         "files": 100,
-        "points": 3,
-        "rationale": "6592 lines across 100 files but the bulk is regenerated docs and tests rather than novel logic, making the actual engineering effort modest — primarily a maintenance/documentation refresh task.",
+        "points": 2,
+        "rationale": "100 files of regenerated docs and tests represent low-effort, largely automated output with minimal novel engineering logic despite the high line count.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -73,7 +73,7 @@
         "deletions": 0,
         "files": 123,
         "points": 8,
-        "rationale": "123 files touched with 656 custom lines removing legacy gaps code and performing a Goals→Milestones rename across AI agents, prompts, assessments, and UI — a significant cross-cutting refactor requiring careful coordination.",
+        "rationale": "123 files touched with 656 custom lines removing legacy gaps code and renaming Goals to Milestones is a significant refactor spanning AI agents, assessments, and schema across the full codebase.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -92,7 +92,7 @@
         "deletions": 0,
         "files": 3,
         "points": 1,
-        "rationale": "Only 2 custom lines changed across 3 files to expand the selectable AWS services list — a trivial data/config tweak.",
+        "rationale": "Only 2 custom lines added across 3 files to expand AWS service selection options is a trivial data/config change.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -110,8 +110,8 @@
         "customAdditions": 132,
         "deletions": 0,
         "files": 2,
-        "points": 2,
-        "rationale": "132 lines across 2 files adding or updating an outcome/performance page and task detail client — a small, self-contained UI addition.",
+        "points": 3,
+        "rationale": "132 lines across 2 files adding an outcome page and updating task detail client is a modest feature with meaningful but contained UI work.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -130,7 +130,7 @@
         "deletions": 0,
         "files": 1,
         "points": 2,
-        "rationale": "316 lines in a single migration SQL file adding the full AWS services catalog — straightforward data migration with no application logic changes.",
+        "rationale": "316 lines in a single migration file adding a full AWS services catalog is a straightforward data expansion with no application logic changes.",
         "category": "Data/Schema",
         "vendored": false,
         "vendoredRatio": 0,
@@ -149,7 +149,7 @@
         "deletions": 0,
         "files": 3,
         "points": 3,
-        "rationale": "84 lines across 3 files improving user session handling in DAL, session lib, and header to prevent 403 errors — a modest but meaningful security/reliability fix touching auth infrastructure.",
+        "rationale": "84 lines across 3 files improving user session handling to prevent 403 errors involves meaningful security/auth logic touching DAL, session, and header components.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -167,8 +167,8 @@
         "customAdditions": 54,
         "deletions": 0,
         "files": 3,
-        "points": 2,
-        "rationale": "54 lines across 3 files making targeted improvements to the competitive analysis studio agent graph, tools, and toolbar plugin — a small focused enhancement.",
+        "points": 3,
+        "rationale": "54 lines across 3 files with AI agent graph/tools updates and a toolbar plugin change represents a modest but cross-cutting competitive analysis improvement.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -186,8 +186,8 @@
         "customAdditions": 18,
         "deletions": 0,
         "files": 2,
-        "points": 1,
-        "rationale": "18 lines across 2 files fixing a caching issue on the outcomes page in DAL and session — a minimal targeted bug fix.",
+        "points": 2,
+        "rationale": "18 lines across 2 files fixing a caching issue in the outcomes page is a small, targeted bug fix.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -205,8 +205,8 @@
         "customAdditions": 71,
         "deletions": 0,
         "files": 17,
-        "points": 3,
-        "rationale": "71 lines across 17 files updating the assessment page and removing outcomes — low line count but the breadth of files touched across components, hooks, utils, and sandbox pages indicates a modest coordinated refactor.",
+        "points": 5,
+        "rationale": "71 lines across 17 files updating the assessment page and removing outcomes required coordinated changes across client, actions, hooks, utilities, and multiple node components indicating meaningful refactor effort.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -225,7 +225,7 @@
         "deletions": 0,
         "files": 3,
         "points": 1,
-        "rationale": "9 lines across 3 files adding ISV to a target industry dropdown — a trivial data/config addition with a small migration.",
+        "rationale": "9 lines across 3 files adding ISV to a dropdown list with a corresponding migration is a trivial data addition.",
         "category": "Data/Schema",
         "vendored": false,
         "vendoredRatio": 0,
@@ -244,7 +244,7 @@
         "deletions": 0,
         "files": 36,
         "points": 8,
-        "rationale": "936 lines across 36 files implementing a loginDisabled hard-lock feature spanning schema, migrations, auth actions, admin UI controls, and multiple API routes — a significant security feature with broad system integration.",
+        "rationale": "936 lines across 36 files implementing a loginDisabled hard-lock touches schema, auth actions, session handling, API routes, admin UI controls, and multiple auth flows representing a significant security feature.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -263,7 +263,7 @@
         "deletions": 0,
         "files": 2,
         "points": 2,
-        "rationale": "71 lines across 2 files fixing marketplace discovery seller matching logic plus a TODO doc — a small targeted bug fix with minor supporting documentation.",
+        "rationale": "71 lines across 2 files fixing marketplace seller matching logic plus a TODO doc is a small, targeted bug fix with minor supporting documentation.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -282,7 +282,7 @@
         "deletions": 0,
         "files": 5,
         "points": 3,
-        "rationale": "186 lines across 5 files adding an exit chip for stuck portfolio-company drill-down state, touching portfolio context actions, admin nav, layout, header, and user menu — a modest UI/UX improvement with light backend context handling.",
+        "rationale": "186 lines across 5 files adding an exit chip for stuck portfolio-company drill-down touches actions, admin nav, layout, and header components in a modest but cross-cutting UI fix.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -292,130 +292,140 @@
         }
       }
     ],
-    "totalPoints": 73,
+    "totalPoints": 77,
     "byAuthor": {
-      "Jason": 48.6,
-      "Chris": 24.5
+      "Jason": 51.8,
+      "Chris": 25.3
     },
     "byCategory": {
-      "Admin/Tools": 16,
-      "Core Platform": 41,
-      "UI/UX": 9,
+      "Admin/Tools": 15,
+      "Integrations": 21,
+      "Core Platform": 21,
+      "UI/UX": 12,
       "Data/Schema": 3,
-      "AI/Agents": 4
+      "AI/Agents": 5
     }
   },
   "grouped": {
     "stories": [
       {
         "id": 1,
-        "name": "Prospect Inbound Pipeline with Enrichment",
+        "name": "Prospect Inbound Pipeline with ACE Enrichment",
         "points": 21,
-        "category": "Core Platform",
+        "category": "Integrations",
         "prs": [
           366
         ],
-        "rationale": "Delivered a full prospect inbound pipeline with ACE enrichment and a settings UI to automate and streamline how new prospects enter the platform."
+        "rationale": "Delivered a full end-to-end prospect inbound pipeline with ACE enrichment and a settings UI to automate and streamline partner lead intake."
       },
       {
         "id": 2,
-        "name": "Centralized Admin Tooling & Documentation",
+        "name": "Centralized Admin Tools Hub",
         "points": 13,
         "category": "Admin/Tools",
         "prs": [
           384,
           383
         ],
-        "rationale": "Built a centralized admin tools page and refreshed auto-generated docs and tests to support post-refactor maintainability."
+        "rationale": "Built a centralized admin tools page and regenerated supporting docs and tests to give internal teams a unified operational interface post-refactor."
       },
       {
         "id": 3,
-        "name": "Milestones Rebrand & Legacy Cleanup",
+        "name": "Milestone Rebranding and Legacy Cleanup",
         "points": 8,
         "category": "Core Platform",
         "prs": [
           382
         ],
-        "rationale": "Removed legacy gaps code and renamed the 'Goals' concept to 'Milestones' to align the platform with updated product terminology."
+        "rationale": "Removed legacy gaps code and renamed 'Goals' to 'Milestones' to align the platform's language with current product terminology."
       },
       {
         "id": 4,
-        "name": "User Access Control & Session Reliability",
-        "points": 8,
-        "category": "Core Platform",
-        "prs": [
-          375,
-          377,
-          371
-        ],
-        "rationale": "Hardened user access by adding a loginDisabled hard-lock, fixing session handling to prevent 403 errors, and resolving an Outcomes page caching issue."
-      },
-      {
-        "id": 5,
-        "name": "AWS Service & Product Catalog Expansion",
-        "points": 5,
+        "name": "AWS Service and Product Catalog Expansion",
+        "points": 3,
         "category": "Data/Schema",
         "prs": [
           379,
           378
         ],
-        "rationale": "Expanded the AWS product catalog data and enabled users to select a broader range of AWS services in the UI."
+        "rationale": "Expanded the AWS product catalog data and enabled selection of more AWS services so customers can map their architectures more completely."
       },
       {
-        "id": 6,
-        "name": "Outcomes Page Improvements",
-        "points": 5,
+        "id": 5,
+        "name": "Outcomes Page Overhaul",
+        "points": 8,
         "category": "UI/UX",
         "prs": [
           380,
-          369
+          369,
+          371
         ],
-        "rationale": "Refreshed the Outcomes page and updated the assessment page by removing the redundant outcomes section to streamline the user journey."
+        "rationale": "Rebuilt and stabilized the Outcomes page by updating its design, removing outdated content, and fixing a caching issue that caused stale data to display."
+      },
+      {
+        "id": 6,
+        "name": "User Session Stability and Access Control",
+        "points": 13,
+        "category": "Core Platform",
+        "prs": [
+          377,
+          375
+        ],
+        "rationale": "Improved user session handling to prevent 403 errors and introduced a hard-lock mechanism to disable login for specific users, strengthening platform access control."
       },
       {
         "id": 7,
-        "name": "Competitive Analysis & Marketplace Discovery Enhancements",
+        "name": "Competitive Analysis Enhancements",
         "points": 3,
         "category": "AI/Agents",
         "prs": [
-          373,
-          374
+          373
         ],
-        "rationale": "Improved competitive analysis output quality and fixed seller matching in Marketplace Discovery while cleaning up legacy tooling."
+        "rationale": "Improved the AI-driven competitive analysis feature to deliver more accurate and actionable competitive intelligence for users."
       },
       {
         "id": 8,
-        "name": "Target Industry Data Expansion",
+        "name": "Marketplace Readiness and Discovery Fixes",
+        "points": 2,
+        "category": "AI/Agents",
+        "prs": [
+          374
+        ],
+        "rationale": "Fixed seller matching in Marketplace Discovery and addressed legacy tooling issues to ensure readiness assessments reflect accurate marketplace eligibility."
+      },
+      {
+        "id": 9,
+        "name": "ISV Industry Targeting Support",
         "points": 1,
         "category": "Data/Schema",
         "prs": [
           368
         ],
-        "rationale": "Added ISV as an option to the target industry dropdown to better reflect the range of customers using the platform."
+        "rationale": "Added ISV as a selectable target industry so independent software vendors can be properly categorized during assessments."
       },
       {
-        "id": 9,
+        "id": 10,
         "name": "Portfolio Company Drill-Down Navigation Fix",
         "points": 3,
         "category": "UI/UX",
         "prs": [
           367
         ],
-        "rationale": "Added an exit chip so users can escape a stuck portfolio-company drill-down view, restoring smooth navigation in the portfolio section."
+        "rationale": "Added an exit chip to allow users to escape stuck drill-down states in the portfolio-company view, improving navigation reliability."
       }
     ],
-    "totalPoints": 67,
+    "totalPoints": 75,
     "byAuthor": {
-      "Jason": 51.8,
-      "Chris": 15.2
+      "Jason": 56.5,
+      "Chris": 18.5
     }
   },
   "meta": {
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 16.86,
-      "grouped": 15.47
+      "prLevel": 17.78,
+      "grouped": 17.32
     },
     "ptsPerWeekPerFTE": 4.33
   }

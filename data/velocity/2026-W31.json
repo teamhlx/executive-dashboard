@@ -1,0 +1,503 @@
+{
+  "week": "2026-W31",
+  "startDate": "2026-07-27",
+  "endDate": "2026-08-02",
+  "generatedAt": "2026-08-10T19:03:41.340Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 592,
+        "title": "Docs: per-key secrets story + skip terraform plan on doc-only changes",
+        "author": "Chad",
+        "mergedAt": "2026-08-01T23:00:40Z",
+        "additions": 0,
+        "customAdditions": 15,
+        "deletions": 0,
+        "files": 7,
+        "points": 2,
+        "rationale": "Adds documentation across several security/architecture docs and a small CI workflow tweak to skip terraform plan on doc-only changes — low complexity despite touching 7 files.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 590,
+        "title": "Production follow-ups: AMVU on + SPF record for skematic.ai",
+        "author": "Chad",
+        "mergedAt": "2026-08-01T22:57:46Z",
+        "additions": 0,
+        "customAdditions": 23,
+        "deletions": 0,
+        "files": 2,
+        "points": 2,
+        "rationale": "Small production terraform follow-up adding DMARC/DKIM (AMVU) and an SPF record for SES — straightforward config additions across two files.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 591,
+        "title": "Production follow-ups: AMVU + SPF (staging convergence)",
+        "author": "Chad",
+        "mergedAt": "2026-08-01T22:58:04Z",
+        "additions": 0,
+        "customAdditions": 23,
+        "deletions": 0,
+        "files": 2,
+        "points": 2,
+        "rationale": "Staging convergence of the same AMVU + SPF changes from PR #590 — identical scope, just targeting the staging environment.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 589,
+        "title": "Production DB off public IP (staging convergence)",
+        "author": "Chad",
+        "mergedAt": "2026-08-01T22:35:09Z",
+        "additions": 0,
+        "customAdditions": 4,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-file, 4-line terraform change to remove the public IP from the production DB — trivial config tweak.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 588,
+        "title": "Production DB off public IP (VPN is the admin path)",
+        "author": "Chad",
+        "mergedAt": "2026-08-01T22:35:02Z",
+        "additions": 0,
+        "customAdditions": 4,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Identical single-file, 4-line terraform change to move production DB off the public IP — trivial config change.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 587,
+        "title": "Staging DB off public IP (main convergence)",
+        "author": "Chad",
+        "mergedAt": "2026-08-01T22:22:55Z",
+        "additions": 0,
+        "customAdditions": 7,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-file, 7-line terraform convergence change to remove staging DB public IP — trivial config tweak.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 586,
+        "title": "Staging DB off public IP + drop admin allowlist (VPN is the admin path)",
+        "author": "Chad",
+        "mergedAt": "2026-08-01T22:12:14Z",
+        "additions": 0,
+        "customAdditions": 7,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-file, 7-line terraform change removing staging DB public IP and dropping the admin allowlist — trivial config adjustment.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 585,
+        "title": "Enable the production Client VPN (staging convergence)",
+        "author": "Chad",
+        "mergedAt": "2026-08-01T21:46:02Z",
+        "additions": 0,
+        "customAdditions": 7,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single tfvars file change of 7 lines to enable the production Client VPN as a staging convergence step — trivial config flag toggle.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 584,
+        "title": "Enable the production Client VPN",
+        "author": "Chad",
+        "mergedAt": "2026-08-01T21:46:00Z",
+        "additions": 0,
+        "customAdditions": 7,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single tfvars file change of 7 lines to enable the production Client VPN — trivial config flag toggle.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 583,
+        "title": "Production post-cutover cleanup (staging convergence)",
+        "author": "Chad",
+        "mergedAt": "2026-08-01T21:31:41Z",
+        "additions": 0,
+        "customAdditions": 6,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "Small post-cutover cleanup across three production terraform files removing import shims and tidying config — minor but touches multiple files.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 581,
+        "title": "Production post-cutover cleanup: SG step-2 drop, import shims removed",
+        "author": "Chad",
+        "mergedAt": "2026-08-01T21:31:38Z",
+        "additions": 0,
+        "customAdditions": 6,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "Small post-cutover cleanup dropping security group step-2 and import shims across three files — same scope as its convergence counterpart.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 580,
+        "title": "Converge staging with the production-takeover terraform (conflict-free, staging-based)",
+        "author": "Chad",
+        "mergedAt": "2026-08-01T21:01:41Z",
+        "additions": 0,
+        "customAdditions": 834,
+        "deletions": 0,
+        "files": 28,
+        "points": 8,
+        "rationale": "834 lines across 28 files converging staging with the full production terraform takeover — significant infrastructure refactor touching CI workflows, modules, and multiple environment configs.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 578,
+        "title": "Production on Terraform: staging module tree, envs/production, old deploy workflows removed",
+        "author": "Chad",
+        "mergedAt": "2026-08-01T21:17:23Z",
+        "additions": 0,
+        "customAdditions": 4777,
+        "deletions": 0,
+        "files": 76,
+        "points": 21,
+        "rationale": "4777 lines across 76 files bringing the entire production infrastructure onto Terraform from scratch — complete IaC buildout covering networking, ECS, VPN, SES, CI/CD pipelines, and modules representing weeks of architectural work.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 568,
+        "title": "fix(ace): reject Discovery UUID Marketplace product ARNs (SM-685)",
+        "author": "Jason",
+        "mergedAt": "2026-07-28T22:53:39Z",
+        "additions": 0,
+        "customAdditions": 118,
+        "deletions": 0,
+        "files": 3,
+        "points": 3,
+        "rationale": "Adds enum entries and validation logic to reject Discovery UUID Marketplace product ARNs, backed by a test file — modest focused bug fix with test coverage.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 573,
+        "title": "SM-658: aws product selector",
+        "author": "Chris",
+        "mergedAt": "2026-07-29T23:30:01Z",
+        "additions": 0,
+        "customAdditions": 228,
+        "deletions": 0,
+        "files": 8,
+        "points": 5,
+        "rationale": "Introduces a new AWS product selector UI component wired into readiness actions, field definitions, a product data file, and unit tests across 8 files — solid self-contained feature addition.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 572,
+        "title": "SM-683: mcp, partner central implementation",
+        "author": "Chris",
+        "mergedAt": "2026-07-29T23:28:18Z",
+        "additions": 0,
+        "customAdditions": 1188,
+        "deletions": 0,
+        "files": 21,
+        "points": 13,
+        "rationale": "Introduces a full MCP integration with OAuth flow, partner-central agent, tool registry, built-in server config, DB-backed OAuth client provider, UI settings page, and agent wiring across 21 files — a major architectural feature addition.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 574,
+        "title": "fix(ace): re-resolve malformed Marketplace product ARNs; omit OtherSolutionDescription when a solution is associated (SM-685)",
+        "author": "Jason",
+        "mergedAt": "2026-07-29T23:24:09Z",
+        "additions": 0,
+        "customAdditions": 86,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "Targeted bug fix across 3 files to re-resolve malformed Marketplace ARNs and conditionally omit a field, with a test file included — a small, focused fix.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 571,
+        "title": "Sync main into staging",
+        "author": "Jason",
+        "mergedAt": "2026-07-29T00:43:46Z",
+        "additions": 0,
+        "customAdditions": 373,
+        "deletions": 0,
+        "files": 14,
+        "points": 5,
+        "rationale": "Sync PR with 373 lines of actual custom work spanning ACE currency defaulting, hydration logic, mapper updates, a DB migration, and reconciliation mirrors across 13 files — equivalent in substance to PR #570 which it folds in.",
+        "category": "Data/Schema",
+        "vendored": true,
+        "vendoredRatio": 68,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 570,
+        "title": "fix(ace): default missing monetary currency to USD (SM-681)",
+        "author": "Jason",
+        "mergedAt": "2026-07-28T23:50:58Z",
+        "additions": 0,
+        "customAdditions": 275,
+        "deletions": 0,
+        "files": 10,
+        "points": 5,
+        "rationale": "Meaningful feature adding USD currency defaulting logic with a DB migration, hydration updates for both HubSpot and Salesforce, mapper changes, reconciliation mirror updates, and tests across 10 files.",
+        "category": "Data/Schema",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 78,
+    "byAuthor": {
+      "Chad": 45,
+      "Jason": 15,
+      "Chris": 18
+    },
+    "byCategory": {
+      "DevOps": 2,
+      "Infrastructure": 43,
+      "Integrations": 18,
+      "UI/UX": 5,
+      "Data/Schema": 10
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Production Infrastructure on Terraform (IaC Migration)",
+        "points": 21,
+        "category": "Infrastructure",
+        "prs": [
+          578,
+          580,
+          581,
+          583
+        ],
+        "rationale": "Migrated production and staging environments fully onto Terraform-managed infrastructure, including the staging module tree, post-cutover cleanup, and convergence of both environments."
+      },
+      {
+        "id": 2,
+        "name": "Database Security Hardening (Remove Public IP Access)",
+        "points": 5,
+        "category": "Infrastructure",
+        "prs": [
+          586,
+          587,
+          588,
+          589
+        ],
+        "rationale": "Removed public IP access from both staging and production databases, routing all admin access through the VPN for improved security posture."
+      },
+      {
+        "id": 3,
+        "name": "Client VPN Enablement for Production",
+        "points": 2,
+        "category": "Infrastructure",
+        "prs": [
+          584,
+          585
+        ],
+        "rationale": "Enabled the production Client VPN and converged staging to match, establishing VPN as the secure admin access path."
+      },
+      {
+        "id": 4,
+        "name": "Production Email Authentication & DNS Configuration",
+        "points": 3,
+        "category": "Infrastructure",
+        "prs": [
+          590,
+          591
+        ],
+        "rationale": "Configured AMVU and SPF DNS records for skematic.ai in both production and staging to ensure proper email authentication and deliverability."
+      },
+      {
+        "id": 5,
+        "name": "DevOps: Secrets Management Docs & CI Optimization",
+        "points": 2,
+        "category": "DevOps",
+        "prs": [
+          592
+        ],
+        "rationale": "Documented the per-key secrets management approach and optimized CI pipelines to skip Terraform plan runs on documentation-only changes."
+      },
+      {
+        "id": 6,
+        "name": "AWS Marketplace ACE Integration Fixes",
+        "points": 8,
+        "category": "Integrations",
+        "prs": [
+          568,
+          574
+        ],
+        "rationale": "Resolved multiple ACE integration issues including rejection of invalid Discovery UUID Marketplace product ARNs, re-resolution of malformed ARNs, and omission of redundant fields when a solution is already associated."
+      },
+      {
+        "id": 7,
+        "name": "AWS Product Selector UI",
+        "points": 5,
+        "category": "UI/UX",
+        "prs": [
+          573
+        ],
+        "rationale": "Built the AWS product selector UI component to support users in selecting AWS products within the platform workflow."
+      },
+      {
+        "id": 8,
+        "name": "AWS Partner Central MCP Integration",
+        "points": 13,
+        "category": "Integrations",
+        "prs": [
+          572
+        ],
+        "rationale": "Implemented the MCP and Partner Central integration to enable deeper AWS partner ecosystem connectivity within Skematic."
+      },
+      {
+        "id": 9,
+        "name": "ACE Data Quality: Default Currency & Schema Sync",
+        "points": 8,
+        "category": "Data/Schema",
+        "prs": [
+          570,
+          571
+        ],
+        "rationale": "Improved ACE data quality by defaulting missing monetary currency values to USD and syncing main branch schema changes into staging."
+      }
+    ],
+    "totalPoints": 67,
+    "byAuthor": {
+      "Chad": 33,
+      "Jason": 16,
+      "Chris": 18
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 18.01,
+      "grouped": 15.47
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

@@ -198,7 +198,7 @@ export default function VelocityEffectiveFTEChart({ trends, viewMode, timeRange,
 
   const data: ChartEntry[] = slicedWeeks.map((week, i) => {
     const entry: ChartEntry = {
-      week: week.replace(/^\d{4}-/, ""),
+      week: week, // Keep full ISO week to avoid year collisions
       fullWeek: weekToLabel(week),
       effectiveFTE: effectiveFTEValues[i],
       actualFTE: Math.round(getFTEForWeek(week) * 10) / 10,
@@ -220,18 +220,17 @@ export default function VelocityEffectiveFTEChart({ trends, viewMode, timeRange,
   const milestoneIndices = TEAM_MILESTONES.map(m => ({
     ...m,
     idx: slicedWeeks.indexOf(m.week),
-    displayWeek: m.week.replace(/^\d{4}-/, ""),
+    displayWeek: m.week,
   })).filter(m => m.idx >= 0);
 
   // Build week→month label map for tick formatting
   const weekToMonthMap: Record<string, string> = {};
   slicedWeeks.forEach((week, i) => {
-    const shortWeek = week.replace(/^\d{4}-/, "");
     if (monthStartIndices.has(i)) {
       const d = getWeekMonday(week);
       if (d) {
         const yr = d.getFullYear().toString().slice(2);
-        weekToMonthMap[shortWeek] = `${MONTH_NAMES[d.getMonth()]} '${yr}`;
+        weekToMonthMap[week] = `${MONTH_NAMES[d.getMonth()]} '${yr}`;
       }
     }
   });

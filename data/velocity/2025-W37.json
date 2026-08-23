@@ -2,7 +2,7 @@
   "week": "2025-W37",
   "startDate": "2025-09-08",
   "endDate": "2025-09-14",
-  "generatedAt": "2026-06-27T15:54:30.399Z",
+  "generatedAt": "2026-08-10T18:46:39.671Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 2,
         "points": 3,
-        "rationale": "Adding 82 lines of custom field definitions to a Prisma schema file is a modest data modeling task requiring thoughtful field design but limited complexity.",
+        "rationale": "82 custom lines adding required data field definitions to a Prisma schema file represents a modest, well-scoped data modeling task.",
         "category": "Data/Schema",
         "vendored": true,
         "vendoredRatio": 63,
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 9,
         "points": 8,
-        "rationale": "419 lines across 9 files touching worker restart logic, BullMQ configuration, queue admin UI, entrypoint, and CI config represents a significant cross-cutting infrastructure feature.",
+        "rationale": "419 lines across 9 files touching the worker process, BullMQ configuration, queue admin UI, entrypoints, and CI config represents a significant cross-cutting feature involving infrastructure and background job reliability.",
         "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
@@ -53,8 +53,8 @@
         "deletions": 0,
         "files": 8,
         "points": 5,
-        "rationale": "179 lines across 8 files implementing required field validation logic, a progress hook, filtering UI, and layout adjustments constitutes a solid medium-sized feature with meaningful frontend and utility work.",
-        "category": "UI/UX",
+        "rationale": "179 lines across 8 files implementing required fields validation logic, a progress hook, field UI components, and layout integration represents a solid, cohesive feature with both frontend and backend touches.",
+        "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -72,7 +72,7 @@
         "deletions": 0,
         "files": 3,
         "points": 2,
-        "rationale": "34 lines across 3 files fixing a logout authentication error is a small, targeted bug fix with limited scope.",
+        "rationale": "34 lines across 3 files fixing a logout authentication error is a simple, targeted bug fix with minimal scope.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -109,8 +109,7 @@
     "byCategory": {
       "Data/Schema": 3,
       "Infrastructure": 8,
-      "UI/UX": 5,
-      "Core Platform": 2,
+      "Core Platform": 7,
       "DevOps": 1
     }
   },
@@ -118,34 +117,34 @@
     "stories": [
       {
         "id": 1,
-        "name": "Strategy Required Fields: Data Capture & Validation",
-        "points": 13,
-        "category": "Data/Schema",
+        "name": "Strategy Required Fields & Validation",
+        "points": 8,
+        "category": "Core Platform",
         "prs": [
           49,
           55
         ],
-        "rationale": "Introduced required data fields for strategy at the schema level and enforced them with validation logic and UI feedback, ensuring complete and consistent strategy data entry."
+        "rationale": "Added required data fields for strategy at the schema level and implemented the corresponding validation logic and UI improvements to enforce them in the platform."
       },
       {
         "id": 2,
-        "name": "Worker Reliability & Background Processing Stability",
+        "name": "Worker Reliability & Restart Handling",
         "points": 8,
         "category": "Infrastructure",
         "prs": [
           54
         ],
-        "rationale": "Improved platform resilience by enabling worker restart capability, reducing downtime risk for background processing jobs."
+        "rationale": "Improved platform stability by implementing worker restart logic to ensure background processes recover gracefully from failures."
       },
       {
         "id": 3,
-        "name": "Fix User Logout Authentication Error",
+        "name": "Fix User Authentication & Logout Flow",
         "points": 2,
         "category": "Core Platform",
         "prs": [
           53
         ],
-        "rationale": "Resolved a logout error that occurred when a user was not found or authenticated, improving session handling reliability."
+        "rationale": "Resolved a logout error that occurred when a user was not found or not authenticated, improving the reliability of the auth experience."
       },
       {
         "id": 4,
@@ -158,10 +157,10 @@
         "rationale": "Bumped the Next.js version to keep the platform up to date with the latest framework improvements and security patches."
       }
     ],
-    "totalPoints": 24,
+    "totalPoints": 19,
     "byAuthor": {
-      "Chris": 12.9,
-      "Jason": 11.1
+      "Chris": 11,
+      "Jason": 8
     }
   },
   "meta": {
@@ -169,7 +168,7 @@
     "codingAllocation": 0.8,
     "fteEquiv": {
       "prLevel": 4.39,
-      "grouped": 5.54
+      "grouped": 4.39
     },
     "ptsPerWeekPerFTE": 4.33
   }

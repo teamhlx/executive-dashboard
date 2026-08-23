@@ -1,0 +1,270 @@
+{
+  "week": "2026-W29",
+  "startDate": "2026-07-13",
+  "endDate": "2026-07-19",
+  "generatedAt": "2026-08-10T19:02:40.503Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 529,
+        "title": "SM-578: recap feature backend",
+        "author": "Chris",
+        "mergedAt": "2026-07-16T19:50:41Z",
+        "additions": 0,
+        "customAdditions": 762,
+        "deletions": 0,
+        "files": 10,
+        "points": 8,
+        "rationale": "Implements the full backend for a recap feature including AI narrative generation, schema migrations for two new fields, session logic, aggregation utilities, typed interfaces, and unit tests across 10 files — substantial but self-contained backend feature work.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 539,
+        "title": "Sm 580 579 confetti and recap",
+        "author": "Chris",
+        "mergedAt": "2026-07-16T19:50:39Z",
+        "additions": 0,
+        "customAdditions": 1044,
+        "deletions": 0,
+        "files": 22,
+        "points": 13,
+        "rationale": "Builds on the backend from PR #529 and adds the complete frontend surface: a modal, celebration provider, multiple UI components, sandbox environment, real dashboard integration, and guided-experience wiring — a major feature spanning AI, UI, and data layers across 22 files.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.55,
+          "Mauro": 0.45
+        }
+      },
+      {
+        "pr": 549,
+        "title": "Support local dev against the staging Cognito pool",
+        "author": "Chad",
+        "mergedAt": "2026-07-18T17:54:44Z",
+        "additions": 0,
+        "customAdditions": 33,
+        "deletions": 0,
+        "files": 2,
+        "points": 2,
+        "rationale": "Small config change adding a staging Cognito pool support for local dev via env example and a Terraform tweak — minor but purposeful infrastructure adjustment.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 548,
+        "title": "Auto-confirm sign-ups in staging (Cognito for auth, DB for truth)",
+        "author": "Chad",
+        "mergedAt": "2026-07-17T21:07:55Z",
+        "additions": 0,
+        "customAdditions": 41,
+        "deletions": 0,
+        "files": 4,
+        "points": 3,
+        "rationale": "Introduces a new Lambda pre-signup trigger with its Terraform module (variables, main) and wires it into staging — modest but involves novel Lambda logic and infrastructure scaffolding.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 547,
+        "title": "Confirm the app email on a Cognito forgot-password too",
+        "author": "Chad",
+        "mergedAt": "2026-07-16T21:47:12Z",
+        "additions": 0,
+        "customAdditions": 26,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "Single-file fix extending the post-confirmation Lambda handler to also confirm the app email on forgot-password flows — small targeted logic addition.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 546,
+        "title": "bootstrap: grant apply deployer kms:* for the Cognito email-sender key",
+        "author": "Chad",
+        "mergedAt": "2026-07-16T20:09:59Z",
+        "additions": 0,
+        "customAdditions": 7,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-file, single-concern IAM policy addition granting kms:* to the deploy role — trivial config tweak.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 545,
+        "title": "Reroute all staging Cognito auth mail to the QA alias",
+        "author": "Chad",
+        "mergedAt": "2026-07-16T19:39:53Z",
+        "additions": 0,
+        "customAdditions": 393,
+        "deletions": 0,
+        "files": 13,
+        "points": 8,
+        "rationale": "Builds a full custom Cognito email-sender Lambda with a build pipeline, multiple Terraform modules (main, outputs, variables, versions), CI/CD workflow updates, and Cognito module wiring — significant infrastructure feature despite vendored auto-gen being excluded.",
+        "category": "DevOps",
+        "vendored": true,
+        "vendoredRatio": 59,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 543,
+        "title": "fix(deployment): stop the cognito branding plan from never converging",
+        "author": "Chad",
+        "mergedAt": "2026-07-16T17:13:05Z",
+        "additions": 0,
+        "customAdditions": 18,
+        "deletions": 0,
+        "files": 4,
+        "points": 2,
+        "rationale": "Small fix across four Terraform files to resolve a non-converging Cognito branding plan, involving an import block and minor settings adjustments — simple but intentional infrastructure bug fix.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 542,
+        "title": "feat(deployment): promote stagingx to be staging",
+        "author": "Chad",
+        "mergedAt": "2026-07-16T04:37:01Z",
+        "additions": 0,
+        "customAdditions": 5728,
+        "deletions": 0,
+        "files": 135,
+        "points": 21,
+        "rationale": "Promotes a full staging environment to production-parity with 135 files changed and 5728 custom lines spanning Terraform modules, CI/CD pipelines, networking, Cognito, SES, bootstrapping, and application config — a transformative architectural promotion representing weeks of infrastructure work.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 3,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 541,
+        "title": "docs(prospects): developer onboarding guide + stale CRM/ACE doc refresh",
+        "author": "Jason",
+        "mergedAt": "2026-07-15T15:40:31Z",
+        "additions": 0,
+        "customAdditions": 724,
+        "deletions": 0,
+        "files": 18,
+        "points": 5,
+        "rationale": "Delivers a comprehensive developer onboarding guide refresh and updates stale CRM/ACE docs across 18 files, with a handful of meaningful code touches in enrichment and HubSpot logic — solid documentation effort with some real code signal.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 65,
+    "byAuthor": {
+      "Chris": 15.2,
+      "Mauro": 5.9,
+      "Chad": 39,
+      "Jason": 5
+    },
+    "byCategory": {
+      "AI/Agents": 21,
+      "DevOps": 18,
+      "Infrastructure": 21,
+      "Admin/Tools": 5
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Session Recap & Celebration Experience",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          529,
+          539
+        ],
+        "rationale": "Built the end-to-end recap feature including backend logic and the frontend confetti/recap UI to celebrate user milestones and summarize completed sessions."
+      },
+      {
+        "id": 2,
+        "name": "Staging Environment Promotion & Stabilization",
+        "points": 21,
+        "category": "Infrastructure",
+        "prs": [
+          542,
+          543,
+          545,
+          546,
+          547,
+          548,
+          549
+        ],
+        "rationale": "Promoted stagingx to become the primary staging environment and hardened its Cognito authentication setup including email routing, auto-confirmation, KMS permissions, and local dev support."
+      },
+      {
+        "id": 3,
+        "name": "Developer Onboarding & CRM Documentation Refresh",
+        "points": 5,
+        "category": "Admin/Tools",
+        "prs": [
+          541
+        ],
+        "rationale": "Created a new developer onboarding guide and refreshed stale CRM and ACE documentation to improve team ramp-up and partner-facing accuracy."
+      }
+    ],
+    "totalPoints": 47,
+    "byAuthor": {
+      "Chris": 21,
+      "Chad": 21,
+      "Jason": 5
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 15.01,
+      "grouped": 10.85
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

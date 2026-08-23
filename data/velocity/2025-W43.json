@@ -2,7 +2,7 @@
   "week": "2025-W43",
   "startDate": "2025-10-20",
   "endDate": "2025-10-26",
-  "generatedAt": "2026-06-27T15:56:32.370Z",
+  "generatedAt": "2026-08-10T18:48:55.791Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 17,
         "points": 5,
-        "rationale": "Spreads 92 custom lines across 17 files touching AI agent wiring, model factory, structured output, and multiple tool integrations — modest but meaningful AI/agent scaffolding work.",
+        "rationale": "Touches 17 files across AI agent infrastructure, tool wrappers, model factory, and structured output utilities — a solid cross-cutting AI/Agents feature with modest line count but meaningful breadth.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 4,
@@ -33,15 +33,15 @@
         "customAdditions": 364,
         "deletions": 0,
         "files": 42,
-        "points": 8,
-        "rationale": "364 custom lines across a broad release PR covering AI system refactoring, onboarding improvements, impersonation fixes, and layout context changes across 40+ files — significant multi-area integration effort.",
+        "points": 13,
+        "rationale": "Despite being 84% vendored, the 364 custom lines span a true release merge touching AI refactoring, impersonation logic, onboarding improvements, layouts, and admin tooling across 40+ files — a major multi-domain integration effort.",
         "category": "Core Platform",
         "vendored": true,
         "vendoredRatio": 84,
         "isMultiAuthor": true,
         "attribution": {
-          "Chris": 0.25,
-          "Jason": 0.75
+          "Chris": 0.3,
+          "Jason": 0.7
         }
       },
       {
@@ -54,7 +54,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Single-line change to an onboarding confirmation message is a trivial copy/text update.",
+        "rationale": "Single-line change to a single onboarding confirmation message — trivially small.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -73,7 +73,7 @@
         "deletions": 0,
         "files": 9,
         "points": 5,
-        "rationale": "116 lines across 9 files adding multi-user onboarding flow improvements, impersonation UX (banner, layouts, actions) — a solid cohesive feature touching multiple layers.",
+        "rationale": "116 lines across 9 files covering multi-user onboarding flows, impersonation UX, action updates, and layout changes — a solid medium-sized cross-cutting feature.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -92,7 +92,7 @@
         "deletions": 0,
         "files": 19,
         "points": 8,
-        "rationale": "161 custom lines (after stripping 92% vendored) across 18 files fixing impersonation bugs and improving admin experience with audit events, queue pages, DAL changes, and layout propagation — broad, meaningful platform work.",
+        "rationale": "161 custom lines across 18 files touching admin layouts, DAL, audit logging, worker impersonation logic, user menu, and multiple admin pages — significant feature work with meaningful architectural spread despite high vendored ratio.",
         "category": "Admin/Tools",
         "vendored": true,
         "vendoredRatio": 92,
@@ -104,33 +104,33 @@
       {
         "pr": 114,
         "title": "Staging",
-        "author": "Jason",
+        "author": "Chris",
         "mergedAt": "2025-10-21T17:23:10Z",
         "additions": 0,
         "customAdditions": 37,
         "deletions": 0,
         "files": 13,
         "points": 3,
-        "rationale": "37 custom lines across 12 files with a stepper/breadcrumb removal and minor layout/action adjustments — small-medium refactor touching several readiness UI pieces.",
-        "category": "UI/UX",
+        "rationale": "37 lines across 12 files with lightweight routing, layout, and action tweaks including stepper removal and field progress hooks — a modest small-medium staging integration.",
+        "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 24,
         "isMultiAuthor": true,
         "attribution": {
-          "Chris": 0.45,
-          "Jason": 0.55
+          "Chris": 0.6,
+          "Jason": 0.4
         }
       }
     ],
-    "totalPoints": 30,
+    "totalPoints": 35,
     "byAuthor": {
-      "Chris": 8.4,
-      "Jason": 21.7
+      "Chris": 10.7,
+      "Jason": 24.3
     },
     "byCategory": {
       "AI/Agents": 5,
-      "Core Platform": 8,
-      "UI/UX": 9,
+      "Core Platform": 16,
+      "UI/UX": 6,
       "Admin/Tools": 8
     }
   },
@@ -140,15 +140,14 @@
         "id": 1,
         "name": "Admin Impersonation & Onboarding Experience Overhaul",
         "points": 21,
-        "category": "Core Platform",
+        "category": "Admin/Tools",
         "prs": [
           116,
           118,
           119,
-          120,
-          114
+          120
         ],
-        "rationale": "A coordinated set of fixes and improvements across admin impersonation tooling, multi-user onboarding UX, confirmation messaging, and a production release that bundled all these changes together into a deployable state."
+        "rationale": "Fixed impersonation bugs, improved multi-user onboarding UX, updated confirmation messaging, and shipped the full set of changes to production in a coordinated release."
       },
       {
         "id": 2,
@@ -158,21 +157,31 @@
         "prs": [
           117
         ],
-        "rationale": "Introduced LLM-powered collector agent functionality, advancing Skematic's AI-driven data gathering capabilities."
+        "rationale": "Introduced LLM-powered collector agent capabilities to enhance Skematic's AI-driven data gathering and processing pipeline."
+      },
+      {
+        "id": 3,
+        "name": "Staging Environment Stabilization",
+        "points": 3,
+        "category": "Core Platform",
+        "prs": [
+          114
+        ],
+        "rationale": "Applied platform-level changes to the staging environment to support ongoing development and pre-production validation."
       }
     ],
-    "totalPoints": 26,
+    "totalPoints": 29,
     "byAuthor": {
       "Jason": 21,
-      "Chris": 5
+      "Chris": 8
     }
   },
   "meta": {
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 6.93,
-      "grouped": 6
+      "prLevel": 8.08,
+      "grouped": 6.7
     },
     "ptsPerWeekPerFTE": 4.33
   }

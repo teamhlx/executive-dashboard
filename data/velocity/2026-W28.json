@@ -1,0 +1,240 @@
+{
+  "week": "2026-W28",
+  "startDate": "2026-07-06",
+  "endDate": "2026-07-12",
+  "generatedAt": "2026-08-10T19:02:14.947Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 535,
+        "title": "feat(flags): AI Alliances Assistant company feature flag (SM-648–651)",
+        "author": "Jason",
+        "mergedAt": "2026-07-12T18:45:46Z",
+        "additions": 0,
+        "customAdditions": 225,
+        "deletions": 0,
+        "files": 16,
+        "points": 8,
+        "rationale": "Adds a new company-level feature flag end-to-end across 16 files — schema migration, DAL update, admin toggle UI, server action, and conditional rendering in multiple app routes and components — representing a significant cross-cutting change despite being additive only.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 531,
+        "title": "SM-544: Rename EDP to PPA in prospect enrichment",
+        "author": "Jason",
+        "mergedAt": "2026-07-12T18:07:24Z",
+        "additions": 0,
+        "customAdditions": 40,
+        "deletions": 0,
+        "files": 7,
+        "points": 2,
+        "rationale": "A focused rename of EDP to PPA across agent code, prompts, schema, UI, tests, and docs — modest scope with no new logic introduced.",
+        "category": "Data/Schema",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 534,
+        "title": "Sm 580 579 confetti and recap",
+        "author": "Mauro",
+        "mergedAt": "2026-07-12T17:54:23Z",
+        "additions": 0,
+        "customAdditions": 1173,
+        "deletions": 0,
+        "files": 17,
+        "points": 8,
+        "rationale": "Introduces two distinct user-facing features — confetti celebration on task completion and a login recap modal — each with custom hooks, providers, components, sandbox pages, and integration into the guided experience flow, totalling substantial novel UI/UX work across 16 files.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 1,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Mauro": 0.95,
+          "Jason": 0.05
+        }
+      },
+      {
+        "pr": 478,
+        "title": "SM-658: updates collector to use aws service identifiers",
+        "author": "Chris",
+        "mergedAt": "2026-07-12T17:24:01Z",
+        "additions": 0,
+        "customAdditions": 569,
+        "deletions": 0,
+        "files": 18,
+        "points": 13,
+        "rationale": "Significant refactor converting AWS product handling to service identifiers across collectors, field definitions, schema migrations, portfolio CSV export, aggregation logic, AI prompts, and tests — 22 commits touching 18 files with substantial architectural changes to data modelling and downstream consumers.",
+        "category": "Data/Schema",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": true,
+        "attribution": {
+          "Chris": 0.65,
+          "Jason": 0.35
+        }
+      },
+      {
+        "pr": 537,
+        "title": "fix(ace): associate Marketplace products/solutions instead of Other (SM-629)",
+        "author": "Jason",
+        "mergedAt": "2026-07-12T15:54:50Z",
+        "additions": 0,
+        "customAdditions": 843,
+        "deletions": 0,
+        "files": 22,
+        "points": 13,
+        "rationale": "Major ACE integration enhancement spanning two schema migrations, new Marketplace product/solution ARN modelling, mapper logic, enums, field definitions, prospect editor UI, sync logic, and sandbox validation tooling across 22 files — a meaningful architectural addition to the ACE data layer.",
+        "category": "Integrations",
+        "vendored": false,
+        "vendoredRatio": 17,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 536,
+        "title": "feat(deployment): send Cognito email from no-reply@skematic.ai via SES",
+        "author": "Chad",
+        "mergedAt": "2026-07-10T19:01:54Z",
+        "additions": 0,
+        "customAdditions": 139,
+        "deletions": 0,
+        "files": 6,
+        "points": 5,
+        "rationale": "Sets up SES domain verification, DKIM, and Cognito email sender configuration via new Terraform module files and a wait script — meaningful infrastructure work requiring SES/Cognito integration knowledge across multiple environments.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 532,
+        "title": "fix(deployment): grant stagingx ECS tasks Redis access (missing SG ingress)",
+        "author": "Chad",
+        "mergedAt": "2026-07-10T18:48:27Z",
+        "additions": 0,
+        "customAdditions": 57,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "Small targeted fix adding a missing security group ingress rule for Redis access in the stagingx environment across three Terraform files.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      }
+    ],
+    "totalPoints": 51,
+    "byAuthor": {
+      "Jason": 28,
+      "Mauro": 7.6,
+      "Chris": 8.5,
+      "Chad": 7
+    },
+    "byCategory": {
+      "Core Platform": 8,
+      "Data/Schema": 15,
+      "UI/UX": 8,
+      "Integrations": 13,
+      "DevOps": 7
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "AI Alliances Assistant Launch Readiness",
+        "points": 8,
+        "category": "AI/Agents",
+        "prs": [
+          535
+        ],
+        "rationale": "Introduced a company-level feature flag to control access to the new AI Alliances Assistant, enabling controlled rollout to customers."
+      },
+      {
+        "id": 2,
+        "name": "Prospect Enrichment Data Rebranding",
+        "points": 2,
+        "category": "Data/Schema",
+        "prs": [
+          531
+        ],
+        "rationale": "Renamed the EDP identifier to PPA across prospect enrichment to reflect updated business terminology."
+      },
+      {
+        "id": 3,
+        "name": "Assessment Completion Celebration & Recap Experience",
+        "points": 8,
+        "category": "UI/UX",
+        "prs": [
+          534
+        ],
+        "rationale": "Added confetti animation and a recap summary screen to reward and orient users upon completing an assessment."
+      },
+      {
+        "id": 4,
+        "name": "AWS Service Identifier Standardization for Data Collection",
+        "points": 13,
+        "category": "Data/Schema",
+        "prs": [
+          478
+        ],
+        "rationale": "Updated the data collector to use official AWS service identifiers, ensuring accurate and consistent cloud data ingestion."
+      },
+      {
+        "id": 5,
+        "name": "AWS Marketplace Product Association Fix",
+        "points": 13,
+        "category": "Integrations",
+        "prs": [
+          537
+        ],
+        "rationale": "Fixed the ACE integration to correctly associate Marketplace products and solutions rather than defaulting to 'Other', improving co-sell accuracy."
+      },
+      {
+        "id": 6,
+        "name": "Email & Infrastructure Reliability Improvements",
+        "points": 5,
+        "category": "DevOps",
+        "prs": [
+          536,
+          532
+        ],
+        "rationale": "Configured Cognito to send emails from a branded no-reply address via SES and resolved a missing Redis security group rule blocking staging environment tasks."
+      }
+    ],
+    "totalPoints": 49,
+    "byAuthor": {
+      "Jason": 23,
+      "Mauro": 8,
+      "Chris": 13,
+      "Chad": 5
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 11.78,
+      "grouped": 11.32
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

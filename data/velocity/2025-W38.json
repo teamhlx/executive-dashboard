@@ -2,7 +2,7 @@
   "week": "2025-W38",
   "startDate": "2025-09-15",
   "endDate": "2025-09-21",
-  "generatedAt": "2026-06-27T15:54:38.737Z",
+  "generatedAt": "2026-08-10T18:46:49.164Z",
   "prLevel": {
     "prs": [
       {
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 4,
         "points": 5,
-        "rationale": "Solid new feature introducing a new AWS Product Selector component with integration into FieldCard and the component showcase across 4 files and 335 lines.",
+        "rationale": "Solid new feature introducing a dedicated AWS Product Selector component across 4 files with 335 lines including integration into FieldCard and the component showcase.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -53,7 +53,7 @@
         "deletions": 0,
         "files": 8,
         "points": 8,
-        "rationale": "Significant cross-cutting enhancement touching schema definitions, seed data, readiness layout and page logic, FieldCard, and multiple docs, representing meaningful architectural changes to the readiness system.",
+        "rationale": "Significant multi-area enhancement touching schema definitions, seed data, readiness layout/page logic, FieldCard, and documentation across 8 files with 503 lines, indicating meaningful architectural and data model changes.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 22,
@@ -76,7 +76,7 @@
     "stories": [
       {
         "id": 1,
-        "name": "AWS Product Selection & Readiness Mapping",
+        "name": "AWS Product Selection and Readiness Mapping",
         "points": 21,
         "category": "Core Platform",
         "prs": [
@@ -84,7 +84,7 @@
           58,
           59
         ],
-        "rationale": "Delivered end-to-end AWS product selection capability, including a new product selector UI component, deselection fix, and the underlying product field remapping and readiness system enhancements that power the feature."
+        "rationale": "Delivered end-to-end AWS product selection capability, including a new product selector UI component, deselection fix, and the underlying product field remapping and readiness system enhancements that power it."
       }
     ],
     "totalPoints": 21,

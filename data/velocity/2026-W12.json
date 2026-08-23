@@ -2,7 +2,7 @@
   "week": "2026-W12",
   "startDate": "2026-03-16",
   "endDate": "2026-03-22",
-  "generatedAt": "2026-06-27T16:01:31.869Z",
+  "generatedAt": "2026-08-10T18:54:30.791Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 84,
         "points": 13,
-        "rationale": "84 files changed with 5470 custom lines spanning new Prisma schema models, AI data collectors, AppRunner configs, environment setup, and a suite of TODO planning docs — representing a broad architectural foundation for company credentials and related infrastructure.",
+        "rationale": "Large-scale foundational PR touching 84 files with 5470 custom lines covering company credentials system, Prisma schema additions, AI data collectors, AppRunner config, and extensive TODO/planning docs representing a major architectural feature addition.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 16,
@@ -34,14 +34,14 @@
         "deletions": 0,
         "files": 345,
         "points": 21,
-        "rationale": "345 files and 19321 custom lines across a sweeping product-centric data model refactor, modular Prisma schema reorganization, competitive analysis models, credentials support, and AI agent updates from two contributors — a transformative, multi-week architectural overhaul.",
+        "rationale": "Transformative 345-file, 19321-line PR representing a product-centric data model overhaul, modular Prisma schema reorganization, competitive analysis infrastructure, credentials system, and widespread AI agent/chat refactoring — clearly weeks of multi-contributor architectural work.",
         "category": "Data/Schema",
         "vendored": false,
         "vendoredRatio": 5,
         "isMultiAuthor": true,
         "attribution": {
-          "Jason": 0.75,
-          "Chris": 0.25
+          "Jason": 0.78,
+          "Chris": 0.22
         }
       },
       {
@@ -54,7 +54,7 @@
         "deletions": 0,
         "files": 2,
         "points": 1,
-        "rationale": "A trivial single-index addition to the Rival model in the Prisma schema and corresponding migration SQL — a minimal, targeted change with no logic complexity.",
+        "rationale": "Trivial single-index addition to a Prisma schema file and corresponding migration SQL — a minimal, targeted database optimization with 3 custom lines across 2 files.",
         "category": "Data/Schema",
         "vendored": false,
         "vendoredRatio": 0,
@@ -66,8 +66,8 @@
     ],
     "totalPoints": 35,
     "byAuthor": {
-      "Jason": 29.8,
-      "Chris": 5.3
+      "Jason": 30.4,
+      "Chris": 4.6
     },
     "byCategory": {
       "Core Platform": 13,
@@ -86,7 +86,7 @@
           281,
           279
         ],
-        "rationale": "Redesigned the core data architecture around a product-centric model with modular schema, introduced company credentials and competitive analysis capabilities, and optimized marketplace seller lookups — together establishing the foundational data layer for Skematic's business readiness assessments."
+        "rationale": "Redesigned the core data model around products, introduced modular schema architecture, and added company credentials and competitive analysis capabilities to establish a scalable foundation for business readiness insights."
       }
     ],
     "totalPoints": 21,

@@ -2,7 +2,7 @@
   "week": "2025-W49",
   "startDate": "2025-12-01",
   "endDate": "2025-12-07",
-  "generatedAt": "2026-06-27T15:58:12.371Z",
+  "generatedAt": "2026-08-10T18:50:49.516Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 2,
         "points": 1,
-        "rationale": "Single-line version bump in package.json is a trivial dependency update with no custom logic changes.",
+        "rationale": "Trivial version bump in package.json with only 1 custom line changed.",
         "category": "Infrastructure",
         "vendored": true,
         "vendoredRatio": 98,
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Removing progress steps with only 3 custom lines changed in a single UI component is a trivial UI tweak.",
+        "rationale": "Minor UI tweak removing progress steps with only 3 lines changed in a single component file.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -57,14 +57,14 @@
     "stories": [
       {
         "id": 1,
-        "name": "Platform Upgrade & Simplified Onboarding Experience",
+        "name": "Platform Upgrade and UI Simplification",
         "points": 2,
         "category": "Infrastructure",
         "prs": [
           173,
           169
         ],
-        "rationale": "Updated the platform's core framework to the latest Next.js version while streamlining the user journey by removing progress steps, together delivering a more stable and frictionless experience."
+        "rationale": "Upgraded the Next.js framework to the latest version while streamlining the user experience by removing progress steps, together delivering a cleaner and more modern platform foundation."
       }
     ],
     "totalPoints": 2,

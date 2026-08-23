@@ -2,7 +2,7 @@
   "week": "2026-W04",
   "startDate": "2026-01-19",
   "endDate": "2026-01-25",
-  "generatedAt": "2026-06-27T15:59:45.237Z",
+  "generatedAt": "2026-08-10T18:52:37.267Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 3,
         "points": 2,
-        "rationale": "Small permission logic change across 3 files with only 6 custom lines added, removing a domain restriction with minimal complexity.",
+        "rationale": "Small permission/access control change touching 3 files with only 6 custom lines added, removing a domain restriction from the COACH role logic.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -43,7 +43,7 @@
         "prs": [
           227
         ],
-        "rationale": "Removed the COACH domain restriction to broaden administrative access and reduce friction for eligible users."
+        "rationale": "Removed the COACH domain restriction to broaden admin access and allow a wider set of users to operate within the platform."
       }
     ],
     "totalPoints": 2,

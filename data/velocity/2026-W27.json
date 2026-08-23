@@ -1,0 +1,761 @@
+{
+  "week": "2026-W27",
+  "startDate": "2026-06-29",
+  "endDate": "2026-07-05",
+  "generatedAt": "2026-08-10T19:01:51.312Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 482,
+        "title": "Re-apply guided-experience UI / action-needed tray (formerly #475)",
+        "author": "Jason",
+        "mergedAt": "2026-06-29T03:16:33Z",
+        "additions": 0,
+        "customAdditions": 0,
+        "deletions": 0,
+        "files": 0,
+        "points": 1,
+        "rationale": "Zero custom lines, zero files changed — this is a no-op re-apply PR with no measurable code delta.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Mauro": 1
+        }
+      },
+      {
+        "pr": 512,
+        "title": "sync: merge main into staging (2026-07-01)",
+        "author": "Jason",
+        "mergedAt": "2026-07-01T17:28:10Z",
+        "additions": 0,
+        "customAdditions": 2,
+        "deletions": 0,
+        "files": 2,
+        "points": 1,
+        "rationale": "Only 2 custom lines across 2 files in a routine main-to-staging sync merge, representing trivial or no real logic change.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 530,
+        "title": "feat(deployment): Skematic-branded Cognito Managed Login (fix broken branding)",
+        "author": "Chad",
+        "mergedAt": "2026-07-03T17:02:27Z",
+        "additions": 0,
+        "customAdditions": 466,
+        "deletions": 0,
+        "files": 5,
+        "points": 5,
+        "rationale": "466 lines across 5 Terraform files introducing Skematic-branded Cognito Managed Login with templated branding settings and module wiring is a solid, meaningful infrastructure feature.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 527,
+        "title": "refactor(deployment): one Cognito trigger-Lambda module; invoke permissions into modules/cognito",
+        "author": "Chad",
+        "mergedAt": "2026-07-02T20:20:57Z",
+        "additions": 0,
+        "customAdditions": 87,
+        "deletions": 0,
+        "files": 10,
+        "points": 5,
+        "rationale": "87 lines across 10 Terraform files consolidating Cognito trigger-Lambda into a single reusable module with invoke permissions is a meaningful infrastructure refactor touching multiple modules.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 520,
+        "title": "fix(email): honor staging redirect-bypass at the transport layer (double-override)",
+        "author": "Chad",
+        "mergedAt": "2026-07-02T06:21:44Z",
+        "additions": 0,
+        "customAdditions": 9,
+        "deletions": 0,
+        "files": 2,
+        "points": 2,
+        "rationale": "9 lines across 2 email library files applying a targeted staging redirect-bypass fix at the transport layer is a small, focused bug fix.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 508,
+        "title": "fix(deployment): recover from RDS SG incident on stagingx apply",
+        "author": "Chad",
+        "mergedAt": "2026-07-01T02:24:46Z",
+        "additions": 0,
+        "customAdditions": 67,
+        "deletions": 0,
+        "files": 3,
+        "points": 3,
+        "rationale": "67 lines across 3 Terraform files importing resources and patching network/lambda modules to recover from an RDS security-group incident is a modest but non-trivial infrastructure remediation.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 528,
+        "title": "feat(auth): in-app change-password form (Cognito ChangePassword API)",
+        "author": "Chad",
+        "mergedAt": "2026-07-02T21:38:51Z",
+        "additions": 0,
+        "customAdditions": 229,
+        "deletions": 0,
+        "files": 5,
+        "points": 5,
+        "rationale": "229 lines across 5 files adding a full in-app change-password form wired to the Cognito ChangePassword API, including a new route, server action, UI section, and Cognito client extension, is a solid auth feature.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 526,
+        "title": "feat(auth): change-password button in the profile dialog (hosted Cognito flow)",
+        "author": "Chad",
+        "mergedAt": "2026-07-02T20:59:35Z",
+        "additions": 0,
+        "customAdditions": 48,
+        "deletions": 0,
+        "files": 3,
+        "points": 3,
+        "rationale": "48 lines across 3 files adding a change-password button in the profile dialog that redirects to the hosted Cognito flow is a modest, self-contained auth UI addition.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 525,
+        "title": "feat(auth): delete app-side password + verify-token flows (Cognito owns them)",
+        "author": "Chad",
+        "mergedAt": "2026-07-02T19:25:41Z",
+        "additions": 0,
+        "customAdditions": 9,
+        "deletions": 0,
+        "files": 21,
+        "points": 5,
+        "rationale": "Although only 9 net additions, the 21-file scope of deleting app-side password-reset and email-verification flows (delegating fully to Cognito) represents a meaningful architectural cleanup with broad surface area.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 524,
+        "title": "feat(auth): sign-up via Cognito hosted UI (retire the app-side wizard)",
+        "author": "Chad",
+        "mergedAt": "2026-07-02T18:52:23Z",
+        "additions": 0,
+        "customAdditions": 226,
+        "deletions": 0,
+        "files": 19,
+        "points": 8,
+        "rationale": "226 lines across 19 files retiring the app-side signup wizard and routing sign-up through Cognito hosted UI, including schema migration, callback wiring, onboarding component updates, and Marketplace cookie handling, is a significant auth architectural change.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 523,
+        "title": "feat(auth): activate Cognito-native sign-up (wire PreSignUp + PostConfirmation)",
+        "author": "Chad",
+        "mergedAt": "2026-07-02T18:06:37Z",
+        "additions": 0,
+        "customAdditions": 300,
+        "deletions": 0,
+        "files": 10,
+        "points": 8,
+        "rationale": "300 lines across 10 Terraform and CI files activating Cognito-native sign-up by wiring PreSignUp and PostConfirmation Lambda triggers into the Cognito module with new reusable trigger-Lambda infrastructure is a significant infrastructure feature.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 522,
+        "title": "feat(auth): PreSignUp + PostConfirmation Lambda handlers (Cognito-native signup)",
+        "author": "Chad",
+        "mergedAt": "2026-07-02T17:50:57Z",
+        "additions": 0,
+        "customAdditions": 132,
+        "deletions": 0,
+        "files": 6,
+        "points": 5,
+        "rationale": "132 lines across 6 files implementing PreSignUp and PostConfirmation Lambda handlers in TypeScript with build scripts is a solid new backend feature enabling Cognito-native signup logic.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 519,
+        "title": "feat(onboarding): staging-only email-reroute opt-out + logout lands on home",
+        "author": "Chad",
+        "mergedAt": "2026-07-01T23:38:30Z",
+        "additions": 0,
+        "customAdditions": 57,
+        "deletions": 0,
+        "files": 7,
+        "points": 3,
+        "rationale": "57 lines across 7 files adding a staging-only email-reroute opt-out toggle and fixing logout destination is a modest set of coordinated staging-environment improvements.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 521,
+        "title": "docs: plan to make Cognito the sole password authority",
+        "author": "Chad",
+        "mergedAt": "2026-07-02T16:21:52Z",
+        "additions": 0,
+        "customAdditions": 91,
+        "deletions": 0,
+        "files": 2,
+        "points": 1,
+        "rationale": "91 lines across 2 documentation files only — a docs-only PR outlining the Cognito password-authority migration plan with no code changes.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 518,
+        "title": "fix(auth): real Cognito logout + sync emailConfirmed on hosted-UI login",
+        "author": "Chad",
+        "mergedAt": "2026-07-01T23:06:30Z",
+        "additions": 0,
+        "customAdditions": 55,
+        "deletions": 0,
+        "files": 6,
+        "points": 5,
+        "rationale": "55 lines across 6 files implementing real Cognito logout (Terraform + two route handlers) and syncing emailConfirmed on hosted-UI login callback is a meaningful, multi-layer auth correctness fix.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 517,
+        "title": "fix(vpn): drop redundant Client VPN route (InvalidClientVpnDuplicateRoute)",
+        "author": "Chad",
+        "mergedAt": "2026-07-01T20:55:53Z",
+        "additions": 0,
+        "customAdditions": 4,
+        "deletions": 0,
+        "files": 2,
+        "points": 1,
+        "rationale": "Trivial fix removing a duplicate VPN route entry in Terraform config plus a doc update — 4 lines across 2 files.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 509,
+        "title": "fix(auth): build absolute URLs from configured APP_URL, not the Host header",
+        "author": "Chad",
+        "mergedAt": "2026-07-01T05:02:48Z",
+        "additions": 0,
+        "customAdditions": 93,
+        "deletions": 0,
+        "files": 15,
+        "points": 5,
+        "rationale": "Cross-cutting security fix touching 15 files across auth routes, OAuth integrations, email utilities, and a new app-url abstraction library — meaningful refactor with moderate complexity.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 516,
+        "title": "fix(vpn): unblock Client VPN apply (ASCII SG description + out-of-band profile secret)",
+        "author": "Chad",
+        "mergedAt": "2026-07-01T20:23:15Z",
+        "additions": 0,
+        "customAdditions": 25,
+        "deletions": 0,
+        "files": 3,
+        "points": 2,
+        "rationale": "Small targeted fix addressing two specific Terraform apply blockers (SG description + out-of-band secret) across 3 files with 25 lines.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 515,
+        "title": "chore(deployment): enable stagingx Client VPN",
+        "author": "Chad",
+        "mergedAt": "2026-07-01T19:55:38Z",
+        "additions": 0,
+        "customAdditions": 6,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single tfvars file change toggling a feature flag to enable the Client VPN for stagingx — trivial config tweak.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 514,
+        "title": "feat(deployment): reusable Client VPN module (mutual-TLS) for staging + production",
+        "author": "Chad",
+        "mergedAt": "2026-07-01T19:38:54Z",
+        "additions": 0,
+        "customAdditions": 524,
+        "deletions": 0,
+        "files": 9,
+        "points": 8,
+        "rationale": "New reusable mutual-TLS Client VPN Terraform module with full variable/output/version scaffolding, wired into both staging and production environments, plus documentation — significant infrastructure feature.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 510,
+        "title": "fix(auth): disable self-serve Cognito sign-up + normalize email case",
+        "author": "Chad",
+        "mergedAt": "2026-07-01T22:25:14Z",
+        "additions": 0,
+        "customAdditions": 18,
+        "deletions": 0,
+        "files": 3,
+        "points": 3,
+        "rationale": "Auth hardening across three files — disabling self-serve Cognito sign-up and normalising email case in the migration Lambda and callback route — modest but security-relevant change.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 511,
+        "title": "fix(portfolios): count only active companies on admin list cards (SM-659)",
+        "author": "Jason",
+        "mergedAt": "2026-07-01T17:22:57Z",
+        "additions": 0,
+        "customAdditions": 2,
+        "deletions": 0,
+        "files": 2,
+        "points": 1,
+        "rationale": "Two-line fix filtering inactive companies from portfolio counts — trivial targeted bug fix.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 507,
+        "title": "feat(auth): migrate to Cognito hosted UI + lazy password migration",
+        "author": "Chad",
+        "mergedAt": "2026-07-01T01:42:28Z",
+        "additions": 0,
+        "customAdditions": 1266,
+        "deletions": 0,
+        "files": 37,
+        "points": 21,
+        "rationale": "Full auth system overhaul migrating to Cognito hosted UI with a lazy password migration Lambda, new Terraform modules, updated CI workflows, and widespread UI/route changes across 37+ files — transformative, weeks of work.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 18,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 506,
+        "title": "fix(deployment): RDS proxy access for stagingx ECS + Cognito branding fallback",
+        "author": "Chad",
+        "mergedAt": "2026-06-30T23:34:08Z",
+        "additions": 0,
+        "customAdditions": 27,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "Single Terraform file fix granting RDS proxy access to stagingx ECS and adding a Cognito branding fallback — small targeted infrastructure fix.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 505,
+        "title": "fix(deployment): cloudfront:UpdateDistribution permission + logo aspect ratio",
+        "author": "Chad",
+        "mergedAt": "2026-06-30T22:57:28Z",
+        "additions": 0,
+        "customAdditions": 32,
+        "deletions": 0,
+        "files": 2,
+        "points": 2,
+        "rationale": "Two-file fix adding a missing CloudFront IAM permission and correcting the Cognito branding logo aspect ratio — small but touches both infra and assets.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 504,
+        "title": "fix(bootstrap): grant dns_writer route53:ListTagsForResource",
+        "author": "Chad",
+        "mergedAt": "2026-06-30T22:08:48Z",
+        "additions": 0,
+        "customAdditions": 7,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-file IAM policy tweak adding one missing Route53 permission — trivial fix.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 503,
+        "title": "Modularize staging Terraform, import legacy app for clean teardown",
+        "author": "Chad",
+        "mergedAt": "2026-06-30T21:52:52Z",
+        "additions": 0,
+        "customAdditions": 2906,
+        "deletions": 0,
+        "files": 36,
+        "points": 21,
+        "rationale": "Major Terraform modularisation of the entire staging environment with legacy app import, new reusable modules (app, cognito, database, network, etc.), CI workflow updates, and a full integration plan across 36 files — transformative infrastructure architectural work.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chad": 1
+        }
+      },
+      {
+        "pr": 501,
+        "title": "fix(automation): use BullMQ-safe jobId for evaluate enqueue",
+        "author": "Jason",
+        "mergedAt": "2026-06-30T05:06:26Z",
+        "additions": 0,
+        "customAdditions": 5,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Five-line targeted fix ensuring BullMQ-safe job IDs in a single enqueue file — trivial bug fix.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 500,
+        "title": "fix(automation): use BullMQ-safe jobId for evaluate enqueue",
+        "author": "Jason",
+        "mergedAt": "2026-06-29T21:21:57Z",
+        "additions": 0,
+        "customAdditions": 5,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Duplicate of PR #501 — same five-line BullMQ job ID fix in the same single file.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 499,
+        "title": "Fix rival marketplace product discovery and admin spinner issue",
+        "author": "Jason",
+        "mergedAt": "2026-06-29T02:21:30Z",
+        "additions": 0,
+        "customAdditions": 218,
+        "deletions": 0,
+        "files": 5,
+        "points": 5,
+        "rationale": "Multi-file fix addressing rival marketplace product discovery logic and admin spinner behaviour, introducing a new pending-state utility and updating three admin UI components — solid bug fix with meaningful scope.",
+        "category": "Admin/Tools",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 498,
+        "title": "Fix rival marketplace product discovery + admin recollect spinner",
+        "author": "Jason",
+        "mergedAt": "2026-06-29T02:04:58Z",
+        "additions": 0,
+        "customAdditions": 238,
+        "deletions": 0,
+        "files": 8,
+        "points": 8,
+        "rationale": "Touches 8 custom files across AI enrichment, marketplace discovery logic, admin UI components, and a shared lib utility with 238 net-new lines and a dedicated unit test — a meaningful multi-area feature fix with non-trivial scope.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      }
+    ],
+    "totalPoints": 143,
+    "byAuthor": {
+      "Mauro": 1,
+      "Jason": 17,
+      "Chad": 125
+    },
+    "byCategory": {
+      "UI/UX": 4,
+      "DevOps": 2,
+      "Infrastructure": 58,
+      "Core Platform": 64,
+      "Admin/Tools": 7,
+      "AI/Agents": 8
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "Migrate Authentication to Cognito Hosted UI",
+        "points": 21,
+        "category": "Core Platform",
+        "prs": [
+          507,
+          524,
+          525,
+          518,
+          510,
+          509
+        ],
+        "rationale": "Replaced the app-side authentication wizard with Cognito's hosted UI, including lazy password migration, proper logout, email normalization, and secure URL building — making Cognito the authoritative identity provider."
+      },
+      {
+        "id": 2,
+        "name": "Cognito Native Sign-Up Flow (PreSignUp & PostConfirmation)",
+        "points": 21,
+        "category": "Infrastructure",
+        "prs": [
+          523,
+          522,
+          521,
+          528,
+          526
+        ],
+        "rationale": "Wired and deployed Cognito-native sign-up Lambda triggers (PreSignUp, PostConfirmation), added an in-app change-password form, and documented the plan to make Cognito the sole password authority."
+      },
+      {
+        "id": 3,
+        "name": "Skematic-Branded Cognito Login & Deployment Fixes",
+        "points": 13,
+        "category": "Infrastructure",
+        "prs": [
+          530,
+          506,
+          505,
+          527
+        ],
+        "rationale": "Delivered Skematic-branded Cognito Managed Login, fixed CloudFront permissions and logo aspect ratio, resolved RDS proxy access for stagingX, and refactored Cognito trigger-Lambda into a reusable module."
+      },
+      {
+        "id": 4,
+        "name": "Modularize Staging Infrastructure & Terraform Cleanup",
+        "points": 21,
+        "category": "Infrastructure",
+        "prs": [
+          503,
+          508,
+          504
+        ],
+        "rationale": "Modularized the staging Terraform configuration for clean teardown and future reuse, recovered from an RDS security group incident on stagingX, and granted the DNS writer the required Route53 permissions."
+      },
+      {
+        "id": 5,
+        "name": "Client VPN for Staging & Production Environments",
+        "points": 13,
+        "category": "Infrastructure",
+        "prs": [
+          514,
+          515,
+          516,
+          517
+        ],
+        "rationale": "Built and enabled a reusable mutual-TLS Client VPN Terraform module for staging and production, unblocked the VPN apply by fixing SG description and profile secret handling, and removed a duplicate route error."
+      },
+      {
+        "id": 6,
+        "name": "Staging Email Routing & Onboarding Improvements",
+        "points": 5,
+        "category": "Core Platform",
+        "prs": [
+          520,
+          519
+        ],
+        "rationale": "Ensured staging emails are reliably rerouted at the transport layer with a double-override bypass, and added a staging-only opt-out plus a post-logout redirect to the home page for smoother onboarding testing."
+      },
+      {
+        "id": 7,
+        "name": "Guided Experience UI & Action-Needed Tray",
+        "points": 1,
+        "category": "UI/UX",
+        "prs": [
+          482
+        ],
+        "rationale": "Re-applied the guided-experience UI and action-needed tray to surface contextual next steps for users navigating the platform."
+      },
+      {
+        "id": 8,
+        "name": "Rival Marketplace Product Discovery & Admin Spinner Fix",
+        "points": 13,
+        "category": "AI/Agents",
+        "prs": [
+          498,
+          499
+        ],
+        "rationale": "Fixed rival marketplace product discovery logic and resolved a stuck admin recollect spinner, restoring reliable competitive intelligence data collection."
+      },
+      {
+        "id": 9,
+        "name": "BullMQ Job Enqueueing Stability Fix",
+        "points": 1,
+        "category": "Core Platform",
+        "prs": [
+          501,
+          500
+        ],
+        "rationale": "Fixed a BullMQ-safe jobId issue for evaluate enqueue to prevent duplicate or failed background job submissions."
+      },
+      {
+        "id": 10,
+        "name": "Admin Portfolio Active Company Count Fix",
+        "points": 1,
+        "category": "Admin/Tools",
+        "prs": [
+          511
+        ],
+        "rationale": "Corrected admin list cards to count only active companies in portfolios, ensuring accurate portfolio metrics for administrators."
+      },
+      {
+        "id": 11,
+        "name": "Sync Main into Staging",
+        "points": 1,
+        "category": "DevOps",
+        "prs": [
+          512
+        ],
+        "rationale": "Routine merge of main branch into staging to keep the staging environment up to date with the latest production-ready changes."
+      }
+    ],
+    "totalPoints": 111,
+    "byAuthor": {
+      "Chad": 94,
+      "Jason": 17
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 33.02,
+      "grouped": 25.63
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

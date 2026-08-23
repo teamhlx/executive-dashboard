@@ -2,7 +2,7 @@
   "week": "2026-W18",
   "startDate": "2026-04-27",
   "endDate": "2026-05-03",
-  "generatedAt": "2026-06-27T16:03:10.247Z",
+  "generatedAt": "2026-08-10T18:56:18.041Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 85,
         "points": 21,
-        "rationale": "A massive reorganization touching 85 files and 5639 custom lines across the entire AI collector/agent infrastructure, representing a sweeping architectural restructuring of core readiness data-field collectors and chat-agent sub-graphs.",
+        "rationale": "A massive reorganization of the collector architecture touching 85 files and 5639 custom lines across AI agents, sub-agents, tools, and data field collectors — clearly weeks of structural work.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 36,
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 3,
         "points": 1,
-        "rationale": "Trivial alignment of .env.example ordering to match App Runner secrets and a small gitignore/JSON config update across 3 files.",
+        "rationale": "Trivial alignment of .env.example to match App Runner secrets ordering, with a supporting JSON key-order file and .gitignore tweak.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -53,8 +53,8 @@
         "deletions": 0,
         "files": 16,
         "points": 8,
-        "rationale": "Spans multiple meaningful concerns — impersonation UX (banner, layout, header, user menu), admin company action cleanup, and a products-refresh collector chain — across 16 files with 370 custom lines of coordinated work.",
-        "category": "UI/UX",
+        "rationale": "Spans impersonation UX (banner, header, user menu, layout), admin company/queue actions cleanup, and a products refresh collector chain update across 16 files — a significant multi-concern feature.",
+        "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -72,7 +72,7 @@
         "deletions": 0,
         "files": 14,
         "points": 5,
-        "rationale": "Solid cross-cutting field update touching collectors, schema migrations, registry, score calculator, BTS generation, and UI slides across 13 files with meaningful data/schema and feature changes.",
+        "rationale": "Touches field definitions, schema migrations, collectors, scoring logic, a slide component, and BTS story generation across 14 files — a solid cross-cutting field update with data schema changes.",
         "category": "Data/Schema",
         "vendored": false,
         "vendoredRatio": 2,
@@ -91,7 +91,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Single-file, 2-line addition of an AWS partner badge collector — essentially a trivial stub or config entry.",
+        "rationale": "A single 2-line addition to one collector file for the AWS partner badge field — trivially small.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -110,7 +110,7 @@
         "deletions": 0,
         "files": 19,
         "points": 5,
-        "rationale": "A meaningful refactor of the chat-agent and sub-agents (context, state, prompts, tools, route, hook) spread across 19 files, coordinating consistent changes with modest net additions but significant structural impact.",
+        "rationale": "A meaningful refactor of the readiness/agent layer touching 19 files across context, state, prompts, multiple sub-agent graphs, and the chat API route — modest in lines but broad in scope.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -129,7 +129,7 @@
         "deletions": 0,
         "files": 238,
         "points": 21,
-        "rationale": "An epic 238-file, 19349-line PR introducing Skematic Intelligence — encompassing new competitive/rival data collection architecture, extensive TODO planning docs, schema diagrams, and broad platform-wide additions representing weeks of transformative work.",
+        "rationale": "An epic 19349-line, 238-file addition introducing Skematic Intelligence — encompassing competitive analysis, rival data collection architecture, extensive TODO planning docs, new agents, and sweeping platform infrastructure — clearly transformative, weeks-long work.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 14,
@@ -147,7 +147,7 @@
     "byCategory": {
       "AI/Agents": 27,
       "DevOps": 1,
-      "UI/UX": 8,
+      "Admin/Tools": 8,
       "Data/Schema": 5,
       "Core Platform": 21
     }
@@ -156,14 +156,14 @@
     "stories": [
       {
         "id": 1,
-        "name": "AI Collector Architecture Overhaul",
+        "name": "AI Collector Infrastructure Overhaul",
         "points": 21,
         "category": "AI/Agents",
         "prs": [
           335,
           338
         ],
-        "rationale": "Reorganized the collector system and refactored the readiness agent to establish a more scalable and maintainable AI pipeline architecture."
+        "rationale": "Reorganized the collector architecture and refactored the readiness agent pipeline to establish a more scalable and maintainable AI data collection foundation."
       },
       {
         "id": 2,
@@ -173,44 +173,53 @@
         "prs": [
           339
         ],
-        "rationale": "Delivered a major new Skematic Intelligence capability, representing a foundational advancement in the platform's AI-powered business readiness offering."
+        "rationale": "Delivered the core Skematic Intelligence feature, enabling AI-powered business readiness insights across the platform."
       },
       {
         "id": 3,
-        "name": "Admin Experience & Collector Chain Improvements",
+        "name": "Admin Tooling & Product Readiness Improvements",
         "points": 8,
-        "category": "UI/UX",
+        "category": "Admin/Tools",
         "prs": [
           343
         ],
-        "rationale": "Enhanced admin usability through impersonation UX improvements, cleaned up company actions, and refreshed the products collector chain."
+        "rationale": "Enhanced the admin experience with impersonation UX improvements, company action cleanup, and a refreshed product collector chain for better operational control."
       },
       {
         "id": 4,
         "name": "AWS Partner Badge Integration",
-        "points": 5,
+        "points": 1,
         "category": "Integrations",
         "prs": [
-          341,
-          342
+          341
         ],
-        "rationale": "Added an AWS Partner Badge data collector and updated supporting field definitions to enable tracking of AWS partner certification readiness."
+        "rationale": "Added an AWS partner badge collector to automatically surface AWS partnership credentials as part of business readiness signals."
       },
       {
         "id": 5,
+        "name": "Data Schema Field Updates",
+        "points": 5,
+        "category": "Data/Schema",
+        "prs": [
+          342
+        ],
+        "rationale": "Applied targeted field-level schema updates to keep the data model aligned with evolving business readiness requirements."
+      },
+      {
+        "id": 6,
         "name": "Deployment Configuration Alignment",
         "points": 1,
         "category": "DevOps",
         "prs": [
           340
         ],
-        "rationale": "Aligned the environment example file to match App Runner secrets ordering, reducing deployment configuration friction."
+        "rationale": "Synchronized the environment variable example file with App Runner secrets ordering to reduce deployment friction and onboarding errors."
       }
     ],
-    "totalPoints": 56,
+    "totalPoints": 57,
     "byAuthor": {
       "Jason": 47,
-      "Chris": 9
+      "Chris": 10
     }
   },
   "meta": {
@@ -218,7 +227,7 @@
     "codingAllocation": 0.8,
     "fteEquiv": {
       "prLevel": 14.32,
-      "grouped": 12.93
+      "grouped": 13.16
     },
     "ptsPerWeekPerFTE": 4.33
   }

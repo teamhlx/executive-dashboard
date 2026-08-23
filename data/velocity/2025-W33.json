@@ -2,7 +2,7 @@
   "week": "2025-W33",
   "startDate": "2025-08-11",
   "endDate": "2025-08-17",
-  "generatedAt": "2026-06-27T15:53:23.332Z",
+  "generatedAt": "2026-08-10T18:45:25.786Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 5,
         "points": 3,
-        "rationale": "Removes a hardcoded env var and implements automatic base URL detection across three email utility files plus config, modest but meaningful refactor across multiple files.",
+        "rationale": "Removes a required env var by implementing automatic base URL detection across email utilities and config files — modest but meaningful logic spread across 5 files.",
         "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 1,
         "points": 2,
-        "rationale": "Single-file change to amplify.yml adding resilience logic for missing env vars — small but deliberate DevOps fix.",
+        "rationale": "Small targeted change to make the Amplify build tolerate missing env vars, confined to a single config file with 22 lines.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -52,8 +52,8 @@
         "customAdditions": 4409,
         "deletions": 0,
         "files": 97,
-        "points": 13,
-        "rationale": "Even discounting vendored/auto-gen content, migrating API routes to Server Actions across a large custom codebase with schema, seed, docs, and config changes is a major architectural shift.",
+        "points": 21,
+        "rationale": "A sweeping migration of API routes to Next.js Server Actions touching 97+ files with 4409 custom lines, representing a fundamental architectural shift in how the platform handles server-side logic.",
         "category": "Core Platform",
         "vendored": true,
         "vendoredRatio": 70,
@@ -72,7 +72,7 @@
         "deletions": 0,
         "files": 6,
         "points": 1,
-        "rationale": "Seven lines of type fixes across six files — purely trivial cleanup with no new logic.",
+        "rationale": "Trivial type fixes across a handful of calculator and interface files with only 7 lines added.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -90,34 +90,34 @@
         "customAdditions": 1096,
         "deletions": 0,
         "files": 26,
-        "points": 8,
-        "rationale": "1096 custom lines introducing the readiness calculator, collector, UI components, and page represents a significant feature delivery; Jason's single commit is a minor one-line component tweak.",
+        "points": 13,
+        "rationale": "Major feature addition implementing the readiness calculator, collector, and full readiness validation page with multiple new UI components across 26 files and 1096 lines.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 20,
         "isMultiAuthor": true,
         "attribution": {
-          "Chris": 0.95,
-          "Jason": 0.05
+          "Chris": 0.92,
+          "Jason": 0.08
         }
       },
       {
         "pr": 9,
         "title": "Ch/readiness",
-        "author": "Jason",
+        "author": "Chris",
         "mergedAt": "2025-08-14T18:16:41Z",
         "additions": 0,
         "customAdditions": 877,
         "deletions": 0,
         "files": 38,
-        "points": 8,
-        "rationale": "877 custom lines building out the readiness agent with MCP/search tools, data-field calculators, collector, schema, seed, and supporting infrastructure is a significant, multi-faceted feature.",
+        "points": 13,
+        "rationale": "Substantial foundational build of the readiness AI agent, tools, data-field calculators, schema, and supporting infrastructure across 877 custom lines and 38 files.",
         "category": "AI/Agents",
         "vendored": true,
         "vendoredRatio": 73,
         "isMultiAuthor": false,
         "attribution": {
-          "Jason": 1
+          "Chris": 1
         }
       },
       {
@@ -130,7 +130,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Five-line syntax fix and env-var logging addition to a single config file — trivial DevOps patch.",
+        "rationale": "Trivial syntax fix and minor env var logging addition in a single CI config file with only 5 lines.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -149,7 +149,7 @@
         "deletions": 0,
         "files": 3,
         "points": 2,
-        "rationale": "19 lines across three files fixing Lambda deployment config, ESLint settings, and a small TypeScript quality improvement — small but purposeful fix.",
+        "rationale": "Small fixes addressing AWS Lambda deployment issues and TypeScript quality across 3 files with 19 lines.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -168,8 +168,8 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Two-line Prisma schema tweak to resolve an AWS Lambda deployment issue — trivial single-line-class fix.",
-        "category": "Data/Schema",
+        "rationale": "Single-file, 2-line schema fix to resolve a specific AWS Lambda Prisma deployment issue.",
+        "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -186,8 +186,8 @@
         "customAdditions": 4089,
         "deletions": 0,
         "files": 81,
-        "points": 13,
-        "rationale": "Even after stripping 71% vendored content, ~1186 custom lines spanning auth, session, readiness agent, UI framework, Dockerfile, Amplify config, and docs across 18 commits represents a foundational platform build-out that is effectively a large architectural effort.",
+        "points": 21,
+        "rationale": "Foundational platform PR establishing auth, sessions, UI framework, Skematic branding, dynamic dashboard, readiness agent, Docker/Amplify infra, and Prisma schema across 81 files and 4089 custom lines.",
         "category": "Core Platform",
         "vendored": true,
         "vendoredRatio": 71,
@@ -207,8 +207,8 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Single-line package.json update — trivially small change.",
-        "category": "DevOps",
+        "rationale": "Single-line package.json update — trivially small.",
+        "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -226,7 +226,7 @@
         "deletions": 0,
         "files": 5,
         "points": 3,
-        "rationale": "169 lines adding Amplify deployment configuration, next.config updates, and two documentation files — modest but deliberate infrastructure and docs setup.",
+        "rationale": "Adds initial AWS Amplify deployment configuration along with deployment and UI component docs across 5 files and 169 lines — small-medium infrastructure setup.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -236,49 +236,34 @@
         }
       }
     ],
-    "totalPoints": 56,
+    "totalPoints": 82,
     "byAuthor": {
-      "Jason": 42.6,
-      "Chris": 13.5
+      "Jason": 47.6,
+      "Chris": 34.5
     },
     "byCategory": {
-      "Infrastructure": 3,
-      "DevOps": 9,
-      "Core Platform": 27,
-      "AI/Agents": 16,
-      "Data/Schema": 1
+      "Infrastructure": 5,
+      "DevOps": 8,
+      "Core Platform": 43,
+      "AI/Agents": 26
     }
   },
   "grouped": {
     "stories": [
       {
         "id": 1,
-        "name": "Business Readiness Assessment Engine",
+        "name": "AI-Powered Business Readiness Assessment",
         "points": 21,
         "category": "AI/Agents",
         "prs": [
           11,
           9
         ],
-        "rationale": "Built and integrated the core readiness calculator, collector, and page that power Skematic's AI-driven business readiness assessment feature."
+        "rationale": "Built the core readiness calculator, collector, and page that enables users to assess their business readiness through AI-driven scoring and data collection."
       },
       {
         "id": 2,
-        "name": "Staging Environment Launch",
-        "points": 21,
-        "category": "DevOps",
-        "prs": [
-          3,
-          4,
-          5,
-          7,
-          8
-        ],
-        "rationale": "Established and stabilized the AWS Amplify staging deployment pipeline, including configuration, Lambda fixes, TypeScript improvements, and syntax corrections."
-      },
-      {
-        "id": 3,
-        "name": "Production-Ready API Architecture",
+        "name": "Modern Server-Side API Architecture",
         "points": 21,
         "category": "Core Platform",
         "prs": [
@@ -288,39 +273,53 @@
         "rationale": "Migrated API routes to Next.js Server Actions to improve performance, security, and maintainability of the core platform backend."
       },
       {
-        "id": 4,
-        "name": "Resilient Cloud Infrastructure Configuration",
-        "points": 5,
-        "category": "Infrastructure",
+        "id": 3,
+        "name": "Staging Environment Deployment",
+        "points": 21,
+        "category": "Core Platform",
         "prs": [
-          16,
-          15
+          4
         ],
-        "rationale": "Hardened the deployment infrastructure by automating base URL detection and making Amplify builds tolerant of missing environment variables."
+        "rationale": "Enabled a staging deployment environment to support safe testing and validation before production releases."
+      },
+      {
+        "id": 4,
+        "name": "AWS Amplify CI/CD Pipeline",
+        "points": 13,
+        "category": "DevOps",
+        "prs": [
+          3,
+          8,
+          15,
+          7
+        ],
+        "rationale": "Established and hardened a reliable AWS Amplify deployment pipeline with environment variable handling, syntax fixes, and resilient build configuration."
       },
       {
         "id": 5,
-        "name": "Database Deployment Stability Fix",
-        "points": 1,
-        "category": "Data/Schema",
+        "name": "Simplified Cloud Infrastructure Configuration",
+        "points": 8,
+        "category": "Infrastructure",
         "prs": [
-          6
+          16,
+          6,
+          5
         ],
-        "rationale": "Resolved a critical Prisma deployment issue on AWS Lambda to ensure reliable database connectivity in production."
+        "rationale": "Streamlined infrastructure setup by automating base URL detection, resolving Prisma Lambda deployment issues, and updating package dependencies to reduce manual configuration overhead."
       }
     ],
-    "totalPoints": 69,
+    "totalPoints": 84,
     "byAuthor": {
-      "Chris": 10.5,
-      "Jason": 58.5
+      "Chris": 21,
+      "Jason": 63
     }
   },
   "meta": {
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 12.93,
-      "grouped": 15.93
+      "prLevel": 18.94,
+      "grouped": 19.4
     },
     "ptsPerWeekPerFTE": 4.33
   }

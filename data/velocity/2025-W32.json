@@ -2,20 +2,20 @@
   "week": "2025-W32",
   "startDate": "2025-08-04",
   "endDate": "2025-08-10",
-  "generatedAt": "2026-06-27T15:53:00.186Z",
+  "generatedAt": "2026-08-10T18:45:01.777Z",
   "prLevel": {
     "prs": [
       {
         "pr": 2,
         "title": "feat: Complete Skematic Platform Implementation with Dynamic Readiness Dashboard",
-        "author": "Jason",
+        "author": "Chris",
         "mergedAt": "2025-08-10T17:15:19Z",
         "additions": 0,
         "customAdditions": 3921,
         "deletions": 0,
         "files": 78,
         "points": 21,
-        "rationale": "3921 lines of custom work across 78 files establishing the entire Skematic platform from scratch — including AI readiness agents, dynamic dashboard with company scoring, auth/session, data field calculators, UI framework with branding, Docker infrastructure, and database setup — represents a transformative, multi-week foundational build.",
+        "rationale": "This is a foundational platform implementation spanning 78 files with 3921 custom lines covering AI readiness agents, authentication, dynamic dashboard scoring, data calculators, UI framework, and full-stack infrastructure — representing weeks of transformative work establishing the entire Skematic platform.",
         "category": "Core Platform",
         "vendored": true,
         "vendoredRatio": 72,
@@ -35,7 +35,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "A 12-line addition to .gitignore is a trivial configuration tweak with no functional impact.",
+        "rationale": "A trivial single-file addition of 12 lines to .gitignore for improved security and workflow hygiene.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -63,15 +63,25 @@
         "points": 21,
         "category": "Core Platform",
         "prs": [
-          2,
+          2
+        ],
+        "rationale": "Delivered the complete Skematic platform implementation including a dynamic readiness dashboard, establishing the foundational product experience for users."
+      },
+      {
+        "id": 2,
+        "name": "Secure and Streamline Development Workflow",
+        "points": 1,
+        "category": "DevOps",
+        "prs": [
           1
         ],
-        "rationale": "Delivered the complete Skematic platform with a dynamic readiness dashboard alongside foundational security and workflow improvements to support ongoing development."
+        "rationale": "Enhanced the .gitignore configuration to improve repository security and reduce friction in the development workflow."
       }
     ],
-    "totalPoints": 21,
+    "totalPoints": 22,
     "byAuthor": {
-      "Jason": 21
+      "Chris": 21,
+      "Jason": 1
     }
   },
   "meta": {
@@ -79,7 +89,7 @@
     "codingAllocation": 0.8,
     "fteEquiv": {
       "prLevel": 5.08,
-      "grouped": 4.85
+      "grouped": 5.08
     },
     "ptsPerWeekPerFTE": 4.33
   }

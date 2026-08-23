@@ -2,7 +2,7 @@
   "week": "2026-W14",
   "startDate": "2026-03-30",
   "endDate": "2026-04-05",
-  "generatedAt": "2026-06-27T16:01:47.812Z",
+  "generatedAt": "2026-08-10T18:54:48.226Z",
   "prLevel": {
     "prs": [
       {
@@ -15,14 +15,14 @@
         "deletions": 0,
         "files": 128,
         "points": 21,
-        "rationale": "128 files changed with 7783 custom lines spanning schema refactors, AI agent updates, playbook introduction, assessment page overhaul, and broad code quality hardening across the full platform stack — this is a transformative, multi-week integration effort.",
+        "rationale": "128 files and 7783 custom lines spanning schema refactors, AI agent updates, playbook introduction, assessment page overhaul, seed scripts, Docker config, and extensive documentation represent a transformative, multi-week architectural effort.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": true,
         "attribution": {
-          "Chris": 0.45,
-          "Jason": 0.55
+          "Chris": 0.65,
+          "Jason": 0.35
         }
       },
       {
@@ -35,7 +35,7 @@
         "deletions": 0,
         "files": 57,
         "points": 13,
-        "rationale": "57 files and 3489 custom lines introducing playbooks, assessment page refactor, new Prisma schema models with migrations, seed scripts, and supporting docs represent a major feature-level effort that forms the foundational spine later merged into PR #291.",
+        "rationale": "57 files and 3489 custom lines covering Prisma schema changes, multiple migrations, playbook seeding, assessment client refactor, and new UI components constitute a major feature/architectural change that appears to be the foundational slice later extended in PR #291.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -48,8 +48,8 @@
     ],
     "totalPoints": 34,
     "byAuthor": {
-      "Chris": 20.5,
-      "Jason": 13.6
+      "Chris": 24.8,
+      "Jason": 9.4
     },
     "byCategory": {
       "Core Platform": 34
@@ -59,14 +59,14 @@
     "stories": [
       {
         "id": 1,
-        "name": "Platform Stability and Code Quality Overhaul",
+        "name": "Platform Stability and Schema Alignment",
         "points": 21,
         "category": "Core Platform",
         "prs": [
           291,
           283
         ],
-        "rationale": "Combined schema alignment, playbook and assessment refactoring, and miscellaneous code quality improvements to strengthen the overall reliability and maintainability of the core platform."
+        "rationale": "Combined refactoring, schema alignment, playbook and assessment improvements, and miscellaneous code quality hardening to strengthen the core platform foundation."
       }
     ],
     "totalPoints": 21,

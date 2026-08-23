@@ -2,7 +2,7 @@
   "week": "2025-W52",
   "startDate": "2025-12-22",
   "endDate": "2025-12-28",
-  "generatedAt": "2026-06-27T15:59:05.900Z",
+  "generatedAt": "2026-08-10T18:51:49.511Z",
   "prLevel": {
     "prs": [
       {
@@ -15,11 +15,11 @@
         "deletions": 0,
         "files": 30,
         "points": 8,
-        "rationale": "Release PR bundling admin dashboard charts, enhanced filtering for users/companies, and extensive documentation updates across ~30 files \u2014 meaningful feature work but largely an integration/release branch of PR #204's content.",
+        "rationale": "Release consolidation PR touching 30 files including admin dashboard UI components (filters, columns, analytics charts), navigation, layout, and extensive documentation updates — meaningful UI/admin feature surface with no deletions suggesting net-new additions across a well-scoped release.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 10,
-        "isMultiAuthor": true,
+        "isMultiAuthor": false,
         "attribution": {
           "Jason": 1
         }
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 28,
         "points": 8,
-        "rationale": "Adds admin dashboard analytics charts, enhanced filtering systems for users and companies, and supporting documentation across ~28 files \u2014 a solid multi-component feature with new UI components and page-level logic.",
+        "rationale": "Substantial admin dashboard feature PR adding analytics charts, enhanced filtering for users and companies, updated navigation and layout across ~28 files — a significant multi-component feature delivery with meaningful custom UI and data logic.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 14,
@@ -53,7 +53,7 @@
         "deletions": 0,
         "files": 10,
         "points": 5,
-        "rationale": "Updates AWS partner tier validation logic, adds git hooks and a GitHub Action to protect apprunner.yaml, and touches core AI data-field collectors and Prisma definitions \u2014 meaningful infrastructure and domain logic work across several layers.",
+        "rationale": "Covers AWS partner tier validation logic updates, new git hooks and GitHub Action to protect apprunner config, collector/interface changes, and field definitions — a solid cross-cutting change spanning DevOps tooling and AI data-field logic.",
         "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
@@ -73,27 +73,27 @@
         "deletions": 0,
         "files": 5,
         "points": 3,
-        "rationale": "Focused change to AWS partnership tier definitions across the collector, interfaces, and Prisma field definitions \u2014 a modest domain update touching a small number of files with limited but purposeful logic changes.",
+        "rationale": "Modest update to AWS partnership tier definitions touching the collector, abstract base, interfaces, and field definitions across 5 files with 73 custom lines — a focused, small-medium domain logic change.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 1,
         "isMultiAuthor": true,
         "attribution": {
-          "Chris": 0.65,
-          "Jason": 0.35
+          "Chris": 0.6,
+          "Jason": 0.4
         }
       },
       {
         "pr": 196,
         "title": "Documentation System, Admin Enhancements, and AI Agent Post-Processing",
-        "author": "Jason",
+        "author": "Chris",
         "mergedAt": "2025-12-22T05:05:54Z",
         "additions": 0,
         "customAdditions": 9232,
         "deletions": 0,
         "files": 121,
         "points": 21,
-        "rationale": "Massive release PR spanning 121 files and 9000+ custom lines covering automatic AWS microsite generation, AI agent post-processing pipelines, chat agent sub-agents, gap/competitive analysis updates, admin enhancements, S3 file viewing, and extensive infrastructure/config changes \u2014 clearly weeks of transformative work across multiple domains.",
+        "rationale": "Transformative PR spanning 121 files and 9232 custom lines with contributions across AI agent post-processing graphs, AWS microsite generation, S3 integrations, competitive analysis, gap assessment, strategy deck agent, admin enhancements, and infrastructure config — clearly weeks of parallel work representing an epic feature milestone.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 3,
@@ -113,7 +113,7 @@
         "deletions": 0,
         "files": 47,
         "points": 5,
-        "rationale": "Adds admin access to a comprehensive documentation system with 47 files including a full historical backfill of per-PR release notes, user guides, and new feature docs \u2014 significant in volume but the bulk is documentation/content rather than complex engineering logic.",
+        "rationale": "Large documentation-focused PR adding admin access to docs, a new AWS microsite generation guide, chat history API docs, and retroactive PR release notes across 47 files — the bulk is doc generation/maintenance with limited novel code logic, warranting a medium score for scope and coordination effort.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -125,8 +125,8 @@
     ],
     "totalPoints": 50,
     "byAuthor": {
-      "Jason": 32.8,
-      "Chris": 17.5
+      "Jason": 32.9,
+      "Chris": 17.3
     },
     "byCategory": {
       "Admin/Tools": 21,
@@ -146,34 +146,34 @@
           204,
           195
         ],
-        "rationale": "Delivered a comprehensive admin dashboard upgrade with analytics, enhanced filtering, and documentation access to improve operational visibility and admin productivity."
+        "rationale": "Delivered enhanced admin dashboard analytics, improved filtering capabilities, and documentation access for admins, giving internal teams deeper visibility and control over platform data."
       },
       {
         "id": 2,
-        "name": "AWS Partnership Tier Management",
+        "name": "AWS Partner Tier Management",
         "points": 8,
         "category": "Infrastructure",
         "prs": [
           200,
           192
         ],
-        "rationale": "Updated and protected AWS partner tier configurations across infrastructure and application layers to ensure accurate partnership status management."
+        "rationale": "Updated AWS partnership tier definitions and protected App Runner configuration to accurately reflect and enforce partner tier structures across the platform."
       },
       {
         "id": 3,
-        "name": "Documentation System & AI Agent Enhancements",
+        "name": "AI Agent Post-Processing & Documentation System",
         "points": 21,
         "category": "AI/Agents",
         "prs": [
           196
         ],
-        "rationale": "Introduced a documentation system, admin enhancements, and AI agent post-processing capabilities to improve platform intelligence and content management."
+        "rationale": "Introduced a documentation system, admin enhancements, and AI agent post-processing capabilities to improve the quality and reliability of AI-generated outputs."
       }
     ],
     "totalPoints": 50,
     "byAuthor": {
-      "Jason": 47,
-      "Chris": 3
+      "Jason": 26,
+      "Chris": 24
     }
   },
   "meta": {

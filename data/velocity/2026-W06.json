@@ -2,7 +2,7 @@
   "week": "2026-W06",
   "startDate": "2026-02-02",
   "endDate": "2026-02-08",
-  "generatedAt": "2026-06-27T16:00:31.489Z",
+  "generatedAt": "2026-08-10T18:53:26.488Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 31,
         "points": 13,
-        "rationale": "A brand-new /assessment page with 2103 custom lines across 31 files, introducing a full React Flow-based visualization with multiple node types, hooks, server actions, schema changes, and navigation — a major feature constituting a significant architectural addition to the platform.",
+        "rationale": "A brand-new /assessment page with 2103 custom lines across 31 files, introducing a full React Flow-based assessment visualization with multiple custom node types, hooks, server actions, schema changes, and navigation — a major feature with architectural scope.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 15,
@@ -35,7 +35,7 @@
         "deletions": 0,
         "files": 3,
         "points": 3,
-        "rationale": "88 lines across 3 files fixing and enhancing the portfolio company table, with Jason contributing meaningful query-level logic (selecting parentGapId, excluding child gaps) alongside Chris's UI fixes — a modest but multi-layered bug fix.",
+        "rationale": "An 88-line fix across 3 files addressing portfolio company table rendering and query logic, with modest contributions from both authors touching UI and data layers.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -55,7 +55,7 @@
         "deletions": 0,
         "files": 3,
         "points": 1,
-        "rationale": "Only 3 custom lines changed across 3 files, representing targeted critical hotfixes to the HubSpot sync service and admin UI with minimal scope.",
+        "rationale": "Only 3 custom lines changed across 3 files, indicating targeted critical hotfixes rather than substantive new logic.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -74,7 +74,7 @@
         "deletions": 0,
         "files": 4,
         "points": 2,
-        "rationale": "11 lines across 4 files passing appEnv to the sync UI and fixing a lastSync check — a small but purposeful configuration and logic correction touching multiple layers.",
+        "rationale": "An 11-line change across 4 files passing an environment variable to the sync UI and fixing a lastSync timestamp check — a small but purposeful multi-file fix.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -99,23 +99,23 @@
     "stories": [
       {
         "id": 1,
-        "name": "New Assessment Experience",
+        "name": "Assessment Experience Launch",
         "points": 13,
         "category": "Core Platform",
         "prs": [
           250
         ],
-        "rationale": "Introduced a dedicated /assessment page as a core new feature of the platform's business readiness evaluation flow."
+        "rationale": "Introduced the new /assessment page, delivering a core product experience for business readiness evaluation."
       },
       {
         "id": 2,
-        "name": "Portfolio Company Table Fix",
+        "name": "Portfolio Company Dashboard Fix",
         "points": 3,
         "category": "UI/UX",
         "prs": [
           239
         ],
-        "rationale": "Resolved display issues in the portfolio company table to improve usability for users managing multiple companies."
+        "rationale": "Resolved a display issue with the portfolio company table to restore accurate data visibility for users."
       },
       {
         "id": 3,

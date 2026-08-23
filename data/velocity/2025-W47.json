@@ -2,7 +2,7 @@
   "week": "2025-W47",
   "startDate": "2025-11-17",
   "endDate": "2025-11-23",
-  "generatedAt": "2026-06-27T15:57:32.035Z",
+  "generatedAt": "2026-08-10T18:50:02.781Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 6,
         "points": 2,
-        "rationale": "Housekeeping PR that archives/updates TODO markdown files and removes a test page — low complexity, no logic changes.",
+        "rationale": "Housekeeping PR that archives completed TODO files and removes a test page — minimal logic, purely organizational cleanup across 6 files.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -33,8 +33,8 @@
         "customAdditions": 816,
         "deletions": 0,
         "files": 23,
-        "points": 8,
-        "rationale": "Broad AWS Marketplace integration touching schema, auth flows, onboarding, email/S3 services, environment config, and deployment files across 23 files — significant feature work with meaningful cross-cutting changes.",
+        "points": 13,
+        "rationale": "Broad AWS Marketplace integration touching schema, auth flows, onboarding, email/S3 services, API routes, CI config, and environment consolidation across 23 files — a major feature with architectural reach.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 5,
@@ -52,8 +52,8 @@
         "customAdditions": 392,
         "deletions": 0,
         "files": 7,
-        "points": 5,
-        "rationale": "Initial AWS Marketplace SaaS integration introducing a new API route, marketplace pages, a shell test script, and a TODO plan — solid self-contained feature foundation despite moderate line count after stripping vendored code.",
+        "points": 8,
+        "rationale": "Initial AWS Marketplace SaaS integration introducing the registration API route, marketplace UI pages, a shell test script, and TODO scaffolding — significant new integration surface despite the vendored lines being excluded.",
         "category": "Integrations",
         "vendored": true,
         "vendoredRatio": 74,
@@ -72,14 +72,13 @@
         "deletions": 0,
         "files": 1,
         "points": 2,
-        "rationale": "Single-file fix to return human-readable values instead of raw numbers in an AWS partner badges collector — simple targeted bug fix with minimal logic change.",
+        "rationale": "Single-file change to an AWS partner badges collector that swaps numeric return values for descriptive string values — a small, focused bug/quality fix.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
-        "isMultiAuthor": true,
+        "isMultiAuthor": false,
         "attribution": {
-          "Chris": 0.9,
-          "Jason": 0.1
+          "Chris": 1
         }
       },
       {
@@ -92,7 +91,7 @@
         "deletions": 0,
         "files": 34,
         "points": 21,
-        "rationale": "Architectural overhaul of the chat agent system introducing multiple new sub-agents (field-completion, strategy-deck, support) each with their own graph, state, tools, and sessions across 34+ files — transformative, weeks-scale work.",
+        "rationale": "Transformative refactor/build-out of the multi-agent chat system spanning 34+ files including full sub-agent graphs, state machines, tools, sessions, and UI wiring — weeks of architectural AI work; Jason's single dependency-update commit is a minor supporting contribution.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 2,
@@ -103,14 +102,14 @@
         }
       }
     ],
-    "totalPoints": 38,
+    "totalPoints": 46,
     "byAuthor": {
-      "Jason": 16.3,
-      "Chris": 21.8
+      "Jason": 24.1,
+      "Chris": 22
     },
     "byCategory": {
       "Admin/Tools": 2,
-      "Integrations": 13,
+      "Integrations": 21,
       "AI/Agents": 23
     }
   },
@@ -118,7 +117,7 @@
     "stories": [
       {
         "id": 1,
-        "name": "AWS Marketplace Launch & Integration",
+        "name": "AWS Marketplace Launch & Cleanup",
         "points": 21,
         "category": "Integrations",
         "prs": [
@@ -126,7 +125,7 @@
           149,
           150
         ],
-        "rationale": "Delivered end-to-end AWS Marketplace SaaS integration including credential consolidation, subscription handling, and cleanup of scaffolding and test artifacts."
+        "rationale": "Delivered end-to-end AWS Marketplace SaaS integration including credential consolidation and post-launch cleanup of test artifacts and completed TODOs."
       },
       {
         "id": 2,
@@ -137,7 +136,7 @@
           144,
           145
         ],
-        "rationale": "Enhanced AI agent reliability by fixing value return formatting and delivering broader agent behavior improvements captured in the SM-184 initiative."
+        "rationale": "Enhanced AI agent reliability and correctness by fixing output formatting to return proper values instead of raw numbers alongside broader agent behavior updates."
       }
     ],
     "totalPoints": 42,
@@ -150,7 +149,7 @@
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 8.78,
+      "prLevel": 10.62,
       "grouped": 9.7
     },
     "ptsPerWeekPerFTE": 4.33

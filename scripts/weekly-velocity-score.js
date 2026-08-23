@@ -57,13 +57,30 @@ const AUTHOR_MAP = {
   'web-flow': 'web-flow',
 };
 
-// PRs to skip entirely (release merges, staging→main, etc.)
+// PRs to skip entirely (release merges, staging→main, infra-only merges)
 const SKIP_PATTERNS = [
+  // Legacy: staging→main release merges (pre-trunk era)
   /^release:\s*staging\s*→\s*main/i,
   /^release:\s*staging\s*to\s*main/i,
   /^merge\s+(branch\s+)?['"]?staging['"]?\s*(into|→|to)\s*['"]?main/i,
   /^staging\s*→\s*main/i,
   /^staging\s*to\s*main/i,
+  // Trunk era: release PRs, version bumps, branch promotions
+  /^release\s+\d+\.\d+/i,
+  /^merge\s+(branch\s+)?['"]?main['"]?\s*(into|→|to)/i,
+  /^sync\/main-into-/i,
+  /^merge\s+main\s+into\s+/i,
+];
+
+// Authors to always skip (bots, automation)
+const SKIP_AUTHORS = new Set([
+  'dependabot[bot]', 'dependabot', 'github-actions[bot]', 'web-flow', 'bot',
+]);
+
+// Head branch prefixes to skip (dependabot, release machinery)
+const SKIP_HEAD_PREFIXES = [
+  'dependabot/',
+  'release/',
 ];
 
 // Detect "revert of revert" / re-apply PRs that reference an original PR
@@ -804,20 +821,24 @@ async function processWeek(weekKey, prs, opts, bedrockClient, InvokeModelCommand
   const { start, end } = isoWeekToDates(weekKey);
   console.log(`\n📅 Processing week ${weekKey} (${start} → ${end}): ${prs.length} PRs`);
 
-  // Skip dependabot PRs and release merge PRs from scoring
+  // Skip bot authors, release merges, and infra-only branch PRs from scoring
   const scorablePRs = prs.filter(pr => {
-    if (pr.author === 'dependabot') return false;
-    // Skip staging→main release merges (double-counting)
+    if (SKIP_AUTHORS.has(pr.author)) return false;
     if (SKIP_PATTERNS.some(pat => pat.test(pr.title))) return false;
+    if (pr.headRef && SKIP_HEAD_PREFIXES.some(pfx => pr.headRef.startsWith(pfx))) return false;
     return true;
   });
-  const depbotCount = prs.filter(pr => pr.author === 'dependabot').length;
-  const releaseCount = prs.length - scorablePRs.length - depbotCount;
-  if (depbotCount > 0) {
-    console.log(`  Skipping ${depbotCount} dependabot PRs`);
+  const botCount = prs.filter(pr => SKIP_AUTHORS.has(pr.author)).length;
+  const patternCount = prs.filter(pr => !SKIP_AUTHORS.has(pr.author) && SKIP_PATTERNS.some(pat => pat.test(pr.title))).length;
+  const branchCount = prs.length - scorablePRs.length - botCount - patternCount;
+  if (botCount > 0) {
+    console.log(`  Skipping ${botCount} bot/automation PRs`);
   }
-  if (releaseCount > 0) {
-    console.log(`  Skipping ${releaseCount} release/merge PRs (staging→main)`);
+  if (patternCount > 0) {
+    console.log(`  Skipping ${patternCount} release/merge PRs (pattern match)`);
+  }
+  if (branchCount > 0) {
+    console.log(`  Skipping ${branchCount} PRs (head branch prefix: dependabot/, release/)`);
   }
 
   if (opts.dryRun) {
@@ -1008,13 +1029,33 @@ async function enrichPR(ghClient, rawPR) {
   const authors = Object.keys(commitsByAuthor);
   const isMultiAuthor = authors.length > 1;
 
+  // Commit-based author override: if all non-merge commits are from a single
+  // person who differs from the PR opener, use the commit author as the true
+  // author. This handles trunk-based flows where one person (e.g. Chad) opens
+  // PRs on behalf of branch authors.
+  let effectiveAuthor = prAuthor;
+  if (authors.length === 1 && authors[0] !== prAuthor) {
+    effectiveAuthor = authors[0];
+    console.log(`    → PR #${rawPR.number}: overriding author from ${prAuthor} (PR opener) to ${effectiveAuthor} (sole commit author)`);
+  } else if (authors.length > 1) {
+    // For multi-author PRs, use the dominant commit author (by commit count)
+    // as the primary author if they differ from the PR opener
+    const sorted = Object.entries(commitsByAuthor).sort((a, b) => b[1].commits - a[1].commits);
+    const dominant = sorted[0][0];
+    if (dominant !== prAuthor) {
+      effectiveAuthor = dominant;
+      console.log(`    → PR #${rawPR.number}: overriding author from ${prAuthor} (PR opener) to ${effectiveAuthor} (dominant commit author)`);
+    }
+  }
+
   const classification = classifyFiles(files);
 
   return {
     pr: rawPR.number,
     title: rawPR.title,
-    author: prAuthor,
+    author: effectiveAuthor,
     authorLogin: rawPR.user.login,
+    headRef: rawPR.head && rawPR.head.ref || null,
     mergedAt: rawPR.merged_at,
     additions: rawPR.additions || 0,
     deletions: rawPR.deletions || 0,

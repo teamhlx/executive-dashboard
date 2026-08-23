@@ -2,7 +2,7 @@
   "week": "2026-W03",
   "startDate": "2026-01-12",
   "endDate": "2026-01-18",
-  "generatedAt": "2026-06-27T15:59:39.726Z",
+  "generatedAt": "2026-08-10T18:52:23.417Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 3,
         "points": 3,
-        "rationale": "Adds COACH validation logic and a searchable company selector component across 3 files with 80 custom lines, representing a modest feature addition.",
+        "rationale": "Small-medium change adding a searchable company selector and fixing COACH validation across 3 files with 80 custom lines.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -34,14 +34,13 @@
         "deletions": 0,
         "files": 15,
         "points": 8,
-        "rationale": "Significant AI improvements spanning prompt engineering, sub-agent graph changes, unique chat key scoping, UI integration across multiple pages, and an E2E test across 15 files with 264 custom lines.",
+        "rationale": "Significant AI improvements spanning multiple sub-agents, UI components, hooks, and an E2E test across 15 files with 264 custom lines indicating meaningful cross-cutting changes.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
-        "isMultiAuthor": true,
+        "isMultiAuthor": false,
         "attribution": {
-          "Chris": 0.92,
-          "Jason": 0.08
+          "Chris": 1
         }
       },
       {
@@ -54,14 +53,13 @@
         "deletions": 0,
         "files": 14,
         "points": 8,
-        "rationale": "Meaningful AI generation overhaul touching competitive analysis agent, BTS and microsite generation routes, stream endpoints, slide components, and docs across 14 files with 426 custom lines.",
+        "rationale": "Major model changes and generation improvements touching competitive analysis agent, multiple API routes, UI components, and documentation across 14 files with 426 custom lines.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
-        "isMultiAuthor": true,
+        "isMultiAuthor": false,
         "attribution": {
-          "Chris": 0.9,
-          "Jason": 0.1
+          "Chris": 1
         }
       },
       {
@@ -73,8 +71,8 @@
         "customAdditions": 83,
         "deletions": 0,
         "files": 2,
-        "points": 2,
-        "rationale": "Small fix to COACH validation and permission checks across 2 files with 83 custom lines, constituting a targeted bug fix with minor logic additions.",
+        "points": 3,
+        "rationale": "Focused fix and validation improvement across 2 files with 83 custom lines, touching permissions checks and user creation dialog.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -93,11 +91,11 @@
         "deletions": 0,
         "files": 169,
         "points": 21,
-        "rationale": "Epic release PR encompassing Coaching MVP, Portfolio Management System, permission architecture, schema migrations, AI agent updates, CI workflows, and extensive documentation across 169 files with nearly 20k custom lines representing weeks of transformative work.",
+        "rationale": "Transformative release PR encompassing Coaching MVP and Portfolio Management System with 19,743 custom lines across 169 files representing weeks of architectural and feature work.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 13,
-        "isMultiAuthor": true,
+        "isMultiAuthor": false,
         "attribution": {
           "Jason": 1
         }
@@ -112,7 +110,7 @@
         "deletions": 0,
         "files": 13,
         "points": 5,
-        "rationale": "Solid feature adding a super admin app info page, user role badges, permission matrix/types updates, and related nav/header/menu changes across 13 files with 172 custom lines.",
+        "rationale": "Solid feature adding a super admin app info page and user role badges across 13 files with 172 custom lines touching permissions, layout, and navigation.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -131,7 +129,7 @@
         "deletions": 0,
         "files": 9,
         "points": 5,
-        "rationale": "Meaningful improvement to E2E test data integrity combined with comprehensive seed and testing documentation across 9 files with 1031 lines, though the majority of lines are docs/changelog rather than complex logic.",
+        "rationale": "Meaningful work fixing E2E test data and adding comprehensive seed documentation across 9 files with 1,031 lines, the bulk being documentation and seed data rather than complex logic.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -150,7 +148,7 @@
         "deletions": 0,
         "files": 5,
         "points": 3,
-        "rationale": "Targeted fixes for coach identity in the AI agent, gaps content, and UI refresh issues for assignees across 5 files with 97 custom lines, representing a modest bug-fix set.",
+        "rationale": "Targeted bug fix for coach identity and assignee UI refresh issues across 5 files with 97 custom lines addressing specific behavioral problems.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -169,7 +167,7 @@
         "deletions": 0,
         "files": 3,
         "points": 1,
-        "rationale": "Trivial fix of 8 custom lines across 3 files to include coaches in available assignees, with a small unit test.",
+        "rationale": "Trivial fix of only 8 custom lines across 3 files to include coaches in available assignees for the AI agent.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -188,8 +186,8 @@
         "deletions": 0,
         "files": 56,
         "points": 13,
-        "rationale": "Large PR reorganizing the entire test suite, adding E2E and unit tests, updating schema, seed data, multiple server actions, and coaching/portfolio/admin pages across 56 files with 5528 custom lines representing a major structural effort.",
-        "category": "Core Platform",
+        "rationale": "Major test reorganization and E2E improvements with 5,528 custom lines across 56 files including schema changes, new actions, seed updates, and significant test infrastructure work.",
+        "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -198,88 +196,97 @@
         }
       }
     ],
-    "totalPoints": 69,
+    "totalPoints": 70,
     "byAuthor": {
-      "Jason": 54.4,
-      "Chris": 14.6
+      "Jason": 54,
+      "Chris": 16
     },
     "byCategory": {
-      "Admin/Tools": 10,
+      "Admin/Tools": 11,
       "AI/Agents": 20,
-      "Core Platform": 34,
-      "DevOps": 5
+      "Core Platform": 21,
+      "DevOps": 18
     }
   },
   "grouped": {
     "stories": [
       {
         "id": 1,
-        "name": "Coaching MVP Launch & Portfolio Management",
+        "name": "Coaching MVP & Portfolio Management Launch",
         "points": 21,
         "category": "Core Platform",
         "prs": [
-          218,
-          213
+          218
         ],
-        "rationale": "Delivered the Coaching MVP with full portfolio management capabilities, including test reorganization and E2E improvements to ensure production readiness."
+        "rationale": "Delivered the major Coaching MVP and Portfolio Management System release milestone for January 14, 2026."
       },
       {
         "id": 2,
-        "name": "AI Coach Identity & Agent Improvements",
+        "name": "AI Model Quality & Generation Improvements",
         "points": 21,
         "category": "AI/Agents",
         "prs": [
           216,
-          214,
-          217,
-          215
+          214
         ],
-        "rationale": "Improved AI agent quality through model changes, reduced redundancy, fixed coach identity issues, and ensured coaches are properly included as available assignees."
+        "rationale": "Upgraded the AI model, improved content generation quality, and reduced redundancy in AI outputs."
       },
       {
         "id": 3,
-        "name": "COACH Admin Validation & Company Search",
+        "name": "Coach Assignment & Identity Fixes",
+        "points": 8,
+        "category": "AI/Agents",
+        "prs": [
+          217,
+          215
+        ],
+        "rationale": "Fixed coach identity display issues, UI refresh bugs, and ensured AI agents correctly include coaches as available assignees."
+      },
+      {
+        "id": 4,
+        "name": "COACH Validation & Company Selector Improvements",
         "points": 5,
         "category": "Admin/Tools",
         "prs": [
           222,
           221
         ],
-        "rationale": "Fixed validation issues in the COACH admin workflow and added a searchable company selector to streamline admin operations."
+        "rationale": "Fixed COACH validation logic and introduced a searchable company selector to improve admin usability."
       },
       {
-        "id": 4,
+        "id": 5,
         "name": "Super Admin Visibility & User Role Management",
         "points": 5,
         "category": "Admin/Tools",
         "prs": [
           220
         ],
-        "rationale": "Added an app info page for super admins and introduced user role badges to improve administrative oversight and user management clarity."
+        "rationale": "Added a super admin app info page and user role badges to improve administrative oversight and user management clarity."
       },
       {
-        "id": 5,
-        "name": "Test Data Reliability & Seed Documentation",
-        "points": 5,
+        "id": 6,
+        "name": "End-to-End Test Infrastructure & Seed Data",
+        "points": 21,
         "category": "DevOps",
         "prs": [
+          213,
           219
         ],
-        "rationale": "Fixed E2E test data integrity issues and added comprehensive seed documentation to support reliable testing and onboarding of new developers."
+        "rationale": "Reorganized the Coaching MVP test suite, improved E2E test reliability, and added comprehensive seed data documentation to support ongoing development."
       }
     ],
-    "totalPoints": 57,
+    "totalPoints": 81,
     "byAuthor": {
-      "Jason": 40.2,
-      "Chris": 16.8
+      "Jason": 60,
+      "Chris": 21
     }
   },
   "meta": {
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 15.93,
-      "grouped": 13.16
+      "prLevel": 16.17,
+      "grouped": 18.71
     },
     "ptsPerWeekPerFTE": 4.33
   }

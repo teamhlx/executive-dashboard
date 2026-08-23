@@ -2,7 +2,7 @@
   "week": "2026-W21",
   "startDate": "2026-05-18",
   "endDate": "2026-05-24",
-  "generatedAt": "2026-06-27T16:04:43.123Z",
+  "generatedAt": "2026-08-10T18:58:01.122Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 12,
         "points": 8,
-        "rationale": "Spans 12 files across infra config, AWS CloudFormation, server actions, credential providers, and UI components to support multi-environment connector deployments — significant feature with cross-cutting changes.",
+        "rationale": "Significant feature spanning 12 files including new YAML deployment configs, AWS credential actions, UI components, and CloudFormation config to support multi-environment connector deployments.",
         "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Single-line change to accept an API key from a query parameter in one route file.",
+        "rationale": "Single-line change to accept an API key from a query parameter in an existing route.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -52,8 +52,8 @@
         "customAdditions": 5,
         "deletions": 0,
         "files": 12,
-        "points": 1,
-        "rationale": "Extraction of a connector to its own repo with only a .gitignore update and minor route touch as the meaningful custom additions — essentially housekeeping.",
+        "points": 2,
+        "rationale": "Extraction of a connector to its own repo with minimal custom additions (5 lines), primarily cleanup and a .gitignore update.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -72,7 +72,7 @@
         "deletions": 0,
         "files": 8,
         "points": 5,
-        "rationale": "182 lines across 8 files touching the chat agent, prompts, DAL, field progress, layout, and hook to introduce portfolio-aware company context — a solid, cross-cutting feature addition.",
+        "rationale": "Meaningful feature adding portfolio-aware context to the chat agent across 8 files including agent logic, prompts, DAL, and UI hooks.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -91,7 +91,7 @@
         "deletions": 0,
         "files": 109,
         "points": 21,
-        "rationale": "Over 12,800 lines across 109 files touching AI agents, sub-agents, state, tools, schema migrations, UI components, actions, and infra config — a transformative, multi-week epic covering editable customer fields, reset logic, validator improvements, and much more.",
+        "rationale": "Transformative PR touching 109+ files with 12,809 custom lines covering editable customer fields, ACE review improvements, validator changes, TODO planning docs, agent updates, and broad platform-wide changes.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 25,
@@ -110,7 +110,7 @@
         "deletions": 0,
         "files": 3,
         "points": 2,
-        "rationale": "36 lines across 3 files to thread a portfolioId through the chat agent route and sidebar — small, focused plumbing change.",
+        "rationale": "Small change propagating portfolioId through 3 files to the chat agent route and sidebar.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -129,7 +129,7 @@
         "deletions": 0,
         "files": 3,
         "points": 1,
-        "rationale": "Three-line change moving a TLS env var into the docker entrypoint across two config files and the entrypoint script.",
+        "rationale": "Trivial config tweak moving a TLS environment variable to the docker entrypoint across 3 files with only 3 lines added.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -148,7 +148,7 @@
         "deletions": 0,
         "files": 2,
         "points": 1,
-        "rationale": "Two-line config addition setting NODE_TLS_REJECT_UNAUTHORIZED in two App Runner YAML files.",
+        "rationale": "Trivial two-line config change setting a TLS environment variable in App Runner YAML files.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -167,7 +167,7 @@
         "deletions": 0,
         "files": 2,
         "points": 2,
-        "rationale": "Five lines across two files to implement a global SSL bypass via instrumentation.ts for staging — small but deliberate architectural placement.",
+        "rationale": "Small fix adding a global SSL bypass via instrumentation.ts for staging, touching 2 files with 5 lines.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -186,7 +186,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Single-line fix to the chat agent route for a TLS bypass on staging.",
+        "rationale": "Single-line fix to add TLS bypass in the chat agent route for staging.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -205,7 +205,7 @@
         "deletions": 0,
         "files": 8,
         "points": 3,
-        "rationale": "34 lines across 8 files adding product badges to outcomes, fixing outcome linking, and addressing staging SSL — modest but multi-touch feature and bug fix.",
+        "rationale": "Modest multi-concern PR adding product badges to outcomes, fixing outcome linking, and addressing staging SSL across 8 files with 34 lines.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -224,7 +224,7 @@
         "deletions": 0,
         "files": 2,
         "points": 2,
-        "rationale": "23 lines in two migration files to conditionally rename a database index — small schema fix with some conditional logic.",
+        "rationale": "Small database migration adding a conditional rename of the RivalProductComparison index across 2 migration SQL files.",
         "category": "Data/Schema",
         "vendored": false,
         "vendoredRatio": 0,
@@ -243,7 +243,7 @@
         "deletions": 0,
         "files": 11,
         "points": 8,
-        "rationale": "320 lines across 11 files adding a Suggest Playbook tool, milestone UX fixes, Task Details renaming, and Gantt/hierarchy editor changes — a significant cross-cutting feature touching AI tooling, admin UI, and task components.",
+        "rationale": "Significant feature PR adding a Suggest Playbook tool, milestone UX fixes, and Task Details rename across 11 files with 320 lines of custom code.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -262,7 +262,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Zero net additions — removal of a single menu item from the user menu, trivial UI change.",
+        "rationale": "Trivial UI fix removing the Contact Support option from the user menu with zero net additions.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -272,14 +272,14 @@
         }
       }
     ],
-    "totalPoints": 57,
+    "totalPoints": 58,
     "byAuthor": {
-      "Jason": 57
+      "Jason": 58
     },
     "byCategory": {
       "Infrastructure": 8,
       "Integrations": 1,
-      "DevOps": 6,
+      "DevOps": 7,
       "AI/Agents": 7,
       "Core Platform": 29,
       "UI/UX": 4,
@@ -290,38 +290,38 @@
     "stories": [
       {
         "id": 1,
-        "name": "ACE Customer Review Experience Overhaul",
+        "name": "ACE Review: Editable Customer Fields & Validation Improvements",
         "points": 21,
         "category": "Core Platform",
         "prs": [
           395
         ],
-        "rationale": "Delivered a major upgrade to the ACE review workflow with editable customer fields, improved reset behavior, and enhanced validation."
+        "rationale": "Delivered a major ACE review feature enabling editable customer fields, improved reset behavior, and better validation for a more robust customer management experience."
       },
       {
         "id": 2,
-        "name": "Portfolio-Aware AI Chat for Companies",
+        "name": "Portfolio-Aware AI Chat for Company Context",
         "points": 8,
         "category": "AI/Agents",
         "prs": [
           394,
           396
         ],
-        "rationale": "Enhanced the chat agent to understand portfolio context by adding company-level awareness and propagating portfolioId through the chat pipeline."
+        "rationale": "Enhanced the AI chat agent to understand portfolio context by adding company-level awareness and propagating portfolio IDs through the chat pipeline."
       },
       {
         "id": 3,
-        "name": "Playbook Suggestions & Milestone UX Improvements",
+        "name": "Playbook Suggestions & Milestone UX Enhancements",
         "points": 8,
         "category": "Core Platform",
         "prs": [
           387
         ],
-        "rationale": "Introduced a Suggest Playbook tool, fixed milestone UX issues, and renamed Task Details to improve the guided workflow experience."
+        "rationale": "Introduced a Suggest Playbook tool, fixed milestone UX issues, and renamed Task Details to improve the guided workflow experience for users."
       },
       {
         "id": 4,
-        "name": "Fix Staging TLS/SSL Connectivity Issues",
+        "name": "Staging & Production TLS/SSL Reliability Fixes",
         "points": 8,
         "category": "DevOps",
         "prs": [
@@ -330,38 +330,38 @@
           392,
           393
         ],
-        "rationale": "Resolved TLS/SSL bypass problems across staging environments by applying fixes in the chat agent route, App Runner config, docker entrypoint, and instrumentation layer."
+        "rationale": "Resolved a series of TLS/SSL connectivity issues across staging and App Runner environments by consolidating SSL bypass configuration and managing TLS environment variables correctly."
       },
       {
         "id": 5,
-        "name": "Multi-Environment AWS Connector Support",
+        "name": "Multi-Environment AWS Connector Infrastructure",
         "points": 8,
         "category": "Infrastructure",
         "prs": [
           400
         ],
-        "rationale": "Enabled AWS connector deployments to support multiple environments, improving infrastructure flexibility and scalability."
+        "rationale": "Extended the AWS connector to support multi-environment deployments, enabling more flexible and scalable infrastructure configuration across environments."
       },
       {
         "id": 6,
         "name": "HubSpot Connector Extraction & API Compatibility",
-        "points": 2,
+        "points": 3,
         "category": "Integrations",
         "prs": [
           397,
           398
         ],
-        "rationale": "Extracted the HubSpot connector into its own repository and added query parameter API key support to maintain fetch compatibility."
+        "rationale": "Extracted the HubSpot connector into its own repository and added query parameter API key support to maintain compatibility with HubSpot fetch workflows."
       },
       {
         "id": 7,
-        "name": "Product Badges on Outcomes & Outcome Linking Fixes",
+        "name": "Product Badges on Outcomes & Outcome Linking",
         "points": 3,
         "category": "UI/UX",
         "prs": [
           389
         ],
-        "rationale": "Added product badges to outcomes and fixed outcome linking behavior to improve clarity and navigation in the product interface."
+        "rationale": "Added product badges to outcomes and fixed outcome linking to improve product-outcome visibility and navigation for users."
       },
       {
         "id": 8,
@@ -371,7 +371,7 @@
         "prs": [
           388
         ],
-        "rationale": "Added a conditional rename of the RivalProductComparison index to safely handle schema migration across environments."
+        "rationale": "Implemented a conditional rename of the RivalProductComparison index to safely manage schema migrations without breaking existing data."
       },
       {
         "id": 9,
@@ -381,20 +381,20 @@
         "prs": [
           386
         ],
-        "rationale": "Removed the Contact Support option from the user menu to streamline the navigation experience."
+        "rationale": "Cleaned up the user menu by removing the Contact Support option to streamline the interface and reduce noise for end users."
       }
     ],
-    "totalPoints": 61,
+    "totalPoints": 62,
     "byAuthor": {
-      "Jason": 61
+      "Jason": 62
     }
   },
   "meta": {
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 13.16,
-      "grouped": 14.09
+      "prLevel": 13.39,
+      "grouped": 14.32
     },
     "ptsPerWeekPerFTE": 4.33
   }

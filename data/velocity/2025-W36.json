@@ -2,7 +2,7 @@
   "week": "2025-W36",
   "startDate": "2025-09-01",
   "endDate": "2025-09-07",
-  "generatedAt": "2026-06-27T15:54:16.267Z",
+  "generatedAt": "2026-08-10T18:46:25.657Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 45,
         "points": 8,
-        "rationale": "Touches 45+ files implementing a collector field progress system with abstract base classes and 20+ individual collector implementations, representing a significant feature build-out across the AI/data layer.",
+        "rationale": "Introduces a collector field progress system spanning 45+ files with abstract base classes, multiple concrete collector implementations, agent tool wiring, and ESLint config — a significant architectural pattern with broad surface area.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 22,
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 59,
         "points": 13,
-        "rationale": "895 lines across 59 files covering a full public-facing UI overhaul including login, onboarding flow, registration, password reset, and multiple multi-step components — a major frontend feature spanning layout, schemas, and pages.",
+        "rationale": "Delivers a full public-facing UI layer — login, onboarding multi-step flow, registration, password reset, resend verification, slide deck entrypoint, and SVG assets — across 59 files with 895 custom lines representing a major feature surface.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 3,
@@ -53,14 +53,14 @@
         "deletions": 0,
         "files": 59,
         "points": 13,
-        "rationale": "2445 lines across 59 files from a merge/integration PR combining agent enhancements, multiple calculators, UI integration of chat window and field sidebar, schema changes, and substantial documentation — architectural scope with contributions from two authors.",
+        "rationale": "A large staging integration PR touching AI agents, calculators, UI chat/sidebar, field progress polling, database schema, docs, and parallel processing across 59 files — representing substantial multi-domain architectural work from two contributors.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 40,
         "isMultiAuthor": true,
         "attribution": {
-          "Jason": 0.65,
-          "Chris": 0.35
+          "Jason": 0.75,
+          "Chris": 0.25
         }
       },
       {
@@ -73,7 +73,7 @@
         "deletions": 0,
         "files": 38,
         "points": 13,
-        "rationale": "1403 custom lines across 38 files implementing an AI agent chat window, real-time field progress tracking, new Prisma schema changes, server actions, API routes, and supporting UI — a major cross-cutting feature touching the full stack.",
+        "rationale": "Introduces an AI agent chat window, real-time field progress tracking, new Prisma schema changes, server actions, polling logic, and supporting docs across 38 files — a major feature with architectural depth despite the vendored portion being excluded.",
         "category": "AI/Agents",
         "vendored": true,
         "vendoredRatio": 52,
@@ -85,8 +85,8 @@
     ],
     "totalPoints": 47,
     "byAuthor": {
-      "Chris": 25.6,
-      "Jason": 21.5
+      "Chris": 24.3,
+      "Jason": 22.8
     },
     "byCategory": {
       "AI/Agents": 21,
@@ -105,27 +105,27 @@
           41,
           46
         ],
-        "rationale": "Together these PRs deliver the end-to-end AI agent chat interface and real-time field progress tracking, giving users intelligent, live feedback as they complete their business readiness data."
+        "rationale": "Delivered a real-time AI agent chat window alongside collector field progress tracking, giving users intelligent, interactive guidance through business readiness assessments."
       },
       {
         "id": 2,
-        "name": "Staging Environment Deployment",
-        "points": 13,
-        "category": "Core Platform",
-        "prs": [
-          42
-        ],
-        "rationale": "Establishes a dedicated staging environment to support safer testing and validation of new features before production release."
-      },
-      {
-        "id": 3,
-        "name": "Slide Deck Presentation Feature",
+        "name": "Slide Deck Presentation Layer",
         "points": 13,
         "category": "UI/UX",
         "prs": [
           48
         ],
-        "rationale": "Introduces a slide deck UI experience, enabling users to view or present their business readiness information in a structured, presentation-ready format."
+        "rationale": "Built out a slide deck UI feature, enabling polished, structured presentation of business readiness information for stakeholders."
+      },
+      {
+        "id": 3,
+        "name": "Staging Environment Readiness",
+        "points": 13,
+        "category": "Core Platform",
+        "prs": [
+          42
+        ],
+        "rationale": "Established or stabilized the staging environment, enabling safer pre-production validation of platform changes before release."
       }
     ],
     "totalPoints": 47,

@@ -2,7 +2,7 @@
   "week": "2026-W05",
   "startDate": "2026-01-26",
   "endDate": "2026-02-01",
-  "generatedAt": "2026-06-27T16:00:18.151Z",
+  "generatedAt": "2026-08-10T18:53:13.328Z",
   "prLevel": {
     "prs": [
       {
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 9,
         "points": 5,
-        "rationale": "Solid feature encompassing domain normalization logic, HubSpot sync enhancements, utility updates, unit tests, and documentation across 9 files with 313 custom lines.",
+        "rationale": "Solid feature spanning 9 files including domain normalization utility, HubSpot sync enhancements, config/type updates, unit tests, and documentation — meaningful but largely incremental on existing infrastructure.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -53,7 +53,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Single-line change to one file is a trivial fix or tweak.",
+        "rationale": "Single-line change to sync-service.ts is a trivial fix or tweak.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -72,7 +72,7 @@
         "deletions": 0,
         "files": 8,
         "points": 5,
-        "rationale": "Meaningful domain sanitization fix spanning 8 files including utils, HubSpot config/types/sync-service, admin actions, and unit tests with 271 custom lines.",
+        "rationale": "271 lines across 8 files introducing domain sanitization logic, config/type changes, utility updates, and tests — a solid focused feature with meaningful scope.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -91,7 +91,7 @@
         "deletions": 0,
         "files": 7,
         "points": 8,
-        "rationale": "Significant feature set adding smart update logic, stop control API endpoint, UI controls, schema changes, and middleware updates across 7 files with 524 custom lines.",
+        "rationale": "524 lines across 7 files introducing smart update logic, stop control API endpoint, schema changes, UI controls, and middleware updates — a significant multi-faceted feature addition.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -110,7 +110,7 @@
         "deletions": 0,
         "files": 7,
         "points": 8,
-        "rationale": "Major reliability feature adding HubSpot ID verification to prevent orphaned references, touching schema, API routes, UI, sync service, and middleware across 7 files with 483 custom lines.",
+        "rationale": "483 lines across 7 files adding HubSpot ID verification logic with schema changes, new API routes, UI updates, and middleware — a substantial feature preventing data integrity issues.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -129,8 +129,8 @@
         "deletions": 0,
         "files": 3,
         "points": 2,
-        "rationale": "Small performance optimization across 3 files with 26 lines, primarily config and targeted sync-service tweaks.",
-        "category": "Integrations",
+        "rationale": "26 lines across 3 files with infra config tweaks and minor sync performance optimizations — small but purposeful changes.",
+        "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -148,7 +148,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Two-line bug fix in a single file correcting dry-run mode matching behavior.",
+        "rationale": "Two-line bug fix correcting dry-run mode matching behavior in sync-service.ts.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -160,21 +160,21 @@
       {
         "pr": 234,
         "title": "Release: January 28, 2026 - HubSpot Integration, Notes System & Portfolio Analytics",
-        "author": "Jason",
+        "author": "Chris",
         "mergedAt": "2026-01-28T23:27:59Z",
         "additions": 0,
         "customAdditions": 11399,
         "deletions": 0,
         "files": 104,
         "points": 21,
-        "rationale": "Transformative release PR with 11,399 lines across 104 files introducing HubSpot integration, a notes system, portfolio analytics, and AI agent enhancements representing weeks of parallel work from two contributors.",
+        "rationale": "Massive release PR with 11399 lines across 104 files covering HubSpot integration, AI portfolio agent, notes system, and analytics — clearly weeks of transformative work from two contributors.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 4,
         "isMultiAuthor": true,
         "attribution": {
-          "Jason": 0.45,
-          "Chris": 0.55
+          "Jason": 0.35,
+          "Chris": 0.65
         }
       },
       {
@@ -187,7 +187,7 @@
         "deletions": 0,
         "files": 10,
         "points": 8,
-        "rationale": "Significant UI feature delivering a portfolio data table with filtering/popover UI components, DAL updates, and multiple new reusable UI primitives across 9 files with 1,411 custom lines.",
+        "rationale": "1411 lines across 10 files delivering a portfolio data table with new UI components, DAL updates, and page integration — significant UI/UX feature with supporting infrastructure.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 11,
@@ -207,7 +207,7 @@
         "deletions": 0,
         "files": 26,
         "points": 13,
-        "rationale": "Major feature introducing the full HubSpot integration with bidirectional sync, sync history tracking, admin UI, API routes, schema changes, scripts, and extensive documentation across 26 files with 5,002 custom lines.",
+        "rationale": "5002 lines across 26 files building the full HubSpot integration from scratch including schema, API routes, admin UI, sync logic, docs, and config — a major architectural feature.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 1,
@@ -226,14 +226,13 @@
         "deletions": 0,
         "files": 2,
         "points": 1,
-        "rationale": "Trivial UI removal of a gap assessment button across 2 files with 0 net custom additions.",
+        "rationale": "Zero custom additions — purely a deletion/removal of a gap assessment button across 2 files, trivial effort.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
-        "isMultiAuthor": true,
+        "isMultiAuthor": false,
         "attribution": {
-          "Chris": 0.9,
-          "Jason": 0.1
+          "Chris": 1
         }
       },
       {
@@ -246,7 +245,7 @@
         "deletions": 0,
         "files": 11,
         "points": 5,
-        "rationale": "Solid feature adding BullMQ job progress storage with schema changes, notes entrypoint updates, progress library, and unit tests across 7 files with 450 custom lines.",
+        "rationale": "450 lines across 11 files implementing BullMQ job progress persistence with schema changes, progress library, note actions, UI updates, and tests — a solid medium feature.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 10,
@@ -265,15 +264,14 @@
         "customAdditions": 809,
         "deletions": 0,
         "files": 22,
-        "points": 8,
-        "rationale": "Significant AI feature introducing a new portfolio sub-agent with its own graph, state, tools, and index, plus integration wiring into the main chat agent across 22 files with 809 custom lines.",
+        "points": 13,
+        "rationale": "809 lines across 22 files introducing a new AI portfolio sub-agent with its own graph, state, tools, and integration into the broader multi-agent chat architecture — a major AI feature.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
-        "isMultiAuthor": true,
+        "isMultiAuthor": false,
         "attribution": {
-          "Chris": 0.93,
-          "Jason": 0.07
+          "Chris": 1
         }
       },
       {
@@ -286,109 +284,108 @@
         "deletions": 0,
         "files": 34,
         "points": 13,
-        "rationale": "Major feature introducing the full notes system (AI notes agent, entrypoint, prompts, S3 service, DAL, UI components) alongside broad app refactoring across 34 files with 2,139 custom lines.",
-        "category": "Core Platform",
+        "rationale": "2139 lines across 34 files delivering a full Notes system including AI notes agent, S3 service, Prisma schema, UI components, and integration across multiple sub-agents — a major cross-cutting feature.",
+        "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 7,
-        "isMultiAuthor": true,
+        "isMultiAuthor": false,
         "attribution": {
-          "Chris": 0.93,
-          "Jason": 0.07
+          "Chris": 1
         }
       },
       {
         "pr": 231,
         "title": "Release: January 26, 2026 - AI Improvements & Document Generation Refactoring",
-        "author": "Jason",
+        "author": "Chris",
         "mergedAt": "2026-01-26T17:18:52Z",
         "additions": 0,
         "customAdditions": 1082,
         "deletions": 0,
         "files": 33,
         "points": 13,
-        "rationale": "A major release PR spanning 33 files and 1082 custom lines covering AI agent refactoring, sub-agent improvements, new document generation flows, prompt engineering, and infrastructure config changes, representing significant architectural work across the AI layer.",
+        "rationale": "Significant AI improvements spanning multiple sub-agents (chat, gaps, strategy-deck, support, competitive analysis), prompt refactoring, unique chat key per user, model changes, and document generation refactoring across 33 files with 1082 custom lines representing major architectural breadth.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": true,
         "attribution": {
-          "Chris": 0.85,
-          "Jason": 0.15
+          "Chris": 0.92,
+          "Jason": 0.08
         }
       }
     ],
-    "totalPoints": 113,
+    "totalPoints": 118,
     "byAuthor": {
-      "Jason": 59.2,
-      "Chris": 54
+      "Jason": 54.5,
+      "Chris": 63.6
     },
     "byCategory": {
-      "Integrations": 44,
-      "Core Platform": 39,
+      "Integrations": 42,
+      "Infrastructure": 2,
+      "Core Platform": 26,
       "UI/UX": 9,
-      "AI/Agents": 21
+      "AI/Agents": 39
     }
   },
   "grouped": {
     "stories": [
       {
         "id": 1,
-        "name": "HubSpot Integration & Sync Engine",
+        "name": "HubSpot CRM Integration & Sync Engine",
         "points": 21,
         "category": "Integrations",
         "prs": [
           225,
           238,
           240,
-          237,
           236,
+          237,
           242,
           241,
           243,
           244
         ],
-        "rationale": "Built and progressively refined a full HubSpot integration with sync history tracking, domain normalization, smart update logic, orphan prevention, performance optimizations, and dry-run support."
+        "rationale": "Built and refined a full HubSpot CRM sync engine including initial integration, domain normalization, orphan prevention, smart update logic, stop controls, dry-run support, and address/timestamp improvements."
       },
       {
         "id": 2,
-        "name": "Notes System & Core Refactoring",
+        "name": "AI Portfolio Analysis Agent",
         "points": 13,
-        "category": "Core Platform",
+        "category": "AI/Agents",
         "prs": [
-          226
+          223
         ],
-        "rationale": "Introduced a company notes system alongside a broader code refactor to improve platform maintainability and data organization."
+        "rationale": "Introduced an AI-powered portfolio agent capable of analyzing and surfacing insights across the user's portfolio of businesses."
       },
       {
         "id": 3,
-        "name": "Portfolio Analytics & Data Table",
-        "points": 21,
-        "category": "UI/UX",
+        "name": "Notes System & Platform Refactor",
+        "points": 13,
+        "category": "AI/Agents",
         "prs": [
-          232,
-          223
+          226
         ],
-        "rationale": "Delivered an AI-powered portfolio agent and an interactive portfolio data table, enabling users to analyze and visualize portfolio performance."
+        "rationale": "Delivered a structured notes system alongside a broader platform refactor to improve maintainability and feature coherence."
       },
       {
         "id": 4,
+        "name": "Portfolio Data Table UI",
+        "points": 8,
+        "category": "UI/UX",
+        "prs": [
+          232
+        ],
+        "rationale": "Added an interactive data table for visualizing and navigating portfolio-level data within the platform UI."
+      },
+      {
+        "id": 5,
         "name": "Background Job Progress Tracking",
         "points": 5,
         "category": "Core Platform",
         "prs": [
           228
         ],
-        "rationale": "Added BullMQ job progress storage to give the platform visibility into the state and completion of background processing tasks."
-      },
-      {
-        "id": 5,
-        "name": "Remove Gap Assessment Entry Point",
-        "points": 1,
-        "category": "UI/UX",
-        "prs": [
-          229
-        ],
-        "rationale": "Removed the gap assessment button from the UI as part of a product decision to streamline the user experience."
+        "rationale": "Enabled real-time BullMQ job progress storage so users and the system can track the status of long-running background tasks."
       },
       {
         "id": 6,
@@ -398,7 +395,7 @@
         "prs": [
           234
         ],
-        "rationale": "Consolidated release bundling HubSpot integration, the notes system, and portfolio analytics into a versioned production deployment."
+        "rationale": "Bundled the HubSpot integration, notes system, and portfolio analytics into a coordinated production release on January 28, 2026."
       },
       {
         "id": 7,
@@ -408,20 +405,30 @@
         "prs": [
           231
         ],
-        "rationale": "Shipped improvements to AI capabilities and refactored the document generation pipeline in a versioned release."
+        "rationale": "Shipped AI improvements and refactored document generation capabilities as a coordinated release on January 26, 2026."
+      },
+      {
+        "id": 8,
+        "name": "Remove Gap Assessment Entry Point",
+        "points": 1,
+        "category": "UI/UX",
+        "prs": [
+          229
+        ],
+        "rationale": "Removed the gap assessment button from the UI as part of a product decision to streamline the user experience."
       }
     ],
     "totalPoints": 95,
     "byAuthor": {
-      "Jason": 55,
-      "Chris": 40
+      "Jason": 21,
+      "Chris": 74
     }
   },
   "meta": {
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 26.1,
+      "prLevel": 27.25,
       "grouped": 21.94
     },
     "ptsPerWeekPerFTE": 4.33

@@ -2,7 +2,7 @@
   "week": "2026-W24",
   "startDate": "2026-06-08",
   "endDate": "2026-06-14",
-  "generatedAt": "2026-06-27T16:05:54.866Z",
+  "generatedAt": "2026-08-10T18:59:20.356Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 76,
         "points": 13,
-        "rationale": "Externalizing HubSpot onboarding into a public API with rival-first onboarding flow touches 76 files including schema migrations, AI orchestration, multiple API routes, and extensive documentation — a major feature addition with architectural implications.",
+        "rationale": "Externalizing HubSpot onboarding into a public API with rival-first onboarding flow touches 76 files across schema migrations, AI orchestration, collectors, and extensive documentation — a major feature with architectural reach.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 162,
         "points": 21,
-        "rationale": "162 files changed with 10,401 custom lines spanning Salesforce CRM integration, ACE parity, guided experience tasks, CI/CD pipeline migration, schema changes, and comprehensive documentation represents a transformative multi-week release.",
+        "rationale": "162 files across CRM/ACE parity, guided experience tasks, CI/CD migration pipeline, Salesforce integration, schema changes, TODO planning docs, and deployment workflows represents weeks of transformative, multi-author platform work.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -54,7 +54,7 @@
         "deletions": 0,
         "files": 4,
         "points": 2,
-        "rationale": "32 lines across 4 files addressing Copilot review comments — minor schema, migration, and field definition fixups with no novel logic.",
+        "rationale": "32 lines across 4 files addressing Copilot review comments — minor schema uniqueness constraint, a migration, and small fixups to existing files.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -73,7 +73,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "8 lines adding a missing credentials log statement to the Salesforce OAuth route — a trivial single-concern fix.",
+        "rationale": "8 lines in a single file adding a log statement for missing Salesforce OAuth credentials — a trivial diagnostic fix.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -92,7 +92,7 @@
         "deletions": 0,
         "files": 17,
         "points": 8,
-        "rationale": "1,405 lines introducing next-task logic for the guided experience, including schema changes, multiple server actions, a fetch-tree utility, a sandbox debug UI, and three unit test files — a significant self-contained feature.",
+        "rationale": "1405 lines across 17 files introducing 'next task' logic for the guided experience — new server actions, a fetch-tree library, schema migration, sandbox debug UI, and meaningful unit test coverage constitute a significant feature.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -111,7 +111,7 @@
         "deletions": 0,
         "files": 1,
         "points": 2,
-        "rationale": "16 lines in a single CI shell script adding a targeted skip condition to prevent secret key collisions — a small but meaningful bug fix.",
+        "rationale": "16 lines in a single shell script to skip colliding secret keys during staging deploy — a small but targeted bug fix.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -130,7 +130,7 @@
         "deletions": 0,
         "files": 5,
         "points": 5,
-        "rationale": "254 lines across 5 files wiring DB migration execution into the deploy lifecycle and automating env-var sync from Secrets Manager — a solid DevOps feature requiring coordination across Dockerfile, entrypoint, workflows, and a new CI script.",
+        "rationale": "254 lines across 5 files wiring DB migrations into the deploy lifecycle and automating env-var sync from Secrets Manager — a meaningful CI/CD infrastructure improvement touching Dockerfile, entrypoint, and two workflow files.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -149,7 +149,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Zero net custom lines — purely a migration file rename to resolve a timestamp collision, with no logic changes.",
+        "rationale": "Zero net custom lines — purely a migration file rename to resolve a timestamp collision, a trivial housekeeping fix.",
         "category": "Data/Schema",
         "vendored": false,
         "vendoredRatio": 0,
@@ -168,7 +168,7 @@
         "deletions": 0,
         "files": 83,
         "points": 21,
-        "rationale": "8,423 custom lines across 83 files delivering full Salesforce CRM parity, a CRM↔ACE crosswalk, three-way drift reconciliation, deal-value splitting, multiple schema migrations, AI enrichment modules, and extensive documentation — an epic, multi-week architectural feature.",
+        "rationale": "8423 lines across 83 files delivering full Salesforce CRM parity, a CRM↔ACE crosswalk, 3-way drift reconciliation, deal-value splitting, enrichment hydration for two CRMs, multiple schema migrations, and comprehensive docs — an epic, architecturally significant release.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -194,14 +194,14 @@
     "stories": [
       {
         "id": 1,
-        "name": "Salesforce CRM Parity & ACE Integration",
+        "name": "Salesforce CRM Parity & Deal Intelligence",
         "points": 21,
         "category": "Integrations",
         "prs": [
           435,
           438
         ],
-        "rationale": "Delivered full Salesforce CRM feature parity with ACE crosswalk and drift reconciliation, plus improved error visibility for OAuth credential issues."
+        "rationale": "Delivered full Salesforce CRM parity with ACE crosswalk, 3-way drift reconciliation, deal-value splitting, and improved OAuth error visibility for faster debugging."
       },
       {
         "id": 2,
@@ -211,11 +211,11 @@
         "prs": [
           446
         ],
-        "rationale": "Externalized HubSpot onboarding into a public API and introduced a rival-first onboarding flow to streamline partner and customer activation."
+        "rationale": "Externalized HubSpot onboarding into a public API and introduced a rival-first onboarding flow to accelerate partner integrations and competitive displacement scenarios."
       },
       {
         "id": 3,
-        "name": "Guided Experience & CRM/ACE Release",
+        "name": "Guided Experience & CRM/ACE Feature Release",
         "points": 21,
         "category": "Core Platform",
         "prs": [
@@ -223,18 +223,18 @@
           443,
           437
         ],
-        "rationale": "Shipped the major CRM/ACE parity release including guided experience next-task logic, with follow-up Copilot review fixes bundled in."
+        "rationale": "Released guided experience task navigation, CRM/ACE parity features, and CI/CD migration pipeline, including follow-up polish from code review feedback."
       },
       {
         "id": 4,
-        "name": "Automated Deployment Pipeline & Environment Management",
+        "name": "Automated Deployment & Environment Configuration",
         "points": 8,
         "category": "DevOps",
         "prs": [
           440,
           441
         ],
-        "rationale": "Automated database migrations on deploy, synced environment variables from Secrets Manager, and fixed a staging deploy conflict with container env vars."
+        "rationale": "Enabled automatic database migrations on deploy and environment variable syncing from Secrets Manager, while fixing a staging deploy conflict with container environment variables."
       },
       {
         "id": 5,
@@ -244,7 +244,7 @@
         "prs": [
           436
         ],
-        "rationale": "Resolved a duplicate Prisma migration timestamp to restore schema migration integrity."
+        "rationale": "Resolved a duplicate Prisma migration timestamp conflict to ensure clean and unambiguous database schema versioning."
       }
     ],
     "totalPoints": 64,

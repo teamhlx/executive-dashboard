@@ -2,7 +2,7 @@
   "week": "2026-W11",
   "startDate": "2026-03-09",
   "endDate": "2026-03-15",
-  "generatedAt": "2026-06-27T16:01:21.631Z",
+  "generatedAt": "2026-08-10T18:54:19.589Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 21,
         "points": 13,
-        "rationale": "Significant feature spanning AWS Marketplace competitor sync infrastructure: new Prisma schema, migration, BullMQ job types, library code for marketplace search, rival sync logic, multiple debug/export scripts, and admin queue actions — a full end-to-end pipeline with real architectural breadth.",
+        "rationale": "Substantial feature adding AWS Marketplace competitor sync infrastructure: new Prisma schema, migration, multiple utility/debug scripts, a full sync pipeline, library search logic, BullMQ job types, and admin queue integration across 21 files with 1018 custom lines.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 37,
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 3,
         "points": 1,
-        "rationale": "Only documentation and TODO planning files added — no functional code changes, making this essentially a trivial notes/planning commit.",
+        "rationale": "Only documentation and TODO planning files added — no functional code changes, purely notes and epic planning for a future Atlassian Confluence MCP integration.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -53,7 +53,7 @@
         "deletions": 0,
         "files": 29,
         "points": 13,
-        "rationale": "Major refactor of the readiness data-fields system touching the abstract collector, multiple stage-two collectors, field-completion agent graph/tools/sessions, Prisma schema and migrations, server actions, and architecture docs — a wide-ranging architectural overhaul across AI and data layers.",
+        "rationale": "Large-scale refactor of the fields/data-collection system touching AI collectors, abstract collector base, field definitions, Prisma schema and migrations, chat-agent tools, gap analysis, and multiple UI/action layers across 29 files with 2002 custom lines.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -71,8 +71,8 @@
         "customAdditions": 618,
         "deletions": 0,
         "files": 9,
-        "points": 5,
-        "rationale": "Solid admin feature adding a chat management UI with filtering, column definitions, a download button, Prisma schema update, and admin nav integration — meaningful but self-contained.",
+        "points": 8,
+        "rationale": "Meaningful admin feature adding a full chat management UI with filtering, column definitions, a download button, schema changes, admin nav updates, and supporting server actions across 9 files with 618 custom lines.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 7,
@@ -91,7 +91,7 @@
         "deletions": 0,
         "files": 44,
         "points": 21,
-        "rationale": "Transformative epic introducing a full Studio document editor (Lexical-based) with AI chat-agent sub-agent integration, comment nodes/plugin/sidebar, new routes and server actions, state management, and package infrastructure — weeks of core platform work.",
+        "rationale": "Transformative epic introducing a full AI-powered Studio editor with Lexical rich-text, comment nodes/plugins, studio sub-agent graph and tools, new Prisma schema, API route, sidebar components, and deep chat-agent integration across 40+ files with 4469 custom lines.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 45,
@@ -102,14 +102,14 @@
         }
       }
     ],
-    "totalPoints": 53,
+    "totalPoints": 56,
     "byAuthor": {
       "Jason": 17.2,
-      "Chris": 35.8
+      "Chris": 38.8
     },
     "byCategory": {
       "Integrations": 13,
-      "Admin/Tools": 6,
+      "Admin/Tools": 9,
       "AI/Agents": 13,
       "Core Platform": 21
     }
@@ -118,35 +118,35 @@
     "stories": [
       {
         "id": 1,
-        "name": "Atlassian Confluence Integration",
+        "name": "Atlassian Confluence Knowledge Base Integration",
         "points": 13,
         "category": "Integrations",
         "prs": [
           276,
           275
         ],
-        "rationale": "Delivered Confluence connectivity through an MCP integration alongside supporting exploratory work to enable teams to connect their Atlassian workspace to Skematic."
+        "rationale": "Delivered Atlassian Confluence connectivity through an MCP integration, enabling Skematic to read and leverage business knowledge stored in Confluence workspaces."
       },
       {
         "id": 2,
-        "name": "AI Field Intelligence Refactor",
+        "name": "AI Field Schema Refactor",
         "points": 13,
         "category": "AI/Agents",
         "prs": [
           272
         ],
-        "rationale": "Refactored the AI fields layer to improve the reliability and maintainability of AI-powered data processing across the platform."
+        "rationale": "Refactored the AI/Agents field structure to improve data consistency and maintainability across the platform's agent-driven workflows."
       },
       {
         "id": 3,
-        "name": "Platform Stability & Admin Improvements",
+        "name": "Platform Tooling & Admin Improvements",
         "points": 21,
-        "category": "Core Platform",
+        "category": "Admin/Tools",
         "prs": [
           268,
           265
         ],
-        "rationale": "Delivered a set of core platform and admin enhancements addressing tracked issues to improve overall system reliability and operational capabilities."
+        "rationale": "Combined core platform and admin tooling enhancements to improve internal operational capabilities and platform stability."
       }
     ],
     "totalPoints": 47,
@@ -159,7 +159,7 @@
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 12.24,
+      "prLevel": 12.93,
       "grouped": 10.85
     },
     "ptsPerWeekPerFTE": 4.33

@@ -2,7 +2,7 @@
   "week": "2026-W23",
   "startDate": "2026-06-01",
   "endDate": "2026-06-07",
-  "generatedAt": "2026-06-27T16:05:33.984Z",
+  "generatedAt": "2026-08-10T18:58:58.118Z",
   "prLevel": {
     "prs": [
       {
@@ -15,8 +15,8 @@
         "deletions": 0,
         "files": 62,
         "points": 8,
-        "rationale": "Large batch of TODO/planning docs, ACE API solutions work, validation/enums, and bug fixes across 62 files representing significant planning architecture and feature scaffolding work.",
-        "category": "Core Platform",
+        "rationale": "Large set of TODO/planning documents, archived items, and multi-author coordination spanning ACE solutions API, validation/enums work, and multiple P0-P3 roadmap files — substantial planning and scaffolding effort but no production logic changes.",
+        "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": true,
@@ -35,8 +35,8 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Single-line fix removing a false-positive error keyword from a log message.",
-        "category": "Core Platform",
+        "rationale": "Single-line fix removing a false-positive error keyword from a log message — trivial change.",
+        "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -53,8 +53,8 @@
         "customAdditions": 3,
         "deletions": 0,
         "files": 3,
-        "points": 1,
-        "rationale": "Trivial security configuration fix setting rejectUnauthorized:true across three Redis TLS connection files.",
+        "points": 2,
+        "rationale": "Small but meaningful security fix applying rejectUnauthorized:true across three Redis/BullMQ configuration files.",
         "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
@@ -73,7 +73,7 @@
         "deletions": 0,
         "files": 131,
         "points": 5,
-        "rationale": "Massive documentation overhaul spanning 131 files including env examples, git hooks, README, and a large archive of release notes — substantial effort but primarily doc/config authoring rather than code logic.",
+        "rationale": "Massive volume of documentation, release notes, and config files across 131 files, but the effort is largely organizational/archival writing rather than novel engineering logic.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 5,
@@ -92,7 +92,7 @@
         "deletions": 0,
         "files": 6,
         "points": 3,
-        "rationale": "New engineer onboarding guide plus architecture and ECS infrastructure documentation updates across 6 files with 318 lines of meaningful written content.",
+        "rationale": "Meaningful new onboarding guide plus architecture and ECS documentation updates across 6 files — modest but purposeful documentation effort.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -111,8 +111,8 @@
         "deletions": 0,
         "files": 16,
         "points": 5,
-        "rationale": "Revamped unit test suite with new test files, vitest config, git hooks, updated admin actions, user-type management, and E2E DB setup documentation across 16 files.",
-        "category": "Core Platform",
+        "rationale": "Revamps the unit test suite with new test files, vitest config, git hooks, AppRunner YAML updates, and E2E DB setup documentation — solid multi-faceted testing infrastructure work.",
+        "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 36,
         "isMultiAuthor": false,
@@ -130,7 +130,7 @@
         "deletions": 0,
         "files": 7,
         "points": 1,
-        "rationale": "Minor housekeeping PR simplifying .env.example and removing AppRunner artifacts across 7 config/yaml files with only 13 net additions.",
+        "rationale": "Minor cleanup of .env.example and removal of AppRunner artifacts across a handful of config files — trivial housekeeping.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -149,7 +149,7 @@
         "deletions": 0,
         "files": 115,
         "points": 5,
-        "rationale": "Comprehensive documentation overhaul across 115 files including re-enabling admin docs viewer, updated README, and a large archive of historical release notes — high volume but primarily doc/config work.",
+        "rationale": "Comprehensive documentation overhaul across 115 files including re-enabling the admin docs viewer — significant organizational effort but content is primarily docs/markdown rather than code logic.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -168,7 +168,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Single-file change enabling Maturity Stage in the portfolio column picker, likely a one-line or trivial config addition.",
+        "rationale": "Single file change to enable Maturity Stage in the portfolio column picker — trivial toggle/config-level UI change.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -187,7 +187,7 @@
         "deletions": 0,
         "files": 6,
         "points": 8,
-        "rationale": "Introduces a secret API integration for AWS Partner Finder with two new stage-two collectors, a client library, research archive integration, unit tests, and a TODO planning doc across 6 files.",
+        "rationale": "Introduces a secret API integration for AWS Partner badges and tier collectors, new client library, research archive updates, unit tests, and TODO documentation — significant new feature touching multiple layers.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -206,7 +206,7 @@
         "deletions": 0,
         "files": 2,
         "points": 1,
-        "rationale": "Small targeted bug fix stripping query strings and hash fragments in normalizeHostname with a corresponding test update across 2 files.",
+        "rationale": "Small targeted bug fix stripping query strings and hash fragments in normalizeHostname with a corresponding test update — minimal scope.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -225,7 +225,7 @@
         "deletions": 0,
         "files": 6,
         "points": 8,
-        "rationale": "Full feature implementation resolving AWS Partner Finder data via a public API including client library, two collectors for badges and tier, research archive integration, unit tests, and planning docs across 6 files.",
+        "rationale": "Full implementation of AWS Partner Finder public API resolution including badges and tier collectors, client library, research archive integration, and unit tests — substantial new integration feature.",
         "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
@@ -235,16 +235,16 @@
         }
       }
     ],
-    "totalPoints": 47,
+    "totalPoints": 48,
     "byAuthor": {
       "Chris": 6,
-      "Jason": 41
+      "Jason": 42
     },
     "byCategory": {
-      "Core Platform": 14,
-      "Infrastructure": 1,
-      "Admin/Tools": 13,
-      "DevOps": 1,
+      "Admin/Tools": 21,
+      "AI/Agents": 1,
+      "Infrastructure": 2,
+      "DevOps": 6,
       "UI/UX": 1,
       "Integrations": 17
     }
@@ -254,73 +254,91 @@
       {
         "id": 1,
         "name": "AWS Partner Finder Integration",
-        "points": 13,
+        "points": 21,
         "category": "Integrations",
         "prs": [
           419,
           420,
           421
         ],
-        "rationale": "Delivered end-to-end AWS Partner Finder functionality including public API resolution for badges and tier data, secure secret API access in staging, and a hostname normalization bug fix."
+        "rationale": "Delivered end-to-end AWS Partner Finder data resolution via public API including badge and tier data, secure staging API secret management, and a hostname normalization bug fix."
       },
       {
         "id": 2,
-        "name": "Core Platform Stability & Quality",
-        "points": 13,
-        "category": "Core Platform",
-        "prs": [
-          431,
-          426,
-          434
-        ],
-        "rationale": "Addressed high-priority platform todos, overhauled the unit test suite with E2E database setup documentation, and eliminated a false-positive error in research archive logging."
-      },
-      {
-        "id": 3,
-        "name": "Documentation & Developer Onboarding Overhaul",
-        "points": 13,
+        "name": "Documentation Overhaul & Developer Onboarding",
+        "points": 21,
         "category": "Admin/Tools",
         "prs": [
           424,
           427,
           429
         ],
-        "rationale": "Comprehensively improved developer experience by overhauling platform documentation, re-enabling the admin docs viewer, adding an engineer onboarding guide, and updating architecture and ECS references."
+        "rationale": "Comprehensively overhauled platform documentation, re-enabled the admin docs viewer, added an engineer onboarding guide, and updated architecture and ECS references to accelerate developer ramp-up."
+      },
+      {
+        "id": 3,
+        "name": "P0 Admin Tooling Improvements",
+        "points": 8,
+        "category": "Admin/Tools",
+        "prs": [
+          431
+        ],
+        "rationale": "Addressed high-priority admin tooling tasks and action items to unblock key platform operations."
       },
       {
         "id": 4,
-        "name": "Infrastructure Security & Environment Hygiene",
-        "points": 3,
-        "category": "Infrastructure",
+        "name": "Test Suite Revamp & Developer Environment Cleanup",
+        "points": 8,
+        "category": "DevOps",
         "prs": [
-          432,
+          426,
           425
         ],
-        "rationale": "Hardened infrastructure security by enforcing TLS certificate validation for Redis connections and cleaned up environment configuration by removing stale App Runner artifacts."
+        "rationale": "Revamped the unit test suite with Phase 1 improvements and documented E2E DB setup, while simplifying the local environment configuration by cleaning up outdated App Runner artifacts."
       },
       {
         "id": 5,
+        "name": "Infrastructure Security & Reliability Hardening",
+        "points": 2,
+        "category": "Infrastructure",
+        "prs": [
+          432
+        ],
+        "rationale": "Enforced strict TLS certificate validation for Redis connections to eliminate a security vulnerability in encrypted traffic handling."
+      },
+      {
+        "id": 6,
+        "name": "AI Agent Log Noise Reduction",
+        "points": 1,
+        "category": "AI/Agents",
+        "prs": [
+          434
+        ],
+        "rationale": "Removed a false-positive error keyword from the ResearchArchive skip log to improve signal quality in AI agent monitoring."
+      },
+      {
+        "id": 7,
         "name": "Portfolio Maturity Stage Visibility",
         "points": 1,
         "category": "UI/UX",
         "prs": [
           423
         ],
-        "rationale": "Enabled users to surface the Maturity Stage field in the portfolio column picker, improving business readiness visibility in portfolio views."
+        "rationale": "Enabled the Maturity Stage field in the portfolio column picker so users can surface and track company maturity directly in their portfolio views."
       }
     ],
-    "totalPoints": 43,
+    "totalPoints": 62,
     "byAuthor": {
-      "Jason": 35.6,
-      "Chris": 7.4
+      "Jason": 54,
+      "Chris": 8
     }
   },
   "meta": {
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 10.85,
-      "grouped": 9.93
+      "prLevel": 11.08,
+      "grouped": 14.32
     },
     "ptsPerWeekPerFTE": 4.33
   }

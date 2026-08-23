@@ -1,0 +1,238 @@
+{
+  "week": "2026-W30",
+  "startDate": "2026-07-20",
+  "endDate": "2026-07-26",
+  "generatedAt": "2026-08-10T19:03:00.932Z",
+  "prLevel": {
+    "prs": [
+      {
+        "pr": 558,
+        "title": "fix(deps): restore playwright-core@1.61.1 in package-lock",
+        "author": "Jason",
+        "mergedAt": "2026-07-23T19:38:56Z",
+        "additions": 0,
+        "customAdditions": 0,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Fully vendored lock-file restore with zero custom lines of work.",
+        "category": "Infrastructure",
+        "vendored": true,
+        "vendoredRatio": 100,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 556,
+        "title": "Guided Experience: step-by-step task wizard with built-in AI assistant",
+        "author": "Mauro",
+        "mergedAt": "2026-07-24T17:23:36Z",
+        "additions": 0,
+        "customAdditions": 9066,
+        "deletions": 0,
+        "files": 145,
+        "points": 21,
+        "rationale": "9000+ custom lines across 145 files introducing an entirely new step-by-step guided task wizard with integrated AI assistant, schema migrations, automation actions, and seed data — a transformative, multi-week feature.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Mauro": 1
+        }
+      },
+      {
+        "pr": 557,
+        "title": "sm-577 checkpoint",
+        "author": "Chris",
+        "mergedAt": "2026-07-23T18:13:52Z",
+        "additions": 0,
+        "customAdditions": 2132,
+        "deletions": 0,
+        "files": 31,
+        "points": 13,
+        "rationale": "2100+ custom lines spanning 31 files covering user invitation flows, assignment emails, auth callback, task/milestone actions, guided-experience pages, and multiple UI components — a major cross-cutting feature.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 551,
+        "title": "Redesign the guided-experience tray as a visual progress header",
+        "author": "Mauro",
+        "mergedAt": "2026-07-22T02:58:39Z",
+        "additions": 0,
+        "customAdditions": 352,
+        "deletions": 0,
+        "files": 5,
+        "points": 5,
+        "rationale": "352 lines across 5 files redesigning the guided-experience tray into a visual progress header, touching layout, state, and legacy/new component variants — a solid, self-contained UI feature.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Mauro": 1
+        }
+      },
+      {
+        "pr": 555,
+        "title": "Free CI disk space before Terraform init (staging deploy)",
+        "author": "Jason",
+        "mergedAt": "2026-07-22T03:31:29Z",
+        "additions": 0,
+        "customAdditions": 29,
+        "deletions": 0,
+        "files": 1,
+        "points": 2,
+        "rationale": "29-line CI workflow change adding a disk-cleanup step before Terraform init — a small, well-scoped DevOps fix.",
+        "category": "DevOps",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 554,
+        "title": "Fix GuidedTaskCard PrecheckSuggestion JSX (build break)",
+        "author": "Jason",
+        "mergedAt": "2026-07-22T03:12:33Z",
+        "additions": 0,
+        "customAdditions": 1,
+        "deletions": 0,
+        "files": 1,
+        "points": 1,
+        "rationale": "Single-line JSX fix to resolve a build break — trivial targeted patch.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 544,
+        "title": "Ch/SM-582: Pre-Check Tasks for Auto-Completion (backend)",
+        "author": "Chris",
+        "mergedAt": "2026-07-22T02:57:16Z",
+        "additions": 0,
+        "customAdditions": 466,
+        "deletions": 0,
+        "files": 11,
+        "points": 8,
+        "rationale": "466 lines across 11 files adding a pre-check auto-completion AI layer with a new automation module, multiple new components/hooks, backend action changes, and unit tests — a significant feature addition.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      },
+      {
+        "pr": 540,
+        "title": "SM-576: proactive task completion agent",
+        "author": "Chris",
+        "mergedAt": "2026-07-22T02:55:13Z",
+        "additions": 0,
+        "customAdditions": 633,
+        "deletions": 0,
+        "files": 13,
+        "points": 8,
+        "rationale": "633 lines across 13 files introducing a proactive task-completion agent with updated AI agent logic, new assistant panel UI, revised automation tools, and four unit test suites — a significant AI/agent feature.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Chris": 1
+        }
+      }
+    ],
+    "totalPoints": 59,
+    "byAuthor": {
+      "Jason": 4,
+      "Mauro": 26,
+      "Chris": 29
+    },
+    "byCategory": {
+      "Infrastructure": 1,
+      "AI/Agents": 37,
+      "Core Platform": 13,
+      "UI/UX": 6,
+      "DevOps": 2
+    }
+  },
+  "grouped": {
+    "stories": [
+      {
+        "id": 1,
+        "name": "AI-Powered Guided Experience with Step-by-Step Task Wizard",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          556,
+          551,
+          554
+        ],
+        "rationale": "Delivered a fully redesigned guided experience featuring a step-by-step task wizard with a built-in AI assistant and a visual progress header, including a critical build fix to ship it."
+      },
+      {
+        "id": 2,
+        "name": "Proactive & Automated Task Completion via AI Agents",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          544,
+          540
+        ],
+        "rationale": "Enabled AI agents to proactively complete tasks on behalf of users by building both a backend pre-check auto-completion system and a proactive task completion agent."
+      },
+      {
+        "id": 3,
+        "name": "Core Platform Checkpoint Release",
+        "points": 13,
+        "category": "Core Platform",
+        "prs": [
+          557
+        ],
+        "rationale": "Delivered a significant core platform checkpoint (SM-577) advancing foundational platform stability and readiness."
+      },
+      {
+        "id": 4,
+        "name": "CI/CD Pipeline Reliability Improvements",
+        "points": 3,
+        "category": "DevOps",
+        "prs": [
+          555,
+          558
+        ],
+        "rationale": "Improved CI/CD reliability by freeing disk space before Terraform staging deploys and restoring a pinned Playwright dependency to prevent broken builds."
+      }
+    ],
+    "totalPoints": 58,
+    "byAuthor": {
+      "Mauro": 20.2,
+      "Jason": 3.8,
+      "Chris": 34
+    }
+  },
+  "meta": {
+    "teamSize": 1.8,
+    "codingAllocation": 0.8,
+    "fteEquiv": {
+      "prLevel": 13.63,
+      "grouped": 13.39
+    },
+    "ptsPerWeekPerFTE": 4.33
+  }
+}

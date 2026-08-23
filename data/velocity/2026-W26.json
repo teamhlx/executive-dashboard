@@ -2,20 +2,39 @@
   "week": "2026-W26",
   "startDate": "2026-06-22",
   "endDate": "2026-06-28",
-  "generatedAt": "2026-06-28T18:01:12.241Z",
+  "generatedAt": "2026-08-10T19:00:45.019Z",
   "prLevel": {
     "prs": [
       {
-        "pr": 489,
-        "title": "fix(readiness): recover from marketplace listing dedup races on update/discovery paths",
-        "author": "Jason",
-        "mergedAt": "2026-06-27T17:40:50Z",
+        "pr": 475,
+        "title": "Sm 565/guided experience UI",
+        "author": "Mauro",
+        "mergedAt": "2026-06-25T19:34:17Z",
         "additions": 0,
-        "customAdditions": 499,
+        "customAdditions": 1398,
         "deletions": 0,
-        "files": 6,
-        "points": 5,
-        "rationale": "Fixes a race condition on two distinct paths (update + discovery) with dedicated dedup logic across two core files plus two focused test suites and minor Docker changes — solid bug fix with meaningful coverage.",
+        "files": 17,
+        "points": 13,
+        "rationale": "A substantial new guided-experience UI surface with 16 custom component/page files, multiple new components (Tray, TaskCard, InlinePrompt, SkipReasonPrompt, SuggestedQuestions, TaskSteps, TaskDates, CrmConnectPanel), custom hooks, and AppShell integration representing a major feature with architectural scope.",
+        "category": "UI/UX",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Mauro": 1
+        }
+      },
+      {
+        "pr": 496,
+        "title": "Move competitor marketplace enrichment off the Save path (SM-549)",
+        "author": "Jason",
+        "mergedAt": "2026-06-28T23:39:39Z",
+        "additions": 0,
+        "customAdditions": 299,
+        "deletions": 0,
+        "files": 13,
+        "points": 8,
+        "rationale": "Moves competitor marketplace enrichment off the synchronous save path into a background BullMQ job, touching the worker pipeline, new job type, status polling hook, and multiple layout components to surface async collection status — a significant architectural shift across the full stack.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -25,23 +44,80 @@
         }
       },
       {
-        "pr": 493,
-        "title": "Merge main into staging",
+        "pr": 495,
+        "title": "Fix worker \"Cannot find module './registry'\" on cache-miss field lookups",
         "author": "Jason",
-        "mergedAt": "2026-06-27T15:09:31Z",
+        "mergedAt": "2026-06-28T20:08:51Z",
         "additions": 0,
-        "customAdditions": 966,
+        "customAdditions": 33,
         "deletions": 0,
-        "files": 18,
-        "points": 8,
-        "rationale": "Merge PR accumulating multiple feature branches (product-from-URL, company-name edit, marketplace scoping fix, Bedrock toolConfig fix, schema migration, e2e tests) across 17+ custom files; scored on net custom work not already counted in constituent PRs.",
-        "category": "Core Platform",
+        "files": 2,
+        "points": 2,
+        "rationale": "Small targeted fix to resolve a module resolution issue on cache-miss field lookups across only two files with 33 custom lines.",
+        "category": "Infrastructure",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 477,
+        "title": "ACE AWS Products: SM-541",
+        "author": "Chris",
+        "mergedAt": "2026-06-28T19:48:45Z",
+        "additions": 0,
+        "customAdditions": 318,
+        "deletions": 0,
+        "files": 4,
+        "points": 5,
+        "rationale": "Adds AWS product data handling for ACE enrichment across four files, with hardening against prototype keys and a fix for product lookups, representing a solid feature addition with contributions from two authors.",
+        "category": "Integrations",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": true,
         "attribution": {
-          "Jason": 0.7,
-          "Chad": 0.3
+          "Chris": 0.65,
+          "Jason": 0.35
+        }
+      },
+      {
+        "pr": 494,
+        "title": "SM-642: Resolve proper company name from domain",
+        "author": "Jason",
+        "mergedAt": "2026-06-28T18:23:22Z",
+        "additions": 0,
+        "customAdditions": 662,
+        "deletions": 0,
+        "files": 8,
+        "points": 8,
+        "rationale": "Implements a new company name resolution service with dedicated library module, integrates it into the readiness orchestrator and registry, surfaces it in two admin pages, updates rival promotion, and includes unit tests — a significant cross-cutting feature.",
+        "category": "AI/Agents",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
+        }
+      },
+      {
+        "pr": 489,
+        "title": "fix(readiness): recover from marketplace listing dedup races on update/discovery paths",
+        "author": "Jason",
+        "mergedAt": "2026-06-27T17:40:50Z",
+        "additions": 0,
+        "customAdditions": 499,
+        "deletions": 0,
+        "files": 6,
+        "points": 8,
+        "rationale": "Addresses race conditions in marketplace listing deduplication across both update and discovery paths, with Dockerfile changes, two substantial test files, and logic changes in two core modules — meaningful reliability hardening with good test coverage.",
+        "category": "Core Platform",
+        "vendored": false,
+        "vendoredRatio": 0,
+        "isMultiAuthor": false,
+        "attribution": {
+          "Jason": 1
         }
       },
       {
@@ -54,7 +130,7 @@
         "deletions": 0,
         "files": 10,
         "points": 8,
-        "rationale": "Full-stack feature spanning server actions, AWS Marketplace URL parsing, multiple UI components (AddProduct, EditCompanyName, Fundamentals), data loading, and e2e tests — significant breadth of new capability.",
+        "rationale": "Adds two distinct user-facing features (add product from AWS Marketplace URL and edit company name) spanning new UI components, server actions, a new AWS Marketplace listing-details library, and an e2e test — a solid medium-large feature delivery.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -73,7 +149,7 @@
         "deletions": 0,
         "files": 2,
         "points": 3,
-        "rationale": "Targeted prod hotfix correcting Bedrock toolConfig structure in the competitive-analysis agent plus a matching unit test — modest but non-trivial AI agent fix.",
+        "rationale": "Targeted hotfix correcting Bedrock toolConfig on the competitive-analysis finalize step with an accompanying unit test, modest in scope but non-trivial in AI agent context.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -92,7 +168,7 @@
         "deletions": 0,
         "files": 4,
         "points": 3,
-        "rationale": "Scopes a Prisma unique constraint to company level, updates the collector to handle the new uniqueness, adds a migration, and a unit test — small schema + logic change with clear scope.",
+        "rationale": "Scopes a unique constraint on Product.marketplaceListingId per company via a Prisma schema change and migration, with an updated dedup test — a focused data-model fix.",
         "category": "Data/Schema",
         "vendored": false,
         "vendoredRatio": 0,
@@ -111,8 +187,8 @@
         "deletions": 0,
         "files": 6,
         "points": 5,
-        "rationale": "Enforces tenant isolation across the automation control plane, agent, tools index, and two action files with a foundational unit test — meaningful security/correctness refactor touching multiple layers.",
-        "category": "AI/Agents",
+        "rationale": "Enforces tenant isolation across automation actions and the assistant agent, touching the control layer, tool index, two action files, and adding a unit test — a meaningful security/correctness fix with moderate cross-cutting scope.",
+        "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -130,8 +206,8 @@
         "deletions": 0,
         "files": 2,
         "points": 2,
-        "rationale": "Small targeted fix wiring BTS generation enqueueing from two slide/node components — minimal logic change across only two files.",
-        "category": "UI/UX",
+        "rationale": "Small two-file fix that directly enqueues BTS generation from assessment and strategy slide components rather than going through an indirect path — a minor targeted fix.",
+        "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -148,8 +224,8 @@
         "customAdditions": 386,
         "deletions": 0,
         "files": 17,
-        "points": 5,
-        "rationale": "Reverting a large feature (guided-experience UI + action-needed tray) cleanly across 17 files including components, layout, and sandbox pages requires careful coordination even though it is removal work.",
+        "points": 2,
+        "rationale": "A revert of PR #475 with 386 lines of additions (restoring prior state across 17 files); the cognitive effort is low as it is undoing known work rather than producing novel logic.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 47,
@@ -168,32 +244,13 @@
         "deletions": 0,
         "files": 44,
         "points": 13,
-        "rationale": "Establishes a full Terraform IaC foundation (44 files, 2462 lines) covering Cognito migration, bootstrap, env configs, CI/CD workflow integration, and supporting tooling — a major architectural infrastructure investment.",
+        "rationale": "Establishes a full Terraform IaC foundation for AWS Cognito migration across 44 files including bootstrap, environment configs, CI/CD workflow integration, and comprehensive documentation — a major infrastructure architectural undertaking.",
         "category": "Infrastructure",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
         "attribution": {
           "Chad": 1
-        }
-      },
-      {
-        "pr": 475,
-        "title": "Sm 565/guided experience UI",
-        "author": "Mauro",
-        "mergedAt": "2026-06-25T19:34:17Z",
-        "additions": 0,
-        "customAdditions": 1398,
-        "deletions": 0,
-        "files": 17,
-        "points": 8,
-        "rationale": "New guided-experience UI surface with 16 components (Tray, task cards, inline prompts, assignee selectors, CRM connect panel), sandbox pages, and AppShell integration — significant frontend feature build-out.",
-        "category": "UI/UX",
-        "vendored": false,
-        "vendoredRatio": 0,
-        "isMultiAuthor": false,
-        "attribution": {
-          "Mauro": 1
         }
       },
       {
@@ -206,7 +263,7 @@
         "deletions": 0,
         "files": 26,
         "points": 13,
-        "rationale": "Architectural shift moving BTS and Competitive Analysis generation to background workers via BullMQ, touching AI agents, generation entrypoints, schema migration, multiple slide components, studio actions, and hooks across 26 files.",
+        "rationale": "Moves BTS and Competitive Analysis generation to background workers with new BullMQ job types, Prisma schema additions, updated AI agent graphs, studio UI polling/status components, and API routes — a major architectural feature spanning the full stack.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -225,7 +282,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Single-line Dockerfile tweak to copy the docs directory into the runner image — trivial config fix.",
+        "rationale": "Trivial single-file Dockerfile change to copy the docs directory into the runner image.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -244,7 +301,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Duplicate of #472 — same single-file, trivial Dockerfile docs-copy fix.",
+        "rationale": "Trivial single-file Dockerfile change adding a COPY instruction to include docs directory in the runner image.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -262,224 +319,140 @@
         "customAdditions": 1735,
         "deletions": 0,
         "files": 35,
-        "points": 13,
-        "rationale": "Large feature combining playbook editing UI, AI assistant guided flow, automation agent/tools updates, schema migrations, performance pages, admin pages, and substantial supporting docs/todos across 35 files.",
-        "category": "Core Platform",
+        "points": 21,
+        "rationale": "Transformative epic spanning 35+ files including new AI assistant guided flow, playbook editing UI, automation agent tools, schema migrations, server actions, and extensive documentation — clearly weeks of work touching Core Platform, AI/Agents, and UI/UX simultaneously.",
+        "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 3,
         "isMultiAuthor": false,
         "attribution": {
           "Jason": 1
         }
-      },
-      {
-        "pr": 468,
-        "title": "feat(ace): connect ACE opportunities to existing CRM deals (SM-545)",
-        "author": "Jason",
-        "mergedAt": "2026-06-21T22:29:17Z",
-        "additions": 0,
-        "customAdditions": 828,
-        "deletions": 0,
-        "files": 6,
-        "points": 8,
-        "rationale": "End-to-end ACE opportunity-to-CRM-deal connection feature spanning a ConnectCrmCard UI, prospect editor integration, server actions, sandbox opportunity client, and ACE validation actions — substantial full-stack feature.",
-        "category": "Integrations",
-        "vendored": false,
-        "vendoredRatio": 0,
-        "isMultiAuthor": false,
-        "attribution": {
-          "Jason": 1
-        }
-      },
-      {
-        "pr": 467,
-        "title": "feat(ace): refresh CRM contacts at ACE push time (SM-542)",
-        "author": "Jason",
-        "mergedAt": "2026-06-21T20:01:36Z",
-        "additions": 0,
-        "customAdditions": 238,
-        "deletions": 0,
-        "files": 4,
-        "points": 5,
-        "rationale": "Adds CRM contact refresh logic at ACE push time across HubSpot, Salesforce, and a shared hydration layer with a coordinating action — a solid, focused feature touching multiple integration surfaces.",
-        "category": "Integrations",
-        "vendored": false,
-        "vendoredRatio": 0,
-        "isMultiAuthor": false,
-        "attribution": {
-          "Jason": 1
-        }
-      },
-      {
-        "pr": 466,
-        "title": "Clean up CRM stage mappings + LLM crosswalk gap-fill (SM-562)",
-        "author": "Jason",
-        "mergedAt": "2026-06-21T19:18:58Z",
-        "additions": 0,
-        "customAdditions": 410,
-        "deletions": 0,
-        "files": 4,
-        "points": 8,
-        "rationale": "Introduces an LLM-powered gap-fill crosswalk for CRM value mappings alongside a seeding mechanism and updated UI/actions — meaningful architectural addition to the CRM mapping pipeline with AI involvement.",
-        "category": "AI/Agents",
-        "vendored": false,
-        "vendoredRatio": 0,
-        "isMultiAuthor": false,
-        "attribution": {
-          "Jason": 1
-        }
-      },
-      {
-        "pr": 465,
-        "title": "feat(ace): submit-for-review + consolidated ACE review in prospect editor (SM-563)",
-        "author": "Jason",
-        "mergedAt": "2026-06-21T19:04:21Z",
-        "additions": 0,
-        "customAdditions": 1620,
-        "deletions": 0,
-        "files": 16,
-        "points": 13,
-        "rationale": "A large, wide-ranging PR spanning 16 files and 1620 lines that adds a full ACE submit-for-review workflow, consolidated review UI, status banners, push queue updates, AWS connector deployment scripting, and core ACE mapper/validator logic — constituting a major feature with significant architectural footprint.",
-        "category": "Core Platform",
-        "vendored": false,
-        "vendoredRatio": 0,
-        "isMultiAuthor": false,
-        "attribution": {
-          "Jason": 1
-        }
       }
     ],
-    "totalPoints": 122,
+    "totalPoints": 116,
     "byAuthor": {
-      "Jason": 87.6,
-      "Chad": 26.4,
-      "Mauro": 8
+      "Mauro": 13,
+      "Jason": 78.8,
+      "Chris": 3.3,
+      "Chad": 21
     },
     "byCategory": {
-      "Core Platform": 39,
       "UI/UX": 23,
-      "AI/Agents": 29,
+      "Core Platform": 23,
+      "Infrastructure": 15,
+      "Integrations": 5,
+      "AI/Agents": 45,
       "Data/Schema": 3,
-      "Infrastructure": 13,
-      "DevOps": 2,
-      "Integrations": 13
+      "DevOps": 2
     }
   },
   "grouped": {
     "stories": [
       {
         "id": 1,
-        "name": "AWS Marketplace Integration & Data Integrity",
-        "points": 13,
-        "category": "Core Platform",
-        "prs": [
-          489,
-          490,
-          487
-        ],
-        "rationale": "Enabled adding products via AWS Marketplace URL, scoped marketplace listing IDs uniquely per company, and fixed deduplication race conditions to ensure reliable marketplace data across the platform."
-      },
-      {
-        "id": 2,
-        "name": "ACE Partner Network & CRM Deal Connectivity",
-        "points": 21,
-        "category": "Integrations",
-        "prs": [
-          468,
-          467,
-          466,
-          465
-        ],
-        "rationale": "Delivered end-to-end ACE opportunity management including submit-for-review flows, connecting ACE opportunities to existing CRM deals, refreshing CRM contacts at push time, and intelligently filling CRM stage mapping gaps with LLM crosswalk logic."
-      },
-      {
-        "id": 3,
-        "name": "AI Studio Background Processing & Reliability",
-        "points": 21,
-        "category": "AI/Agents",
-        "prs": [
-          476,
-          483,
-          488
-        ],
-        "rationale": "Moved BTS and Competitive Analysis generation to background workers for better performance, enabled direct BTS enqueuing from assessment and strategy slides, and fixed a Bedrock toolConfig production issue in competitive analysis finalization."
-      },
-      {
-        "id": 4,
-        "name": "Playbook Editing with AI-Guided Flow",
-        "points": 13,
-        "category": "Core Platform",
-        "prs": [
-          470
-        ],
-        "rationale": "Introduced a full playbook editing experience with an integrated AI assistant to guide users through structured business readiness workflows."
-      },
-      {
-        "id": 5,
-        "name": "Guided Experience UI Exploration & Rollback",
+        "name": "Guided Experience & Action-Needed Tray",
         "points": 13,
         "category": "UI/UX",
         "prs": [
           475,
           481
         ],
-        "rationale": "Shipped a guided experience UI with an action-needed tray, then reverted it from staging to address issues before re-releasing, reflecting an iterative approach to this onboarding feature."
+        "rationale": "Introduced and then reverted the guided experience UI and action-needed tray, representing an in-progress initiative to improve user onboarding flow."
+      },
+      {
+        "id": 2,
+        "name": "AWS Marketplace Integration & Product Management",
+        "points": 21,
+        "category": "Integrations",
+        "prs": [
+          477,
+          490,
+          496,
+          489,
+          487
+        ],
+        "rationale": "Delivered end-to-end AWS Marketplace integration including ACE product sync, adding products via URL, deduplication race condition fixes, scoping unique listing IDs per company, and moving enrichment off the critical save path."
+      },
+      {
+        "id": 3,
+        "name": "Company Domain Intelligence & Name Resolution",
+        "points": 8,
+        "category": "AI/Agents",
+        "prs": [
+          494
+        ],
+        "rationale": "Improved data quality by enabling the platform to accurately resolve a company's proper name from its domain."
+      },
+      {
+        "id": 4,
+        "name": "AI Studio Background Processing & Reliability",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          476,
+          483,
+          488,
+          495
+        ],
+        "rationale": "Moved BTS and Competitive Analysis generation to background workers for scalability, fixed direct enqueuing from assessment slides, patched a Bedrock toolConfig production hotfix, and resolved a module registry cache-miss worker crash."
+      },
+      {
+        "id": 5,
+        "name": "Playbook Editing with AI Assistant",
+        "points": 21,
+        "category": "AI/Agents",
+        "prs": [
+          470
+        ],
+        "rationale": "Launched a major new capability allowing users to edit playbooks with the assistance of an AI-guided flow."
       },
       {
         "id": 6,
+        "name": "Tenant Isolation & Security Hardening",
+        "points": 5,
+        "category": "Core Platform",
+        "prs": [
+          485
+        ],
+        "rationale": "Enforced strict tenant isolation on automation actions to prevent cross-tenant data leakage."
+      },
+      {
+        "id": 7,
         "name": "AWS Cognito Authentication Migration Foundation",
         "points": 13,
         "category": "Infrastructure",
         "prs": [
           480
         ],
-        "rationale": "Established Terraform infrastructure-as-code foundations for migrating user authentication to AWS Cognito, enabling a more scalable and secure identity management layer."
-      },
-      {
-        "id": 7,
-        "name": "Multi-Tenant Automation Security Enforcement",
-        "points": 5,
-        "category": "AI/Agents",
-        "prs": [
-          485
-        ],
-        "rationale": "Fixed a critical tenant isolation gap in automation actions to ensure no cross-tenant data leakage during automated workflow execution."
+        "rationale": "Established the Terraform infrastructure-as-code foundation required to migrate authentication to AWS Cognito."
       },
       {
         "id": 8,
-        "name": "Staging Environment Sync",
-        "points": 8,
-        "category": "Core Platform",
-        "prs": [
-          493
-        ],
-        "rationale": "Merged main branch changes into staging to keep the pre-production environment current with the latest production-ready work."
-      },
-      {
-        "id": 9,
         "name": "Admin Documentation Availability Fix",
         "points": 2,
         "category": "DevOps",
         "prs": [
-          472,
-          471
+          471,
+          472
         ],
-        "rationale": "Fixed the Docker runner image to include the docs directory so that admin documentation loads correctly in deployed environments."
+        "rationale": "Fixed Docker runner images to include the docs directory so that admin documentation loads correctly in all environments."
       }
     ],
-    "totalPoints": 109,
+    "totalPoints": 104,
     "byAuthor": {
-      "Jason": 82.1,
-      "Chad": 18.9,
-      "Mauro": 8
+      "Mauro": 11.3,
+      "Jason": 71.3,
+      "Chris": 3.3,
+      "Chad": 18.1
     }
   },
   "meta": {
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 28.17,
-      "grouped": 25.17
+      "prLevel": 26.79,
+      "grouped": 24.02
     },
     "ptsPerWeekPerFTE": 4.33
   }

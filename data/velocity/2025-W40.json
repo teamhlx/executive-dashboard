@@ -2,7 +2,7 @@
   "week": "2025-W40",
   "startDate": "2025-09-29",
   "endDate": "2025-10-05",
-  "generatedAt": "2026-06-27T15:55:30.546Z",
+  "generatedAt": "2026-08-10T18:47:47.982Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Zero custom lines added or deleted with a single file touched, indicating a trivial config or metadata tweak to an existing collector.",
+        "rationale": "Zero custom lines added with a single file touched, indicating a trivial config or metadata tweak to an existing collector.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 7,
         "points": 8,
-        "rationale": "535 lines across 7 files introducing coach assignment UI, schema changes, admin actions, and auto-sync task assignment logic represents a significant feature spanning data layer through UI.",
+        "rationale": "535 lines across 7 files introducing a coach assignment UI, schema changes, admin actions, and auto-sync task assignment logic represents a significant feature spanning data layer through UI.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -53,7 +53,7 @@
         "deletions": 0,
         "files": 32,
         "points": 13,
-        "rationale": "995 lines across 32 files touching schema, AI entrypoint, multiple layouts, actions, and data access layer for multi-assignee and coach relationship support constitutes a major cross-cutting architectural feature.",
+        "rationale": "995 lines across 32 files touching schema, AI entrypoint, readiness actions, task management, DAL, and multiple layouts represents a major feature with broad architectural impact.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 7,
@@ -72,7 +72,7 @@
         "deletions": 0,
         "files": 9,
         "points": 13,
-        "rationale": "1257 lines across 9 files building a complete task management system from scratch including schema, server actions, client components with inline editing, and company-wide collaboration is a major feature addition.",
+        "rationale": "1257 lines across 9 files introducing a complete task management system with inline editing, schema changes, server actions, and collaborative UI components is a major feature addition.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 9,
@@ -91,7 +91,7 @@
         "deletions": 0,
         "files": 14,
         "points": 13,
-        "rationale": "1003 lines across 14 files introducing admin queue monitoring, user management, session handling, and supporting infrastructure represents a major admin feature with architectural breadth.",
+        "rationale": "1003 lines across 14 files delivering a full admin toolset with queue monitoring, user management, session handling, and supporting documentation represents a major feature with architectural scope.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -110,7 +110,7 @@
         "deletions": 0,
         "files": 14,
         "points": 13,
-        "rationale": "Identical scope to PR #85 — 1003 lines across the same 14 files covering admin queue monitoring and user management; likely a duplicate or re-opened PR of the same work.",
+        "rationale": "Identical to PR #85 in content (same files, same line counts), indicating a duplicate or re-open of the same major admin tooling feature.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -129,7 +129,7 @@
         "deletions": 0,
         "files": 5,
         "points": 3,
-        "rationale": "115 lines across 5 files adding broken image detection and domain-name logo fallback is a modest, self-contained UI/UX feature with a small utility module.",
+        "rationale": "115 lines across 5 files adding broken image detection and a domain-name logo fallback is a modest, self-contained UI/utility feature.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 20,
@@ -148,7 +148,7 @@
         "deletions": 0,
         "files": 5,
         "points": 3,
-        "rationale": "Identical scope to PR #84 — 115 lines across the same 5 files for broken image detection and logo fallback; likely a duplicate or re-opened PR.",
+        "rationale": "Identical to PR #84 in content, indicating a duplicate or re-open of the same modest logo fallback feature.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 20,
@@ -167,7 +167,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Single-line fix correcting HTML entity rendering in one component is a trivial bug fix.",
+        "rationale": "Single-line fix to resolve HTML entity rendering in a chat component is a trivial bug fix.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -186,7 +186,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Nine lines in a single file to stamp lastLoginAt on login is a trivial, single-concern change.",
+        "rationale": "Nine lines in one file to record a lastLoginAt timestamp on login is a trivial single-concern change.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -205,7 +205,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Three lines in a single auth action to set emailConfirmed during password reset is a trivial one-liner fix.",
+        "rationale": "Three lines in one file to set emailConfirmed during password reset is a trivial targeted fix.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -224,14 +224,13 @@
         "deletions": 0,
         "files": 9,
         "points": 2,
-        "rationale": "21 lines spread across 9 collector files with small fixes like returning empty string instead of -1 and a typo correction are minor, low-risk bug fixes.",
+        "rationale": "21 lines spread across 9 collector files and a model factory represent minor improvements to existing AI collector configurations rather than new features.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
-        "isMultiAuthor": true,
+        "isMultiAuthor": false,
         "attribution": {
-          "Chris": 0.85,
-          "Jason": 0.15
+          "Chris": 1
         }
       },
       {
@@ -244,7 +243,7 @@
         "deletions": 0,
         "files": 7,
         "points": 3,
-        "rationale": "126 lines across 7 files adding an email sent notification, T&C updates, and minor UI tweaks is a modest feature touching several independent areas without deep complexity.",
+        "rationale": "126 lines across 7 files adding an email sent notification UI, updated T&Cs copy, and minor field card tweaks is a small-to-medium set of coherent product polish changes.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -256,21 +255,21 @@
       {
         "pr": 75,
         "title": "Staging",
-        "author": "Jason",
+        "author": "Chris",
         "mergedAt": "2025-10-01T02:23:10Z",
         "additions": 0,
         "customAdditions": 157,
         "deletions": 0,
         "files": 18,
         "points": 5,
-        "rationale": "157 lines across 18 files blending App Runner deployment config, code refactors, and several component/action cleanups represents medium effort with meaningful breadth across infra and app layers.",
+        "rationale": "157 lines across 18 files mixing DevOps config (apprunner.yaml, makefile) with code refactors and UI fixes spans multiple concerns; the infrastructure spine is Chris's and the code cleanup is Jason's.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": true,
         "attribution": {
-          "Chris": 0.45,
-          "Jason": 0.55
+          "Chris": 0.55,
+          "Jason": 0.45
         }
       },
       {
@@ -283,7 +282,7 @@
         "deletions": 0,
         "files": 18,
         "points": 5,
-        "rationale": "Same 157 lines and 18 files as PR #75, with Chris authoring the App Runner config spine and Jason contributing merge commits and code refactors across app components.",
+        "rationale": "Identical file set and line count to PR #75, representing the same mixed DevOps/refactor work with Chris owning the infrastructure config and Jason owning the code-quality commits.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -303,7 +302,7 @@
         "deletions": 0,
         "files": 2,
         "points": 2,
-        "rationale": "Small addition of 19 lines across 2 files to trigger collection on user creation during staging onboarding flow.",
+        "rationale": "Small addition of ~19 lines across 2 files to trigger collection on user creation, a minor feature hook with limited scope.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -322,7 +321,7 @@
         "deletions": 0,
         "files": 2,
         "points": 2,
-        "rationale": "Small addition of 19 lines across 2 files introducing an addToQueueForUser helper to support onboarding readiness job queuing.",
+        "rationale": "Nearly identical in size and scope to PR #74, adding an onboarding-specific queue function across 2 files with 19 custom lines.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -340,8 +339,8 @@
         "customAdditions": 25,
         "deletions": 0,
         "files": 1,
-        "points": 2,
-        "rationale": "Minor CI/build config tweak using tee to append env vars in the Amplify build commands, 25 lines in a single YAML file.",
+        "points": 1,
+        "rationale": "Single-file CI config tweak using tee to append environment variables in build commands, a straightforward DevOps adjustment.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -360,7 +359,7 @@
         "deletions": 0,
         "files": 32,
         "points": 13,
-        "rationale": "Large addition of 1326 custom lines across 32 files implementing numerous new AI data-field collectors, BrightData integrations, and entrypoint updates representing a major expansion of the AI/data collection pipeline.",
+        "rationale": "Large addition of 1326 custom lines across 32 files introducing numerous AI data-field collectors, BrightData integrations, and entrypoint logic representing a major feature expansion of the AI readiness pipeline.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -370,17 +369,17 @@
         }
       }
     ],
-    "totalPoints": 104,
+    "totalPoints": 103,
     "byAuthor": {
-      "Chris": 20.8,
-      "Jason": 83.4
+      "Chris": 21.6,
+      "Jason": 81.6
     },
     "byCategory": {
       "AI/Agents": 16,
       "Admin/Tools": 34,
       "Core Platform": 32,
       "UI/UX": 10,
-      "DevOps": 12
+      "DevOps": 11
     }
   },
   "grouped": {
@@ -395,7 +394,7 @@
           88,
           89
         ],
-        "rationale": "Built a complete task management system with inline editing, multi-assignee support, coach relationships, and a UI for coach assignment with auto-sync, enabling company-wide collaboration."
+        "rationale": "Delivered a complete task management system with inline editing, multi-assignee support, coach relationships, and a UI for coach assignment with auto-sync capabilities."
       },
       {
         "id": 2,
@@ -406,89 +405,107 @@
           85,
           86
         ],
-        "rationale": "Delivered admin tooling for monitoring job queues and managing users, giving operators visibility and control over platform activity."
+        "rationale": "Built out admin tooling for monitoring job queues and managing users across the platform."
       },
       {
         "id": 3,
-        "name": "AI Agent Field Auto-Population Improvements",
-        "points": 21,
+        "name": "AI Field Auto-Population Improvements",
+        "points": 13,
         "category": "AI/Agents",
         "prs": [
-          66,
-          76,
-          68
+          66
         ],
-        "rationale": "Enhanced the AI collector and agents with additional auto-populated fields and incremental improvements to increase data capture accuracy during onboarding."
+        "rationale": "Extended the AI agent's ability to automatically populate additional business readiness fields during data collection."
       },
       {
         "id": 4,
-        "name": "Staging Environment & Onboarding Queue Setup",
+        "name": "Onboarding Pipeline & Staging Environment Setup",
         "points": 13,
         "category": "DevOps",
         "prs": [
-          73,
-          75,
           69,
+          73,
           74,
-          72
+          75
         ],
-        "rationale": "Established the staging environment pipeline with Dockerfile improvements, environment variable handling, and wired up onboarding readiness job queuing for new users."
+        "rationale": "Established the staging environment with Dockerfile improvements and wired up onboarding to automatically trigger readiness data collection jobs on user creation."
       },
       {
         "id": 5,
-        "name": "Company Logo Display Reliability",
+        "name": "Onboarding Queue & Readiness Job Automation",
+        "points": 3,
+        "category": "Core Platform",
+        "prs": [
+          72
+        ],
+        "rationale": "Added the ability to enqueue readiness assessment jobs per user during onboarding to automate the initial data collection process."
+      },
+      {
+        "id": 6,
+        "name": "Company Logo Resilience & Fallback Display",
         "points": 3,
         "category": "UI/UX",
         "prs": [
           83,
           84
         ],
-        "rationale": "Improved company logo display by detecting broken images and falling back to domain-based logo resolution, ensuring a polished appearance across the platform."
-      },
-      {
-        "id": 6,
-        "name": "User Authentication & Account Reliability Fixes",
-        "points": 3,
-        "category": "Core Platform",
-        "prs": [
-          80,
-          79
-        ],
-        "rationale": "Improved authentication reliability by tracking last login timestamps and automatically confirming email on password reset to reduce account access friction."
+        "rationale": "Improved the reliability of company logo display by detecting broken images and falling back to domain-derived names."
       },
       {
         "id": 7,
-        "name": "Email Notification & Terms and Conditions Update",
+        "name": "User Authentication & Account Integrity Fixes",
+        "points": 2,
+        "category": "Core Platform",
+        "prs": [
+          79,
+          80
+        ],
+        "rationale": "Ensured login timestamps are recorded accurately and email confirmation is properly set during password resets to maintain account integrity."
+      },
+      {
+        "id": 8,
+        "name": "AI Collector Agent Improvements",
+        "points": 3,
+        "category": "AI/Agents",
+        "prs": [
+          68,
+          76
+        ],
+        "rationale": "Incremental improvements to the AI data collector agent's performance and reliability."
+      },
+      {
+        "id": 9,
+        "name": "User Onboarding Notifications & Legal Updates",
         "points": 3,
         "category": "UI/UX",
         "prs": [
           77
         ],
-        "rationale": "Added a user-facing email sent confirmation notification and updated the Terms & Conditions to keep users informed and compliant."
+        "rationale": "Added email sent confirmation notifications and updated Terms & Conditions to improve the onboarding communication experience."
       },
       {
-        "id": 8,
+        "id": 10,
         "name": "Chat Message Formatting Fix",
         "points": 1,
         "category": "UI/UX",
         "prs": [
           81
         ],
-        "rationale": "Fixed HTML entity rendering in the initial system message to ensure clean, readable text in the chat interface."
+        "rationale": "Fixed HTML entity characters being displayed as raw text in the initial system message in the chat interface."
       }
     ],
-    "totalPoints": 86,
+    "totalPoints": 83,
     "byAuthor": {
-      "Jason": 60.9,
-      "Chris": 25.1
+      "Jason": 57,
+      "Chris": 26
     }
   },
   "meta": {
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 24.02,
-      "grouped": 19.86
+      "prLevel": 23.79,
+      "grouped": 19.17
     },
     "ptsPerWeekPerFTE": 4.33
   }

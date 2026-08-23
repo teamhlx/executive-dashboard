@@ -2,7 +2,7 @@
   "week": "2026-W02",
   "startDate": "2026-01-05",
   "endDate": "2026-01-11",
-  "generatedAt": "2026-06-27T15:59:18.177Z",
+  "generatedAt": "2026-08-10T18:52:02.664Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 3,
         "points": 5,
-        "rationale": "317 lines across 3 files implementing a full CSV export feature with a server action, a dialog component, and page integration represents a solid, self-contained feature.",
+        "rationale": "317 lines across 3 files implementing a full CSV export flow with a server action, a dialog component, and page integration represents a solid, self-contained feature.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 4,
         "points": 2,
-        "rationale": "54 lines across 4 files with no deletions suggests minor display/styling improvements to existing time period selectors and dashboard components.",
+        "rationale": "54 lines across 4 files touching display improvements and minor UI tweaks to time period selectors and dashboard styling is a small, low-risk change.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -53,7 +53,7 @@
         "deletions": 0,
         "files": 137,
         "points": 21,
-        "rationale": "14843 lines across 137 files encompassing a full Portfolio Management System with permissions, testing, AI agent updates, documentation, and architectural changes is clearly an epic transformation.",
+        "rationale": "14,843 custom lines across 137 files spanning a full portfolio management system, permissions architecture, AI agent updates, testing infrastructure, and extensive documentation represents a transformative, multi-week epic.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 16,
@@ -72,7 +72,7 @@
         "deletions": 0,
         "files": 2,
         "points": 3,
-        "rationale": "168 lines across 2 files adding a bulk CSV upload action and dialog component is a modest, focused feature with limited scope.",
+        "rationale": "168 lines across 2 files adding bulk CSV upload with optional readiness and gap analysis triggers is a modest but meaningful feature addition.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -90,9 +90,9 @@
         "customAdditions": 464,
         "deletions": 0,
         "files": 4,
-        "points": 8,
-        "rationale": "464 lines across 4 files extending bulk upload with automatic readiness collection touches the AI readiness entrypoint, a server action, a UI dialog, and the admin page, representing a significant cross-cutting feature.",
-        "category": "AI/Agents",
+        "points": 5,
+        "rationale": "464 lines across 4 files including an AI readiness entrypoint, bulk upload actions, a dialog component, and page integration represents a solid feature with meaningful backend and UI work.",
+        "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": false,
@@ -101,15 +101,14 @@
         }
       }
     ],
-    "totalPoints": 39,
+    "totalPoints": 36,
     "byAuthor": {
-      "Jason": 39
+      "Jason": 36
     },
     "byCategory": {
-      "Admin/Tools": 8,
+      "Admin/Tools": 13,
       "UI/UX": 2,
-      "Core Platform": 21,
-      "AI/Agents": 8
+      "Core Platform": 21
     }
   },
   "grouped": {
@@ -122,29 +121,29 @@
         "prs": [
           209
         ],
-        "rationale": "Introduced a full portfolio management system with permissions and testing, forming the core infrastructure for managing groups of companies within the platform."
+        "rationale": "Introduced a full portfolio management system with permissions and testing, enabling structured oversight of company groupings within the platform."
       },
       {
         "id": 2,
-        "name": "Bulk Company Onboarding with AI Readiness Analysis",
+        "name": "Bulk Company Onboarding via CSV",
         "points": 13,
-        "category": "AI/Agents",
+        "category": "Admin/Tools",
         "prs": [
-          207,
-          208
+          208,
+          207
         ],
-        "rationale": "Enabled administrators to upload multiple companies in bulk via CSV and automatically trigger AI-powered readiness and gap analysis for each, dramatically accelerating client onboarding workflows."
+        "rationale": "Enabled admins to bulk upload companies via CSV with automatic readiness collection and optional gap analysis, streamlining large-scale client onboarding."
       },
       {
         "id": 3,
-        "name": "Admin Dashboard Data Export & Visibility Improvements",
+        "name": "Admin Company Data Export & Dashboard Improvements",
         "points": 8,
         "category": "Admin/Tools",
         "prs": [
           212,
           211
         ],
-        "rationale": "Enhanced the admin dashboard by adding CSV export for the companies page and improving how time periods are displayed, giving administrators better visibility and data portability."
+        "rationale": "Enhanced the admin experience by adding CSV export for the companies page and improving time period displays on the admin dashboard."
       }
     ],
     "totalPoints": 42,
@@ -156,7 +155,7 @@
     "teamSize": 1.8,
     "codingAllocation": 0.8,
     "fteEquiv": {
-      "prLevel": 9.01,
+      "prLevel": 8.31,
       "grouped": 9.7
     },
     "ptsPerWeekPerFTE": 4.33

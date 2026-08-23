@@ -2,7 +2,7 @@
   "week": "2026-W17",
   "startDate": "2026-04-20",
   "endDate": "2026-04-26",
-  "generatedAt": "2026-06-27T16:02:49.839Z",
+  "generatedAt": "2026-08-10T18:55:56.816Z",
   "prLevel": {
     "prs": [
       {
@@ -15,7 +15,7 @@
         "deletions": 0,
         "files": 21,
         "points": 13,
-        "rationale": "Spans 21 files across AI agent logic, schema migrations, field definitions, multiple actions/hooks, and UI components — a major multi-ticket feature touching the full stack from DB to UI.",
+        "rationale": "Spans 21 files across AI agent logic, schema migrations, field definitions, Prisma resolvers, and UI components — representing a major multi-ticket feature touching core platform architecture.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -34,7 +34,7 @@
         "deletions": 0,
         "files": 9,
         "points": 8,
-        "rationale": "Meaningful improvements across competitive analysis agent/prompt and Studio editor components (toolbar, comments, editor, streaming routes) representing a significant cross-cutting feature enhancement.",
+        "rationale": "Meaningful improvements across the competitive analysis agent/prompt and Studio editor with toolbar and comment sidebar changes across 9 files representing a significant but focused feature enhancement.",
         "category": "AI/Agents",
         "vendored": false,
         "vendoredRatio": 0,
@@ -53,7 +53,7 @@
         "deletions": 0,
         "files": 5,
         "points": 2,
-        "rationale": "Small collection of CSS/layout scroll and positioning fixes plus removal of a deploy script — minor bug fixes across a handful of files with low custom line count.",
+        "rationale": "Small set of CSS/layout scroll and positioning fixes plus removal of a deploy script across 5 files with only 18 custom additions.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -72,7 +72,7 @@
         "deletions": 0,
         "files": 4,
         "points": 2,
-        "rationale": "Nearly identical to PR #330 without the deploy script removal — small CSS/layout scroll and positioning fixes across four files.",
+        "rationale": "Minor scroll and slide positioning fixes across 4 UI/layout files with only 18 custom additions, essentially the same scope as PR #330 minus the deploy script removal.",
         "category": "UI/UX",
         "vendored": false,
         "vendoredRatio": 0,
@@ -91,7 +91,7 @@
         "deletions": 0,
         "files": 1,
         "points": 1,
-        "rationale": "Single-file config change swapping environment secrets from staging to production — trivial operational tweak.",
+        "rationale": "Trivial config change swapping environment secrets in a single YAML file.",
         "category": "DevOps",
         "vendored": false,
         "vendoredRatio": 0,
@@ -110,14 +110,14 @@
         "deletions": 0,
         "files": 167,
         "points": 21,
-        "rationale": "167 changed files and 5291 custom lines spanning the entire AI agent architecture, context refactoring, product-scoped chat, UI improvements, and numerous sub-systems — a transformative, multi-week epic.",
+        "rationale": "Transformative multi-author PR with 167 changed files and 5291 custom lines spanning AI agent context refactoring, product scoping, UI product management, seed updates, and numerous platform-wide improvements representing weeks of parallel work.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
         "isMultiAuthor": true,
         "attribution": {
-          "Chris": 0.65,
-          "Jason": 0.35
+          "Chris": 0.55,
+          "Jason": 0.45
         }
       },
       {
@@ -130,7 +130,7 @@
         "deletions": 0,
         "files": 10,
         "points": 5,
-        "rationale": "Adds a new ISVA auto-match flag across schema, migration, seed, admin UI, and playbook suggestion logic — a solid self-contained feature touching data layer through to admin tooling.",
+        "rationale": "Solid feature adding an ISVA auto-match flag end-to-end across schema migration, seed, deploy scripts, admin UI forms, and playbook suggestion logic across 10 files.",
         "category": "Admin/Tools",
         "vendored": false,
         "vendoredRatio": 0,
@@ -149,7 +149,7 @@
         "deletions": 0,
         "files": 15,
         "points": 8,
-        "rationale": "Introduces target industries multi-select with schema migration, field collector updates, multiple UI components, chat motion/scroll fixes, and chat visibility logic — a significant cross-cutting feature.",
+        "rationale": "Significant feature spanning a new multi-select target industries field with schema migration, field collector, multi-choice editor, chat sidepanel, assessment layout fixes, and scroll/motion improvements across 15 files and 499 lines.",
         "category": "Core Platform",
         "vendored": false,
         "vendoredRatio": 0,
@@ -161,8 +161,8 @@
     ],
     "totalPoints": 60,
     "byAuthor": {
-      "Chris": 34.7,
-      "Jason": 25.4
+      "Chris": 32.6,
+      "Jason": 27.5
     },
     "byCategory": {
       "AI/Agents": 21,
@@ -183,28 +183,28 @@
           333,
           332
         ],
-        "rationale": "Improved the AI agent behavior, assessment UI, and competitive analysis features within the Studio to deliver a more polished and capable AI-driven experience."
+        "rationale": "Enhanced the AI agent capabilities, assessment UI, and competitive analysis features within the Studio to deliver a more polished and intelligent user experience."
       },
       {
         "id": 2,
-        "name": "Assessment Page Layout & Scroll Fixes",
+        "name": "Assessment Page Scroll & Layout Fixes",
         "points": 3,
         "category": "UI/UX",
         "prs": [
           330,
           329
         ],
-        "rationale": "Resolved scroll and slide positioning issues on the assessment page across two iterative fixes to ensure a smooth user experience."
+        "rationale": "Resolved assessment page scrolling and slide positioning issues across two iterations to ensure a smooth, correctly rendered assessment interface."
       },
       {
         "id": 3,
-        "name": "Production Environment Secrets Migration",
+        "name": "Production Secrets Migration",
         "points": 1,
         "category": "DevOps",
         "prs": [
           328
         ],
-        "rationale": "Switched application secrets from staging to production configuration to support a live production deployment."
+        "rationale": "Switched environment secrets from staging to production to support a live production deployment."
       },
       {
         "id": 4,
@@ -215,7 +215,7 @@
           327,
           325
         ],
-        "rationale": "Enhanced core product management capabilities, integrated strategy chat with motion improvements, added multi-select for target industries, and addressed various UI and scroll issues across the platform."
+        "rationale": "Delivered significant improvements to product management workflows, strategy chat interactions, multi-select industry targeting, and various UI polish items to strengthen the core platform experience."
       },
       {
         "id": 5,
@@ -225,7 +225,7 @@
         "prs": [
           326
         ],
-        "rationale": "Added an ISVA auto-match flag to Playbooks, enabling automated matching logic to streamline playbook administration workflows."
+        "rationale": "Added an ISVA auto-match flag to Playbooks, enabling automated matching logic to streamline playbook configuration for administrators."
       }
     ],
     "totalPoints": 51,
