@@ -279,42 +279,117 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
             if (numWeeksHalf < 2) return <p className="text-gray-500 text-sm">Not enough data for trend comparison</p>;
             const recentHalf = filteredWeeks.slice(filteredWeeks.length - numWeeksHalf);
             const olderHalf = filteredWeeks.slice(0, numWeeksHalf);
-            const recentAvg = recentHalf.reduce((s, w) => s + w.prLevelPoints, 0) / recentHalf.length;
-            const olderAvg = olderHalf.reduce((s, w) => s + w.prLevelPoints, 0) / olderHalf.length;
-            const changePct = olderAvg > 0 ? Math.round(((recentAvg - olderAvg) / olderAvg) * 100) : 0;
-            const isUp = changePct > 0;
-            const recentPRsPerWeek = recentHalf.reduce((s, w) => s + w.scoredPRs, 0) / recentHalf.length;
-            const olderPRsPerWeek = olderHalf.reduce((s, w) => s + w.scoredPRs, 0) / olderHalf.length;
-            const prChangePct = olderPRsPerWeek > 0 ? Math.round(((recentPRsPerWeek - olderPRsPerWeek) / olderPRsPerWeek) * 100) : 0;
+
+            const INFRA_CATS = new Set(["Infrastructure", "DevOps"]);
+            const classify = (cat: string) => INFRA_CATS.has(cat) ? "infra" : "features";
+
+            // Compute per-bucket stats for a set of weeks
+            const bucketStats = (weeks: typeof filteredWeeks) => {
+              let featPts = 0, infraPts = 0, featPRs = 0, infraPRs = 0;
+              for (const w of weeks) {
+                for (const pr of w.prs) {
+                  if (classify(pr.category) === "features") {
+                    featPts += pr.points;
+                    featPRs++;
+                  } else {
+                    infraPts += pr.points;
+                    infraPRs++;
+                  }
+                }
+              }
+              const n = weeks.length;
+              return {
+                featPtsPerWeek: featPts / n,
+                infraPtsPerWeek: infraPts / n,
+                featPRsPerWeek: featPRs / n,
+                infraPRsPerWeek: infraPRs / n,
+                featPtsPerPR: featPRs > 0 ? featPts / featPRs : 0,
+                infraPtsPerPR: infraPRs > 0 ? infraPts / infraPRs : 0,
+              };
+            };
+
+            const recent = bucketStats(recentHalf);
+            const older = bucketStats(olderHalf);
+
+            const pctChange = (curr: number, prev: number) =>
+              prev > 0 ? Math.round(((curr - prev) / prev) * 100) : 0;
+
+            const featPtsChange = pctChange(recent.featPtsPerWeek, older.featPtsPerWeek);
+            const infraPtsChange = pctChange(recent.infraPtsPerWeek, older.infraPtsPerWeek);
+            const featPRsChange = pctChange(recent.featPRsPerWeek, older.featPRsPerWeek);
+            const infraPRsChange = pctChange(recent.infraPRsPerWeek, older.infraPRsPerWeek);
+
+            const MetricRow = ({ label, recentVal, changePct, priorVal, suffix }: { label: string; recentVal: string; changePct: number; priorVal: string; suffix: string }) => (
+              <div className="flex items-center justify-between p-3 rounded-lg bg-gray-750 border border-gray-700">
+                <div>
+                  <p className="text-xs text-gray-500 uppercase">{label}</p>
+                  <p className="text-lg font-bold text-gray-200">{recentVal} <span className="text-sm text-gray-500">{suffix}</span></p>
+                </div>
+                <div className={`text-right ${changePct >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                  <p className="text-2xl font-bold">{changePct >= 0 ? '+' : ''}{changePct}%</p>
+                  <p className="text-xs text-gray-500">vs prior {olderHalf.length}w ({priorVal})</p>
+                </div>
+              </div>
+            );
+
             return (
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-3 rounded-lg bg-gray-750 border border-gray-700">
-                  <div>
-                    <p className="text-xs text-gray-500 uppercase">Points/Week Trend</p>
-                    <p className="text-lg font-bold text-gray-200">{recentAvg.toFixed(1)} <span className="text-sm text-gray-500">avg (recent {recentHalf.length}w)</span></p>
-                  </div>
-                  <div className={`text-right ${isUp ? 'text-emerald-400' : 'text-red-400'}`}>
-                    <p className="text-2xl font-bold">{isUp ? '+' : ''}{changePct}%</p>
-                    <p className="text-xs text-gray-500">vs prior {olderHalf.length}w ({olderAvg.toFixed(1)})</p>
-                  </div>
+                {/* Points/Week */}
+                <div className="space-y-2">
+                  <p className="text-xs text-gray-500 uppercase font-medium">Points/Week Trend</p>
+                  <MetricRow
+                    label="Features"
+                    recentVal={recent.featPtsPerWeek.toFixed(1)}
+                    changePct={featPtsChange}
+                    priorVal={older.featPtsPerWeek.toFixed(1)}
+                    suffix={`avg (recent ${recentHalf.length}w)`}
+                  />
+                  <MetricRow
+                    label="Infrastructure"
+                    recentVal={recent.infraPtsPerWeek.toFixed(1)}
+                    changePct={infraPtsChange}
+                    priorVal={older.infraPtsPerWeek.toFixed(1)}
+                    suffix={`avg (recent ${recentHalf.length}w)`}
+                  />
                 </div>
-                <div className="flex items-center justify-between p-3 rounded-lg bg-gray-750 border border-gray-700">
-                  <div>
-                    <p className="text-xs text-gray-500 uppercase">PRs/Week Trend</p>
-                    <p className="text-lg font-bold text-gray-200">{recentPRsPerWeek.toFixed(1)} <span className="text-sm text-gray-500">avg (recent {recentHalf.length}w)</span></p>
-                  </div>
-                  <div className={`text-right ${prChangePct >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
-                    <p className="text-2xl font-bold">{prChangePct >= 0 ? '+' : ''}{prChangePct}%</p>
-                    <p className="text-xs text-gray-500">vs prior {olderHalf.length}w ({olderPRsPerWeek.toFixed(1)})</p>
-                  </div>
+                {/* PRs/Week */}
+                <div className="space-y-2">
+                  <p className="text-xs text-gray-500 uppercase font-medium">PRs/Week Trend</p>
+                  <MetricRow
+                    label="Features"
+                    recentVal={recent.featPRsPerWeek.toFixed(1)}
+                    changePct={featPRsChange}
+                    priorVal={older.featPRsPerWeek.toFixed(1)}
+                    suffix={`avg (recent ${recentHalf.length}w)`}
+                  />
+                  <MetricRow
+                    label="Infrastructure"
+                    recentVal={recent.infraPRsPerWeek.toFixed(1)}
+                    changePct={infraPRsChange}
+                    priorVal={older.infraPRsPerWeek.toFixed(1)}
+                    suffix={`avg (recent ${recentHalf.length}w)`}
+                  />
                 </div>
-                <div className="flex items-center justify-between p-3 rounded-lg bg-gray-750 border border-gray-700">
-                  <div>
-                    <p className="text-xs text-gray-500 uppercase">Points/PR (Complexity)</p>
-                    <p className="text-lg font-bold text-gray-200">{(recentHalf.reduce((s, w) => s + w.prLevelPoints, 0) / Math.max(1, recentHalf.reduce((s, w) => s + w.scoredPRs, 0))).toFixed(1)} <span className="text-sm text-gray-500">avg</span></p>
+                {/* Points/PR */}
+                <div className="space-y-2">
+                  <p className="text-xs text-gray-500 uppercase font-medium">Points/PR (Complexity)</p>
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-gray-750 border border-gray-700">
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase">Features</p>
+                      <p className="text-lg font-bold text-gray-200">{recent.featPtsPerPR.toFixed(1)} <span className="text-sm text-gray-500">avg</span></p>
+                    </div>
+                    <div className="text-right text-gray-400">
+                      <p className="text-sm">recent {recentHalf.length}w</p>
+                    </div>
                   </div>
-                  <div className="text-right text-gray-400">
-                    <p className="text-sm">recent {recentHalf.length}w</p>
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-gray-750 border border-gray-700">
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase">Infrastructure</p>
+                      <p className="text-lg font-bold text-gray-200">{recent.infraPtsPerPR.toFixed(1)} <span className="text-sm text-gray-500">avg</span></p>
+                    </div>
+                    <div className="text-right text-gray-400">
+                      <p className="text-sm">recent {recentHalf.length}w</p>
+                    </div>
                   </div>
                 </div>
               </div>
