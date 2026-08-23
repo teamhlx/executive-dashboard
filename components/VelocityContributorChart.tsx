@@ -284,8 +284,8 @@ export default function VelocityContributorChart({ weeks, timeRange, infoContent
               dataKey={author}
               stroke={authorColors[author]}
               strokeWidth={visibleAuthors.has(author) ? 2 : 0}
-              dot={visibleAuthors.has(author) ? { fill: authorColors[author], r: 3 } : false}
-              activeDot={visibleAuthors.has(author) ? { r: 5, fill: authorColors[author] } : false}
+              dot={visibleAuthors.has(author) ? { fill: authorColors[author], r: 1.5 } : false}
+              activeDot={visibleAuthors.has(author) ? { r: 2.5, fill: authorColors[author] } : false}
               name={author}
               connectNulls={false}
               hide={!visibleAuthors.has(author)}

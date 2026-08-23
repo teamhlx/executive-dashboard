@@ -256,8 +256,8 @@ export default function VelocityChart({ trends, viewMode, timeRange, infoContent
             dataKey="points"
             stroke="#818cf8"
             strokeWidth={2}
-            dot={{ fill: "#818cf8", r: 4 }}
-            activeDot={{ r: 6, fill: "#a5b4fc" }}
+            dot={{ fill: "#818cf8", r: 2 }}
+            activeDot={{ r: 3, fill: "#a5b4fc" }}
             name="Points"
           />
           <Line

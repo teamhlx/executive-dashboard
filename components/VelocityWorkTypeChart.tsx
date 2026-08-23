@@ -259,8 +259,8 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
             dataKey="features"
             stroke="#818cf8"
             strokeWidth={2}
-            dot={{ fill: "#818cf8", r: 3 }}
-            activeDot={{ r: 5, fill: "#818cf8" }}
+            dot={{ fill: "#818cf8", r: 1.5 }}
+            activeDot={{ r: 2.5, fill: "#818cf8" }}
             name="Features"
           />
           <Line
@@ -268,8 +268,8 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
             dataKey="infrastructure"
             stroke="#f59e0b"
             strokeWidth={2}
-            dot={{ fill: "#f59e0b", r: 3 }}
-            activeDot={{ r: 5, fill: "#f59e0b" }}
+            dot={{ fill: "#f59e0b", r: 1.5 }}
+            activeDot={{ r: 2.5, fill: "#f59e0b" }}
             name="Infrastructure"
           />
           {/* Features trend line (dashed) */}
