@@ -128,6 +128,7 @@ const TIME_RANGE_WEEKS: Record<TimeRange, number> = {
 
 export default function VelocityChart({ trends, viewMode, timeRange, infoContent }: Props) {
   const [showTrends, setShowTrends] = useState(true);
+  const [showActuals, setShowActuals] = useState(true);
 
   if (!trends || trends.weeks.length === 0) {
     return (
@@ -226,6 +227,14 @@ export default function VelocityChart({ trends, viewMode, timeRange, infoContent
         >
           {showTrends ? "Hide Trends" : "Show Trends"}
         </button>
+        <button
+          onClick={() => setShowActuals((v) => !v)}
+          className={`ml-2 text-xs px-2 py-1 rounded transition-colors ${
+            showActuals ? "bg-gray-700 text-gray-200" : "bg-gray-700/30 text-gray-500 hover:text-gray-400"
+          }`}
+        >
+          {showActuals ? "Hide Actuals" : "Show Actuals"}
+        </button>
       </h3>
       <ResponsiveContainer width="100%" height={200}>
         <LineChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
@@ -263,10 +272,11 @@ export default function VelocityChart({ trends, viewMode, timeRange, infoContent
             type="monotone"
             dataKey="points"
             stroke="#818cf8"
-            strokeWidth={2}
-            dot={showTrends ? { fill: "#818cf8", r: 2 } : false}
-            activeDot={{ r: 3, fill: "#a5b4fc" }}
+            strokeWidth={showActuals ? 2 : 0}
+            dot={showTrends && showActuals ? { fill: "#818cf8", r: 2 } : false}
+            activeDot={showActuals ? { r: 3, fill: "#a5b4fc" } : false}
             name="Points"
+            hide={!showActuals}
           />
           {showTrends && (
             <Line

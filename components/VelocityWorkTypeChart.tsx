@@ -114,6 +114,7 @@ function classifyCategory(category: string): "features" | "infrastructure" {
 
 export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }: Props) {
   const [showTrends, setShowTrends] = useState(true);
+  const [showActuals, setShowActuals] = useState(true);
   if (!weeks || weeks.length === 0) {
     return (
       <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-6 flex items-center justify-center h-48">
@@ -233,6 +234,14 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
         >
           {showTrends ? "Hide Trends" : "Show Trends"}
         </button>
+        <button
+          onClick={() => setShowActuals((v) => !v)}
+          className={`ml-2 text-xs px-2 py-1 rounded transition-colors ${
+            showActuals ? "bg-gray-700 text-gray-200" : "bg-gray-700/30 text-gray-500 hover:text-gray-400"
+          }`}
+        >
+          {showActuals ? "Hide Actuals" : "Show Actuals"}
+        </button>
       </h3>
       {/* Summary badges */}
       <div className="flex gap-4 mb-4 text-xs">
@@ -267,19 +276,21 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
             type="monotone"
             dataKey="features"
             stroke="#818cf8"
-            strokeWidth={2}
-            dot={showTrends ? { fill: "#818cf8", r: 1.5 } : false}
-            activeDot={{ r: 2.5, fill: "#818cf8" }}
+            strokeWidth={showActuals ? 2 : 0}
+            dot={showTrends && showActuals ? { fill: "#818cf8", r: 1.5 } : false}
+            activeDot={showActuals ? { r: 2.5, fill: "#818cf8" } : false}
             name="Features"
+            hide={!showActuals}
           />
           <Line
             type="monotone"
             dataKey="infrastructure"
             stroke="#f59e0b"
-            strokeWidth={2}
-            dot={showTrends ? { fill: "#f59e0b", r: 1.5 } : false}
-            activeDot={{ r: 2.5, fill: "#f59e0b" }}
+            strokeWidth={showActuals ? 2 : 0}
+            dot={showTrends && showActuals ? { fill: "#f59e0b", r: 1.5 } : false}
+            activeDot={showActuals ? { r: 2.5, fill: "#f59e0b" } : false}
             name="Infrastructure"
+            hide={!showActuals}
           />
           {/* Features trend line (dashed) */}
           {showTrends && (
