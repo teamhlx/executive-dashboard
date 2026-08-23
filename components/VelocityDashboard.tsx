@@ -86,7 +86,7 @@ const TIME_RANGES: { key: TimeRange; label: string }[] = [
 
 export default function VelocityDashboard({ data, loading, error }: Props) {
   const [viewMode] = useState<"pr" | "grouped">("pr");
-  const [timeRange, setTimeRange] = useState<TimeRange>("4mo");
+  const [timeRange, setTimeRange] = useState<TimeRange>("6mo");
   const [chartMode, setChartMode] = useState<"all" | "trends" | "actuals">("all");
   const [showMethodology, setShowMethodology] = useState(false);
   const [showAllPRs, setShowAllPRs] = useState(false);
