@@ -3,7 +3,7 @@
 import { useState } from "react";
 import VelocityMetrics from "./VelocityMetrics";
 import VelocityChart from "./VelocityChart";
-import VelocityFTEChart from "./VelocityFTEChart";
+
 import VelocityContributorChart from "./VelocityContributorChart";
 import VelocityAuthorBreakdown from "./VelocityAuthorBreakdown";
 import VelocityStoryList from "./VelocityStoryList";
@@ -241,18 +241,6 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
             <p>Shows the team&apos;s total story points delivered each week over time.</p>
             <p className="mt-2">The purple line is actual weekly output. Dashed trend lines show the trajectory before and after team composition changes.</p>
             <p className="mt-2">Higher is better — this represents raw team throughput regardless of team size.</p>
-          </>
-        }
-      />
-      <VelocityFTEChart
-        trends={data.trends}
-        viewMode={viewMode}
-        timeRange={timeRange}
-        infoContent={
-          <>
-            <p>Shows points delivered per Full-Time Equivalent (FTE) engineer each week — a measure of individual productivity normalized by team size and allocation.</p>
-            <p className="mt-2">If an engineer works 80% time (0.8 FTE), their output is normalized accordingly so comparisons are fair.</p>
-            <p className="mt-2">This isolates efficiency from headcount — a team that doubles in size but maintains the same per-FTE output is scaling well.</p>
           </>
         }
       />

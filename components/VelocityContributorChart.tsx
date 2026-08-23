@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { weekToLabel } from "./weekUtils";
 import {
   LineChart,
@@ -31,24 +31,28 @@ type Props = {
   infoContent?: React.ReactNode;
 };
 
-const AUTHORS = ["Jason", "Chris", "Mauro", "Chad"] as const;
-type AuthorName = (typeof AUTHORS)[number];
+// A broad palette for dynamically discovered authors
+const COLOR_PALETTE = [
+  "#818cf8", // indigo
+  "#34d399", // emerald
+  "#f59e0b", // amber
+  "#22d3ee", // cyan
+  "#f472b6", // pink
+  "#a78bfa", // violet
+  "#fb923c", // orange
+  "#4ade80", // green
+  "#e879f9", // fuchsia
+  "#38bdf8", // sky
+  "#facc15", // yellow
+  "#94a3b8", // slate
+];
 
-const AUTHOR_COLORS: Record<AuthorName, string> = {
-  Jason: "#818cf8",
-  Chris: "#34d399",
-  Mauro: "#f59e0b",
-  Chad: "#22d3ee",
+// Aliases: map known alternate names to canonical display names
+const AUTHOR_ALIASES: Record<string, string> = {
+  Skippy: "Jason",
 };
 
-type ChartEntry = {
-  week: string;
-  fullWeek: string;
-  Jason: number;
-  Chris: number;
-  Mauro: number;
-  Chad: number;
-};
+const EXCLUDED_AUTHORS = new Set(["dependabot"]);
 
 // Convert ISO week string to date of Monday of that week
 function getMonthLabel(isoWeek: string): Date | null {
@@ -57,7 +61,7 @@ function getMonthLabel(isoWeek: string): Date | null {
   const year = parseInt(match[1]);
   const week = parseInt(match[2]);
   const jan4 = new Date(year, 0, 4);
-  const dayOfWeek = jan4.getDay() || 7; // Mon=1..Sun=7
+  const dayOfWeek = jan4.getDay() || 7;
   const monday = new Date(jan4);
   monday.setDate(jan4.getDate() - dayOfWeek + 1 + (week - 1) * 7);
   return monday;
@@ -71,7 +75,7 @@ function weekToMonthStart(weeks: string[]): Set<number> {
   for (let i = 0; i < weeks.length; i++) {
     const d = getMonthLabel(weeks[i]);
     if (d) {
-      const m = (d as Date).getMonth();
+      const m = d.getMonth();
       if (m !== prevMonth) {
         monthStarts.add(i);
         prevMonth = m;
@@ -85,52 +89,74 @@ const TIME_RANGE_WEEKS: Record<TimeRange, number> = {
   all: 999, year: 52, "6mo": 26, "3mo": 13, "1mo": 4,
 };
 
-const CustomTooltip = ({
-  active,
-  payload,
-  label,
-}: {
-  active?: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  payload?: any[];
-  label?: string;
-}) => {
-  if (!active || !payload?.length) return null;
-  const entry = payload[0]?.payload as ChartEntry | undefined;
-  return (
-    <div className="bg-gray-800 border border-gray-700 rounded-lg p-3 shadow-xl">
-      <p className="text-gray-300 text-sm font-medium mb-1">{entry?.fullWeek || label}</p>
-      {AUTHORS.map((author) => {
-        const p = payload.find((x) => x.dataKey === author);
-        if (!p) return null;
-        return (
-          <p key={author} className="text-sm" style={{ color: AUTHOR_COLORS[author] }}>
-            {author}: {p.value} pts
-          </p>
-        );
-      })}
-    </div>
-  );
+type ChartEntry = {
+  week: string;
+  fullWeek: string;
+  [author: string]: string | number;
 };
 
 export default function VelocityContributorChart({ weeks, timeRange, infoContent }: Props) {
-  const [visibleAuthors, setVisibleAuthors] = useState<Set<AuthorName>>(new Set(AUTHORS));
-
-  const toggleAuthor = (author: AuthorName) => {
-    setVisibleAuthors((prev) => {
-      const next = new Set(prev);
-      if (next.has(author) && next.size > 1) {
-        // If clicking an already-visible author and others are also visible, show ONLY that one
-        if (next.size === 1) {
-          // Already solo — reset to all
-          return new Set(AUTHORS);
+  // Discover all authors from the data
+  const authors = useMemo(() => {
+    const authorSet = new Set<string>();
+    for (const w of weeks) {
+      for (const pr of w.prs) {
+        if (pr.isMultiAuthor && pr.attribution) {
+          for (const rawName of Object.keys(pr.attribution)) {
+            const name = AUTHOR_ALIASES[rawName] ?? rawName;
+            if (!EXCLUDED_AUTHORS.has(name)) authorSet.add(name);
+          }
+        } else {
+          const name = AUTHOR_ALIASES[pr.author] ?? pr.author;
+          if (!EXCLUDED_AUTHORS.has(name)) authorSet.add(name);
         }
+      }
+    }
+    // Sort by total points descending so top contributors get first colors
+    const totals: Record<string, number> = {};
+    for (const a of authorSet) totals[a] = 0;
+    for (const w of weeks) {
+      for (const pr of w.prs) {
+        if (pr.isMultiAuthor && pr.attribution) {
+          for (const [rawName, fraction] of Object.entries(pr.attribution)) {
+            const name = AUTHOR_ALIASES[rawName] ?? rawName;
+            if (authorSet.has(name)) totals[name] += Math.round(pr.points * fraction);
+          }
+        } else {
+          const name = AUTHOR_ALIASES[pr.author] ?? pr.author;
+          if (authorSet.has(name)) totals[name] += pr.points;
+        }
+      }
+    }
+    return [...authorSet].sort((a, b) => totals[b] - totals[a]);
+  }, [weeks]);
+
+  const authorColors = useMemo(() => {
+    const map: Record<string, string> = {};
+    authors.forEach((a, i) => {
+      map[a] = COLOR_PALETTE[i % COLOR_PALETTE.length];
+    });
+    return map;
+  }, [authors]);
+
+  const [visibleAuthors, setVisibleAuthors] = useState<Set<string>>(new Set(authors));
+
+  // Keep visibleAuthors in sync if authors list changes
+  useMemo(() => {
+    setVisibleAuthors(new Set(authors));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authors.join(",")]);
+
+  const toggleAuthor = (author: string) => {
+    setVisibleAuthors((prev) => {
+      if (prev.has(author) && prev.size > 1) {
+        // Solo this author
         return new Set([author]);
-      } else if (next.has(author) && next.size === 1) {
-        // Clicking the solo author — reset to all
-        return new Set(AUTHORS);
+      } else if (prev.has(author) && prev.size === 1) {
+        // Already solo — reset to all
+        return new Set(authors);
       } else {
-        // Author is hidden — show only that one
+        // Hidden — solo it
         return new Set([author]);
       }
     });
@@ -148,35 +174,32 @@ export default function VelocityContributorChart({ weeks, timeRange, infoContent
   const startIdx = Math.max(0, weeks.length - maxWeeks);
   const slicedWeeks = weeks.slice(startIdx);
 
-  // Compute per-author points per week
   const monthStartIndices = weekToMonthStart(slicedWeeks.map((w) => w.week));
 
   const data: ChartEntry[] = slicedWeeks.map((w) => {
-    const authorPoints: Record<AuthorName, number> = {
-      Jason: 0, Chris: 0, Mauro: 0, Chad: 0,
-    };
+    const authorPoints: Record<string, number> = {};
+    for (const a of authors) authorPoints[a] = 0;
 
     for (const pr of w.prs) {
       if (pr.isMultiAuthor && pr.attribution) {
         for (const [rawName, fraction] of Object.entries(pr.attribution)) {
-          const name = rawName === "Skippy" ? "Jason" : rawName;
-          if (name === "dependabot") continue;
-          if (AUTHORS.includes(name as AuthorName)) {
-            authorPoints[name as AuthorName] += Math.round(pr.points * fraction);
+          const name = AUTHOR_ALIASES[rawName] ?? rawName;
+          if (EXCLUDED_AUTHORS.has(name)) continue;
+          if (name in authorPoints) {
+            authorPoints[name] += Math.round(pr.points * fraction);
           }
         }
       } else {
-        const rawName = pr.author;
-        const name = rawName === "Skippy" ? "Jason" : rawName;
-        if (name === "dependabot") continue;
-        if (AUTHORS.includes(name as AuthorName)) {
-          authorPoints[name as AuthorName] += pr.points;
+        const name = AUTHOR_ALIASES[pr.author] ?? pr.author;
+        if (EXCLUDED_AUTHORS.has(name)) continue;
+        if (name in authorPoints) {
+          authorPoints[name] += pr.points;
         }
       }
     }
 
     return {
-      week: w.week, // Keep full ISO week (e.g. "2026-W32") to avoid year collisions
+      week: w.week,
       fullWeek: weekToLabel(w.week),
       ...authorPoints,
     };
@@ -186,7 +209,7 @@ export default function VelocityContributorChart({ weeks, timeRange, infoContent
   const weekToMonth: Record<string, string> = {};
   slicedWeeks.forEach((w, i) => {
     if (monthStartIndices.has(i)) {
-      const d = getMonthLabel(w.week) as Date | null;
+      const d = getMonthLabel(w.week);
       if (d) {
         const yr = d.getFullYear().toString().slice(2);
         weekToMonth[w.week] = `${MONTH_NAMES[d.getMonth()]} '${yr}`;
@@ -196,8 +219,36 @@ export default function VelocityContributorChart({ weeks, timeRange, infoContent
 
   const formatXTick = (value: string) => weekToMonth[value] || "";
 
-  // Fixed Y-axis domain based on ALL authors (keeps scale stable when filtering)
-  const yMax = Math.max(...data.flatMap((d) => AUTHORS.map((a) => d[a])), 0);
+  // Y-axis domain based on ALL authors (stable when filtering)
+  const yMax = Math.max(...data.flatMap((d) => authors.map((a) => (d[a] as number) || 0)), 0);
+
+  // Custom tooltip that shows all discovered authors
+  const CustomTooltip = ({
+    active,
+    payload,
+  }: {
+    active?: boolean;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    payload?: any[];
+    label?: string;
+  }) => {
+    if (!active || !payload?.length) return null;
+    const entry = payload[0]?.payload as ChartEntry | undefined;
+    return (
+      <div className="bg-gray-800 border border-gray-700 rounded-lg p-3 shadow-xl">
+        <p className="text-gray-300 text-sm font-medium mb-1">{entry?.fullWeek}</p>
+        {authors.map((author) => {
+          const val = entry?.[author] as number | undefined;
+          if (val === undefined || val === 0) return null;
+          return (
+            <p key={author} className="text-sm" style={{ color: authorColors[author] }}>
+              {author}: {val} pts
+            </p>
+          );
+        })}
+      </div>
+    );
+  };
 
   return (
     <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-6">
@@ -226,15 +277,15 @@ export default function VelocityContributorChart({ weeks, timeRange, infoContent
             domain={[0, yMax]}
           />
           <Tooltip content={<CustomTooltip />} />
-          {AUTHORS.map((author) => (
+          {authors.map((author) => (
             <Line
               key={author}
               type="monotone"
               dataKey={author}
-              stroke={AUTHOR_COLORS[author]}
+              stroke={authorColors[author]}
               strokeWidth={visibleAuthors.has(author) ? 2 : 0}
-              dot={visibleAuthors.has(author) ? { fill: AUTHOR_COLORS[author], r: 3 } : false}
-              activeDot={visibleAuthors.has(author) ? { r: 5, fill: AUTHOR_COLORS[author] } : false}
+              dot={visibleAuthors.has(author) ? { fill: authorColors[author], r: 3 } : false}
+              activeDot={visibleAuthors.has(author) ? { r: 5, fill: authorColors[author] } : false}
               name={author}
               connectNulls={false}
               hide={!visibleAuthors.has(author)}
@@ -244,7 +295,7 @@ export default function VelocityContributorChart({ weeks, timeRange, infoContent
       </ResponsiveContainer>
       {/* Interactive Legend */}
       <div className="flex flex-wrap gap-4 mt-3 text-xs">
-        {AUTHORS.map((author) => {
+        {authors.map((author) => {
           const isActive = visibleAuthors.has(author);
           return (
             <button
@@ -259,7 +310,7 @@ export default function VelocityContributorChart({ weeks, timeRange, infoContent
               <span
                 className="inline-block rounded"
                 style={{
-                  backgroundColor: isActive ? AUTHOR_COLORS[author] : "#4b5563",
+                  backgroundColor: isActive ? authorColors[author] : "#4b5563",
                   height: "2px",
                   minWidth: "12px",
                 }}
@@ -268,9 +319,9 @@ export default function VelocityContributorChart({ weeks, timeRange, infoContent
             </button>
           );
         })}
-        {visibleAuthors.size < AUTHORS.length && (
+        {visibleAuthors.size < authors.length && (
           <button
-            onClick={() => setVisibleAuthors(new Set(AUTHORS))}
+            onClick={() => setVisibleAuthors(new Set(authors))}
             className="text-gray-500 hover:text-gray-300 px-2 py-1 transition-colors"
           >
             Show all
