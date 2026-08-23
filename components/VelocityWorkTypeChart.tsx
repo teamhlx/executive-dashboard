@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { weekToLabel } from "./weekUtils";
 import {
   LineChart,
@@ -113,6 +113,7 @@ function classifyCategory(category: string): "features" | "infrastructure" {
 }
 
 export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }: Props) {
+  const [showTrends, setShowTrends] = useState(true);
   if (!weeks || weeks.length === 0) {
     return (
       <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-6 flex items-center justify-center h-48">
@@ -224,6 +225,14 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
         {infoContent && (
           <ChartInfoButton title="Work Type Breakdown">{infoContent}</ChartInfoButton>
         )}
+        <button
+          onClick={() => setShowTrends((v) => !v)}
+          className={`ml-auto text-xs px-2 py-1 rounded transition-colors ${
+            showTrends ? "bg-gray-700 text-gray-200" : "bg-gray-700/30 text-gray-500 hover:text-gray-400"
+          }`}
+        >
+          {showTrends ? "Hide Trends" : "Show Trends"}
+        </button>
       </h3>
       {/* Summary badges */}
       <div className="flex gap-4 mb-4 text-xs">
@@ -259,7 +268,7 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
             dataKey="features"
             stroke="#818cf8"
             strokeWidth={2}
-            dot={{ fill: "#818cf8", r: 1.5 }}
+            dot={showTrends ? { fill: "#818cf8", r: 1.5 } : false}
             activeDot={{ r: 2.5, fill: "#818cf8" }}
             name="Features"
           />
@@ -268,34 +277,38 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
             dataKey="infrastructure"
             stroke="#f59e0b"
             strokeWidth={2}
-            dot={{ fill: "#f59e0b", r: 1.5 }}
+            dot={showTrends ? { fill: "#f59e0b", r: 1.5 } : false}
             activeDot={{ r: 2.5, fill: "#f59e0b" }}
             name="Infrastructure"
           />
           {/* Features trend line (dashed) */}
-          <Line
-            type="monotone"
-            dataKey="featuresTrend"
-            stroke="#818cf8"
-            strokeWidth={1.5}
-            strokeDasharray="5 3"
-            dot={false}
-            activeDot={false}
-            connectNulls={false}
-            legendType="none"
-          />
+          {showTrends && (
+            <Line
+              type="monotone"
+              dataKey="featuresTrend"
+              stroke="#818cf8"
+              strokeWidth={1.5}
+              strokeDasharray="5 3"
+              dot={false}
+              activeDot={false}
+              connectNulls={false}
+              legendType="none"
+            />
+          )}
           {/* Infrastructure trend line (dashed) */}
-          <Line
-            type="monotone"
-            dataKey="infraTrend"
-            stroke="#f59e0b"
-            strokeWidth={1.5}
-            strokeDasharray="5 3"
-            dot={false}
-            activeDot={false}
-            connectNulls={false}
-            legendType="none"
-          />
+          {showTrends && (
+            <Line
+              type="monotone"
+              dataKey="infraTrend"
+              stroke="#f59e0b"
+              strokeWidth={1.5}
+              strokeDasharray="5 3"
+              dot={false}
+              activeDot={false}
+              connectNulls={false}
+              legendType="none"
+            />
+          )}
           {/* Milestone vertical line */}
           {showMilestone && (
             <ReferenceLine

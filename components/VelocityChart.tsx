@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { weekToLabel } from "./weekUtils";
 import {
   LineChart,
@@ -126,6 +127,7 @@ const TIME_RANGE_WEEKS: Record<TimeRange, number> = {
 };
 
 export default function VelocityChart({ trends, viewMode, timeRange, infoContent }: Props) {
+  const [showTrends, setShowTrends] = useState(true);
 
   if (!trends || trends.weeks.length === 0) {
     return (
@@ -216,6 +218,14 @@ export default function VelocityChart({ trends, viewMode, timeRange, infoContent
         {infoContent && (
           <ChartInfoButton title="Weekly Velocity">{infoContent}</ChartInfoButton>
         )}
+        <button
+          onClick={() => setShowTrends((v) => !v)}
+          className={`ml-auto text-xs px-2 py-1 rounded transition-colors ${
+            showTrends ? "bg-gray-700 text-gray-200" : "bg-gray-700/30 text-gray-500 hover:text-gray-400"
+          }`}
+        >
+          {showTrends ? "Hide Trends" : "Show Trends"}
+        </button>
       </h3>
       <ResponsiveContainer width="100%" height={200}>
         <LineChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
@@ -254,45 +264,52 @@ export default function VelocityChart({ trends, viewMode, timeRange, infoContent
             dataKey="points"
             stroke="#818cf8"
             strokeWidth={2}
-            dot={{ fill: "#818cf8", r: 2 }}
+            dot={showTrends ? { fill: "#818cf8", r: 2 } : false}
             activeDot={{ r: 3, fill: "#a5b4fc" }}
             name="Points"
           />
-          <Line
-            type="monotone"
-            dataKey="trendPre"
-            stroke="#34d399"
-            strokeWidth={2}
-            strokeDasharray="6 4"
-            dot={false}
-            activeDot={false}
-            name="Trend (pre)"
-            connectNulls={false}
-          />
-          <Line
-            type="monotone"
-            dataKey="trendPost"
-            stroke="#22d3ee"
-            strokeWidth={2}
-            strokeDasharray="6 4"
-            dot={false}
-            activeDot={false}
-            name="Trend (post)"
-            connectNulls={false}
-          />
-          <Line
-            type="monotone"
-            dataKey="trendAll"
-            stroke="#9ca3af"
-            strokeWidth={1.5}
-            strokeDasharray="4 3"
-            dot={false}
-            activeDot={false}
-            name="Trend (overall)"
-            connectNulls={false}
-          />
+          {showTrends && (
+            <Line
+              type="monotone"
+              dataKey="trendPre"
+              stroke="#34d399"
+              strokeWidth={2}
+              strokeDasharray="6 4"
+              dot={false}
+              activeDot={false}
+              name="Trend (pre)"
+              connectNulls={false}
+            />
+          )}
+          {showTrends && (
+            <Line
+              type="monotone"
+              dataKey="trendPost"
+              stroke="#22d3ee"
+              strokeWidth={2}
+              strokeDasharray="6 4"
+              dot={false}
+              activeDot={false}
+              name="Trend (post)"
+              connectNulls={false}
+            />
+          )}
+          {showTrends && (
+            <Line
+              type="monotone"
+              dataKey="trendAll"
+              stroke="#9ca3af"
+              strokeWidth={1.5}
+              strokeDasharray="4 3"
+              dot={false}
+              activeDot={false}
+              name="Trend (overall)"
+              connectNulls={false}
+            />
+          )}
         </LineChart>
       </ResponsiveContainer>
+      {showTrends && (
       <div className="flex flex-wrap gap-4 mt-3 text-xs text-gray-500">
         {preRegression && (
           <span className="flex items-center gap-1.5">
@@ -328,6 +345,7 @@ export default function VelocityChart({ trends, viewMode, timeRange, infoContent
           </span>
         )}
       </div>
+      )}
     </div>
   );
 }
