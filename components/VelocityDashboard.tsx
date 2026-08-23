@@ -73,19 +73,20 @@ type Props = {
   error: string | null;
 };
 
-type TimeRange = "all" | "year" | "6mo" | "3mo" | "1mo";
+type TimeRange = "all" | "year" | "6mo" | "4mo" | "3mo" | "1mo";
 
 const TIME_RANGES: { key: TimeRange; label: string }[] = [
   { key: "all", label: "All Time" },
   { key: "year", label: "1 Year" },
   { key: "6mo", label: "6 Months" },
+  { key: "4mo", label: "4 Months" },
   { key: "3mo", label: "3 Months" },
   { key: "1mo", label: "1 Month" },
 ];
 
 export default function VelocityDashboard({ data, loading, error }: Props) {
   const [viewMode] = useState<"pr" | "grouped">("pr");
-  const [timeRange, setTimeRange] = useState<TimeRange>("6mo");
+  const [timeRange, setTimeRange] = useState<TimeRange>("4mo");
   const [chartMode, setChartMode] = useState<"all" | "trends" | "actuals">("all");
   const [showMethodology, setShowMethodology] = useState(false);
   const [showAllPRs, setShowAllPRs] = useState(false);
@@ -128,7 +129,7 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
 
   // Compute author breakdown filtered by time range (same logic as charts)
   const TIME_RANGE_WEEKS_MAP: Record<TimeRange, number> = {
-    all: 999, year: 52, "6mo": 26, "3mo": 13, "1mo": 4,
+    all: 999, year: 52, "6mo": 26, "4mo": 17, "3mo": 13, "1mo": 4,
   };
   const maxWeeksFilter = TIME_RANGE_WEEKS_MAP[timeRange] ?? 999;
   const startIdxFilter = Math.max(0, weeks.length - maxWeeksFilter);
