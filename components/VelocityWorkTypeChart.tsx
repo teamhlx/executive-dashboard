@@ -11,6 +11,7 @@ import {
   Tooltip,
   ResponsiveContainer,
   Legend,
+  ReferenceLine,
 } from "recharts";
 import ChartInfoButton from "./ChartInfoButton";
 
@@ -39,12 +40,39 @@ const INFRA_CATEGORIES = new Set([
   "DevOps",
 ]);
 
+// Milestone: AllCode takes over (Week of June 8, 2026)
+const MILESTONE_WEEK = "2026-W24";
+const MILESTONE_LABEL = "AllCode joins";
+
 type ChartEntry = {
   week: string;
   fullWeek: string;
   features: number;
   infrastructure: number;
+  featuresTrendPre?: number;
+  featuresTrendPost?: number;
+  infraTrendPre?: number;
+  infraTrendPost?: number;
 };
+
+// Linear regression helper
+function linearRegression(values: number[]): { values: number[]; slope: number } {
+  const n = values.length;
+  if (n < 2) return { values, slope: 0 };
+  const xMean = (n - 1) / 2;
+  const yMean = values.reduce((s, v) => s + v, 0) / n;
+  let num = 0, den = 0;
+  for (let i = 0; i < n; i++) {
+    num += (i - xMean) * (values[i] - yMean);
+    den += (i - xMean) * (i - xMean);
+  }
+  const slope = den === 0 ? 0 : num / den;
+  const intercept = yMean - slope * xMean;
+  return {
+    values: values.map((_, i) => Math.round(intercept + slope * i)),
+    slope: Math.round(slope * 100) / 100,
+  };
+}
 
 // Convert ISO week string to date of Monday of that week
 function getMonthLabel(isoWeek: string): Date | null {
@@ -101,26 +129,70 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
 
   const monthStartIndices = weekToMonthStart(slicedWeeks.map((w) => w.week));
 
-  const data: ChartEntry[] = useMemo(() => slicedWeeks.map((w) => {
-    let features = 0;
-    let infrastructure = 0;
+  // Find milestone index
+  const milestoneIdx = slicedWeeks.findIndex((w) => w.week === MILESTONE_WEEK);
+  const showMilestone = milestoneIdx > 1 && milestoneIdx < slicedWeeks.length - 1;
 
-    for (const pr of w.prs) {
-      const bucket = classifyCategory(pr.category);
-      if (bucket === "features") {
-        features += pr.points;
-      } else {
-        infrastructure += pr.points;
+  const data: ChartEntry[] = useMemo(() => {
+    // First pass: compute raw values
+    const raw = slicedWeeks.map((w) => {
+      let features = 0;
+      let infrastructure = 0;
+
+      for (const pr of w.prs) {
+        const bucket = classifyCategory(pr.category);
+        if (bucket === "features") {
+          features += pr.points;
+        } else {
+          infrastructure += pr.points;
+        }
       }
+
+      return { week: w.week, fullWeek: weekToLabel(w.week), features, infrastructure };
+    });
+
+    // Compute trend lines
+    const featuresRaw = raw.map((d) => d.features);
+    const infraRaw = raw.map((d) => d.infrastructure);
+
+    let featPre: number[] | null = null;
+    let featPost: number[] | null = null;
+    let infraPre: number[] | null = null;
+    let infraPost: number[] | null = null;
+
+    if (showMilestone) {
+      featPre = linearRegression(featuresRaw.slice(0, milestoneIdx + 1)).values;
+      featPost = linearRegression(featuresRaw.slice(milestoneIdx)).values;
+      infraPre = linearRegression(infraRaw.slice(0, milestoneIdx + 1)).values;
+      infraPost = linearRegression(infraRaw.slice(milestoneIdx)).values;
+    } else {
+      featPre = linearRegression(featuresRaw).values;
+      infraPre = linearRegression(infraRaw).values;
     }
 
-    return {
-      week: w.week,
-      fullWeek: weekToLabel(w.week),
-      features,
-      infrastructure,
-    };
-  }), [slicedWeeks]);
+    // Second pass: attach trend values
+    return raw.map((d, i) => {
+      const entry: ChartEntry = { ...d };
+      if (showMilestone) {
+        if (i <= milestoneIdx && featPre) {
+          entry.featuresTrendPre = featPre[i];
+        }
+        if (i >= milestoneIdx && featPost) {
+          entry.featuresTrendPost = featPost[i - milestoneIdx];
+        }
+        if (i <= milestoneIdx && infraPre) {
+          entry.infraTrendPre = infraPre[i];
+        }
+        if (i >= milestoneIdx && infraPost) {
+          entry.infraTrendPost = infraPost[i - milestoneIdx];
+        }
+      } else {
+        if (featPre) entry.featuresTrendPre = featPre[i];
+        if (infraPre) entry.infraTrendPre = infraPre[i];
+      }
+      return entry;
+    });
+  }, [slicedWeeks, milestoneIdx, showMilestone]);
 
   // Build month label map for X-axis tick formatter
   const weekToMonth: Record<string, string> = {};
@@ -211,6 +283,7 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
             width={35}
           />
           <Tooltip content={<CustomTooltip />} />
+          {/* Actual data lines */}
           <Line
             type="monotone"
             dataKey="features"
@@ -229,6 +302,67 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
             activeDot={{ r: 5, fill: "#f59e0b" }}
             name="Infrastructure"
           />
+          {/* Features trend lines (dashed) */}
+          <Line
+            type="monotone"
+            dataKey="featuresTrendPre"
+            stroke="#818cf8"
+            strokeWidth={1.5}
+            strokeDasharray="5 3"
+            dot={false}
+            activeDot={false}
+            connectNulls={false}
+            legendType="none"
+          />
+          <Line
+            type="monotone"
+            dataKey="featuresTrendPost"
+            stroke="#818cf8"
+            strokeWidth={1.5}
+            strokeDasharray="5 3"
+            dot={false}
+            activeDot={false}
+            connectNulls={false}
+            legendType="none"
+          />
+          {/* Infrastructure trend lines (dashed) */}
+          <Line
+            type="monotone"
+            dataKey="infraTrendPre"
+            stroke="#f59e0b"
+            strokeWidth={1.5}
+            strokeDasharray="5 3"
+            dot={false}
+            activeDot={false}
+            connectNulls={false}
+            legendType="none"
+          />
+          <Line
+            type="monotone"
+            dataKey="infraTrendPost"
+            stroke="#f59e0b"
+            strokeWidth={1.5}
+            strokeDasharray="5 3"
+            dot={false}
+            activeDot={false}
+            connectNulls={false}
+            legendType="none"
+          />
+          {/* Milestone vertical line */}
+          {showMilestone && (
+            <ReferenceLine
+              x={MILESTONE_WEEK}
+              stroke="#22d3ee"
+              strokeDasharray="4 4"
+              strokeWidth={1.5}
+              label={{
+                value: MILESTONE_LABEL,
+                position: "top",
+                fill: "#22d3ee",
+                fontSize: 10,
+              }}
+            />
+          )}
           <Legend
             wrapperStyle={{ fontSize: "12px", color: "#9ca3af" }}
             iconType="plainline"
