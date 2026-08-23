@@ -261,7 +261,7 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
         timeRange={timeRange}
         infoContent={
           <>
-            <p>Breaks down weekly story points into <strong>Product</strong> (features, AI, UI, integrations) vs <strong>Infrastructure</strong> (DevOps, infra, tooling, schema).</p>
+            <p>Breaks down weekly story points into <strong>Features</strong> (everything that ships product value) vs <strong>Infrastructure</strong> (DevOps + Infrastructure work).</p>
             <p className="mt-2">Helps track investment balance between shipping features and building/maintaining the platform.</p>
           </>
         }

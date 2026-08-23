@@ -33,26 +33,16 @@ type Props = {
   infoContent?: React.ReactNode;
 };
 
-// Categories mapped to work type buckets
-const PRODUCT_CATEGORIES = new Set([
-  "Core Platform",
-  "AI/Agents",
-  "UI/UX",
-  "Integrations",
-  "Analytics",
-]);
-
+// Only DevOps and Infrastructure count as "infrastructure" — everything else is features
 const INFRA_CATEGORIES = new Set([
   "Infrastructure",
   "DevOps",
-  "Admin/Tools",
-  "Data/Schema",
 ]);
 
 type ChartEntry = {
   week: string;
   fullWeek: string;
-  product: number;
+  features: number;
   infrastructure: number;
 };
 
@@ -91,11 +81,9 @@ const TIME_RANGE_WEEKS: Record<TimeRange, number> = {
   all: 999, year: 52, "6mo": 26, "3mo": 13, "1mo": 4,
 };
 
-function classifyCategory(category: string): "product" | "infrastructure" {
-  if (PRODUCT_CATEGORIES.has(category)) return "product";
+function classifyCategory(category: string): "features" | "infrastructure" {
   if (INFRA_CATEGORIES.has(category)) return "infrastructure";
-  // Default unknown categories to product
-  return "product";
+  return "features";
 }
 
 export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }: Props) {
@@ -114,13 +102,13 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
   const monthStartIndices = weekToMonthStart(slicedWeeks.map((w) => w.week));
 
   const data: ChartEntry[] = useMemo(() => slicedWeeks.map((w) => {
-    let product = 0;
+    let features = 0;
     let infrastructure = 0;
 
     for (const pr of w.prs) {
       const bucket = classifyCategory(pr.category);
-      if (bucket === "product") {
-        product += pr.points;
+      if (bucket === "features") {
+        features += pr.points;
       } else {
         infrastructure += pr.points;
       }
@@ -129,7 +117,7 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
     return {
       week: w.week,
       fullWeek: weekToLabel(w.week),
-      product,
+      features,
       infrastructure,
     };
   }), [slicedWeeks]);
@@ -150,13 +138,13 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
 
   // Summary stats for the selected range
   const totals = useMemo(() => {
-    const p = data.reduce((s, d) => s + d.product, 0);
+    const f = data.reduce((s, d) => s + d.features, 0);
     const i = data.reduce((s, d) => s + d.infrastructure, 0);
-    const total = p + i;
+    const total = f + i;
     return {
-      product: p,
+      features: f,
       infrastructure: i,
-      productPct: total > 0 ? Math.round((p / total) * 100) : 0,
+      featuresPct: total > 0 ? Math.round((f / total) * 100) : 0,
       infraPct: total > 0 ? Math.round((i / total) * 100) : 0,
     };
   }, [data]);
@@ -173,12 +161,12 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
     if (!active || !payload?.length) return null;
     const entry = payload[0]?.payload as ChartEntry | undefined;
     if (!entry) return null;
-    const total = entry.product + entry.infrastructure;
+    const total = entry.features + entry.infrastructure;
     return (
       <div className="bg-gray-800 border border-gray-700 rounded-lg p-3 shadow-xl">
         <p className="text-gray-300 text-sm font-medium mb-1">{entry.fullWeek}</p>
         <p className="text-sm" style={{ color: "#818cf8" }}>
-          Product: {entry.product} pts {total > 0 ? `(${Math.round((entry.product / total) * 100)}%)` : ""}
+          Features: {entry.features} pts {total > 0 ? `(${Math.round((entry.features / total) * 100)}%)` : ""}
         </p>
         <p className="text-sm" style={{ color: "#f59e0b" }}>
           Infrastructure: {entry.infrastructure} pts {total > 0 ? `(${Math.round((entry.infrastructure / total) * 100)}%)` : ""}
@@ -191,7 +179,7 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
   return (
     <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-6">
       <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4 flex items-center">
-        <span>Work Type — Product vs Infrastructure</span>
+        <span>Work Type — Features vs Infrastructure</span>
         {infoContent && (
           <ChartInfoButton title="Work Type Breakdown">{infoContent}</ChartInfoButton>
         )}
@@ -199,7 +187,7 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
       {/* Summary badges */}
       <div className="flex gap-4 mb-4 text-xs">
         <span className="px-2 py-1 rounded bg-indigo-500/20 text-indigo-300">
-          Product: {totals.productPct}% ({totals.product} pts)
+          Features: {totals.featuresPct}% ({totals.features} pts)
         </span>
         <span className="px-2 py-1 rounded bg-amber-500/20 text-amber-300">
           Infra: {totals.infraPct}% ({totals.infrastructure} pts)
@@ -225,12 +213,12 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, infoContent }:
           <Tooltip content={<CustomTooltip />} />
           <Area
             type="monotone"
-            dataKey="product"
+            dataKey="features"
             stackId="1"
             stroke="#818cf8"
             fill="#818cf8"
             fillOpacity={0.4}
-            name="Product"
+            name="Features"
           />
           <Area
             type="monotone"
