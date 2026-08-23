@@ -10,6 +10,7 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  ReferenceLine,
 } from "recharts";
 import ChartInfoButton from "./ChartInfoButton";
 
@@ -174,6 +175,12 @@ export default function VelocityContributorChart({ weeks, timeRange, infoContent
   const startIdx = Math.max(0, weeks.length - maxWeeks);
   const slicedWeeks = weeks.slice(startIdx);
 
+  // Milestone: AllCode joins (Week of June 8, 2026)
+  const MILESTONE_WEEK = "2026-W24";
+  const MILESTONE_LABEL = "AllCode joins";
+  const milestoneIdx = slicedWeeks.findIndex((w) => w.week === MILESTONE_WEEK);
+  const showMilestone = milestoneIdx > 1 && milestoneIdx < slicedWeeks.length - 1;
+
   const monthStartIndices = weekToMonthStart(slicedWeeks.map((w) => w.week));
 
   const data: ChartEntry[] = slicedWeeks.map((w) => {
@@ -277,6 +284,20 @@ export default function VelocityContributorChart({ weeks, timeRange, infoContent
             domain={[0, yMax]}
           />
           <Tooltip content={<CustomTooltip />} />
+          {/* Milestone vertical line */}
+          {showMilestone && (
+            <ReferenceLine
+              x={MILESTONE_WEEK}
+              stroke="#f59e0b"
+              strokeWidth={1.5}
+              label={{
+                value: MILESTONE_LABEL,
+                position: "top",
+                fill: "#f59e0b",
+                fontSize: 10,
+              }}
+            />
+          )}
           {authors.map((author) => (
             <Line
               key={author}
