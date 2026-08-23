@@ -245,6 +245,16 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
           </>
         }
       />
+      <VelocityWorkTypeChart
+        weeks={filteredWeeks}
+        timeRange={timeRange}
+        infoContent={
+          <>
+            <p>Breaks down weekly story points into <strong>Features</strong> (everything that ships product value) vs <strong>Infrastructure</strong> (DevOps + Infrastructure work).</p>
+            <p className="mt-2">Helps track investment balance between shipping features and building/maintaining the platform.</p>
+          </>
+        }
+      />
       <VelocityContributorChart
         weeks={filteredWeeks}
         timeRange={timeRange}
@@ -253,16 +263,6 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
             <p>Shows each contributor&apos;s individual story points output per week.</p>
             <p className="mt-2">Multi-author PRs have their points split proportionally between contributors based on commit attribution.</p>
             <p className="mt-2">This helps identify individual output trends and contribution balance across the team.</p>
-          </>
-        }
-      />
-      <VelocityWorkTypeChart
-        weeks={filteredWeeks}
-        timeRange={timeRange}
-        infoContent={
-          <>
-            <p>Breaks down weekly story points into <strong>Features</strong> (everything that ships product value) vs <strong>Infrastructure</strong> (DevOps + Infrastructure work).</p>
-            <p className="mt-2">Helps track investment balance between shipping features and building/maintaining the platform.</p>
           </>
         }
       />
