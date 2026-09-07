@@ -437,7 +437,7 @@ async function callClaude(client, InvokeModelCommand, prompt, maxTokens = 2048) 
 // ─────────────────────────────────────────────────────────────────────────────
 // AI Scoring: Individual PRs
 // ─────────────────────────────────────────────────────────────────────────────
-const CATEGORIES = ['Core Platform', 'Infrastructure', 'AI/Agents', 'UI/UX', 'DevOps', 'Data/Schema', 'Admin/Tools', 'Integrations', 'Analytics'];
+const CATEGORIES = ['Core Platform', 'Infrastructure', 'AI/Agents', 'UI/UX', 'DevOps', 'Data/Schema', 'Admin/Tools', 'Integrations', 'Analytics', 'Code Migration'];
 
 async function scorePRsBatch(client, InvokeModelCommand, prs) {
   const prDescriptions = prs.map((pr, idx) => {
@@ -477,6 +477,9 @@ Score each PR below on the Fibonacci scale: 1, 2, 3, 5, 8, 13, 21 points.
 - 21 pts: epic (transformative, weeks of work)
 
 Categories: ${CATEGORIES.join(', ')}
+
+Category guidance:
+- "Code Migration" — PRs primarily porting/migrating code between languages, frameworks, or architectures (e.g., Node→Go API migration, Python→Rust rewrite, monolith→microservice extraction). The core work is translating existing functionality, not building new features.
 
 Use ONLY custom lines (not vendored/auto-gen) when estimating effort. If a PR is flagged as VENDORED, ignore the auto-gen lines entirely and score based only on the custom additions.
 

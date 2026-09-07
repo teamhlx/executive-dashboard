@@ -41,6 +41,10 @@ const INFRA_CATEGORIES = new Set([
   "DevOps",
 ]);
 
+const MIGRATION_CATEGORIES = new Set([
+  "Code Migration",
+]);
+
 // Milestone: AllCode takes over (Week of June 8, 2026)
 const MILESTONE_WEEK = "2026-W24";
 const MILESTONE_LABEL = "AllCode joins";
@@ -50,8 +54,10 @@ type ChartEntry = {
   fullWeek: string;
   features: number;
   infrastructure: number;
+  migration: number;
   featuresTrend?: number;
   infraTrend?: number;
+  migrationTrend?: number;
 };
 
 // Linear regression helper
@@ -108,7 +114,8 @@ const TIME_RANGE_WEEKS: Record<TimeRange, number> = {
   all: 999, year: 52, "6mo": 26, "4mo": 17, "3mo": 13, "6wk": 6, "4wk": 4,
 };
 
-function classifyCategory(category: string): "features" | "infrastructure" {
+function classifyCategory(category: string): "features" | "infrastructure" | "migration" {
+  if (MIGRATION_CATEGORIES.has(category)) return "migration";
   if (INFRA_CATEGORIES.has(category)) return "infrastructure";
   return "features";
 }
@@ -139,30 +146,36 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, chartMode, inf
     const raw = slicedWeeks.map((w) => {
       let features = 0;
       let infrastructure = 0;
+      let migration = 0;
 
       for (const pr of w.prs) {
         const bucket = classifyCategory(pr.category);
         if (bucket === "features") {
           features += pr.points;
+        } else if (bucket === "migration") {
+          migration += pr.points;
         } else {
           infrastructure += pr.points;
         }
       }
 
-      return { week: w.week, fullWeek: weekToLabel(w.week), features, infrastructure };
+      return { week: w.week, fullWeek: weekToLabel(w.week), features, infrastructure, migration };
     });
 
     // Single trend line across all data (no split)
     const featuresRaw = raw.map((d) => d.features);
     const infraRaw = raw.map((d) => d.infrastructure);
+    const migrationRaw = raw.map((d) => d.migration);
     const featTrend = linearRegression(featuresRaw).values;
     const infraTrend = linearRegression(infraRaw).values;
+    const migrationTrend = linearRegression(migrationRaw).values;
 
     // Attach trend values, clamped to zero minimum
     return raw.map((d, i) => ({
       ...d,
       featuresTrend: Math.max(0, featTrend[i]),
       infraTrend: Math.max(0, infraTrend[i]),
+      migrationTrend: Math.max(0, migrationTrend[i]),
     }));
   }, [slicedWeeks]);
 
@@ -205,7 +218,7 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, chartMode, inf
     if (!active || !payload?.length) return null;
     const entry = payload[0]?.payload as ChartEntry | undefined;
     if (!entry) return null;
-    const total = entry.features + entry.infrastructure;
+    const total = entry.features + entry.infrastructure + entry.migration;
     return (
       <div className="bg-gray-800 border border-gray-700 rounded-lg p-3 shadow-xl">
         <p className="text-gray-300 text-sm font-medium mb-1">{entry.fullWeek}</p>
@@ -215,6 +228,9 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, chartMode, inf
         <p className="text-sm" style={{ color: "#f59e0b" }}>
           Infrastructure: {entry.infrastructure} pts {total > 0 ? `(${Math.round((entry.infrastructure / total) * 100)}%)` : ""}
         </p>
+        <p className="text-sm" style={{ color: "#f472b6" }}>
+          Migration: {entry.migration} pts {total > 0 ? `(${Math.round((entry.migration / total) * 100)}%)` : ""}
+        </p>
         <p className="text-gray-400 text-xs mt-1">Total: {total} pts</p>
       </div>
     );
@@ -223,7 +239,7 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, chartMode, inf
   return (
     <div className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-6">
       <h3 className="text-sm text-gray-400 uppercase tracking-wider mb-4 flex items-center">
-        <span>Work Type — Features vs Infrastructure</span>
+        <span>Work Type — Features vs Infrastructure vs Migration</span>
         {infoContent && (
           <ChartInfoButton title="Work Type Breakdown">{infoContent}</ChartInfoButton>
         )}
@@ -268,6 +284,16 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, chartMode, inf
             name="Infrastructure"
             hide={!showActuals}
           />
+          <Line
+            type="monotone"
+            dataKey="migration"
+            stroke="#f472b6"
+            strokeWidth={showActuals ? 2 : 0}
+            dot={showTrends && showActuals ? { fill: "#f472b6", r: 1.5 } : false}
+            activeDot={showActuals ? { r: 2.5, fill: "#f472b6" } : false}
+            name="Migration"
+            hide={!showActuals}
+          />
           {/* Features trend line (dashed) */}
           {showTrends && (
             <Line
@@ -288,6 +314,20 @@ export default function VelocityWorkTypeChart({ weeks, timeRange, chartMode, inf
               type="monotone"
               dataKey="infraTrend"
               stroke="#f59e0b"
+              strokeWidth={1.5}
+              strokeDasharray="5 3"
+              dot={false}
+              activeDot={false}
+              connectNulls={false}
+              legendType="none"
+            />
+          )}
+          {/* Migration trend line (dashed) */}
+          {showTrends && (
+            <Line
+              type="monotone"
+              dataKey="migrationTrend"
+              stroke="#f472b6"
               strokeWidth={1.5}
               strokeDasharray="5 3"
               dot={false}

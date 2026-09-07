@@ -57,6 +57,9 @@ type AuthorData = {
   avgPerPR: number;
   prs: number;
   avgPerWeek: number;
+  featurePoints: number;
+  infraPoints: number;
+  migrationPoints: number;
 };
 
 export type VelocityPayload = {
@@ -136,24 +139,36 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
   const startIdxFilter = Math.max(0, weeks.length - maxWeeksFilter);
   const filteredWeeks = weeks.slice(startIdxFilter);
 
+  const INFRA_CATS_AUTH = new Set(["Infrastructure", "DevOps"]);
+  const MIGRATION_CATS_AUTH = new Set(["Code Migration"]);
+  const classifyAuth = (cat: string) => MIGRATION_CATS_AUTH.has(cat) ? "migration" : INFRA_CATS_AUTH.has(cat) ? "infra" : "features";
+
   const filteredAuthors: Record<string, AuthorData> = {};
   for (const w of filteredWeeks) {
     for (const pr of w.prs) {
+      const bucket = classifyAuth(pr.category);
       if (pr.isMultiAuthor && pr.attribution) {
         for (const [name, fraction] of Object.entries(pr.attribution)) {
           if (!filteredAuthors[name]) {
-            filteredAuthors[name] = { totalPoints: 0, avgPerPR: 0, prs: 0, avgPerWeek: 0 };
+            filteredAuthors[name] = { totalPoints: 0, avgPerPR: 0, prs: 0, avgPerWeek: 0, featurePoints: 0, infraPoints: 0, migrationPoints: 0 };
           }
-          filteredAuthors[name].totalPoints += Math.round(pr.points * fraction);
+          const pts = Math.round(pr.points * fraction);
+          filteredAuthors[name].totalPoints += pts;
           filteredAuthors[name].prs += 1;
+          if (bucket === "features") filteredAuthors[name].featurePoints += pts;
+          else if (bucket === "migration") filteredAuthors[name].migrationPoints += pts;
+          else filteredAuthors[name].infraPoints += pts;
         }
       } else {
         const name = pr.author;
         if (!filteredAuthors[name]) {
-          filteredAuthors[name] = { totalPoints: 0, avgPerPR: 0, prs: 0, avgPerWeek: 0 };
+          filteredAuthors[name] = { totalPoints: 0, avgPerPR: 0, prs: 0, avgPerWeek: 0, featurePoints: 0, infraPoints: 0, migrationPoints: 0 };
         }
         filteredAuthors[name].totalPoints += pr.points;
         filteredAuthors[name].prs += 1;
+        if (bucket === "features") filteredAuthors[name].featurePoints += pr.points;
+        else if (bucket === "migration") filteredAuthors[name].migrationPoints += pr.points;
+        else filteredAuthors[name].infraPoints += pr.points;
       }
     }
   }
@@ -235,7 +250,7 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
         rangeLabel={rangeLabel}
       />
 
-      {/* Points/Week trend cards — Features vs Infrastructure */}
+      {/* Points/Week trend cards — Features vs Infrastructure vs Migration */}
       {timeRange !== "all" && timeRange !== "year" && (() => {
         const numWeeksHalf = Math.floor(filteredWeeks.length / 2);
         if (numWeeksHalf < 2) return null;
@@ -243,18 +258,24 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
         const olderHalf = filteredWeeks.slice(0, numWeeksHalf);
 
         const INFRA_CATS = new Set(["Infrastructure", "DevOps"]);
-        const classify = (cat: string) => INFRA_CATS.has(cat) ? "infra" : "features";
+        const MIGRATION_CATS = new Set(["Code Migration"]);
+        const classify = (cat: string) => MIGRATION_CATS.has(cat) ? "migration" : INFRA_CATS.has(cat) ? "infra" : "features";
 
-        let featPtsRecent = 0, infraPtsRecent = 0, featPtsOlder = 0, infraPtsOlder = 0;
+        let featPtsRecent = 0, infraPtsRecent = 0, migPtsRecent = 0;
+        let featPtsOlder = 0, infraPtsOlder = 0, migPtsOlder = 0;
         for (const w of recentHalf) {
           for (const pr of w.prs) {
-            if (classify(pr.category) === "features") featPtsRecent += pr.points;
+            const b = classify(pr.category);
+            if (b === "features") featPtsRecent += pr.points;
+            else if (b === "migration") migPtsRecent += pr.points;
             else infraPtsRecent += pr.points;
           }
         }
         for (const w of olderHalf) {
           for (const pr of w.prs) {
-            if (classify(pr.category) === "features") featPtsOlder += pr.points;
+            const b = classify(pr.category);
+            if (b === "features") featPtsOlder += pr.points;
+            else if (b === "migration") migPtsOlder += pr.points;
             else infraPtsOlder += pr.points;
           }
         }
@@ -263,11 +284,14 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
         const featAvgOlder = featPtsOlder / olderHalf.length;
         const infraAvgRecent = infraPtsRecent / recentHalf.length;
         const infraAvgOlder = infraPtsOlder / olderHalf.length;
+        const migAvgRecent = migPtsRecent / recentHalf.length;
+        const migAvgOlder = migPtsOlder / olderHalf.length;
         const featChange = featAvgOlder > 0 ? Math.round(((featAvgRecent - featAvgOlder) / featAvgOlder) * 100) : 0;
         const infraChange = infraAvgOlder > 0 ? Math.round(((infraAvgRecent - infraAvgOlder) / infraAvgOlder) * 100) : 0;
+        const migChange = migAvgOlder > 0 ? Math.round(((migAvgRecent - migAvgOlder) / migAvgOlder) * 100) : 0;
 
         return (
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="grid grid-cols-3 gap-4 mb-6">
             <div className="flex items-center justify-between p-4 rounded-xl bg-gray-800 border border-gray-700">
               <div>
                 <p className="text-xs text-gray-500 uppercase">Features pts/week</p>
@@ -286,6 +310,16 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
               <div className={`text-right ${infraChange >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
                 <p className="text-2xl font-bold">{infraChange >= 0 ? '+' : ''}{infraChange}%</p>
                 <p className="text-xs text-gray-500">vs prior ({infraAvgOlder.toFixed(1)})</p>
+              </div>
+            </div>
+            <div className="flex items-center justify-between p-4 rounded-xl bg-gray-800 border border-gray-700">
+              <div>
+                <p className="text-xs text-gray-500 uppercase">Migration pts/week</p>
+                <p className="text-xl font-bold text-gray-200">{migAvgRecent.toFixed(1)} <span className="text-sm text-gray-500">avg ({recentHalf.length}w)</span></p>
+              </div>
+              <div className={`text-right ${migChange >= 0 ? 'text-emerald-400' : 'text-red-400'}`}>
+                <p className="text-2xl font-bold">{migChange >= 0 ? '+' : ''}{migChange}%</p>
+                <p className="text-xs text-gray-500">vs prior ({migAvgOlder.toFixed(1)})</p>
               </div>
             </div>
           </div>
