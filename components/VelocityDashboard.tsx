@@ -178,6 +178,7 @@ export default function VelocityDashboard({ data, loading, error }: Props) {
     Chris: "2025-W32",
     Mauro: "2026-W24",
     Chad: "2026-W24",
+    Andy: "2026-W43",
   };
   const numFilteredWeeks = filteredWeeks.length || 1;
   for (const [name, author] of Object.entries(filteredAuthors)) {

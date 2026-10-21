@@ -49,6 +49,8 @@ const AUTHOR_MAP = {
   'mauro': 'Mauro',
   'chadgrant': 'Chad',
   'chad': 'Chad',
+  'andyyudev': 'Andy',
+  'andy': 'Andy',
   'skippymagnificent': 'Jason',
   'dependabot[bot]': 'dependabot',
   'dependabot': 'dependabot',

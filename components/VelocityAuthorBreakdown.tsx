@@ -19,6 +19,7 @@ const AUTHOR_COLORS: Record<string, string> = {
   Chris: "bg-sky-500",
   Mauro: "bg-emerald-500",
   Chad: "bg-amber-500",
+  Andy: "bg-rose-500",
 };
 
 const AUTHOR_DOT_COLORS: Record<string, string> = {
@@ -26,6 +27,7 @@ const AUTHOR_DOT_COLORS: Record<string, string> = {
   Chris: "#38bdf8",
   Mauro: "#34d399",
   Chad: "#fbbf24",
+  Andy: "#fb7185",
 };
 
 function getDotColor(name: string): string {
